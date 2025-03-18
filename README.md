@@ -9,3 +9,6 @@ This repository contains a collection of Cisco Packet Tracer lab activities desi
 - DHCP, DNS, and other network services
 
 ## Packet Tracer Outputs
+
+- Navigate the IOS
+
