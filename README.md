@@ -11,4 +11,4 @@ This repository contains a collection of Cisco Packet Tracer lab activities desi
 ## Packet Tracer Outputs
 
 - Navigate the IOS
-
+- Configure Initial Switch Settings
