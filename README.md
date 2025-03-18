@@ -7,3 +7,5 @@ This repository contains a collection of Cisco Packet Tracer lab activities desi
 - VLANs and trunking
 - Network security concepts
 - DHCP, DNS, and other network services
+
+## Packet Tracer Outputs
