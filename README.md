@@ -15,3 +15,4 @@ This repository contains a collection of Cisco Packet Tracer lab activities desi
 - Implement Basic Connectivity
 - Basic Switch and End Device Configuration
 - Investigate the TCP IP and OSI Models in Action
+- Connect the Physical Layer
