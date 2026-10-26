@@ -1,6 +1,6 @@
 # Single-Area OSPFv2 Configuration and Verification
 
-> **Category:** routing · **Difficulty:** intermediate · **Lab ID:** PTL-0011 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** routing · **Difficulty:** intermediate · **Lab ID:** PTL-0011 · **Document:** reviewed · **Simulator:** tested pass
 
 Static routing works well in small topologies, but manually updating static routes becomes unmanageable as networks grow. Dynamic routing protocols allow routers to automatically discover remote networks, maintain topological awareness, calculate the shortest path, and instantly route around network failures. **Open Shortest Path First version 2 (OSPFv2)**, defined in IETF RFC 2328, is the industry-standard link-state interior gateway protocol (IGP) used across enterprise networks. This lab guides you through configuring single-area OSPFv2 in Area 0, setting 32-bit Router IDs, converting subnet masks to wildcard masks, configuring passive interfaces, and verifying neighbor adjacencies.
 
@@ -24,6 +24,8 @@ Static routing works well in small topologies, but manually updating static rout
 ---
 
 ## Topology
+
+![PTL-0011 Topology Diagram](assets/topology.png)
 
 The topology features two Cisco ISR 4321 routers interconnected by a point-to-point transit link, with each router supporting a local user LAN:
 
@@ -238,8 +240,11 @@ End-to-end reachability is established purely through dynamic OSPF route adverti
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/R2.txt](configs/R2.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; OSPF neighbor adjacency in FULL state, dynamic route learning, passive interface verification, end-to-end ping, and negative timer/area mismatches recorded in [PTL-0011-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0011-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only.
