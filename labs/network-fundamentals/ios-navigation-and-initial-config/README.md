@@ -45,6 +45,8 @@ The topology models an initial out-of-band management connection using an RS-232
 | **S1** | VLAN 1 (SVI) | `192.168.1.5` | `255.255.255.0` | `192.168.1.1` | Management IP (Configured in Task 4) |
 | **PC-Admin** | FastEthernet0 | `192.168.1.10` | `255.255.255.0` | `192.168.1.1` | Management Workstation |
 
+> **Architectural Note on Default Gateway:** Because PC-Admin and S1 VLAN 1 SVI both reside on the same local Layer 2 broadcast domain (`192.168.1.0/24`), local management communication does not require an active default gateway router. The default gateway (`192.168.1.1`) is configured on both devices as a standard enterprise configuration practice to allow remote management access across routed network segments when an upstream gateway router is subsequently introduced.
+
 ---
 
 ## Lab Tasks
@@ -178,9 +180,11 @@ Verify that both passwords authenticate successfully.
 
 ## Key Takeaways
 - Cisco IOS commands follow a strict hierarchical mode structure (`>` -> `#` -> `(config)#` -> sub-modes).
-- `enable secret` supersedes the legacy `enable password` by utilizing irreversible one-way cryptographic hashing.
-- `service password-encryption` prevents casual shoulder-surfing by obfuscating cleartext passwords with Vigenère/Type-7 ciphering (though it is not cryptographically robust against offline cracking).
 - The `copy running-config startup-config` command is essential for preserving device settings into non-volatile NVRAM.
+- **Cryptographic Limitations vs. Modern Production Security:**
+  - `service password-encryption` applies a weak Type 7 Vigenère-derived algorithm designed only to deter casual over-the-shoulder snooping; it is easily reversible with public tools and must never be considered cryptographically secure.
+  - `enable secret` on the simulated Catalyst 2960 uses legacy Type 5 salted MD5 hashing (`$1$`). While historically standard for Cisco CCNA educational curricula, MD5 is vulnerable to rapid offline dictionary attacks.
+  - In modern enterprise production networks, administrators should deploy PBKDF2/SHA-256 (Type 8) or Scrypt (Type 9) hashes via `enable algorithm-type sha256 secret <password>` or AAA RADIUS/TACACS+ centralized authentication rather than standalone legacy hashes.
 
 ---
 

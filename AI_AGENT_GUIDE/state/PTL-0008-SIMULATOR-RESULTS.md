@@ -119,3 +119,14 @@ The following files were created directly by the Cisco Packet Tracer application
 Both `.pkt` project files were programmatically re-opened using `ipc.appWindow().fileOpen()`:
 - `starter.pkt`: Loaded 3 devices, 2 links; console initial prompt verified as `Switch>` (factory default).
 - `completed.pkt`: Loaded 3 devices, 2 links; console challenge verified as `Password:` (line con 0 protection active).
+
+---
+
+## 6. Engineering & Architectural Audit Notes
+
+### A. Default Gateway Behavior
+The addressing table specifies `192.168.1.1` as default gateway for both `S1` and `PC-Admin`. In this isolated two-device topology, there is no router active at `192.168.1.1`. However, because both endpoints reside on the same Layer 2 broadcast domain (`192.168.1.0/24`), all ARP resolution and ICMP ping traffic succeeds purely via local Layer 2 frame switching without traversing a gateway. Setting `ip default-gateway 192.168.1.1` on the switch and gateway on the host conforms to standard CCNA lab best practice preparing devices for upstream routed segments.
+
+### B. Cryptographic Storage Evaluation vs Production Standards
+- **Simulator Implementation:** The Catalyst 2960 in Packet Tracer 9.0.1 produces Type 5 (MD5) enable secret hashes (`$1$mERr$...`) and Type 7 obfuscated console/vty passwords.
+- **Production Standard:** Both Type 5 and Type 7 are legacy, weak mechanisms. Type 7 is trivially reversible, and Type 5 MD5 is susceptible to GPU-accelerated dictionary attacks. Modern production environments must mandate Type 8 (PBKDF2 SHA-256) or Type 9 (Scrypt) hashing (`enable algorithm-type sha256 secret`) and centralized TACACS+/RADIUS authentication. The lab accurately reflects simulator capabilities and standard CCNA training scenarios while noting modern production hardening standards.
