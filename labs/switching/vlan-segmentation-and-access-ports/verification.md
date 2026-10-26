@@ -13,27 +13,27 @@
 | Device Role | Device Label | Packet Tracer Model | Module Slots | Software / IOS Version |
 |---|---|---|---|---|
 | Access Layer Switch | **S1** | Cisco Catalyst 2960-24TT | 24x 10/100 FastEthernet, 2x Gigabit | Cisco IOS 15.0(2)SE4 (LAN Base) |
-| Faculty PC 1 | **PC1** | PC-PT | 1x FastEthernet | Generic Host OS |
-| Faculty PC 2 | **PC2** | PC-PT | 1x FastEthernet | Generic Host OS |
-| Student PC 1 | **PC3** | PC-PT | 1x FastEthernet | Generic Host OS |
-| Student PC 2 | **PC4** | PC-PT | 1x FastEthernet | Generic Host OS |
+| Faculty PC 1 | **PC-Faculty-1** | PC-PT | 1x FastEthernet | Generic Host OS |
+| Faculty PC 2 | **PC-Faculty-2** | PC-PT | 1x FastEthernet | Generic Host OS |
+| Student PC 1 | **PC-Student-1** | PC-PT | 1x FastEthernet | Generic Host OS |
+| Student PC 2 | **PC-Student-2** | PC-PT | 1x FastEthernet | Generic Host OS |
 
 ### Port-to-Port Cabling Matrix
 | Origin Device | Origin Port | Destination Device | Destination Port | Access VLAN | Cable Type |
 |---|---|---|---|---|---|
-| **PC1** | `FastEthernet0` | **Switch S1** | `FastEthernet0/1` | VLAN 10 (Faculty) | Copper Straight-Through |
-| **PC2** | `FastEthernet0` | **Switch S1** | `FastEthernet0/2` | VLAN 10 (Faculty) | Copper Straight-Through |
-| **PC3** | `FastEthernet0` | **Switch S1** | `FastEthernet0/11` | VLAN 20 (Students) | Copper Straight-Through |
-| **PC4** | `FastEthernet0` | **Switch S1** | `FastEthernet0/12` | VLAN 20 (Students) | Copper Straight-Through |
+| **PC-Faculty-1** | `FastEthernet0` | **Switch S1** | `FastEthernet0/1` | VLAN 10 (Faculty) | Copper Straight-Through |
+| **PC-Faculty-2** | `FastEthernet0` | **Switch S1** | `FastEthernet0/2` | VLAN 10 (Faculty) | Copper Straight-Through |
+| **PC-Student-1** | `FastEthernet0` | **Switch S1** | `FastEthernet0/11` | VLAN 20 (Students) | Copper Straight-Through |
+| **PC-Student-2** | `FastEthernet0` | **Switch S1** | `FastEthernet0/12` | VLAN 20 (Students) | Copper Straight-Through |
 
 ### Addressing Table
 | Device | Interface | IPv4 Address | Subnet Mask | VLAN Assignment |
 |---|---|---|---|---|
 | **S1** | VLAN 99 (SVI) | `192.168.99.2` | `255.255.255.0` | VLAN 99 (Management) |
-| **PC1** | FastEthernet0 | `192.168.10.10` | `255.255.255.0` | VLAN 10 (Faculty) |
-| **PC2** | FastEthernet0 | `192.168.10.11` | `255.255.255.0` | VLAN 10 (Faculty) |
-| **PC3** | FastEthernet0 | `192.168.20.10` | `255.255.255.0` | VLAN 20 (Students) |
-| **PC4** | FastEthernet0 | `192.168.20.11` | `255.255.255.0` | VLAN 20 (Students) |
+| **PC-Faculty-1** | FastEthernet0 | `192.168.10.11` | `255.255.255.0` | VLAN 10 (Faculty) |
+| **PC-Faculty-2** | FastEthernet0 | `192.168.10.12` | `255.255.255.0` | VLAN 10 (Faculty) |
+| **PC-Student-1** | FastEthernet0 | `192.168.20.11` | `255.255.255.0` | VLAN 20 (Students) |
+| **PC-Student-2** | FastEthernet0 | `192.168.20.12` | `255.255.255.0` | VLAN 20 (Students) |
 
 ---
 
@@ -68,28 +68,28 @@ Complete reference configuration:
 - **Criterion:** VLANs 10, 20, and 99 are active; ports `Fa0/1-10` belong to VLAN 10; ports `Fa0/11-20` belong to VLAN 20.
 
 ### Test POS-02: Intra-VLAN Communication (Faculty VLAN 10)
-- **Action:** From `PC1` (`192.168.10.10`), ping `PC2` (`192.168.10.11`).
+- **Action:** From `PC-Faculty-1` (`192.168.10.11`), ping `PC-Faculty-2` (`192.168.10.12`).
 - **Expected Terminal Output:**
   ```text
-  C:\> ping 192.168.10.11
-  Pinging 192.168.10.11 with 32 bytes of data:
-  Reply from 192.168.10.11: bytes=32 time<1ms TTL=128
-  Reply from 192.168.10.11: bytes=32 time<1ms TTL=128
-  Reply from 192.168.10.11: bytes=32 time<1ms TTL=128
-  Reply from 192.168.10.11: bytes=32 time<1ms TTL=128
+  C:\> ping 192.168.10.12
+  Pinging 192.168.10.12 with 32 bytes of data:
+  Reply from 192.168.10.12: bytes=32 time<1ms TTL=128
+  Reply from 192.168.10.12: bytes=32 time<1ms TTL=128
+  Reply from 192.168.10.12: bytes=32 time<1ms TTL=128
+  Reply from 192.168.10.12: bytes=32 time<1ms TTL=128
   ```
 - **Criterion:** Successful intra-VLAN reachability with 0% loss.
 
 ### Test POS-03: Intra-VLAN Communication (Student VLAN 20)
-- **Action:** From `PC3` (`192.168.20.10`), ping `PC4` (`192.168.20.11`).
+- **Action:** From `PC-Student-1` (`192.168.20.11`), ping `PC-Student-2` (`192.168.20.12`).
 - **Expected Terminal Output:**
   ```text
-  C:\> ping 192.168.20.11
-  Pinging 192.168.20.11 with 32 bytes of data:
-  Reply from 192.168.20.11: bytes=32 time<1ms TTL=128
-  Reply from 192.168.20.11: bytes=32 time<1ms TTL=128
-  Reply from 192.168.20.11: bytes=32 time<1ms TTL=128
-  Reply from 192.168.20.11: bytes=32 time<1ms TTL=128
+  C:\> ping 192.168.20.12
+  Pinging 192.168.20.12 with 32 bytes of data:
+  Reply from 192.168.20.12: bytes=32 time<1ms TTL=128
+  Reply from 192.168.20.12: bytes=32 time<1ms TTL=128
+  Reply from 192.168.20.12: bytes=32 time<1ms TTL=128
+  Reply from 192.168.20.12: bytes=32 time<1ms TTL=128
   ```
 - **Criterion:** Successful intra-VLAN reachability with 0% loss.
 
@@ -98,17 +98,17 @@ Complete reference configuration:
 ## 4. Negative Verification Tests
 
 ### Test NEG-01: Inter-VLAN Broadcast Domain Isolation
-- **Action:** From `PC1` (VLAN 10), attempt to ping `PC3` (VLAN 20: `192.168.20.10`).
+- **Action:** From `PC-Faculty-1` (VLAN 10), attempt to ping `PC-Student-1` (VLAN 20: `192.168.20.11`).
 - **Expected Terminal Output:**
   ```text
-  C:\> ping 192.168.20.10
-  Pinging 192.168.20.10 with 32 bytes of data:
+  C:\> ping 192.168.20.11
+  Pinging 192.168.20.11 with 32 bytes of data:
   Request timed out.
   Request timed out.
   Request timed out.
   Request timed out.
 
-  Ping statistics for 192.168.20.10:
+  Ping statistics for 192.168.20.11:
       Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)
   ```
 - **Criterion:** 100% packet loss. Confirms that Layer 2 switches do not forward frames between different VLANs without a Layer 3 routing device.

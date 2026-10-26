@@ -25,8 +25,8 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 12B_MCP_AUTOMATION | PASSED | state/PHASE-12B.md | Stages 1-3 complete; DavidIlie/packet-tracer-mcp selected and architecture audited |
 | 12C_MCP_PILOT | PASSED | state/PHASE-12C.md | None (MCP loopback bridge connected; PTL-0008 pilot built, tested, and verified) |
 
-Active phase: 12D_BATCH_A (Branch: feature/phase-12-simulator-labs) — In Progress
-Current batch: Phase 12D Batch A (IP Addressing and Switching Fundamentals). PTL-0002 (Configuring Cisco Router Interfaces) and PTL-0005 (Verifying Directly Connected Networks) completed: topologies assembled, cabled, configured, verified (POS-01..03, NEG-01..02 100% pass), starter.pkt / completed.pkt / topology.png generated and verified reloadable. Proceeding to PTL-0009.
+Active phase: 12D_BATCH_B (Branch: feature/phase-12-simulator-labs) — In Progress
+Current batch: Phase 12D Batch A (IP Addressing and Switching Fundamentals) COMPLETED (PTL-0002, PTL-0005, PTL-0009 all verified in Packet Tracer). Batch B (Advanced Switching & Routing: PTL-0006, PTL-0001, PTL-0010) initiated.
 Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Implement and verify PTL-0009 (VLAN Segmentation & Access Ports) to complete Batch A.
-Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 3
+Next step: Implement and verify PTL-0006 (EtherChannel with LACP).
+Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 4
