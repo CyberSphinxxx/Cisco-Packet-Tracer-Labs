@@ -25,8 +25,8 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 12B_MCP_AUTOMATION | PASSED | state/PHASE-12B.md | Stages 1-3 complete; DavidIlie/packet-tracer-mcp selected and architecture audited |
 | 12C_MCP_PILOT | PASSED | state/PHASE-12C.md | None (MCP loopback bridge connected; PTL-0008 pilot built, tested, and verified) |
 
-Active phase: 12D_BATCH_D (Branch: feature/phase-12-simulator-labs) — In Progress
-Current batch: Phase 12D Batch D (Network Security). PTL-0007 (Switch Security Hardening) verified live in Packet Tracer 9.0.1: VLAN segregation (10, 20, 99, 999), hardened 802.1Q trunk (native VLAN 999, DTP nonegotiate, pruning 10,20), user access port (VLAN 10, PortFast, BPDU Guard), unused ports shut down in parking lot (VLAN 99), authorized host ping pass, rogue switch BPDU Guard violation (immediate `err-disabled`), and port recovery. Starter and completed files verified reloadable. Proceeding to PTL-0013 (Standard and Extended IPv4 ACLs).
+Active phase: 12D_CAPSTONE (Branch: feature/phase-12-simulator-labs) — In Progress
+Current batch: Phase 12D Capstone Project (Small Office Multi-VLAN Network). All 13 modular curriculum labs (PTL-0001 through PTL-0013) have completed live simulation verification in Cisco Packet Tracer 9.0.1. Batch D completed with PTL-0013: 3-subnet routed topology (Accounting, Sales, Server Farm), Standard ACL 10 on VTY lines (only Accounting permitted, Sales blocked), Extended ACL SALES_TO_SERVERS (Web port 80 & DNS port 53 permitted, ICMP to servers denied, traffic to Accounting denied). Starter and completed files verified reloadable. Proceeding to Capstone Project (`projects/small-office-network/`).
 Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Implement and verify PTL-0013 (Standard and Extended IPv4 ACLs).
-Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 12
+Next step: Implement and verify Capstone Project (`projects/small-office-network/`).
+Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 13

@@ -1,6 +1,6 @@
 # Configuring Standard and Extended IPv4 Access Control Lists
 
-> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0013 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0013 · **Document:** reviewed · **Simulator:** tested_pass
 
 Security policies dictate which network users can access specific servers, protocols, and services. **Access Control Lists (ACLs)** are sequential rule sets applied to router interfaces that inspect incoming or outgoing packets and either permit or deny them based on header information. Cisco IOS supports two primary types of IPv4 ACLs:
 - **Standard ACLs (1–99, 1300–1999):** Filter traffic based solely on the source IPv4 address.
@@ -28,6 +28,8 @@ This lab demonstrates how to design a security traffic matrix, apply ACL placeme
 ---
 
 ## Topology
+
+![PTL-0013 Topology](assets/topology.png)
 
 The topology features Router R1 connecting an Accounting LAN, a Sales LAN, and an enterprise Server LAN:
 
@@ -207,9 +209,12 @@ Verify that matches increment on the corresponding permit and deny rules.
 ---
 
 ## Files and Validation Status
+- Starter Activity: [assets/starter.pkt](assets/starter.pkt)
+- Completed Activity: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/S1.txt](configs/S1.txt)
 - Verification Guide: [verification.md](verification.md)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified in Cisco Packet Tracer 9.0.1; see [PTL-0013-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0013-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only.
