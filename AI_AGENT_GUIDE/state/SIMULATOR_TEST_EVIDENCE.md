@@ -35,6 +35,9 @@ In strict alignment with repository guidelines:
 | `labs/switching/vlan-segmentation-and-access-ports/assets/starter.pkt` | Authentic `.pkt` Binary | 47,013 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; unconfigured switch with default VLAN 1. |
 | `labs/switching/vlan-segmentation-and-access-ports/assets/completed.pkt` | Authentic `.pkt` Binary | 48,261 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; VLANs 10/20/99, static access ports, intra-VLAN pass, inter-VLAN drop. |
 | `labs/switching/vlan-segmentation-and-access-ports/assets/topology.png` | PNG Image | 42,297 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
+| `labs/switching/etherchannel-lacp/assets/starter.pkt` | Authentic `.pkt` Binary | 49,098 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; unbundled physical links, default state. |
+| `labs/switching/etherchannel-lacp/assets/completed.pkt` | Authentic `.pkt` Binary | 50,441 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; LACP Port-channel 1, 802.1Q trunking, ping pass, failover verified. |
+| `labs/switching/etherchannel-lacp/assets/topology.png` | PNG Image | 38,158 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
 
 All other uncompleted activities in `labs/` and `projects/` currently have `assets.starter: null` and `assets.completed: null` in their respective `metadata.json` files, preventing any broken or fake download links.
 
@@ -48,7 +51,7 @@ All other uncompleted activities in `labs/` and `projects/` currently have `asse
 | **PTL-0002** | Router Interface Configuration | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..02 passed (`state/PTL-0002-SIMULATOR-RESULTS.md`) |
 | **PTL-0005** | Verify Connected Networks | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..02 passed (`state/PTL-0005-SIMULATOR-RESULTS.md`) |
 | **PTL-0009** | VLAN Segmentation & Access Ports | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..02 passed (`state/PTL-0009-SIMULATOR-RESULTS.md`) |
-| **PTL-0006** | EtherChannel LACP | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
+| **PTL-0006** | EtherChannel LACP | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..02 passed (`state/PTL-0006-SIMULATOR-RESULTS.md`) |
 | **PTL-0001** | Dual-Stack Static Routing | Partial (Asset Preserved) | `not_tested` | Authentic binary preserved; live GUI re-execution blocked |
 | **PTL-0010** | Router-on-a-Stick Inter-VLAN Routing | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **PTL-0011** | Single-Area OSPFv2 | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |

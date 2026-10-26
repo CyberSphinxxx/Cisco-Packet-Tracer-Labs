@@ -32,14 +32,14 @@
   },
   "license_decision": "approved_dual_license",
   "assets": {
-    "starter": null,
-    "completed": null,
-    "topology": null
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
   },
   "status": {
     "documentation": "reviewed",
-    "simulator": "not_tested",
-    "simulator_evidence": null
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0006-SIMULATOR-RESULTS.md"
   },
   "references": [
     "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swethchl.html",

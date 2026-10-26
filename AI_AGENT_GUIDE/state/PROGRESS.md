@@ -26,7 +26,7 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 12C_MCP_PILOT | PASSED | state/PHASE-12C.md | None (MCP loopback bridge connected; PTL-0008 pilot built, tested, and verified) |
 
 Active phase: 12D_BATCH_B (Branch: feature/phase-12-simulator-labs) — In Progress
-Current batch: Phase 12D Batch A (IP Addressing and Switching Fundamentals) COMPLETED (PTL-0002, PTL-0005, PTL-0009 all verified in Packet Tracer). Batch B (Advanced Switching & Routing: PTL-0006, PTL-0001, PTL-0010) initiated.
+Current batch: Phase 12D Batch B (Advanced Switching & Routing). PTL-0006 (Configuring Layer 2 EtherChannel with LACP) completed: redundant Catalyst 2960 topology assembled, cabled, configured, verified (POS-01..03, NEG-01..02 100% pass), starter.pkt / completed.pkt / topology.png generated and verified reloadable. Proceeding to PTL-0001.
 Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Implement and verify PTL-0006 (EtherChannel with LACP).
-Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 4
+Next step: Implement and verify PTL-0001 (Dual-Stack IPv4/IPv6 Static Routing).
+Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 5
