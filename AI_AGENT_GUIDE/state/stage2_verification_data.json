@@ -1,0 +1,664 @@
+{
+  "status": "FAIL",
+  "checks": {
+    "total_manifest_files": 153,
+    "missing_in_staging": [],
+    "hash_mismatches": [
+      {
+        "path": ".github/ISSUE_TEMPLATE/broken_lab.md",
+        "expected": "5ff9c9100fb6238c0b67f6f42841ab1eb9499c05db143b20ef35549fbd7bf928",
+        "actual": "a43ab903b89ac99a23ecc9831531bdd172bcfe8acce8d385f14fd7dcd322b820"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/content_suggestion.md",
+        "expected": "c957e6a00dc62e59926c328a2ef1a60af2d0a182f5abdc85bb74b901f39a99c2",
+        "actual": "74001d3556e9827fd9fc81f7f039d772a79cc1ed1e1065e2968260a0e449bb16"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/technical_correction.md",
+        "expected": "e7b0426976f826656a001e74fb20c5ca1ced892ade63318cc2fb5b09143a3ad0",
+        "actual": "2c764ac244ccaff8158dd966e224b8bb280906823e2e57764e4f182f93ca13c6"
+      },
+      {
+        "path": ".github/workflows/validate.yml",
+        "expected": "c51028ac39e4df5418b3427c8b77bdeec683599a1e07113347a61011de6bda97",
+        "actual": "f6f3881df9e9541c790c71d49521848411d215534eb02d2c38e77a3f336f6211"
+      },
+      {
+        "path": ".gitignore",
+        "expected": "ad192ebe6fb71cd998daa72943d8672ad474945819c1c0e13de6430a9fbb5550",
+        "actual": "4a193ed18de53bc9aa0d365ed60a03f9769ca642b66b9731b501125445679b9c"
+      },
+      {
+        "path": "AGENTS.md",
+        "expected": "8a8a451b6464326789f5a16c556d9959371db0a2c0d82baa0878526881530119",
+        "actual": "c2583d60febbe6e1dbd5896d7db84d8457449c5aec3375fd71b2efe79b377aec"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/01_MISSION_AND_BOUNDARIES.md",
+        "expected": "ce89d0a36f2eff77d8079877fe3672466a84438fa91542e7aa6233de0fcd23ba",
+        "actual": "5065ce1bb16dabb4f0dc397480a1c454bcbdd559cbbf43b5961618e1ef3971c8"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/02_AGENT_LOOP.md",
+        "expected": "0f7d0e8435604cfcaa3ae983b0fc31b0c32320f059c63ed7cd796af190adc01e",
+        "actual": "adf668549dd35cb95d973bb09b59c8ed0e84e6fde695825db9b65d0d49b0d8eb"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/03_REPOSITORY_BASELINE.md",
+        "expected": "51d5d9a2b60851d4a9bf3013b8efe052252c474ac4be1831dbabe5f8516e60c7",
+        "actual": "c91bfbbfe14fa27d34874f01bb861b5a83612f50148b0d7c2b06251265c3dc07"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/04_INFORMATION_ARCHITECTURE.md",
+        "expected": "4f8247531b51ba648c89e682d1e6894346e09c6626e34b06b45e5dacefa65619",
+        "actual": "15e5e34f82e9a4640ab6acebeaad3b1f2fe1ed98ec1a7c487bfc1cfc07af3a84"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/05_RIGHTS_AND_CONTENT_POLICY.md",
+        "expected": "0ddedde567b6855df36ae7d17d37cd1c47330f5a76b9254dc873978d298923b0",
+        "actual": "326be87814fcd77ad186a5b6944f8f80ea736ce370db9a3c5ad4fbc19fdafa0c"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/06_RESEARCH_AND_CITATIONS.md",
+        "expected": "4d5afa46dc2d3bbb42d755d3fb066b6e9fd447ad0f834e76c707eb8e3b72c3b6",
+        "actual": "8236c38d32e406c28520a113424743006c1b7cc21d811d7971de2bdeae735125"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/07_LAB_AUTHORING.md",
+        "expected": "915028024bb0d0e96997c31d679ad36a3626c7edd29bf5f6e51fa35d013d0e4f",
+        "actual": "21eb1e26c775ac52af3c892932d18d4500e582621444fd4552e163ab8ab65c2a"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/08_NETWORK_TECHNICAL_QA.md",
+        "expected": "ebe3f5dfbdcf2d03afe26ed1f9cc50a4e7ace007aff80b976be27714338df2df",
+        "actual": "fa79ac6e84ab8b612c29f5a42eabeaa2401b0985a7c98aa82015fc70add842b6"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/09_TESTING_AND_AUTOMATION.md",
+        "expected": "a921129fd2f83c0bf8429dd264212b874a49d265893b3578d8b75d7fbfd077ff",
+        "actual": "ca522d0fe885002b0848d0a14e6ca051d6efa185062d765d0e079588b0113b8e"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/10_GIT_AND_RELEASE_SAFETY.md",
+        "expected": "4630e350222e5bca07a810b54d4b16fced5dcd7ba0e544bc3645bfd17f0d4a8d",
+        "actual": "4998dc8ac9a7bfa7a1cd1bb2de0ec4d26c80c97720ea8cc4a2fa4ded75adf235"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/11_WEBSITE_FUTURE_CONTRACT.md",
+        "expected": "de2f5020a0ce6edb50f13cd570dfd3356a2e3d0c62cba676fd033de8216c28c7",
+        "actual": "833778fb2194200a6d1262078458ce313774a9eaf77cd2801fa075cab7082345"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/12_CONTENT_ROADMAP.md",
+        "expected": "ed33f6c8c7073241ee728c6d3b10bfd851969c5f932bad62111453bb4ffa60be",
+        "actual": "5ce4c9c8e92b95612f944eaf0771ff0a777af627981bd28bac0ae2b55d25660b"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/13_STATE_AND_RESUME.md",
+        "expected": "34f93927d55ee564dbd73d1a64e412a68f525274a361b99648be988e30709c09",
+        "actual": "7b95446bfc42e37baab9827d047878bdd7e8622cffe02ef8fb6662355b61097a"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/14_MANUAL_PACKET_TRACER_VERIFICATION.md",
+        "expected": "54c914dea46c78ef731b812398b645b1db302238a5e1ba673398d99519222dbb",
+        "actual": "27b6eab92c457a805340a38223269e0a22938ae6049ff0614d0d75ede3dc0b62"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/CONTINUE_PROMPT.md",
+        "expected": "9c0f0a57856d7290e1b54b25a1908dae4efcffd3691aca4aea3cb86697ba84cf",
+        "actual": "d5e71c0b7c8608d6a0f327a0a7fcfbc932567e8a682846e541cb187b7c8f384a"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/QUICK_CHECKLIST.md",
+        "expected": "300ce883d3b5af9ea4b2bb8137e7da243cf2a1574c043ed104a69d1b55b37431",
+        "actual": "e0d5d2edf5653a6e0b2432321e514bb2e1a27e6f925364851ffb0e3dd0f339b9"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/README.md",
+        "expected": "0af2ae7a5333aa4f53d004d16c8bc2862259455148ee20daf1437eab1a2897e7",
+        "actual": "34d726548e1ec52b6059748496c47fb2c6168a7b05b27b1558baa16660a13615"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/REVIEW_PROMPT.md",
+        "expected": "7bb6b9977096ce9556d323c34f4c993150c87ef678b65b3670369a6f13012eff",
+        "actual": "acc06027e57337429ba7096928b17f73bc9a1983e089e7ef1e577a46e8c3bf46"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/START_PROMPT.md",
+        "expected": "5d61d78da7cebb4fa8b287a3e30991793426bb813b50e131201a26a366c21f3e",
+        "actual": "91e43252463bcccf6337a73492d950152e35f7c03242fa6faac8f9ae1e1be948"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/STATUS_PROMPT.md",
+        "expected": "2a179d3d84f0a129e8f4fd880e36d727dedb25d4c41e98e5f2f1ea0c119f844c",
+        "actual": "bf814f3bf9153ba467656b81acacd871eee71ea6c16548ed8d7aaedc61711bf2"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/00_BOOTSTRAP.md",
+        "expected": "6883309d585c59b2d557df6c23734404f6b77c202654a7b0a08b78346be3da04",
+        "actual": "9741934663d4a853b0bed19fca4e009a5c6d82820a416f5dcd80c93a6e52ed5e"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/01_INVENTORY_RIGHTS.md",
+        "expected": "86236c4556e8043c55acc5ee918f107640f1308b71e8e2035b9d65f5efe81573",
+        "actual": "04c237ddc6d99d4c8da254803c211b38ee56cf8031550a50e0747fbcd0697c7d"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/02_ARCHITECTURE.md",
+        "expected": "ee6a842c63a5ffc1b65370e44d449b9f56da86824902630bee1e8e056e28282e",
+        "actual": "0c44ad4aae57b7412d89aaee4bdc3a9917546155bad6b8051e1accf1cfa878d8"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/03_MIGRATION.md",
+        "expected": "ec3396499bb62ffb5b812b28b063e17d8b428336d3e33c7ae4d73c3ff11b7cc5",
+        "actual": "ffc4b0fb046d1967eab16c9ce4bb297cfe76d8db671632e1ba4afe1a8d07329e"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/04_DOCUMENTATION.md",
+        "expected": "78dbe643fe0d477c64c836570c6e4261d06ca38cbf5969d68ec8b9116fdd3660",
+        "actual": "5cbc5de333f385469b2156557964f23e19366572b527ee7f5775bf1db719cb6c"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/05_ACCURACY.md",
+        "expected": "138f06a09025fce13f8bb8d751c93a5356b7fede49c18e2f23fc308707164c17",
+        "actual": "9340a3d6284391571a4f8dd6d9280be64659caa350a95064c14e2d14a37a48ac"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/06_NEW_CONTENT.md",
+        "expected": "6e5c5c3075fdb5f37b68eb0940dfbc4e7c0373e17c84184a97499ba581998666",
+        "actual": "611cfe8aadb29856b9db508d2112f6b773f7a6c707960b0d0390da72f13e2756"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/07_AUTOMATION.md",
+        "expected": "95878f1316d9a305edc1ed9f4603ce98a2ec1d452cf553e960f0827147a24d69",
+        "actual": "a903ba06a0754a497bbd8d0da404c50d87c15ac1d33aa0e9f84fdd3b07544c1e"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/08_README_COMMUNITY.md",
+        "expected": "79877373641362946bf465a63efc7a99997f07af14b3ec24c8d0aa53a42a3d44",
+        "actual": "5f8b76d0e4193eaa8936d07875e7185482de11596d2e84c15a097ca39a492e9d"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/phases/09_FINAL_AUDIT.md",
+        "expected": "f305f072b4cf639aa02515473ea331ed05f871f0a52dcfb66af4f83eba9833cf",
+        "actual": "7126075773c4f5b960e9cd32ed6195e9e9085345011a3d1848365e5c4329b556"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/reference/OFFICIAL_SOURCES.md",
+        "expected": "1e17ab96de991c363f410eff64f243b5539f76142e4857df3684087c08d8978e",
+        "actual": "856cb3144f507f943b0410becdd96cf6137eb5886c20d2720e3ac49367c840f7"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/BLOCKERS.md",
+        "expected": "aca7867714842b2eeac5adf599c4ca667ff525dcf37c342a492034e79a0fa737",
+        "actual": "cb6240fff6dc6035c04a33db1f92d5e9f4b1d5e813096db7c6130d43874e5ede"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/DECISIONS.md",
+        "expected": "0aa6837748c36294b0c20a6913f5dc51eac90055bed6be2f1c146a07c29bbe98",
+        "actual": "2055996bc9025e48bf7c7357394c2580a53b38bd6ea9d3ae1b4583f0dafa7dab"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/FINAL_REPORT.md",
+        "expected": "77a2f4cfe2487fefdafb535daaf15bb8cb5404842661ef128d427873f0ef0209",
+        "actual": "09235341297142711c12d8a59353edaff082d52fd1f21506e0896b73dcc39a0f"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/HISTORY_CLEANUP_CHECKLIST.md",
+        "expected": "a29c6b391888dc7e87a4ff0471b0db57b3f3dee97d1ef404b9212b0cf845a9f7",
+        "actual": "903de0b24c26788faf35b324b00836a703713a58676ae21232dd4f2813fbae62"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/HISTORY_REMEDIATION_PLAN.md",
+        "expected": "733a453531be4e3ed26097f11a36deaff8eb8f7af9ddc8f1af770da26f61fd60",
+        "actual": "27078b2e858d8a9cf607ac6fc83fbf5bf4909b1103cf4ca6a1e77caac83973d2"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/LAB_COMPLETENESS_MATRIX.md",
+        "expected": "0e02847e93fc715f26e41d72336ba9dd5c3a3da442cdd59b11fdb4f6114564b7",
+        "actual": "6334593b8188b48dd5e7db2eb44e3fe782269d8a7b999369ff90a7bd5731f42b"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/LEGACY_FILE_DISPOSITION.md",
+        "expected": "5e3d5f529b0f3fcd3f1daf1db2f4434a512679c9a593b4808428f9a4f1e959da",
+        "actual": "f42fd17c0ad8a1a209ba5092093e3aea4a23af8a2bb14e940354e5105ca77431"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/PHASE-10.md",
+        "expected": "6fd1b00f2c7cad8422d729ebad0f1acfe7558441dd75edb4de48d4d897961fe9",
+        "actual": "c4c9ec0e7e21b6200e2882d50c025a7cbe2e6d4c06c5d5a694c52a0eba489fe9"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/PHASE-11.5.md",
+        "expected": "741194910d4a5123bacb696eedcc2978b9bc521ddd7e461f23f587450bc27d47",
+        "actual": "511b82d89b3f514090c8fb77a7231a9e29239ecfe9ef925f81e6a04abdcb6431"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/PHASE-11.md",
+        "expected": "e32beb831505f93245a418d02545756ed2a0a6dbd8e432a526f7b291d735adfd",
+        "actual": "4944a7fdbba476d048947e55db63a351ea07539e60fd5e8b060f37af93f87bb1"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/PROGRESS.md",
+        "expected": "6e1c50e82a1f5ab20e52ea4c701b0666723b3084a8a6b95deb0db1b720d356da",
+        "actual": "d7abfa4d9b2f4e31a8796e6687db2820abc440cfaeabec98079d2f077003fdb9"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/PUBLIC_RELEASE_PLAN.md",
+        "expected": "d6f32593e4fb64e44d4b436ae9bb5f83235370cd7411993dd6a26f7d8a8980ed",
+        "actual": "3d25746c159092c9e03a967ea2ca1ca15797b97f13f3454d8398340a5bb3090e"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/README.md",
+        "expected": "84d7e92cd27b9360f489ca8f51c3e79a4926cfbd0fc6a10236117b2f261968cb",
+        "actual": "3de7718e432572c4f9228d475ab8a156fb16d9bc1b81be7a1afaaed2e342ae7a"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/RELEASE_READINESS_REPORT.md",
+        "expected": "4b106fb102269001e4751bebc8dc005476d1eeeea8bbafc4bc6aead6502648c1",
+        "actual": "17ded455132a6ab93833c23228d54e206a80b27060f9dd3b253c38572352bb16"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/REMEDIATION_BACKLOG.md",
+        "expected": "18472cd81ab9ca07e9c9d05240abf5ae0c9358c1640eeff9fe43bf7229bbb86d",
+        "actual": "101faf3f436a1b740297d97090ddd00c1c5e6314026720066140be55ae1f60b6"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/REPOSITORY_CLEANUP_REPORT.md",
+        "expected": "9c0600776ff17170cd2838a8554e2402dc131049e2f59daed8654d1456d07da8",
+        "actual": "95b1d440ac51afc402eb40dd08190c1e9ce304dd64fdec1030dfcb4137b40df6"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/reports/PHASE-08.md",
+        "expected": "8559f488e64a02a81b6f6dd6705723b9c18d02e2630cd87f5f5abe7f9e40b203",
+        "actual": "2dc3b1066a6f030c928fd824adf19593d19b5043851084e92c2bc05bad567b04"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/state/reports/PHASE-09.md",
+        "expected": "bcf5f60c191734c0fac2e21eace2701642b8ac164850478d5fee4d7424c34b1a",
+        "actual": "f2dcf537dac7ba25e4c3d712217027bb9b7b356965be516c5fe991a65250dd8d"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/templates/BLOCKERS.md",
+        "expected": "06ab8c52a48c29cbaf15305d7c17a3381a52df721b437a0b900ba4fd78bcdc5a",
+        "actual": "9f102660a29d1e3b20ba123fc0ccc9a8ca73740b2a8684b710e00f595ec1120c"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/templates/DECISIONS.md",
+        "expected": "6d0da5c6cd2225457d1744be77c08255c694e4c605cadb469235d1eb06a5f142",
+        "actual": "febfe2d19a63e6196707f016492250de4f58882e9ad93c49f870f0943b61dca1"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/templates/inventory-header.csv",
+        "expected": "5fc987e692ff3ae22eb6484ddbb7fc611618b999644ab80466e8523f04f6ccc0",
+        "actual": "5b8358e7123c07a420005bdd3fba1c743d7b17a4de5946a3ed4d90f232483b49"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/templates/lab-README.md",
+        "expected": "998777335b43abe81efba1d9ab928314950975d30f5683607628bb162e7670ce",
+        "actual": "c539625d6b65b6b638e883f28e5929984b667436556bd9292bbed49b78fb1c90"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/templates/lab-metadata.json",
+        "expected": "c4f3375c585ab038a3db8af594fad2d95e269f5ac9688c9e43080ee1480de2e0",
+        "actual": "f966636341c046ca511b2268786bc3fe74540d333499f8baabce1486d38954c5"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/templates/provenance-header.csv",
+        "expected": "d7856392705d2d504a8cd855a74bb4ca33e64d3d97de2112f8580eca5da8123c",
+        "actual": "4a8b22e1e19b6f765827edc304dcb43c37c81f38f38ffea035e08663fa297e1b"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/templates/root-AGENTS.md",
+        "expected": "8a8a451b6464326789f5a16c556d9959371db0a2c0d82baa0878526881530119",
+        "actual": "c2583d60febbe6e1dbd5896d7db84d8457449c5aec3375fd71b2efe79b377aec"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/tools/test_validate_repo.py",
+        "expected": "985a72081e3411267bc0087fb4b756e8df494281b3e86936bd06427aeffbab25",
+        "actual": "7f0999b6694231aad85662ae68140edb17e99d59210ad93d5dfaf3aaf9ddb1c8"
+      },
+      {
+        "path": "AI_AGENT_GUIDE/tools/validate_repo.py",
+        "expected": "95990dd9c50c0563a8eed58fc5f1f7fd9ce42fbc5d75438f7cbe6aee806f8824",
+        "actual": "1c39145f4cd590fe9f36705d23979d95eedfef2dcbec4274ca90751c40c8c18a"
+      },
+      {
+        "path": "CODE_OF_CONDUCT.md",
+        "expected": "73468071a5aacb700a747fedbc8c5f1823f89bb12d33d5c9278ab4480cb4a841",
+        "actual": "abbb8afbb97b5282e3b99bfd5ac1c6ee24a31ee8e89fe180cff6022b904e5d52"
+      },
+      {
+        "path": "LICENSE_PENDING.md",
+        "expected": "1c6f85b90a0abc43b7290d07e9c296833f173845b10c83caede003a31483085b",
+        "actual": "af0d649b0c9443161f64579953e49315774c35d000700c7242065c232acc9c13"
+      },
+      {
+        "path": "SECURITY.md",
+        "expected": "a238b277a136632f9cef151d6960ec67c4ee8c55cc1cb04cf41a5a474dd6fc5d",
+        "actual": "213acc45253f393d8b860d22131b50c168731c44549b1fe090b5adfcb868025a"
+      },
+      {
+        "path": "docs/cisco-ios-cheatsheet.md",
+        "expected": "7f8c29c74f3eec459159db29d4c1934700b0d4fa8ef3c6f2322eda37e876667d",
+        "actual": "dfb3e3ba2f0d44ff08e1aa4ef509b186337f1887c1997703a2adde827d49773a"
+      },
+      {
+        "path": "docs/coverage-matrix.md",
+        "expected": "a150df1bbb09b8a1181cb834463a7e7863ef5865ef1553f70512b5c14c5f9500",
+        "actual": "f4154e5883f3a795fd61e0522137e9e4017b2b8e80ffcfc8cba5a4474e979810"
+      },
+      {
+        "path": "docs/getting-started.md",
+        "expected": "53bc569ff06833396796f48719095df7fd47321e0fb999d30bf99091c3f8df57",
+        "actual": "1ac6e5b5e4f69ecaad1cbf048bc4dc234b5a704727c78c3f187fba8a452de8f7"
+      },
+      {
+        "path": "docs/installation.md",
+        "expected": "94641bc256bd9d0b1fd7c993c51ac9fcc1c04171c7bcedeb835a1ef02ded3771",
+        "actual": "cc0c3dafaf0922db09578ee55eb5ce7a08e601d77c9867260568807d8c8d491d"
+      },
+      {
+        "path": "docs/lab-index.md",
+        "expected": "ecc493e91be83222e56774a52b78a35d539358504366a29c4fef6548801fbdd2",
+        "actual": "c41e96ab5c56c5403e0d948b77f5f79cc85d67bc9e330545992f187b35263224"
+      },
+      {
+        "path": "docs/migration-map.md",
+        "expected": "61cb1c1b28b137a1abd927b15411373792d14f38abe2ef00c0ab26cccf1f7959",
+        "actual": "c3e5017d8f51087377063d008a98fa92c2c281aa63bac66973a135eecbaa9d4f"
+      },
+      {
+        "path": "docs/provenance-and-licensing.md",
+        "expected": "c549c73a9f8f672a7c286909f84351cc37b89ff8ca32480a8182d83c7dcecd11",
+        "actual": "8b63ac37915a95fc0e71b439f60fe839ef068bfb4fa1fcdd4ec80d711878574d"
+      },
+      {
+        "path": "docs/troubleshooting.md",
+        "expected": "29eb1dd8529ef3aa08cca2694ce1711b587f617e2ee952858df16cadaab465c1",
+        "actual": "e6690a8da54b5b0ac9aa6eeb494a7dcea8c8c25eb06178deb8e782909b0d55c4"
+      },
+      {
+        "path": "labs/ip-addressing/router-interface-configuration/configs/R1.txt",
+        "expected": "3be63949a05ca481a7315b3e1d583026c85602345186dc90f02fa1d121fe1f94",
+        "actual": "ce1e2b7d96c65f30b56d2b82798c1ff7a27c66a928e3e96bf0db823aa8f4161b"
+      },
+      {
+        "path": "labs/ip-addressing/router-interface-configuration/metadata.json",
+        "expected": "4aca38c2d1d5c90b8f214fd43b4d65f9264dcc9b3dc884516390df8ba659ef1b",
+        "actual": "e19c126633894f10877d8b1a38e0e2f1ae3ead7de2359a58f006a8f14276d068"
+      },
+      {
+        "path": "labs/ip-addressing/verify-connected-networks/configs/R1.txt",
+        "expected": "188f66e823e023fee753c2beaa02d00f6f0aa5473e3f506378277bf76ad720e7",
+        "actual": "e463695f5c4a8a8f083cd48e78642bcd89c6bd5116945515613b48c6a1729d9a"
+      },
+      {
+        "path": "labs/ip-addressing/verify-connected-networks/metadata.json",
+        "expected": "4b07c42b3d9b1541c960050322bfe0d2c2518182f1c13d581ab8695ae584abd3",
+        "actual": "84d9ac97dc4e1c41b3a9cdbdac64d76683703b07574189dfe70eff1fe9dad984"
+      },
+      {
+        "path": "labs/network-fundamentals/ios-navigation-and-initial-config/README.md",
+        "expected": "52f6306ecff93ce894233c633f03dfc3e31c2a7bf878e42841af4fa800a1e460",
+        "actual": "3acda16f9f0899b426c4ec30c88513930590e9d301278ce7db7324efff6bffef"
+      },
+      {
+        "path": "labs/network-fundamentals/ios-navigation-and-initial-config/configs/S1.txt",
+        "expected": "a681d893dbf78e8d26f6cd80ea163e6e23c77c9993cde102a8c4c7d99bfc7db2",
+        "actual": "0c71e718e967c6c395f89e5379100df96730b018042416bf45ef5bb40620bc8a"
+      },
+      {
+        "path": "labs/network-fundamentals/ios-navigation-and-initial-config/metadata.json",
+        "expected": "a92dcd911c2e0243e4337f744b47b46bc60dc88672769674e62c9eb5f4658198",
+        "actual": "0f893c2a08d448f466a59a6ae823409801390296c8b7faf4024a876d1aa83a46"
+      },
+      {
+        "path": "labs/network-security/port-security/README.md",
+        "expected": "b3477fe268dcf72d1bac4ab9a9fe9fe17990c8c6e00b59ed494d4b5250c6b3d0",
+        "actual": "917f0fac859a4c29a8c29af66694c388f03078ab2c39d05444189787c1720b01"
+      },
+      {
+        "path": "labs/network-security/port-security/configs/S1.txt",
+        "expected": "a579b05a4a5b3ffe50732097adf5c67956797c211cd90ef603f4c197b2d6c74f",
+        "actual": "7400852067af4e274bf99fc667f7005747d4599be25b0f9a388016ebfc25ee62"
+      },
+      {
+        "path": "labs/network-security/port-security/metadata.json",
+        "expected": "3e9909ef3c443ead2e9c32c60e74b8d708a92a41f6c66c6aa87ebf6e4d7feda6",
+        "actual": "487922fc881411a3f742ddda61ee977df295f28a514de6a9de282b641c63dd18"
+      },
+      {
+        "path": "labs/network-security/secure-switch-ssh/configs/S1.txt",
+        "expected": "35d262d2597d0cc1895f0e607466006ec602d3eb2a591fe224de31fa26cd54f4",
+        "actual": "3d1159e88217c2c78c4ad66f6b676cb8b12ea8f149b3efae045d992a16ab6a7c"
+      },
+      {
+        "path": "labs/network-security/secure-switch-ssh/metadata.json",
+        "expected": "40b8677f183f85f36fada0537714ccaa8e67a31070f309142bfca23c050970fb",
+        "actual": "30efcca051459f4b0e322fdb4cc13356a8ce502d9689b268a7572228a50febdb"
+      },
+      {
+        "path": "labs/network-security/standard-and-extended-acls/configs/R1.txt",
+        "expected": "138964cfca3800af97d88abfa5406bf472f2dc8b30a23cd7319f2decdad4a3e3",
+        "actual": "bd3fe9e45f15e5345a1e492b2acbe892f3064df3828c7028918716b0f3ae9f1a"
+      },
+      {
+        "path": "labs/network-security/standard-and-extended-acls/metadata.json",
+        "expected": "3cee7046f29916adda6dcce2ce98674a93e2a55370368399595ee1c20864da72",
+        "actual": "32aee323f76737e1b2ea03ade8c03a39a6d128703c460cfb1e67e273621b1d3f"
+      },
+      {
+        "path": "labs/network-security/switch-hardening/configs/S1.txt",
+        "expected": "ac758acf0393c4631074dfc717e91a08d47101ed595ce4c7a85ae19225a5c7c2",
+        "actual": "647f6734466e241e37a74ca4b2e7e5328fde18f304e4100002fe73a038d5d8b9"
+      },
+      {
+        "path": "labs/network-security/switch-hardening/metadata.json",
+        "expected": "5f45d055766950eb49997d3c6d1aeb104caf1ba017ea4c55d69cd99c31c35543",
+        "actual": "e0162585753ebc133abe6c978b78ad92f6dc99f503bf886c969f933b41a57896"
+      },
+      {
+        "path": "labs/network-services/dhcp-server-and-relay/README.md",
+        "expected": "815341bcc6c671e7057578db2b47fab188bb1deaa094756ecad596be9f9a7a0e",
+        "actual": "649472bd30c60943739a7e7262682f844ec4d3e4ae27ba9640a8d94f569f5742"
+      },
+      {
+        "path": "labs/network-services/dhcp-server-and-relay/configs/R1.txt",
+        "expected": "7b5894d21dcfd298f6b4f08a4751b3736d885f0f52925d79c8f03ab34ba8bbb6",
+        "actual": "32fae266ea74e64dcc8c70a024100aa7703caf5635dd15edceacfc9eb27bf42f"
+      },
+      {
+        "path": "labs/network-services/dhcp-server-and-relay/metadata.json",
+        "expected": "741f70646e87ce1fe454f7d91364e3163c8011c781d4986c5f7d32debf64aa0a",
+        "actual": "fbf2c66091e48680a64866d6bf3a2ad501205482665cdd2679381886824c9657"
+      },
+      {
+        "path": "labs/routing/dual-stack-static-routing/configs/R1.txt",
+        "expected": "07f3a2f07b4b89e16a2c44f0c7df6e3b8408b1c4ce67248b2d592d87e9388092",
+        "actual": "7d88de9de89c82bb98fb512dc3807c608031078c4e04ec02dcceb8e7de575d0f"
+      },
+      {
+        "path": "labs/routing/dual-stack-static-routing/configs/R2.txt",
+        "expected": "62a948dfb0c42b73faac4d60765b2b408f0b982aa9fa69e52a6272120cc6e0d2",
+        "actual": "9f64d071aea518101e4a45dbec5ee17d976a512a94afb52b9916eb7012c21100"
+      },
+      {
+        "path": "labs/routing/dual-stack-static-routing/configs/S1.txt",
+        "expected": "bae97c794b466d4b7cc80d87afa9ffb26928abbb39a8fe92a5900c3998ce4582",
+        "actual": "f18a893db38c4800fe66ebbebb8793ae9088fca59213f8a0b8aa0036410f31bd"
+      },
+      {
+        "path": "labs/routing/dual-stack-static-routing/configs/S2.txt",
+        "expected": "3660428d7328367ce64877789299c6007ec5a57486bb9f231e90d4a97aea1abd",
+        "actual": "e0c2b25fa75d89e300bc56bd2eaadf5bcf7f8001c4372e14e7e476c47b79990d"
+      },
+      {
+        "path": "labs/routing/dual-stack-static-routing/metadata.json",
+        "expected": "f041adcf751733abdb02d8e740e853d60615983c0b4016984587df1aa660a992",
+        "actual": "17cf1aed34e0217c761d14e4b2b35bc23518f533451c301c644b4c665a7c54be"
+      },
+      {
+        "path": "labs/routing/inter-vlan-routing-router-on-a-stick/configs/R1.txt",
+        "expected": "6167855627067339f320626c3d71957be55896786a27c076d5bbf430ca84c9b7",
+        "actual": "6f773551214dffa133180c1e35fd91d4a8b675c4a56d139aa50e5d853dbbb57c"
+      },
+      {
+        "path": "labs/routing/inter-vlan-routing-router-on-a-stick/configs/S1.txt",
+        "expected": "77b010c89402cbce6c70a97c5dc993206e015a77fccf964b89f12b16668e70df",
+        "actual": "ff5732d91ab47b8e6798b8d184d216fb40b4be65336c9ebc96aae901720f5ced"
+      },
+      {
+        "path": "labs/routing/inter-vlan-routing-router-on-a-stick/metadata.json",
+        "expected": "f9e0a366deac582dea80190169da2a07a80e715504803ebb064cb8f801be8529",
+        "actual": "428f3c217d86dfacc6aca1a7e8e6b3cb7f1545c8f8d4aab72c79e601150d1ee4"
+      },
+      {
+        "path": "labs/routing/single-area-ospfv2/configs/R1.txt",
+        "expected": "61d924af5df865b5463ae0211f2d972f6ebeeb6cc466316cd7dc206e69aa78c8",
+        "actual": "03a2ef32e93fda6d74b1657b61d295682220ce329318693aee8cd8e9de0cbcf3"
+      },
+      {
+        "path": "labs/routing/single-area-ospfv2/configs/R2.txt",
+        "expected": "96a30b02700eab8b47dbc5b5e74078467f684540ade08390fca767173118f980",
+        "actual": "c0b77a48fa8872735b13d94d6f2bb6b2defae134d9396e1df850683e68f6dbc8"
+      },
+      {
+        "path": "labs/routing/single-area-ospfv2/metadata.json",
+        "expected": "a62e09727d38ab2a8ba8ede1f9b3b8e5a97fad8f19e5377adbcca69325974aae",
+        "actual": "231b93e7073145e1fbd49451c4a85fafbc03c842d741248ed436f574b80b7189"
+      },
+      {
+        "path": "labs/switching/etherchannel-lacp/configs/S1.txt",
+        "expected": "5cfe785e856d55468f693e68636f337b5b6d9f026711e9d25ab6a67dcf6f5790",
+        "actual": "46dcf40dfc210e439f941aef551bf268aa84bb4b0d429b73f1a547c6181c1e89"
+      },
+      {
+        "path": "labs/switching/etherchannel-lacp/configs/S2.txt",
+        "expected": "1f137a806734a16b8b810063a232791adf8bd71ff6fd536456adfa026f856f60",
+        "actual": "6496756c5d0b579680d1f23d78242da168467b5cacdb2b3f42fa015f863c6462"
+      },
+      {
+        "path": "labs/switching/etherchannel-lacp/metadata.json",
+        "expected": "84e57ccfc27588b32eaadd72294879ed33390b20a41b868efe79afaafaac92ff",
+        "actual": "3c6814f542812e24368310abfa1f142d5dee84d99262cb823004d0ccfcbfc536"
+      },
+      {
+        "path": "labs/switching/vlan-segmentation-and-access-ports/configs/S1.txt",
+        "expected": "045f3bb21c0ac454859f395648d0d1a1e95a2dca183a60baeda8260dd101b9ce",
+        "actual": "4a7a0c278a093467345e77b1e40c27607087f64ae430f3ca55e67592638ec349"
+      },
+      {
+        "path": "labs/switching/vlan-segmentation-and-access-ports/metadata.json",
+        "expected": "f0a7cbb11ba5df5eaa326f82eb83b71dd3d3f3cd0d1f79e896752953ae8c4e62",
+        "actual": "680b3f169be8eb8a94a1309a2ab74de1ada44dc3518dea0d5f23822c6f24fe1f"
+      },
+      {
+        "path": "projects/small-office-network/README.md",
+        "expected": "6b76e094064decca41bd7b37dfc2ca514e570ea80c070d063081e92cce199b3a",
+        "actual": "774003f343df38950ac30ad94d8e20a6f789bb63626406949770e25622536fcb"
+      },
+      {
+        "path": "templates/lab-README.md",
+        "expected": "998777335b43abe81efba1d9ab928314950975d30f5683607628bb162e7670ce",
+        "actual": "c539625d6b65b6b638e883f28e5929984b667436556bd9292bbed49b78fb1c90"
+      },
+      {
+        "path": "templates/lab-metadata.json",
+        "expected": "b056ba53999e40d65d9f820d6362dccc5e484dc7754711fd41ed60002db255e7",
+        "actual": "6e2a044bbbdaa30cc5e142e8d1fb3e24aefbbfe83fff0ba48cc429f5b9785c28"
+      },
+      {
+        "path": "tests/test_validate_repo.py",
+        "expected": "ab447aaab5aad3eec31fe51e28f9179748ec0f904f518c64dc4e3fe19fbf586a",
+        "actual": "7890dab31ff97e339873d83591a45b414ec0201c60dfd3fe149eadcbd80caf96"
+      },
+      {
+        "path": "tools/audit_legacy.py",
+        "expected": "d04a567bc97a17a04127b58bb1216fc9453c5a5c4ad8e3abcd40bb1a0327d8e3",
+        "actual": "1b2a34b371ed496cb7bfb4b9f3efd3b2e8b8565824227632198adb22b48aa92b"
+      },
+      {
+        "path": "tools/audit_repo.py",
+        "expected": "29810d99043057f1248e15af4ac428f131aba5cb04ab9f9ed76bd7a736718557",
+        "actual": "a7ee245805dcba054fdf8765219dafebab3f2d90518c051f3d42c2de7c57195c"
+      },
+      {
+        "path": "tools/create_and_verify_legacy_archive.py",
+        "expected": "035db17dd73cd4109aa0710d368a34701d06f97577ed9c0fee177d21899d6c16",
+        "actual": "7781f960effe0b1d0ac9dfeace24014768a311508b7d2a4b34bc9deeac6ef711"
+      },
+      {
+        "path": "tools/create_learning_library_snapshot.py",
+        "expected": "dd9d88edb553c6668cc0695e3db02383492dc57cebe8b3657db0bbeed6ec45f3",
+        "actual": "ef5667e6ad2a56c329f20f8b8d49575a4f589854001aeab357afbae0504bdb01"
+      },
+      {
+        "path": "tools/inspect_labs.py",
+        "expected": "05540399a834caa57dc775f164eba2020f0c1256b645ef391cc1a58ce54c4505",
+        "actual": "b2a24807b7afcf87cae4a465fd7c481f4c4701bcc7829e4a84be1a85d24fc18e"
+      },
+      {
+        "path": "tools/relocate_and_verify_backups.py",
+        "expected": "de0481b0ed8248206a81d59c0d79c7fa888ef51c49de79ec2d5ecde50a21841a",
+        "actual": "d23618e10b432159469916f7ad1332307a36c74573a78e9943aa456ab0a38539"
+      },
+      {
+        "path": "tools/validate_repo.py",
+        "expected": "e3797541a25f9053191f247eb85bae16e9f157c82dca709b4a5d6ad80c49b00c",
+        "actual": "ffac9ba2e29e335f2d16fe20811da5ea5f7cd52205fc9078a7f6842eb0b29047"
+      }
+    ],
+    "all_snapshot_files_match": false,
+    "pkt_integrity": {
+      "path": "labs\\routing\\dual-stack-static-routing\\dual-stack-static-routing.pkt",
+      "size_bytes": 64145,
+      "sha256": "8d7f62a8b4e36ef0a6efb613b92e84dbed3f1c34cb5d268b9d2b7db487680b31",
+      "matches_expected": true
+    },
+    "legacy_dirs_in_working_tree": [],
+    "zero_legacy_in_tree": true
+  },
+  "historical_audit": {
+    "queries": {
+      "2ndYear_Networking1/*": 0,
+      "3rdYear_Networking2/*": 0,
+      "Midterm Laboratory Exam/*": 0,
+      "Step by Step Laboratory Activity/*": 0,
+      "2.3.7 Packet Tracer - Navigate the IOS/*": 0,
+      "2.5.5 Packet Tracer - Configure Initial Switch Settings/*": 0,
+      "2.7.6 Packet Tracer - Implement Basic Connectivity/*": 0,
+      "2.9.1 Packet Tracer - Basic Switch and End Device Configuration/*": 0,
+      "3.5.5 Packet Tracer - Investigate the TCP IP and OSI Models in Action/*": 0,
+      "4.7.2 Packet Tracer - Connect the Physical Layer/*": 0,
+      "*.pka": 0,
+      "*.bak": 0,
+      "*.docx": 0
+    },
+    "total_legacy_commits_found": 0,
+    "clean_history_confirmed": true
+  },
+  "commit_comparison": {
+    "original_head": "ac215e2 Add files via upload",
+    "staging_head": "41489bf feat: complete Phase 11.5 public release preparation - clean learning library",
+    "staging_commit_count": 11,
+    "staging_commits": [
+      "41489bf feat: complete Phase 11.5 public release preparation - clean learning library",
+      "6652c44 improve readme",
+      "686164e Update Readme",
+      "ca49b2a Update Readme",
+      "a465b9f Update Readme",
+      "de4c7cb Update Readme",
+      "16113c2 Update Readme",
+      "eb3f69b Update Readme",
+      "84e94a2 Update Readme",
+      "0a4fd86 Update README.md",
+      "9a57937 Initial commit"
+    ],
+    "staging_branches": [
+      "main                         41489bf feat: complete Phase 11.5 public release preparation - clean learning library",
+      "* refactor/learning-library-v1 41489bf feat: complete Phase 11.5 public release preparation - clean learning library"
+    ]
+  }
+}
