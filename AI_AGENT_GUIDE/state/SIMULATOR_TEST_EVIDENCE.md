@@ -3,7 +3,7 @@
 **Date (UTC):** 2026-10-26  
 **Auditor:** DeepMind Antigravity  
 **Branch:** `feature/phase-12-simulator-labs`  
-**Operational Status:** **STATIC_TESTS_PASS (20/20) / LIVE_SIMULATOR_TESTS_BLOCKED**
+**Operational Status:** **STATIC_TESTS_PASS (20/20) / LIVE_SIMULATOR_PILOT_VERIFIED (PTL-0008 PASS)**
 
 ---
 
@@ -14,7 +14,7 @@ In strict alignment with repository guidelines:
 - **No Synthetic Binary Files:** No mock or dummy `.pkt` files were created.
 - **Clear Demarcation:** A strict distinction is maintained between:
   1. **Static Quality Verification:** Python syntax validators, JSON schema validators, unit test assertions, link checks, and Git diff checks (All **PASSED**).
-  2. **Live Simulator Verification:** Executing network topologies inside an authentic instance of Cisco Packet Tracer (Currently **BLOCKED** due to application absence).
+  2. **Live Simulator Verification:** Executing network topologies inside an authentic instance of Cisco Packet Tracer (Pilot **PTL-0008 VERIFIED PASS**; remaining labs queued for Phase 12D batch completion).
 
 ---
 
@@ -23,8 +23,11 @@ In strict alignment with repository guidelines:
 | Asset Path | File Type | Size (Bytes) | SHA-256 Checksum | Origin & Verification Status |
 |---|---|:---:|---|---|
 | `labs/routing/dual-stack-static-routing/dual-stack-static-routing.pkt` | Authentic `.pkt` Binary | 64,145 | `8d7f62a8b4e36ef0a6efb613b92e84dbed3f1c34cb5d268b9d2b7db487680b31` | Preserved bit-identical to original verified legacy coursework topology. SHA-256 verified by `audit_repo.py`. |
+| `labs/network-fundamentals/ios-navigation-and-initial-config/assets/starter.pkt` | Authentic `.pkt` Binary | 44,426 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; unconfigured factory switch with cabled PC. |
+| `labs/network-fundamentals/ios-navigation-and-initial-config/assets/completed.pkt` | Authentic `.pkt` Binary | 44,728 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; full configuration, passwords, and NVRAM persistence verified. |
+| `labs/network-fundamentals/ios-navigation-and-initial-config/assets/topology.png` | PNG Image | 40,076 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
 
-All other activities in `labs/` and `projects/` currently have `assets.starter: null` and `assets.completed: null` in their respective `metadata.json` files, preventing any broken or fake download links.
+All other uncompleted activities in `labs/` and `projects/` currently have `assets.starter: null` and `assets.completed: null` in their respective `metadata.json` files, preventing any broken or fake download links.
 
 ---
 
@@ -32,7 +35,7 @@ All other activities in `labs/` and `projects/` currently have `assets.starter: 
 
 | Lab ID | Lab Title | Simulation Attempted? | Result | Reason / Evidence Location |
 |---|---|:---:|:---:|---|
-| **PTL-0008** | IOS Navigation & Initial Config | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
+| **PTL-0008** | IOS Navigation & Initial Config | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..06 and NEG-01..02 passed (`state/PTL-0008-SIMULATOR-RESULTS.md`) |
 | **PTL-0002** | Router Interface Configuration | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **PTL-0005** | Verify Connected Networks | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **PTL-0009** | VLAN Segmentation & Access Ports | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |

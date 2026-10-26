@@ -1,6 +1,6 @@
 # Cisco IOS Navigation and Initial Device Configuration
 
-> **Category:** network-fundamentals · **Difficulty:** beginner · **Lab ID:** PTL-0008 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** network-fundamentals · **Difficulty:** beginner · **Lab ID:** PTL-0008 · **Document:** reviewed · **Simulator:** tested pass
 
 The Cisco Internetwork Operating System (IOS) is the core operating system powering enterprise Cisco routers and switches. Interacting with Cisco IOS requires understanding its hierarchical command mode structure, context-sensitive help system, and configuration memory architecture. This lab provides a foundational, hands-on introduction to navigating the IOS Command Line Interface (CLI), configuring basic device identification and security parameters, and persisting configuration changes to non-volatile memory.
 
@@ -22,6 +22,8 @@ The Cisco Internetwork Operating System (IOS) is the core operating system power
 ---
 
 ## Topology
+
+![PTL-0008 Topology Diagram](assets/topology.png)
 
 The topology models an initial out-of-band management connection using an RS-232 serial rollover console cable from a management workstation to a Cisco Catalyst 2960 switch:
 
@@ -189,8 +191,11 @@ Verify that both passwords authenticate successfully.
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/S1.txt](configs/S1.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; complete interactive CLI and IP connectivity verification recorded in [PTL-0008-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0008-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Passwords shown (`cisco`, `class`) are standard lab training placeholders and must never be used in production environments.
