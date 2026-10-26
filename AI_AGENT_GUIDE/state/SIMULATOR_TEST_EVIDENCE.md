@@ -50,6 +50,9 @@ In strict alignment with repository guidelines:
 | `labs/network-services/dhcp-server-and-relay/assets/starter.pkt` | Authentic `.pkt` Binary | 62,385 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; interfaces and routing configured, DHCP unconfigured. |
 | `labs/network-services/dhcp-server-and-relay/assets/completed.pkt` | Authentic `.pkt` Binary | 63,023 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; DHCP server pools, exclusions, relay agent forwarding, DORA verified. |
 | `labs/network-services/dhcp-server-and-relay/assets/topology.png` | PNG Image | 47,407 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
+| `labs/network-security/secure-switch-ssh/assets/starter.pkt` | Authentic `.pkt` Binary | 55,552 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; management IP configured, SSH unconfigured. |
+| `labs/network-security/secure-switch-ssh/assets/completed.pkt` | Authentic `.pkt` Binary | 56,368 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; 1024-bit RSA, SSHv2, VTY SSH transport, Telnet lockout verified. |
+| `labs/network-security/secure-switch-ssh/assets/topology.png` | PNG Image | 42,669 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
 
 All other uncompleted activities in `labs/` and `projects/` currently have `assets.starter: null` and `assets.completed: null` in their respective `metadata.json` files, preventing any broken or fake download links.
 
@@ -68,7 +71,7 @@ All other uncompleted activities in `labs/` and `projects/` currently have `asse
 | **PTL-0010** | Router-on-a-Stick Inter-VLAN Routing | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..02 passed (`state/PTL-0010-SIMULATOR-RESULTS.md`) |
 | **PTL-0011** | Single-Area OSPFv2 | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..02 passed (`state/PTL-0011-SIMULATOR-RESULTS.md`) |
 | **PTL-0012** | DHCP Server and Relay Agent | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..04 and NEG-01..02 passed (`state/PTL-0012-SIMULATOR-RESULTS.md`) |
-| **PTL-0003** | Secure Switch SSH | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
+| **PTL-0003** | Secure Switch SSH | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..06 and NEG-01 passed (`state/PTL-0003-SIMULATOR-RESULTS.md`) |
 | **PTL-0004** | Switchport Port Security | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **PTL-0007** | Switch Security Hardening | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **PTL-0013** | Standard and Extended ACLs | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
