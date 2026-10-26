@@ -1,0 +1,33 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Implementing Switchport Port Security (PTL-0004)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! Management Interface
+interface vlan 1
+ ip address 192.168.1.2 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 192.168.1.1
+
+! Authorized Access Port
+interface FastEthernet0/1
+ description Access Port with Port Security
+ switchport mode access
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security mac-address sticky
+ switchport port-security violation shutdown
+ no shutdown
+ exit
+
+! Security Hardening: Disable all unused ports
+interface range FastEthernet0/2 - 24, GigabitEthernet0/1 - 2
+ shutdown
+ exit
+
+end
+copy running-config startup-config

@@ -1,0 +1,31 @@
+! ==========================================
+! Router R1 Configuration
+! Lab: Single-Area OSPFv2 Configuration and Verification (PTL-0011)
+! ==========================================
+enable
+configure terminal
+hostname R1
+
+! Interfaces
+interface GigabitEthernet0/0/0
+ description HQ LAN
+ ip address 192.168.1.1 255.255.255.0
+ no shutdown
+ exit
+
+interface GigabitEthernet0/0/1
+ description Transit Link to R2
+ ip address 10.0.0.1 255.255.255.252
+ no shutdown
+ exit
+
+! OSPF Routing Process
+router ospf 10
+ router-id 1.1.1.1
+ network 192.168.1.0 0.0.0.255 area 0
+ network 10.0.0.0 0.0.0.3 area 0
+ passive-interface GigabitEthernet0/0/0
+ exit
+
+end
+copy running-config startup-config

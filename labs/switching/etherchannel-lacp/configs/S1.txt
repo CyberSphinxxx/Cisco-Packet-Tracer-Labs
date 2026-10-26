@@ -1,0 +1,28 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Configuring Layer 2 EtherChannel with LACP (PTL-0006)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! Management Interface
+interface vlan 1
+ ip address 192.168.1.11 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 192.168.1.1
+
+! Bundle Physical Interfaces into Channel Group 1 (LACP Active)
+interface range FastEthernet0/1 - 2
+ switchport mode trunk
+ channel-group 1 mode active
+ exit
+
+! Logical Port-channel Interface
+interface Port-channel 1
+ switchport mode trunk
+ exit
+
+end
+copy running-config startup-config

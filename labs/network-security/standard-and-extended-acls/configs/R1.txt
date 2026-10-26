@@ -1,0 +1,55 @@
+! ==========================================
+! Router R1 Configuration
+! Lab: Configuring Standard and Extended IPv4 Access Control Lists (PTL-0013)
+! ==========================================
+enable
+configure terminal
+hostname R1
+
+! Interfaces
+interface GigabitEthernet0/0/0
+ description Accounting LAN Gateway
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+ exit
+
+interface GigabitEthernet0/0/1
+ description Sales LAN Gateway
+ ip address 192.168.20.1 255.255.255.0
+ ip access-group SALES_TO_SERVERS in
+ no shutdown
+ exit
+
+interface GigabitEthernet0/0/2
+ description Server Farm Gateway
+ ip address 192.168.30.1 255.255.255.0
+ no shutdown
+ exit
+
+! Standard ACL 10: VTY Management Restriction
+access-list 10 remark Permit only Admin Host to VTY
+access-list 10 permit host 192.168.10.10
+
+! Named Extended ACL: SALES_TO_SERVERS
+ip access-list extended SALES_TO_SERVERS
+ remark Allow DNS queries to WebServer
+ permit udp 192.168.20.0 0.0.0.255 host 192.168.30.100 eq 53
+ remark Allow HTTP web browsing to WebServer
+ permit tcp 192.168.20.0 0.0.0.255 host 192.168.30.100 eq 80
+ remark Block ICMP ping to WebServer
+ deny icmp 192.168.20.0 0.0.0.255 host 192.168.30.100
+ remark Block Sales access to Accounting subnet
+ deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+ remark Permit all other legitimate outbound traffic
+ permit ip 192.168.20.0 0.0.0.255 any
+ exit
+
+! Secure VTY Lines with Standard ACL 10
+line vty 0 4
+ access-class 10 in
+ transport input ssh
+ login local
+ exit
+
+end
+copy running-config startup-config

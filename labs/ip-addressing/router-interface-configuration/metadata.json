@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0002",
+  "title": "Configuring Cisco Router Interfaces",
+  "slug": "router-interface-configuration",
+  "category": "ip-addressing",
+  "summary": "Configure IPv4 and IPv6 dual-stack addressing on multiple router GigabitEthernet interfaces, verify interface status, and test LAN connectivity.",
+  "difficulty": "beginner",
+  "topics": [
+    "router-interfaces",
+    "ipv4-addressing",
+    "ipv6-addressing",
+    "dual-stack",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Configure IPv4 and IPv6 addresses with subnet masks and prefix lengths on router GigabitEthernet interfaces",
+    "Configure interface descriptions for documentation and operational clarity",
+    "Enable router interfaces using the no shutdown command",
+    "Verify interface status and IP assignments using show ip interface brief and show ipv6 interface brief"
+  ],
+  "estimated_minutes": 30,
+  "activity_reference": "1.4.7",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router",
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored educational guide replacing legacy courseware answer guide",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/routers/access/4400/software/configuration/guide/isr4400swcfg.html",
+    "https://datatracker.ietf.org/doc/html/rfc5737",
+    "https://datatracker.ietf.org/doc/html/rfc3849"
+  ],
+  "last_reviewed": "2026-10-26"
+}

@@ -1,0 +1,39 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Router-on-a-Stick Inter-VLAN Routing (PTL-0010)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! VLAN Definitions
+vlan 10
+ name Faculty
+ exit
+vlan 20
+ name Students
+ exit
+
+! Access Ports
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+ exit
+
+interface FastEthernet0/11
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+ exit
+
+! 802.1Q Trunk Link to Router R1
+interface GigabitEthernet0/1
+ description Trunk Link to Router R1
+ switchport mode trunk
+ switchport nonegotiate
+ no shutdown
+ exit
+
+end
+copy running-config startup-config

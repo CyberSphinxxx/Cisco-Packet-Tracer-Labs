@@ -1,0 +1,43 @@
+! ==========================================
+! Switch S2 Configuration
+! Lab: Dual-Stack IPv4 and IPv6 Static Routing (PTL-0001)
+! ==========================================
+enable
+configure terminal
+hostname S2
+
+! Management Interface (VLAN 1)
+interface vlan 1
+ ip address 10.1.1.1 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 10.1.1.10
+
+! Uplink to Router R2
+interface FastEthernet0/24
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+! Access Ports for PCs
+interface range FastEthernet0/1 - 2
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+! Security and Management
+enable secret cisco123
+line console 0
+ password conpass
+ login
+ exit
+line vty 0 15
+ password vtypass
+ login
+ exit
+banner motd # Authorized Access Only! #
+service password-encryption
+end
+copy running-config startup-config

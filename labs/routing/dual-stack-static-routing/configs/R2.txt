@@ -1,0 +1,46 @@
+! ==========================================
+! Router R2 Configuration
+! Lab: Dual-Stack IPv4 and IPv6 Static Routing (PTL-0001)
+! ==========================================
+enable
+configure terminal
+hostname R2
+
+! Enable IPv6 Routing Globally
+ipv6 unicast-routing
+
+! WAN Transit Interface
+interface GigabitEthernet0/0/0
+ description Point-to-Point Link to R1
+ ip address 209.165.200.226 255.255.255.252
+ ipv6 address 2001:db8:feed:224::2/64
+ no shutdown
+ exit
+
+! LAN Interface
+interface GigabitEthernet0/0/1
+ description LAN Connection to Switch S2
+ ip address 10.1.1.10 255.255.255.0
+ ipv6 address 2001:db8:cafe:1::10/64
+ no shutdown
+ exit
+
+! Static Routes to Remote LAN
+ip route 192.168.10.0 255.255.255.0 209.165.200.225
+ipv6 route 2001:db8:acad:10::/64 2001:db8:feed:224::1
+
+! Device Administration and Security
+enable secret cisco123
+banner motd # Authorized Access Only! #
+line console 0
+ password conpass
+ login
+ logging synchronous
+ exit
+line vty 0 4
+ password vtypass
+ login
+ exit
+service password-encryption
+end
+copy running-config startup-config

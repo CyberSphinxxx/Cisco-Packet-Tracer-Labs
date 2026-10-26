@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0001",
+  "title": "Dual-Stack IPv4 and IPv6 Static Routing",
+  "slug": "dual-stack-static-routing",
+  "category": "routing",
+  "summary": "Configure dual-stack IPv4 and IPv6 addressing, enable IPv6 unicast routing, configure static routes, and verify end-to-end reachability across two routers and switches.",
+  "difficulty": "intermediate",
+  "topics": [
+    "ipv4-addressing",
+    "ipv6-addressing",
+    "static-routing",
+    "dual-stack",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Configure IPv4 and IPv6 global unicast addressing on Cisco router interfaces",
+    "Enable global IPv6 unicast routing (ipv6 unicast-routing) on Cisco IOS routers",
+    "Configure next-hop IPv4 and IPv6 static routes between two router networks",
+    "Verify Layer 2 forwarding across Catalyst switches and Layer 3 end-to-end connectivity"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": "BSIT-Step-by-Step-Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4331 Router",
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Original contributor lab by CyberSphinxxx upgraded with accurate IPv6 unicast-routing and Layer 2 switching theory",
+    "url": null,
+    "permission_evidence": "repository_creator_original"
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": "dual-stack-static-routing.pkt",
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6_basic/configuration/xe-16/ip6b-xe-16-book/ip6-stat-routes.html",
+    "https://datatracker.ietf.org/doc/html/rfc5737",
+    "https://datatracker.ietf.org/doc/html/rfc3849"
+  ],
+  "last_reviewed": "2026-10-26"
+}

@@ -1,0 +1,34 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Securing Switch Management with SSH (PTL-0003)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! Management Interface
+interface vlan 1
+ ip address 192.168.1.2 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 192.168.1.1
+
+! SSH Prerequisites & Crypto Key Generation
+ip domain-name lab.local
+crypto key generate rsa modulus 1024
+ip ssh version 2
+
+! Local User Database
+username admin privilege 15 secret adminpass123
+enable secret cisco123
+
+! Secure Virtual Terminal Lines
+line vty 0 15
+ transport input ssh
+ login local
+ exit
+
+service password-encryption
+banner motd # Authorized Administrative Access Only! #
+end
+copy running-config startup-config

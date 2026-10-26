@@ -1,0 +1,39 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Cisco IOS Navigation and Initial Device Configuration (PTL-0008)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! Set Privileged EXEC Encrypted Secret
+enable secret class
+
+! Secure Console Port
+line console 0
+ password cisco
+ login
+ logging synchronous
+ exit
+
+! Secure Virtual Terminal Lines
+line vty 0 15
+ password cisco
+ login
+ exit
+
+! Legal Warning Banner
+banner motd # Authorized Access Only! Violators will be prosecuted. #
+
+! Encrypt Cleartext Passwords
+service password-encryption
+
+! Management SVI
+interface vlan 1
+ ip address 192.168.1.5 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 192.168.1.1
+
+end
+copy running-config startup-config

@@ -1,0 +1,42 @@
+! ==========================================
+! Router R1 Configuration
+! Lab: Configuring Cisco IOS DHCPv4 Server and Relay Agent (PTL-0012)
+! ==========================================
+enable
+configure terminal
+hostname R1
+
+! Interfaces
+interface GigabitEthernet0/0/0
+ description Local LAN 1 Gateway
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+ exit
+
+interface GigabitEthernet0/0/1
+ description Local LAN 2 Gateway
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+ exit
+
+! Excluded IP Addresses
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 192.168.20.1 192.168.20.10
+
+! DHCP Pools
+ip dhcp pool LAN1_POOL
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 208.67.222.222
+ domain-name lab.local
+ exit
+
+ip dhcp pool LAN2_POOL
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 208.67.222.222
+ domain-name lab.local
+ exit
+
+end
+copy running-config startup-config

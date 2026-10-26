@@ -1,0 +1,49 @@
+{
+  "id": "PTL-0003",
+  "title": "Securing Switch Management with SSH",
+  "slug": "secure-switch-ssh",
+  "category": "network-security",
+  "summary": "Configure secure administrative access to a Cisco Catalyst switch using SSHv2, RSA key generation, local user authentication, and disabled Telnet transport.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-security",
+    "ssh",
+    "switch-security",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Configure IP domain name and generate RSA cryptographic keys on Cisco IOS",
+    "Configure a local administrative user account with encrypted secret",
+    "Configure VTY lines to enforce SSH version 2 and disallow unencrypted Telnet sessions",
+    "Verify secure SSH administrative sessions from a remote management client"
+  ],
+  "estimated_minutes": 30,
+  "activity_reference": "SSH-Config",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored security guide replacing legacy courseware answer key",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swsecprot.html",
+    "https://datatracker.ietf.org/doc/html/rfc4253"
+  ],
+  "last_reviewed": "2026-10-26"
+}

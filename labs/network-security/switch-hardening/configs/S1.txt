@@ -1,0 +1,52 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Cisco Switch Security Hardening Best Practices (PTL-0007)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! VLAN Infrastructure
+vlan 10
+ name User_Data
+ exit
+vlan 20
+ name Server_Data
+ exit
+vlan 99
+ name Parking_Lot
+ exit
+vlan 999
+ name Native_Blackhole
+ exit
+
+! Hardened 802.1Q Trunk Uplink
+interface GigabitEthernet0/1
+ description Uplink Trunk to Distribution Switch
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20
+ no shutdown
+ exit
+
+! Hardened User Access Port
+interface FastEthernet0/1
+ description User Access Port
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+ exit
+
+! Quarantined Unused Ports
+interface range FastEthernet0/2 - 24, GigabitEthernet0/2
+ description Quarantined Unused Port
+ switchport mode access
+ switchport access vlan 99
+ shutdown
+ exit
+
+end
+copy running-config startup-config

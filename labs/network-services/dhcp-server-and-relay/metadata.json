@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0012",
+  "title": "Configuring Cisco IOS DHCPv4 Server and Relay Agent",
+  "slug": "dhcp-server-and-relay",
+  "category": "network-services",
+  "summary": "Configure an enterprise Cisco router as a DHCPv4 server with excluded addresses, network pools, default routers, and DNS parameters, and configure an IP helper-address relay agent across routed interfaces.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-services",
+    "dhcp",
+    "dhcp-relay",
+    "ip-helper-address",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the 4-step DHCPv4 DORA exchange (Discover, Offer, Request, Acknowledge)",
+    "Configure IP address exclusions to protect static devices and gateway addresses",
+    "Configure Cisco IOS DHCP pools with network parameters, default routers, and DNS servers",
+    "Configure ip helper-address on router interfaces to forward broadcast DHCP requests across subnets",
+    "Verify active DHCP leases and pool statistics using show ip dhcp binding and show ip dhcp pool"
+  ],
+  "estimated_minutes": 40,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router",
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services curriculum guide based on IETF RFC 2131 standards and Cisco IOS configuration documentation",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc2131",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/xe-16/dhcp-xe-16-book/config-dhcp-server.html"
+  ],
+  "last_reviewed": "2026-10-26"
+}

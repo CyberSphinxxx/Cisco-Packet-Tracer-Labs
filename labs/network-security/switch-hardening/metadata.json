@@ -1,0 +1,51 @@
+{
+  "id": "PTL-0007",
+  "title": "Cisco Switch Security Hardening Best Practices",
+  "slug": "switch-hardening",
+  "category": "network-security",
+  "summary": "Implement enterprise switchport hardening: mitigate VLAN hopping by changing the native VLAN, disable DTP negotiation, shut down unused ports in a parking-lot VLAN, and enable STP PortFast and BPDU Guard.",
+  "difficulty": "intermediate",
+  "topics": [
+    "switch-hardening",
+    "vlan-hopping",
+    "bpdu-guard",
+    "portfast",
+    "dtp",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Disable Dynamic Trunking Protocol (DTP) negotiation using switchport nonegotiate",
+    "Change the 802.1Q default native VLAN away from VLAN 1 to mitigate double-tagging VLAN hopping attacks",
+    "Quarantine and administratively disable all unused switchports into an unrouted blackhole VLAN",
+    "Enable Spanning Tree PortFast and BPDU Guard on user access ports to protect topology convergence"
+  ],
+  "estimated_minutes": 40,
+  "activity_reference": "Switch-Hardening",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored switch security hardening guide replacing legacy fragmented notes",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swstpopt.html"
+  ],
+  "last_reviewed": "2026-10-26"
+}

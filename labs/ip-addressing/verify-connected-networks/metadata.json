@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0005",
+  "title": "Verifying Directly Connected Networks",
+  "slug": "verify-connected-networks",
+  "category": "ip-addressing",
+  "summary": "Investigate how Cisco IOS routers dynamically populate the routing table with directly connected networks (C) and local host routes (L) for both IPv4 and IPv6.",
+  "difficulty": "beginner",
+  "topics": [
+    "routing-table",
+    "directly-connected-routes",
+    "ipv4-addressing",
+    "ipv6-addressing",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain how directly connected routes (C) and local host routes (L) are installed in the routing table",
+    "Interpret the IPv4 routing table using show ip route and filter by code",
+    "Interpret the IPv6 routing table using show ipv6 route and explain /128 host route mechanics",
+    "Correlate interface operational states (up/up vs down/down) with routing table entries"
+  ],
+  "estimated_minutes": 30,
+  "activity_reference": "Verify-Connected",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router",
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored educational guide replacing legacy instructor answer key",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/routers/access/4400/software/configuration/guide/isr4400swcfg.html",
+    "https://datatracker.ietf.org/doc/html/rfc5737",
+    "https://datatracker.ietf.org/doc/html/rfc3849"
+  ],
+  "last_reviewed": "2026-10-26"
+}

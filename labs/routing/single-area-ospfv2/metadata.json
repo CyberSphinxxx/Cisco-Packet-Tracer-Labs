@@ -1,0 +1,54 @@
+{
+  "id": "PTL-0011",
+  "title": "Single-Area OSPFv2 Configuration and Verification",
+  "slug": "single-area-ospfv2",
+  "category": "routing",
+  "summary": "Configure dynamic link-state routing using single-area OSPFv2 in Area 0, configure 32-bit Router IDs, calculate wildcard masks, suppress unnecessary hello broadcasts with passive interfaces, and verify neighbor adjacencies.",
+  "difficulty": "intermediate",
+  "topics": [
+    "routing",
+    "ospf",
+    "ospfv2",
+    "dynamic-routing",
+    "wildcard-masks",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the fundamentals of link-state routing and OSPF Area 0 backbone operation",
+    "Configure an explicit 32-bit OSPF Router ID using the router-id command",
+    "Activate OSPFv2 on router interfaces using network statements and inverted wildcard masks",
+    "Configure passive-interface on client-facing LANs to secure the routing domain",
+    "Verify OSPF neighbor adjacency states (FULL/DR, FULL/BDR) using show ip ospf neighbor",
+    "Inspect OSPF routes in the routing table (code O) using show ip route ospf"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router",
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored routing curriculum guide based on IETF RFC 2328 standards and Cisco IOS configuration documentation",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc2328",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html"
+  ],
+  "last_reviewed": "2026-10-26"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0010",
+  "title": "Router-on-a-Stick Inter-VLAN Routing",
+  "slug": "inter-vlan-routing-router-on-a-stick",
+  "category": "routing",
+  "summary": "Configure a router-on-a-stick topology using IEEE 802.1Q trunking and Cisco IOS logical subinterfaces to route traffic between isolated departmental VLANs.",
+  "difficulty": "intermediate",
+  "topics": [
+    "inter-vlan-routing",
+    "router-on-a-stick",
+    "subinterfaces",
+    "802.1q-trunking",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the concept and scalability constraints of a router-on-a-stick inter-VLAN routing design",
+    "Configure an 802.1Q trunk link on a Cisco Catalyst switch uplink to the router",
+    "Create and configure Cisco IOS logical subinterfaces for multiple VLANs",
+    "Configure 802.1Q encapsulation and default gateway IP addresses on subinterfaces",
+    "Verify inter-VLAN routing reachability using ping and traceroute commands"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router",
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored routing curriculum guide based on Cisco IOS XE configuration documentation and IEEE 802.1Q standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/inter-vlan-routing/41860-howto-L3-interVLANrouting.html",
+    "https://www.cisco.com/c/en/us/td/docs/routers/access/4400/software/configuration/guide/isr4400swcfg.html"
+  ],
+  "last_reviewed": "2026-10-26"
+}

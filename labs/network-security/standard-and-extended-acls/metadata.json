@@ -1,0 +1,53 @@
+{
+  "id": "PTL-0013",
+  "title": "Configuring Standard and Extended IPv4 Access Control Lists",
+  "slug": "standard-and-extended-acls",
+  "category": "network-security",
+  "summary": "Design, configure, and verify numbered standard and named extended IPv4 Access Control Lists (ACLs) to filter traffic based on source, destination, protocol, and port numbers.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-security",
+    "acls",
+    "packet-filtering",
+    "traffic-filtering",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the difference between standard and extended ACLs and their placement rules",
+    "Configure a numbered standard ACL to restrict VTY management access",
+    "Configure a named extended ACL to permit web/DNS traffic while blocking unauthorized inter-departmental ping and file access",
+    "Apply ACLs in inbound or outbound directions using the ip access-group command",
+    "Verify ACL hit counters and matching statistics using show access-lists"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router",
+    "Cisco Catalyst 2960-24TT Switch",
+    "Server-PT Application Server",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored security curriculum guide based on Cisco IOS configuration documentation",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-16/sec-data-acl-xe-16-book.html"
+  ],
+  "last_reviewed": "2026-10-26"
+}

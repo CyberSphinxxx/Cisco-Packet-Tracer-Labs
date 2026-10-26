@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0004",
+  "title": "Implementing Switchport Port Security",
+  "slug": "port-security",
+  "category": "network-security",
+  "summary": "Configure Cisco Catalyst switch port security to restrict unauthorized MAC addresses, learn dynamic sticky MAC addresses, and configure violation shutdown and recovery.",
+  "difficulty": "intermediate",
+  "topics": [
+    "port-security",
+    "switch-security",
+    "sticky-mac",
+    "err-disable",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Configure switch access ports to enable port security",
+    "Set maximum allowed MAC addresses per port",
+    "Enable dynamic sticky MAC address learning",
+    "Configure and compare violation modes (protect, restrict, shutdown)",
+    "Diagnose and recover a port from the err-disabled state"
+  ],
+  "estimated_minutes": 35,
+  "activity_reference": "11.1.10",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device",
+    "Laptop-PT Rogue Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored educational guide replacing legacy courseware answer guide",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swportsec.html",
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/69980-errdisable-recovery.html"
+  ],
+  "last_reviewed": "2026-10-26"
+}

@@ -1,0 +1,82 @@
+# ==============================================================================
+# Cisco Packet Tracer Learning Library - Git Ignore Configuration
+# ==============================================================================
+
+# Python bytecode and execution caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing, typing, and coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.tox/
+nosetests.xml
+coverage.xml
+
+# IDE and editor workspaces
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Operating system metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Diagnostics, logs, and agent scratch space
+*.log
+scratch/
+tmp/
+.temp/
+
+# Private coursework archives (local backups kept outside public Git)
+private_archive/
+archive/private_coursework/
+legacy_coursework_backup.zip
+*.tar.gz
+
+# ==============================================================================
+# Packet Tracer File Preservation (DO NOT IGNORE)
+# ==============================================================================
+!*.pkt
+!*.pka

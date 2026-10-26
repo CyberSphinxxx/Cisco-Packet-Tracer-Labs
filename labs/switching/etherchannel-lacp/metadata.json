@@ -1,0 +1,49 @@
+{
+  "id": "PTL-0006",
+  "title": "Configuring Layer 2 EtherChannel with LACP",
+  "slug": "etherchannel-lacp",
+  "category": "switching",
+  "summary": "Bundle multiple physical Ethernet links into a single logical channel using standard Link Aggregation Control Protocol (LACP) to increase bandwidth and provide link redundancy.",
+  "difficulty": "intermediate",
+  "topics": [
+    "switching",
+    "etherchannel",
+    "lacp",
+    "spanning-tree",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the operational advantages and prerequisites of link aggregation using EtherChannel",
+    "Configure dynamic LACP link bundling across multiple physical switch ports",
+    "Configure trunking encapsulation and allowed VLANs on a Port-channel logical interface",
+    "Verify EtherChannel status using show etherchannel summary and interpret port flags"
+  ],
+  "estimated_minutes": 40,
+  "activity_reference": "EtherChannel-LACP",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored switching guide replacing legacy courseware answer guide",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swethchl.html",
+    "https://standards.ieee.org/ieee/802.1AX/7257/"
+  ],
+  "last_reviewed": "2026-10-26"
+}

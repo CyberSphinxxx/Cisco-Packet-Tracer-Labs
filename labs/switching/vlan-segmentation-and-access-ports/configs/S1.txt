@@ -1,0 +1,43 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: VLAN Segmentation and Access Port Configuration (PTL-0009)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! VLAN Definitions
+vlan 10
+ name Faculty
+ exit
+vlan 20
+ name Students
+ exit
+vlan 99
+ name Management
+ exit
+
+! Faculty Access Ports (Fa0/1 - 10)
+interface range FastEthernet0/1 - 10
+ description Faculty Access Ports
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+ exit
+
+! Student Access Ports (Fa0/11 - 20)
+interface range FastEthernet0/11 - 20
+ description Student Access Ports
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+ exit
+
+! Management SVI
+interface vlan 99
+ ip address 192.168.99.2 255.255.255.0
+ no shutdown
+ exit
+
+end
+copy running-config startup-config

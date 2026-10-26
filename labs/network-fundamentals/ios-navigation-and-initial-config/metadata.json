@@ -1,0 +1,51 @@
+{
+  "id": "PTL-0008",
+  "title": "Cisco IOS Navigation and Initial Device Configuration",
+  "slug": "ios-navigation-and-initial-config",
+  "category": "network-fundamentals",
+  "summary": "Master Cisco IOS CLI command mode navigation, context-sensitive help, line configuration, administrative password protection, banners, and NVRAM configuration saving.",
+  "difficulty": "beginner",
+  "topics": [
+    "cisco-ios",
+    "ios-navigation",
+    "device-hardening",
+    "cli-shortcuts",
+    "network-fundamentals"
+  ],
+  "learning_objectives": [
+    "Navigate between User EXEC, Privileged EXEC, Global Configuration, and sub-configuration modes",
+    "Use CLI assistance features including Tab auto-completion and context-sensitive help (?)",
+    "Configure device hostnames, legal banners (MOTD), and encrypted enable secrets",
+    "Secure physical console and virtual terminal (VTY) lines with passwords",
+    "Save the active configuration from RAM to NVRAM using copy running-config startup-config"
+  ],
+  "estimated_minutes": 30,
+  "activity_reference": "2.3.7/2.5.5",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored educational guide replacing legacy courseware activities 2.3.7 and 2.5.5",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/cli.html",
+    "https://www.cisco.com/c/en/us/td/docs/routers/access/4400/software/configuration/guide/isr4400swcfg.html"
+  ],
+  "last_reviewed": "2026-10-26"
+}

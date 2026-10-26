@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0009",
+  "title": "VLAN Segmentation and Access Port Configuration",
+  "slug": "vlan-segmentation-and-access-ports",
+  "category": "switching",
+  "summary": "Create multiple Virtual LANs (VLANs) on a Cisco Catalyst switch, assign static access ports, and demonstrate Layer 2 broadcast domain isolation between departmental subnets.",
+  "difficulty": "beginner",
+  "topics": [
+    "switching",
+    "vlans",
+    "access-ports",
+    "broadcast-domains",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the purpose of VLANs in segmenting broadcast domains and improving network security",
+    "Create and name VLANs in Cisco IOS Global Configuration mode",
+    "Assign physical switch interfaces to specific VLANs using access mode",
+    "Use interface range syntax for bulk port configuration",
+    "Verify VLAN assignments and port operational states using show vlan brief and show interfaces switchport",
+    "Demonstrate Layer 2 traffic isolation between devices in different VLANs on the same physical switch"
+  ],
+  "estimated_minutes": 35,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored switching curriculum guide based on IEEE 802.1Q standards and Cisco IOS configuration documentation",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "pending_owner_selection",
+  "assets": {
+    "starter": null,
+    "completed": null,
+    "topology": null
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "not_tested",
+    "simulator_evidence": null
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swvlan.html",
+    "https://standards.ieee.org/ieee/802.1Q/6844/"
+  ],
+  "last_reviewed": "2026-10-26"
+}

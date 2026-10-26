@@ -1,0 +1,31 @@
+! ==========================================
+! Router R1 Configuration
+! Lab: Verifying Directly Connected Networks (PTL-0005)
+! ==========================================
+enable
+configure terminal
+hostname R1
+
+! Enable IPv6 routing globally
+ipv6 unicast-routing
+
+! LAN 1 Interface
+interface GigabitEthernet0/0/0
+ description Accounting LAN
+ ip address 192.168.10.1 255.255.255.0
+ ipv6 address 2001:db8:acad:10::1/64
+ ipv6 address fe80::1 link-local
+ no shutdown
+ exit
+
+! LAN 2 Interface
+interface GigabitEthernet0/0/1
+ description Engineering LAN
+ ip address 192.168.20.1 255.255.255.0
+ ipv6 address 2001:db8:acad:20::1/64
+ ipv6 address fe80::1 link-local
+ no shutdown
+ exit
+
+end
+copy running-config startup-config
