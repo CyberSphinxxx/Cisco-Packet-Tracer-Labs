@@ -26,7 +26,7 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 12C_MCP_PILOT | PASSED | state/PHASE-12C.md | None (MCP loopback bridge connected; PTL-0008 pilot built, tested, and verified) |
 
 Active phase: 12D_BATCH_D (Branch: feature/phase-12-simulator-labs) — In Progress
-Current batch: Phase 12D Batch D (Network Security). PTL-0003 (Securing Switch Management with SSH) verified live in Packet Tracer 9.0.1: 1024-bit RSA key generation, SSHv2 server daemon, local administrative user (`admin`), VTY SSH-only transport restriction, interactive remote SSH shell access from PC-Admin, and legacy Telnet lockout (POS-01..06, NEG-01 100% pass). Starter and completed files verified reloadable. Proceeding to PTL-0004 (Switchport Port Security).
+Current batch: Phase 12D Batch D (Network Security). PTL-0004 (Switchport Port Security) verified live in Packet Tracer 9.0.1: dynamic sticky MAC learning, authorized host forwarding, security violation trigger with rogue host (immediate `Secure-shutdown` and `err-disabled`), and port recovery (`shutdown`/`no shutdown` bounce, 100% ping resumption). Starter and completed files verified reloadable. Proceeding to PTL-0007 (Switch Security Hardening).
 Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Implement and verify PTL-0004 (Implementing Switchport Port Security).
-Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 10
+Next step: Implement and verify PTL-0007 (Switch Security Hardening).
+Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 11
