@@ -25,8 +25,8 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 12B_MCP_AUTOMATION | PASSED | state/PHASE-12B.md | Stages 1-3 complete; DavidIlie/packet-tracer-mcp selected and architecture audited |
 | 12C_MCP_PILOT | PASSED | state/PHASE-12C.md | None (MCP loopback bridge connected; PTL-0008 pilot built, tested, and verified) |
 
-Active phase: 12D_BATCH_C (Branch: feature/phase-12-simulator-labs) — In Progress
-Current batch: Phase 12D Batch C (Dynamic Routing and Network Services). PTL-0011 (Single-Area OSPFv2) completed: dual-router, dual-switch Area 0 topology assembled, configured with explicit Router IDs and passive interfaces, verified (POS-01..03, NEG-01..02 100% pass), starter.pkt / completed.pkt / topology.png generated and verified reloadable. Proceeding to PTL-0012 (DHCP Server and Relay Agent) to finish Batch C.
+Active phase: 12D_BATCH_D (Branch: feature/phase-12-simulator-labs) — In Progress
+Current batch: Phase 12D Batch D (Network Security). Batch C (PTL-0011, PTL-0012) is 100% COMPLETE. PTL-0012 (DHCP Server and Relay Agent) verified live in Packet Tracer 9.0.1: central DHCP pools, address exclusions, DHCP relay agent forwarding, dynamic DORA lease acquisition, inter-site ping, and negative helper failure (POS-01..04, NEG-01..02 100% pass). Starter and completed files verified reloadable. Proceeding to PTL-0003 (Secure Switch Management with SSH).
 Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Implement and verify PTL-0012 (DHCP Server and Relay Agent) to complete Batch C.
-Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 8
+Next step: Implement and verify PTL-0003 (Securing Switch Management with SSH).
+Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 9

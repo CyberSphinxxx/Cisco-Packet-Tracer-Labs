@@ -1,6 +1,6 @@
 # Configuring Cisco IOS DHCPv4 Server and Relay Agent
 
-> **Category:** network-services · **Difficulty:** intermediate · **Lab ID:** PTL-0012 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** network-services · **Difficulty:** intermediate · **Lab ID:** PTL-0012 · **Document:** reviewed · **Simulator:** tested pass
 
 Manually configuring static IP addresses on hundreds of client workstations is prone to typographical errors, address conflicts, and heavy administrative overhead. The **Dynamic Host Configuration Protocol (DHCP)** automates the assignment of IPv4 addresses, subnet masks, default gateways, and DNS server settings. In enterprise environments, a Cisco router can serve directly as a DHCP server for attached subnets. Furthermore, when DHCP clients reside on a remote network across a router, the router can act as a **DHCP Relay Agent** using the `ip helper-address` command to forward broadcast DHCP discovery messages to a centralized DHCP server.
 
@@ -23,6 +23,8 @@ Manually configuring static IP addresses on hundreds of client workstations is p
 ---
 
 ## Topology
+
+![PTL-0012 Topology Diagram](assets/topology.png)
 
 The topology models an enterprise branch office connected across a routed WAN link to a centralized corporate headquarters (HQ). Router R2 acts as the centralized Cisco IOS DHCP server managing address pools for both locations. Router R1 acts as the Branch Gateway and **DHCP Relay Agent**, utilizing `ip helper-address` to relay client broadcast DHCP requests across the routed transit link to R2:
 
@@ -250,9 +252,12 @@ Pool HQ_POOL :
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/R2.txt](configs/R2.txt), [configs/S1.txt](configs/S1.txt), [configs/S2.txt](configs/S2.txt)
 - Verification Guide: [verification.md](verification.md)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; centralized DHCP server pools, address exclusion protection, DHCP relay agent forwarding, DORA lease acquisition, and negative helper failure recorded in [PTL-0012-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0012-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only.
