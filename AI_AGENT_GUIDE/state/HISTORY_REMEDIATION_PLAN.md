@@ -30,7 +30,7 @@ Per Owner Instruction #7, we strictly distinguish between confirmed violations a
 1. **Proprietary Cisco NetAcad Assessment Packages (22 `.pka` files):**  
    - *Confirmation:* These binary packages are copyrighted course materials of Cisco Systems, Inc. distributed through the NetAcad portal. They contain proprietary assessment engines, grading scripts, and network topologies. Public redistribution violates NetAcad terms of use and exposes the repository to DMCA takedown.
 2. **Personal Identifiable Information (10 student assignment files):**  
-   - *Confirmation:* The full name of the student (`JohnLemarGonzales`) is hardcoded in 10 filenames (e.g. `JohnLemarGonzales - Activity #1 - Configure Router Interfaces.pka`) and embedded within student submission metadata inside the `.pka` files. Public release exposes personal academic records.
+   - *Confirmation:* The full name of the student (`[STUDENT_NAME]`) is hardcoded in 10 filenames (e.g. `[STUDENT_NAME] - Activity #1 - Configure Router Interfaces.pka`) and embedded within student submission metadata inside the `.pka` files. Public release exposes personal academic records.
 
 ### B. Potential Concerns Requiring Owner Review (Medium Institutional Risk)
 1. **University Examination Instrument (`MIDTERM-LABORATORY-EXAM.docx`):**  

@@ -22,7 +22,7 @@ Total tracked files: 39
   - `independently_rewrite`: 8 guides identified for clean-room original authoring in `labs/`
   - `eligible_move`: 1 file (root README.md, to be upgraded in Phase 08)
 - **PII / Sensitive Material:**
-  - 10 files contain personal name (`John Lemar Gonzales`) in filename
+  - 10 files contain personal name (`[STUDENT_NAME]`) in filename
   - 2 files contain university midterm laboratory exam prompt and answer guides
   - Example passwords (`cisco`, `class`, `ciscosecret`) identified in legacy guides; educational context noted
 

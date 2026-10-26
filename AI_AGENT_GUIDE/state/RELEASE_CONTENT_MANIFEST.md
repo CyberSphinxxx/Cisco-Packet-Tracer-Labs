@@ -128,5 +128,5 @@ The following materials are **completely absent** from this release:
 - All 4 editor backup `.bak` files (0 files in release)
 - Institutional exam questionnaire `.docx` (0 files in release)
 - All 8 student solution worksheets (0 files in release)
-- All personal student name occurrences (`JohnLemarGonzales`) in filenames and metadata (0 occurrences)
+- All personal student name occurrences (`[STUDENT_NAME]`) in filenames and metadata (0 occurrences)
 - All local private archives (`legacy_coursework_backup.zip`) (Safely preserved externally outside Git)

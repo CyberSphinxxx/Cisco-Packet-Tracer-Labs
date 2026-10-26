@@ -106,7 +106,7 @@ We welcome contributions of original lab guides, technical bug fixes, and docume
 - Review [CONTRIBUTING.md](CONTRIBUTING.md) for lab authoring standards and validation requirements.
 - Adhere to our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 - Report technical errors or security concerns via [SECURITY.md](SECURITY.md).
-- For license details and pending owner selection, see [LICENSE_PENDING.md](LICENSE_PENDING.md).
+- Original educational guides are licensed under **CC-BY-SA-4.0** and automation tools under the **MIT License**. See [LICENSE](LICENSE) for details.
 
 Before opening a pull request, ensure all tests pass:
 ```bash

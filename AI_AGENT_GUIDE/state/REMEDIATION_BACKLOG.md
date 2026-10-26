@@ -34,7 +34,7 @@
 - **Severity:** **CRITICAL** (Intellectual Property & Personal Data Privacy)
 - **Affected Assets:** 35 tracked files in `2ndYear_Networking1/` and `3rdYear_Networking2/`, including:
   - 22 proprietary `.pka` files belonging to Cisco Networking Academy.
-  - 10 assignment submission packages with student full name in filename (`JohnLemarGonzales`).
+  - 10 assignment submission packages with student full name in filename (`[STUDENT_NAME]`).
   - 1 university midterm examination package (`MIDTERM-LABORATORY-EXAM.docx`).
 - **Risk:** If pushed publicly to GitHub, exposes proprietary courseware to DMCA takedown and publicly exposes student academic records / PII.
 - **Recommended Remediation Options:**
