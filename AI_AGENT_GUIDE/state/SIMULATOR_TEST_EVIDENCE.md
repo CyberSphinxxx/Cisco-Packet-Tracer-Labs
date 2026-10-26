@@ -56,6 +56,9 @@ In strict alignment with repository guidelines:
 | `labs/network-security/port-security/assets/starter.pkt` | Authentic `.pkt` Binary | 56,537 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; default dynamic switchports, no port security. |
 | `labs/network-security/port-security/assets/completed.pkt` | Authentic `.pkt` Binary | 56,885 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; port security max 1, sticky MAC, shutdown violation, unused ports disabled. |
 | `labs/network-security/port-security/assets/topology.png` | PNG Image | 43,070 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
+| `labs/network-security/switch-hardening/assets/starter.pkt` | Authentic `.pkt` Binary | 62,470 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; default switch, unhardened. |
+| `labs/network-security/switch-hardening/assets/completed.pkt` | Authentic `.pkt` Binary | 63,799 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; 802.1Q trunk native VLAN 999, DTP off, PortFast, BPDU Guard, parking-lot VLAN 99. |
+| `labs/network-security/switch-hardening/assets/topology.png` | PNG Image | 65,106 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
 
 All other uncompleted activities in `labs/` and `projects/` currently have `assets.starter: null` and `assets.completed: null` in their respective `metadata.json` files, preventing any broken or fake download links.
 
@@ -76,7 +79,7 @@ All other uncompleted activities in `labs/` and `projects/` currently have `asse
 | **PTL-0012** | DHCP Server and Relay Agent | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..04 and NEG-01..02 passed (`state/PTL-0012-SIMULATOR-RESULTS.md`) |
 | **PTL-0003** | Secure Switch SSH | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..06 and NEG-01 passed (`state/PTL-0003-SIMULATOR-RESULTS.md`) |
 | **PTL-0004** | Switchport Port Security | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..03 passed (`state/PTL-0004-SIMULATOR-RESULTS.md`) |
-| **PTL-0007** | Switch Security Hardening | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
+| **PTL-0007** | Switch Security Hardening | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..06 and NEG-01..02 passed (`state/PTL-0007-SIMULATOR-RESULTS.md`) |
 | **PTL-0013** | Standard and Extended ACLs | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **CAPSTONE** | Small Office Multi-VLAN Network | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 
