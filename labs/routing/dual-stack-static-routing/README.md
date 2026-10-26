@@ -1,6 +1,6 @@
 # Dual-Stack IPv4 and IPv6 Static Routing
 
-> **Category:** routing · **Difficulty:** intermediate · **Lab ID:** PTL-0001 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** routing · **Difficulty:** intermediate · **Lab ID:** PTL-0001 · **Document:** reviewed · **Simulator:** tested pass
 
 This lab guides learners through the end-to-end design, configuration, and verification of a dual-stack network combining IPv4 and IPv6 routing. Learners connect client workstations to local Layer 2 Catalyst switches, configure dual-stack addressing on Cisco ISR 4331 routers, enable global IPv6 routing, and establish static routes across a point-to-point transit network.
 
@@ -23,6 +23,8 @@ This lab guides learners through the end-to-end design, configuration, and verif
 ---
 
 ## Topology
+
+![PTL-0001 Topology Diagram](assets/topology.png)
 
 The topology consists of two local area networks (LANs) connected via a point-to-point transit network between two Cisco ISR 4331 routers:
 
@@ -315,9 +317,12 @@ Verify that `10.1.1.0/24` appears in the IPv4 routing table via `209.165.200.226
 ---
 
 ## Files and Validation Status
-- Packet Tracer Topology Asset: [dual-stack-static-routing.pkt](dual-stack-static-routing.pkt)
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
+- Preserved Reference File: [dual-stack-static-routing.pkt](dual-stack-static-routing.pkt) (Original reference project, verified bit-identical)
 - Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/R2.txt](configs/R2.txt), [configs/S1.txt](configs/S1.txt), [configs/S2.txt](configs/S2.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against official Cisco documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Executable verification pending physical Packet Tracer execution environment).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; complete dual-stack static routing, cross-router IPv4 and IPv6 ICMP ping, route table inspection, and negative route withdrawal recorded in [PTL-0001-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0001-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only and do not reflect secure production configurations.
