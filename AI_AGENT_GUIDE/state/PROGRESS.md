@@ -25,8 +25,8 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 12B_MCP_AUTOMATION | PASSED | state/PHASE-12B.md | Stages 1-3 complete; DavidIlie/packet-tracer-mcp selected and architecture audited |
 | 12C_MCP_PILOT | PASSED | state/PHASE-12C.md | None (MCP loopback bridge connected; PTL-0008 pilot built, tested, and verified) |
 
-Active phase: 12D_BATCH_B (Branch: feature/phase-12-simulator-labs) — In Progress
-Current batch: Phase 12D Batch B (Advanced Switching & Routing). PTL-0006 (EtherChannel LACP) and PTL-0001 (Dual-Stack IPv4/IPv6 Static Routing) completed. Dual-router, dual-switch dual-stack topology verified (POS-01..03, NEG-01..02 100% pass), starter.pkt / completed.pkt / topology.png generated and verified reloadable; original dual-stack-static-routing.pkt preserved bit-identical. Proceeding to PTL-0010 to finish Batch B.
+Active phase: 12D_BATCH_C (Branch: feature/phase-12-simulator-labs) — In Progress
+Current batch: Phase 12D Batch C (Dynamic Routing and Network Services). Batch B (PTL-0006, PTL-0001, PTL-0010) is 100% COMPLETE. PTL-0010 (Router-on-a-Stick Inter-VLAN Routing) verified live in Packet Tracer 9.0.1: router subinterfaces Gi0/0/0.10 and Gi0/0/0.20, switch 802.1Q trunking on Gi0/1, routed inter-VLAN ICMP ping, negative encapsulation mismatch, and trunk access mode failure (POS-01..03, NEG-01..02 100% pass). Starter and completed files verified reloadable. Proceeding to PTL-0011 (Single-Area OSPFv2).
 Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Implement and verify PTL-0010 (Router-on-a-Stick Inter-VLAN Routing) to complete Batch B.
-Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 6
+Next step: Implement and verify PTL-0011 (Single-Area OSPFv2).
+Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 7
