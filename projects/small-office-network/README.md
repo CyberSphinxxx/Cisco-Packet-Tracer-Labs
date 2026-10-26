@@ -1,6 +1,6 @@
 # Capstone Project: Small Office Multi-VLAN Network Design
 
-> **Project Level:** Capstone / Comprehensive · **Target Audience:** BSIT Networking Students & CCNA Candidates · **Status:** Design Guide Reviewed
+> **Project Level:** Capstone / Comprehensive · **Target Audience:** BSIT Networking Students & CCNA Candidates · **Status:** Tested (Cisco Packet Tracer 9.0.1)
 
 ## 1. Executive Summary & Scenario
 Modern small-to-medium business (SMB) networks require high availability, logical departmental isolation, automated IP host addressing, and hardened Layer 2/Layer 3 boundaries. This capstone project challenges students to integrate the modular networking competencies mastered across the library into an end-to-end small office branch network.
@@ -16,6 +16,8 @@ The branch utilizes a centralized Cisco ISR 4321 router (`R1`) and a Cisco Catal
 ---
 
 ## 2. Integrated Architecture & Topology
+
+![Small Office Multi-VLAN Network Topology](assets/topology.png)
 
 ```text
                                   [HQ / ISP Router]
@@ -89,9 +91,11 @@ Before submitting or documenting your simulation:
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer Activity: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer Activity: [assets/completed.pkt](assets/completed.pkt)
 - Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/R2.txt](configs/R2.txt), [configs/S1.txt](configs/S1.txt)
 - Verification Guide: [verification.md](verification.md)
 - Design Quality: **REVIEWED** (Comprehensive multi-tier enterprise branch specification).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED (PASS)** (Assembled, configured, and verified live in Cisco Packet Tracer 9.0.1 via MCP loopback automation; POS-01..07 and NEG-01..04 passed).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab credentials (`cisco123`, `adminpass123`) are provided for educational simulation purposes only.

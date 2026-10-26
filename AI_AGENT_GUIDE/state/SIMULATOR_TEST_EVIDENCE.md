@@ -62,8 +62,11 @@ In strict alignment with repository guidelines:
 | `labs/network-security/standard-and-extended-acls/assets/starter.pkt` | Authentic `.pkt` Binary | 79,439 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; 3-subnet routed topology, no ACLs configured. |
 | `labs/network-security/standard-and-extended-acls/assets/completed.pkt` | Authentic `.pkt` Binary | 80,624 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; Standard ACL 10 on VTY, Extended ACL SALES_TO_SERVERS on Gi0/0/1 inbound, all traffic policies verified. |
 | `labs/network-security/standard-and-extended-acls/assets/topology.png` | PNG Image | 46,658 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
+| `projects/small-office-network/assets/starter.pkt` | Authentic `.pkt` Binary | 65,968 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; devices cabled, R2 & PC-Mgmt configured, R1 and S1 unconfigured. |
+| `projects/small-office-network/assets/completed.pkt` | Authentic `.pkt` Binary | 70,599 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; full multi-VLAN, trunking, Router-on-a-Stick, DHCP pools, port security, and ACL isolation verified. |
+| `projects/small-office-network/assets/topology.png` | PNG Image | 48,377 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
 
-All other uncompleted activities in `projects/` currently have `assets.starter: null` and `assets.completed: null` in their respective `metadata.json` files, preventing any broken or fake download links.
+All 13 modular labs and 1 capstone project across `labs/` and `projects/` now possess authentic, simulator-verified binary deliverables (`starter.pkt`, `completed.pkt`, and `topology.png`).
 
 ---
 
@@ -84,7 +87,7 @@ All other uncompleted activities in `projects/` currently have `assets.starter: 
 | **PTL-0004** | Switchport Port Security | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..03 passed (`state/PTL-0004-SIMULATOR-RESULTS.md`) |
 | **PTL-0007** | Switch Security Hardening | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..06 and NEG-01..02 passed (`state/PTL-0007-SIMULATOR-RESULTS.md`) |
 | **PTL-0013** | Standard and Extended ACLs | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..05 and NEG-01..03 passed (`state/PTL-0013-SIMULATOR-RESULTS.md`) |
-| **CAPSTONE** | Small Office Multi-VLAN Network | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
+| **CAPSTONE** | Small Office Multi-VLAN Network | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..07 and NEG-01..04 passed (`state/PHASE-12D-CAPSTONE-RESULTS.md`) |
 
 ---
 

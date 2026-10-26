@@ -25,8 +25,10 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 12B_MCP_AUTOMATION | PASSED | state/PHASE-12B.md | Stages 1-3 complete; DavidIlie/packet-tracer-mcp selected and architecture audited |
 | 12C_MCP_PILOT | PASSED | state/PHASE-12C.md | None (MCP loopback bridge connected; PTL-0008 pilot built, tested, and verified) |
 
-Active phase: 12D_CAPSTONE (Branch: feature/phase-12-simulator-labs) — In Progress
-Current batch: Phase 12D Capstone Project (Small Office Multi-VLAN Network). All 13 modular curriculum labs (PTL-0001 through PTL-0013) have completed live simulation verification in Cisco Packet Tracer 9.0.1. Batch D completed with PTL-0013: 3-subnet routed topology (Accounting, Sales, Server Farm), Standard ACL 10 on VTY lines (only Accounting permitted, Sales blocked), Extended ACL SALES_TO_SERVERS (Web port 80 & DNS port 53 permitted, ICMP to servers denied, traffic to Accounting denied). Starter and completed files verified reloadable. Proceeding to Capstone Project (`projects/small-office-network/`).
+| 12D_SIMULATOR_LABS | PASSED | state/PHASE-12D-FINAL-REPORT.md | None (13/13 modular labs + 1 capstone 100% verified in Packet Tracer 9.0.1) |
+
+Active phase: 12D_COMPLETE (Branch: feature/phase-12-simulator-labs) — COMPLETED
+Current batch: Phase 12D Final Acceptance. All 13 modular labs (PTL-0001 through PTL-0013) and the Small Office Multi-VLAN Network Capstone Project (`projects/small-office-network/`) are 100% simulator-verified in Cisco Packet Tracer 9.0.1 via MCP loopback bridge automation. 14 authentic `starter.pkt` files, 14 authentic `completed.pkt` files, and 14 authentic canvas screenshots (`topology.png`) have been generated and validated. Bit-identical SHA-256 for PTL-0001 preserved.
 Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Implement and verify Capstone Project (`projects/small-office-network/`).
-Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 13
+Next step: Generate PHASE-12D-FINAL-REPORT.md and prepare handover for repository owner.
+Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 14

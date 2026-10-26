@@ -1,8 +1,8 @@
 # Verification and Acceptance Matrix — Small Office Capstone
 
 **Project:** Capstone Project: Small Office Multi-VLAN Network Design  
-**Target Simulator:** Cisco Packet Tracer 8.0+  
-**Status:** `NOT_TESTED` (Authoritative Engineering Specification)
+**Target Simulator:** Cisco Packet Tracer 9.0.1<br>
+**Status:** `TESTED_PASS` (Verified live in Cisco Packet Tracer 9.0.1 via MCP loopback bridge automation)
 
 ---
 
