@@ -1,0 +1,18 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Verifying Directly Connected Networks (PTL-0005)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+interface vlan 1
+ description Accounting Management SVI
+ ip address 192.168.10.2 255.255.255.0
+ no shutdown
+ exit
+
+ip default-gateway 192.168.10.1
+
+end
+copy running-config startup-config

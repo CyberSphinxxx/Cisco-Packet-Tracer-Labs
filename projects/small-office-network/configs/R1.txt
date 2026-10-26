@@ -1,0 +1,99 @@
+! ==========================================
+! Router R1 (Branch Gateway)
+! Capstone Project: Small Office Multi-VLAN Network Design
+! ==========================================
+enable
+configure terminal
+hostname R1
+
+! Cryptographic SSH Prerequisites & Domain
+ip domain-name apex.local
+crypto key generate rsa modulus 2048
+ip ssh version 2
+
+! Administrative Security
+enable secret cisco123
+username admin privilege 15 secret adminpass123
+service password-encryption
+banner motd # Apex Innovations Branch Gateway - Authorized Admin Access Only #
+
+! DHCP Exclusions
+ip dhcp excluded-address 192.168.20.1 192.168.20.10
+ip dhcp excluded-address 192.168.30.1 192.168.30.10
+
+! DHCP Pool for Staff (VLAN 20)
+ip dhcp pool STAFF_POOL
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 208.67.222.222
+ domain-name apex.local
+ exit
+
+! DHCP Pool for Guests (VLAN 30)
+ip dhcp pool GUEST_POOL
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.1
+ dns-server 208.67.222.222
+ domain-name guest.apex.local
+ exit
+
+! Physical Trunk Interface to Switch S1
+interface GigabitEthernet0/0/0
+ description 802.1Q Trunk Link to Switch S1
+ no ip address
+ no shutdown
+ exit
+
+! Subinterface for Management (VLAN 10)
+interface GigabitEthernet0/0/0.10
+ description Management Gateway
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+ exit
+
+! Subinterface for Staff (VLAN 20)
+interface GigabitEthernet0/0/0.20
+ description Staff Data Gateway
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+ exit
+
+! Subinterface for Guest (VLAN 30) with Inbound Traffic Filter
+interface GigabitEthernet0/0/0.30
+ description Guest Wi-Fi Gateway
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+ ip access-group GUEST_ISOLATION_ACL in
+ no shutdown
+ exit
+
+! WAN Transit Interface to HQ / ISP
+interface GigabitEthernet0/0/1
+ description WAN Transit Link to HQ Router R2
+ ip address 209.165.200.225 255.255.255.252
+ no shutdown
+ exit
+
+! Guest Isolation Extended Access Control List
+ip access-list extended GUEST_ISOLATION_ACL
+ remark Block guest traffic to internal Management subnet
+ deny ip 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255
+ remark Block guest traffic to internal Staff subnet
+ deny ip 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255
+ remark Allow guest outbound Internet traffic
+ permit ip 192.168.30.0 0.0.0.255 any
+ exit
+
+! Default Static Route via HQ/ISP Gateway
+ip route 0.0.0.0 0.0.0.0 209.165.200.226
+
+! Secure Virtual Terminal Lines
+line vty 0 4
+ transport input ssh
+ login local
+ exit
+
+end
+copy running-config startup-config

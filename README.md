@@ -92,10 +92,11 @@ To uphold the highest academic integrity, this repository maintains an explicit 
 
 ---
 
-## 🛡️ Intellectual Property, Provenance, and Quarantine
+## 🛡️ Intellectual Property, Provenance, and Licensing
 
 - **Original Educational Content**: All tutorials in `labs/`, `projects/`, and `docs/` are 100% original, clean-room educational works authored independently.
-- **Legacy Third-Party Quarantine**: Historical coursework packages (`.pka`), backup archives (`.bak`), and exam assignments located in `2ndYear_Networking1/` and `3rdYear_Networking2/` are proprietary third-party files. They are strictly quarantined in their legacy directories for archival provenance and are **never republished or distributed under `labs/`**.
+- **Legacy Coursework History Cleanup**: Historical third-party coursework packages (`.pka`), backup archives, and student assessment materials previously present in early repository revisions were completely quarantined, backed up to private owner archives, and permanently removed from both the active working tree and Git commit history during Phase 11.5. No proprietary third-party courseware is tracked or distributed in this repository.
+- **Dual Licensing**: Original educational lab guides and documentation are licensed under **Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)**, and Python maintenance tooling and automated validators are licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 - **Trademarks**: Cisco, Cisco IOS, Cisco Packet Tracer, and Cisco Networking Academy are trademarks of Cisco Systems, Inc. This project is an independent educational effort and is not affiliated with, sponsored by, or endorsed by Cisco Systems, Inc.
 
 ---

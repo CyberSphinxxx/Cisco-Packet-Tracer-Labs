@@ -207,7 +207,8 @@ Verify that matches increment on the corresponding permit and deny rules.
 ---
 
 ## Files and Validation Status
-- Configuration Scripts: [configs/R1.txt](configs/R1.txt)
+- Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/S1.txt](configs/S1.txt)
+- Verification Guide: [verification.md](verification.md)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
 - Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
 

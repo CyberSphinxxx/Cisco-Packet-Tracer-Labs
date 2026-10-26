@@ -1,0 +1,26 @@
+! ==========================================
+! Switch S1 (Branch Access Switch)
+! Lab: Configuring Cisco IOS DHCPv4 Server and Relay Agent (PTL-0012)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! FastEthernet 0/1 connects to PC-Client-1 (Branch Client)
+interface FastEthernet0/1
+ description Branch Client Access Port
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+! GigabitEthernet 0/1 connects to Branch Router R1 Gi0/0/0
+interface GigabitEthernet0/1
+ description Uplink to Branch Router R1 Gi0/0/0
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+end
+copy running-config startup-config

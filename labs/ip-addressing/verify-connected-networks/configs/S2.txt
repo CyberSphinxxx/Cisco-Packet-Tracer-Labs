@@ -1,0 +1,18 @@
+! ==========================================
+! Switch S2 Configuration
+! Lab: Verifying Directly Connected Networks (PTL-0005)
+! ==========================================
+enable
+configure terminal
+hostname S2
+
+interface vlan 1
+ description Engineering Management SVI
+ ip address 192.168.20.2 255.255.255.0
+ no shutdown
+ exit
+
+ip default-gateway 192.168.20.1
+
+end
+copy running-config startup-config

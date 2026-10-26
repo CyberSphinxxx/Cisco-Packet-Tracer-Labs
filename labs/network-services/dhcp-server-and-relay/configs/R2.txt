@@ -1,0 +1,54 @@
+! ==========================================
+! Router R2 (Central Headquarters & IOS DHCP Server)
+! Lab: Configuring Cisco IOS DHCPv4 Server and Relay Agent (PTL-0012)
+! ==========================================
+enable
+configure terminal
+hostname R2
+
+! Exclude statically assigned IP addresses before pool creation
+! Exclude .1 through .10 on Branch Subnet (protects gateway R1 Gi0/0/0 and future static hosts)
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+
+! Exclude .1 through .10 on HQ Subnet (protects gateway R2 Gi0/0/0 and management devices)
+ip dhcp excluded-address 192.168.20.1 192.168.20.10
+
+! ------------------------------------------
+! DHCP Pool for Remote Branch LAN (Serviced via R1 Relay Agent)
+! ------------------------------------------
+ip dhcp pool BRANCH_POOL
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 208.67.222.222
+ domain-name lab.local
+ exit
+
+! ------------------------------------------
+! DHCP Pool for Local HQ LAN
+! ------------------------------------------
+ip dhcp pool HQ_POOL
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 208.67.222.222
+ domain-name lab.local
+ exit
+
+! Routed Transit Interface to Branch Router R1
+interface GigabitEthernet0/0/1
+ description Routed Transit Link to R1
+ ip address 10.0.0.2 255.255.255.252
+ no shutdown
+ exit
+
+! HQ Local LAN Interface
+interface GigabitEthernet0/0/0
+ description HQ Client LAN
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+ exit
+
+! Static Route returning traffic to Remote Branch Subnet via R1
+ip route 192.168.10.0 255.255.255.0 10.0.0.1
+
+end
+copy running-config startup-config

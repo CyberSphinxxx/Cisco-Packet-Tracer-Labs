@@ -57,7 +57,7 @@ def validate(root: Path) -> list[tuple[str, str, str]]:
             add('ERROR', mdfile, f'broken local link: {href}')
 
     # Validate root docs, documentation library, learning paths, and projects
-    extra_mds = [root/'README.md', root/'CONTRIBUTING.md', root/'SECURITY.md', root/'LICENSE_PENDING.md']
+    extra_mds = [root/'README.md', root/'CONTRIBUTING.md', root/'SECURITY.md', root/'LICENSE']
     for folder in ['docs', 'learning-paths', 'projects']:
         fpath = root / folder
         if fpath.exists():

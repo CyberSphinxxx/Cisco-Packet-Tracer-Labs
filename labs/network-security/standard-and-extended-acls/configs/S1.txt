@@ -1,0 +1,26 @@
+! ==========================================
+! Switch S1 (Accounting Access Switch)
+! Lab: Configuring Standard and Extended IPv4 Access Control Lists (PTL-0013)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! FastEthernet 0/1 connects to PC-Accounting
+interface FastEthernet0/1
+ description PC-Accounting Access Port
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+! GigabitEthernet 0/1 connects to Router R1 Gi0/0/0
+interface GigabitEthernet0/1
+ description Uplink to Router R1 Gi0/0/0
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+end
+copy running-config startup-config

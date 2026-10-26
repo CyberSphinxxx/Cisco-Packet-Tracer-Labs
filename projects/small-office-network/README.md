@@ -85,3 +85,13 @@ Before submitting or documenting your simulation:
 ## References
 - Cisco Systems, *Branch Office Network Design Guide*: [Enterprise Branch Design](https://www.cisco.com/c/en/us/solutions/enterprise/branch-office-network/index.html).
 - IETF RFC 2131 (DHCP), RFC 2328 (OSPFv2), RFC 4253 (SSH), IEEE 802.1Q (VLANs).
+
+---
+
+## Files and Validation Status
+- Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/R2.txt](configs/R2.txt), [configs/S1.txt](configs/S1.txt)
+- Verification Guide: [verification.md](verification.md)
+- Design Quality: **REVIEWED** (Comprehensive multi-tier enterprise branch specification).
+- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+
+> Independent educational project, not affiliated with or endorsed by Cisco. Lab credentials (`cisco123`, `adminpass123`) are provided for educational simulation purposes only.

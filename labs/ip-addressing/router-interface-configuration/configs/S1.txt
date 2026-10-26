@@ -1,0 +1,19 @@
+! ==========================================
+! Switch S1 Configuration
+! Lab: Configuring Cisco Router Interfaces (PTL-0002)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! Management Interface (VLAN 1)
+interface vlan 1
+ description Admin LAN Management SVI
+ ip address 192.168.1.2 255.255.255.0
+ no shutdown
+ exit
+
+ip default-gateway 192.168.1.1
+
+end
+copy running-config startup-config
