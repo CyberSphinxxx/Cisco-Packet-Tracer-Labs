@@ -1,6 +1,6 @@
 # Configuring Cisco Router Interfaces
 
-> **Category:** ip-addressing · **Difficulty:** beginner · **Lab ID:** PTL-0002 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** ip-addressing · **Difficulty:** beginner · **Lab ID:** PTL-0002 · **Document:** reviewed · **Simulator:** tested pass
 
 Routers connect distinct local area networks (LANs) and wide area networks (WANs). For a router to forward packets between networks, each active interface must be assigned a unique Layer 3 IP address, subnet mask or prefix length, and be brought administratively up. This lab walks you through configuring dual-stack IPv4 and IPv6 addresses on a Cisco ISR router with descriptive labels, verifying interface state, and confirming local host reachability.
 
@@ -25,6 +25,8 @@ Routers connect distinct local area networks (LANs) and wide area networks (WANs
 ---
 
 ## Topology
+
+![PTL-0002 Topology Diagram](assets/topology.png)
 
 The topology features a single central Cisco ISR 4321 router connecting two distinct departmental LANs:
 
@@ -171,8 +173,11 @@ From PC-Admin command prompt:
 ---
 
 ## Files and Validation Status
-- Configuration Scripts: [configs/R1.txt](configs/R1.txt)
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
+- Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/S1.txt](configs/S1.txt), [configs/S2.txt](configs/S2.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Simulation commands verified statically against official Cisco syntax).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; complete dual-stack IPv4/IPv6 ping and interface status verification recorded in [PTL-0002-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0002-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Passwords shown are for isolated simulation practice only.

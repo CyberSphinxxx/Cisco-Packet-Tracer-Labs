@@ -34,14 +34,14 @@
   },
   "license_decision": "approved_dual_license",
   "assets": {
-    "starter": null,
-    "completed": null,
-    "topology": null
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
   },
   "status": {
     "documentation": "reviewed",
-    "simulator": "not_tested",
-    "simulator_evidence": null
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0002-SIMULATOR-RESULTS.md"
   },
   "references": [
     "https://www.cisco.com/c/en/us/td/docs/routers/access/4400/software/configuration/guide/isr4400swcfg.html",

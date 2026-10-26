@@ -26,6 +26,9 @@ In strict alignment with repository guidelines:
 | `labs/network-fundamentals/ios-navigation-and-initial-config/assets/starter.pkt` | Authentic `.pkt` Binary | 44,426 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; unconfigured factory switch with cabled PC. |
 | `labs/network-fundamentals/ios-navigation-and-initial-config/assets/completed.pkt` | Authentic `.pkt` Binary | 44,728 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; full configuration, passwords, and NVRAM persistence verified. |
 | `labs/network-fundamentals/ios-navigation-and-initial-config/assets/topology.png` | PNG Image | 40,076 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
+| `labs/ip-addressing/router-interface-configuration/assets/starter.pkt` | Authentic `.pkt` Binary | 51,368 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; unconfigured router R1 with cabled dual LANs. |
+| `labs/ip-addressing/router-interface-configuration/assets/completed.pkt` | Authentic `.pkt` Binary | 52,122 | Verified Loadable | Assembled and verified in Cisco Packet Tracer 9.0.1; dual-stack IPv4/IPv6 routing and NVRAM state verified. |
+| `labs/ip-addressing/router-interface-configuration/assets/topology.png` | PNG Image | 76,223 | Verified Capture | Authentic window screenshot captured from active Packet Tracer 9.0.1 workspace canvas. |
 
 All other uncompleted activities in `labs/` and `projects/` currently have `assets.starter: null` and `assets.completed: null` in their respective `metadata.json` files, preventing any broken or fake download links.
 
@@ -36,7 +39,7 @@ All other uncompleted activities in `labs/` and `projects/` currently have `asse
 | Lab ID | Lab Title | Simulation Attempted? | Result | Reason / Evidence Location |
 |---|---|:---:|:---:|---|
 | **PTL-0008** | IOS Navigation & Initial Config | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..06 and NEG-01..02 passed (`state/PTL-0008-SIMULATOR-RESULTS.md`) |
-| **PTL-0002** | Router Interface Configuration | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
+| **PTL-0002** | Router Interface Configuration | Yes | `tested_pass` | Live in-app execution in Packet Tracer 9.0.1 via MCP; POS-01..03 and NEG-01..02 passed (`state/PTL-0002-SIMULATOR-RESULTS.md`) |
 | **PTL-0005** | Verify Connected Networks | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **PTL-0009** | VLAN Segmentation & Access Ports | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
 | **PTL-0006** | EtherChannel LACP | No | `not_tested` | Packet Tracer application absent from host OS (`SIMULATOR_BLOCKED`) |
