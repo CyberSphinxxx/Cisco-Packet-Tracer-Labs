@@ -22,9 +22,10 @@ Last verified UTC: 2026-10-26T07:55:00Z
 | 11_REPOSITORY_CLEANUP | PASSED | state/PHASE-11.md | None (Private archive created & 38/38 hashes verified) |
 | 11.5_PUBLIC_RELEASE_PREP | PASSED | state/PUBLIC_RELEASE_REPORT.md | None (Stage 2 and Stage 3 complete; published to GitHub) |
 | 12_LAB_IMPLEMENTATION | PASSED | state/PHASE-12.md | Engineering specifications complete for all 14 labs; SIMULATOR_BLOCKED documented |
+| 12B_MCP_AUTOMATION | BLOCKED | state/PHASE-12B.md | Stages 1-3 complete; Packet Tracer installation & owner approval required for live simulation |
 
-Active phase: 12_LAB_IMPLEMENTATION (Branch: feature/phase-12-simulator-labs)
-Current batch: Phase 12 Complete Packet Tracer Laboratory Implementation. All Gates A, B, C, D, E, and F passed. 23 configuration scripts and 14 verification guides complete. PTL-0012 redesigned for genuine routed DHCP relay. Capstone integration complete. Metadata updated to approved_dual_license.
-Last exact check: Gates A-F PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
-Next step: Handover Phase 12 report to repository owner for review.
+Active phase: 12B_MCP_AUTOMATION (Branch: feature/phase-12-simulator-labs)
+Current batch: Phase 12B Packet Tracer MCP Integration. Stages 1-3 complete: environment inspected (Packet Tracer absent; SIMULATOR_BLOCKED); 4 MCP integration candidates evaluated; DavidIlie/packet-tracer-mcp recommended; configuration inventory reconciled to 30 files; Stages 4-7 paused pending Packet Tracer installation and owner approval.
+Last exact check: Static checks PASSED; git diff --check 0 errors; validate_repo.py 0 errors; 20 unit tests OK; audit_repo.py clean and consistent.
+Next step: Request owner installation of Packet Tracer and approval for recommended MCP bridge.
 Counts (published/reviewed/restricted/simulator-verified): published: 13, reviewed: 13, restricted: 0, simulator-verified: 0

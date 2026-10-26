@@ -34,7 +34,7 @@
 
 ## 2. Deliverables Summary
 
-1. **Configurations:** 23 total Cisco IOS configuration scripts across all 13 labs and Capstone in `configs/`.
+1. **Configurations:** 30 total Cisco IOS configuration scripts (27 across 13 modular labs in `labs/` + 3 in `projects/small-office-network/configs/`, reconciling the preliminary 23 count).
 2. **Verification Specifications:** 14 dedicated `verification.md` files containing Packet Tracer construction manifests, cabling matrices, addressing tables, positive test procedures, negative/attack rejection test procedures, and save & persistence verification checks.
 3. **PTL-0012 Redesign:** Fully specified routed WAN DHCP relay architecture with Branch Gateway R1 (`ip helper-address 10.0.0.2`) and Central Corporate Server R2.
 4. **Capstone Specification:** Multi-VLAN small office branch network integration with Router-on-a-Stick, WAN transit, DHCP, SSHv2, port security, and guest ACL isolation.

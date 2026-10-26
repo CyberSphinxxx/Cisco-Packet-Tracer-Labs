@@ -35,7 +35,7 @@ In accordance with strict ethical rules against fabricating proprietary simulato
 | **Truthfully Declared `not_tested` Status** | **14** | All 13 modular labs + Capstone declare `not_tested` |
 | **Unresolved Technical Blockers** | **1** | `SIMULATOR_BLOCKED`: Packet Tracer not installed locally |
 | **Genuine Static / Unit Test Failures** | **0** | 100% of static validators and test suites passed |
-| **Complete Cisco IOS Configuration Scripts** | **23** | Covering all routers and switches in `configs/` across all labs |
+| **Complete Cisco IOS Configuration Scripts** | **30** | 27 across 13 modular labs in `labs/` + 3 in `projects/small-office-network/` (reconciled from preliminary 23 count) |
 | **Dedicated Verification & Manifest Guides** | **14** | `verification.md` created in all 13 labs and `projects/small-office-network/` |
 | **Standard Dual Licensing Adoption** | **14** | All `metadata.json` updated to `approved_dual_license` |
 
