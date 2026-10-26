@@ -1,6 +1,6 @@
 # Verifying Directly Connected Networks
 
-> **Category:** ip-addressing · **Difficulty:** beginner · **Lab ID:** PTL-0005 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** ip-addressing · **Difficulty:** beginner · **Lab ID:** PTL-0005 · **Document:** reviewed · **Simulator:** tested pass
 
 A router cannot forward packets to any destination until it has entries in its routing table. The most fundamental routes are **directly connected networks**. In Cisco IOS 15 and IOS XE, configuring an IP address on an interface and activating it with `no shutdown` automatically creates two distinct routing table entries: a network route code `C` (Connected) representing the entire subnet, and a local route code `L` (Local) representing the specific `/32` (or `/128`) IP address assigned to the physical interface. This lab examines how the routing table is populated, how to filter routing table outputs, and how interface state governs route availability.
 
@@ -23,6 +23,8 @@ A router cannot forward packets to any destination until it has entries in its r
 ---
 
 ## Topology
+
+![PTL-0005 Topology Diagram](assets/topology.png)
 
 The topology features Router R1 connected to two local subnets:
 
@@ -201,8 +203,11 @@ The routes immediately reappear.
 ---
 
 ## Files and Validation Status
-- Configuration Scripts: [configs/R1.txt](configs/R1.txt)
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
+- Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/S1.txt](configs/S1.txt), [configs/S2.txt](configs/S2.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; complete IPv4/IPv6 C and L route installation, route purge upon shutdown, and inter-LAN host ping recorded in [PTL-0005-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0005-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Passwords shown are educational examples and should not be used in production networks.
