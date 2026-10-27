@@ -165,6 +165,50 @@ class RepoValidationTests(unittest.TestCase):
         (lp / 'beginner.md').write_text('# Path\n[Nonexistent](../labs/missing/README.md)\n', encoding='utf8')
         self.assertTrue(any('broken local link' in x for x in self.errors()))
 
+    def test_tested_pass_missing_evidence_file(self):
+        self.meta['status']['simulator'] = 'tested_pass'
+        self.meta['status']['simulator_evidence'] = 'nonexistent_evidence.md'
+        self.save()
+        self.assertTrue(any('tested_pass simulator_evidence file missing' in x for x in self.errors()))
+
+    def test_tested_pass_missing_required_asset(self):
+        (self.root / 'ev.md').write_text('# Ev\n', encoding='utf8')
+        self.meta['status']['simulator'] = 'tested_pass'
+        self.meta['status']['simulator_evidence'] = 'ev.md'
+        self.meta['assets']['starter'] = None
+        self.save()
+        self.assertTrue(any('tested_pass requires assets.starter' in x for x in self.errors()))
+
+    def test_tested_pass_identical_starter_and_completed(self):
+        (self.root / 'ev.md').write_text('# Ev\n', encoding='utf8')
+        (self.lab / 'starter.pkt').write_bytes(b'identical_content_1234')
+        (self.lab / 'completed.pkt').write_bytes(b'identical_content_1234')
+        (self.lab / 'topology.png').write_bytes(b'\x89PNG\r\n\x1a\nfakeimage')
+        self.meta['status']['simulator'] = 'tested_pass'
+        self.meta['status']['simulator_evidence'] = 'ev.md'
+        self.meta['assets']['starter'] = 'starter.pkt'
+        self.meta['assets']['completed'] = 'completed.pkt'
+        self.meta['assets']['topology'] = 'topology.png'
+        self.save()
+        self.assertTrue(any('starter and completed assets must not be identical' in x for x in self.errors()))
+
+    def test_tested_pass_invalid_png_topology(self):
+        (self.root / 'ev.md').write_text('# Ev\n', encoding='utf8')
+        (self.lab / 'starter.pkt').write_bytes(b'starter_content')
+        (self.lab / 'completed.pkt').write_bytes(b'completed_content')
+        (self.lab / 'topology.png').write_bytes(b'corrupted_image_header')
+        self.meta['status']['simulator'] = 'tested_pass'
+        self.meta['status']['simulator_evidence'] = 'ev.md'
+        self.meta['assets']['starter'] = 'starter.pkt'
+        self.meta['assets']['completed'] = 'completed.pkt'
+        self.meta['assets']['topology'] = 'topology.png'
+        self.save()
+        self.assertTrue(any('must be a valid PNG image' in x for x in self.errors()))
+
+    def test_quarantine_pka_in_labs(self):
+        (self.lab / 'restricted.pka').write_bytes(b'pka_binary')
+        self.assertTrue(any('restricted NetAcad .pka file detected' in x for x in self.errors()))
+
 
 if __name__ == '__main__':
     unittest.main()

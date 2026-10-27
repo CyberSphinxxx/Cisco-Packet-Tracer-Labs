@@ -68,6 +68,12 @@ def validate(root: Path) -> list[tuple[str, str, str]]:
                 href = next((x for x in linkmatch.groups() if x is not None), '')
                 valid_rel_link(item, href.split(' "', 1)[0])
 
+    for folder_name in ['labs', 'projects']:
+        folder_path = root / folder_name
+        if folder_path.exists():
+            for pka in folder_path.rglob('*.pka'):
+                add('ERROR', pka, 'restricted NetAcad .pka file detected in public curriculum folders')
+
     labs = root/'labs'
     if not labs.exists():
         add('INFO', root, 'labs directory absent (expected before migration)')
@@ -138,15 +144,24 @@ def validate(root: Path) -> list[tuple[str, str, str]]:
                 add('ERROR', metadata_path, 'restricted assets belong outside public labs/ entirely')
             if source_type=='permission_verified' and not source.get('permission_evidence'):
                 add('ERROR', metadata_path, 'permission_verified without concrete evidence')
-            if sim=='tested_pass' and not status.get('simulator_evidence'):
-                add('ERROR', metadata_path, 'tested_pass requires simulator_evidence path/reference')
+            if sim=='tested_pass':
+                ev_ref = status.get('simulator_evidence')
+                if not ev_ref:
+                    add('ERROR', metadata_path, 'tested_pass requires simulator_evidence path/reference')
+                else:
+                    ev_path = (root / ev_ref) if (root / ev_ref).exists() else (lab / ev_ref)
+                    if not ev_path.is_file():
+                        add('ERROR', metadata_path, f'tested_pass simulator_evidence file missing: {ev_ref}')
             assets=data.get('assets')
             if not isinstance(assets,dict):
                 add('ERROR', metadata_path, 'assets must be an object')
             else:
                 for k in ['starter','completed','topology']:
                     v=assets.get(k)
-                    if v is None: continue
+                    if v is None:
+                        if sim == 'tested_pass':
+                            add('ERROR', metadata_path, f'tested_pass requires assets.{k}')
+                        continue
                     if not isinstance(v,str) or not v or '://' in v or v.startswith('/'):
                         add('ERROR', metadata_path, f'assets.{k} must be relative file path or null')
                         continue
@@ -155,6 +170,27 @@ def validate(root: Path) -> list[tuple[str, str, str]]:
                         add('ERROR', metadata_path, f'assets.{k} escapes lab folder')
                     elif not target.is_file():
                         add('ERROR', metadata_path, f'assets.{k} missing file {v}')
+                    elif target.stat().st_size == 0:
+                        add('ERROR', metadata_path, f'assets.{k} file {v} must not be empty')
+                if sim == 'tested_pass':
+                    s_name = assets.get('starter')
+                    c_name = assets.get('completed')
+                    t_name = assets.get('topology')
+                    if s_name and c_name:
+                        s_target = (lab / s_name).resolve()
+                        c_target = (lab / c_name).resolve()
+                        if s_target.is_file() and c_target.is_file():
+                            if s_target.stat().st_size == c_target.stat().st_size and s_target.read_bytes() == c_target.read_bytes():
+                                add('ERROR', metadata_path, 'starter and completed assets must not be identical')
+                    if t_name:
+                        t_target = (lab / t_name).resolve()
+                        if t_target.is_file():
+                            try:
+                                with open(t_target, 'rb') as tf:
+                                    if tf.read(8) != b'\x89PNG\r\n\x1a\n':
+                                        add('ERROR', metadata_path, f'assets.topology {t_name} must be a valid PNG image')
+                            except OSError:
+                                add('ERROR', metadata_path, f'cannot read assets.topology {t_name}')
                 if source_type=='external_reference' and any(assets.get(k) for k in ['starter','completed','topology']):
                     add('ERROR', metadata_path, 'external_reference cannot claim hosted lab assets')
             prose=readme.read_text(encoding='utf-8',errors='replace')
