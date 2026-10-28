@@ -2,7 +2,7 @@
 
 **Branch:** `feature/astro-learning-platform` (local only; never pushed), based on `main` `234d9ee`
 **Environment:** Linux workspace (Node 22.23.4, npm 10.9.9, Python 3.13.18, Chromium via Playwright 1.63). The owner's Windows machine was reachable only through a file bridge (no shell); see "Not verified".
-**Final status:** see the verdict at the end of this file.
+**Final status:** `READY_FOR_OWNER_REVIEW` (local only; see "Not verified" for the owner's remaining checks)
 
 ## What was built
 
@@ -48,13 +48,17 @@ Key behaviours: starter download is the dominant action and the solution file is
 | G7 search | `search.spec.ts` on built preview | 6 kit queries hit expected pages (E-031) |
 | G8 quality | axe (54 scans, 0 violations), layout widths 320-1440 + 200% zoom, CLS 0.000, Lighthouse (lab) perf 98-100 / a11y 100 / BP 100 / SEO 100 in production mode, CSP test | E-033..E-036 |
 | G9 CI readiness | clean-clone step-for-step CI simulation | all steps exit 0 (E-038) |
-| G10 audit | independent reviewer on a separate clean clone + real-repo adversarial proofs | see "Independent audit" |
+| G10 audit | independent reviewer on a separate clean clone + real-repo adversarial proofs | 1 blocker + 7 minor found, all fixed and re-verified (AUDIT.md, E-040..E-042) |
 
-Latest full run counts: Vitest 64/64; Playwright 132 passed + 10 explicit skips (mobile duplicates of viewport-specific tests); `verify:dist` 0 failures over 52 pages, 680+ internal links and 445+ fragments; `astro check` 0 errors 0 warnings.
+Latest full run counts (afe9882): Vitest 70/70; Playwright 132 passed + 10 explicit skips (mobile duplicates of viewport-specific tests); `verify:dist` 0 failures over 52 pages, 3,217 internal links and 1,443 fragments; `astro check` 0 errors, 0 warnings, 0 hints; Python gates green; fresh-clone CI simulation all steps exit 0.
 
 ## Defects found and fixed during the work (selection)
 
 Root `.gitignore` `lib/` rule hid `site/src/lib/` from Git; topic regex stricter than the Python validator; lead extraction picking wrong paragraphs (CCNA path, capstone); wide tables clipped at the text measure; TOC highlight not tracking; mobile header wrapping; client-side search sort burying relevant results under listing pages; Escape not closing the search dialog; unlabeled task-list checkboxes (axe critical); layout shift from script-revealed controls (CLS up to 0.63); duplicate `playwright-core` versions breaking types; a test exemption that never matched (found by the clean-clone CI simulation).
+
+## Independent audit
+
+A separate reviewer agent audited a fresh clone at `43675c7` without the builder's context and returned `PARTIALLY_READY_WITH_BLOCKERS`: one blocker (metadata text could break out of the catalog's JSON `<script>` and execute; the generated CSP would have trusted it), one major and six minor issues. All were fixed in `afe9882` with regression tests, and the reviewer's own proof of concept no longer executes in Chromium. Details: `AUDIT.md`.
 
 ## Not verified (honest limits)
 
@@ -70,3 +74,7 @@ Root `.gitignore` `lib/` rule hid `site/src/lib/` from Git; topic regex stricter
 3. Decide whether the agent kit files (`CLAUDE.md`, `.claude/`, `WEBSITE_AGENT_KIT/`) should stay in the branch before merging.
 4. When ready (separate authorization): push the branch, open a PR, confirm both CI jobs, create a Cloudflare Pages project with the settings in `site/README.md`, check a preview deployment, then set `PTL_SITE_URL` for production.
 5. Optional content decision: topology screenshots show a local Windows path in the Packet Tracer title bar (O-001).
+
+## Verdict
+
+`READY_FOR_OWNER_REVIEW`. Every acceptance gate in `12_ACCEPTANCE_GATES.md` was verified with observed evidence on Linux, including an independent audit whose findings are fixed. Remaining items are owner actions, not known defects: a Windows-native build run, GitHub-hosted CI, and a Cloudflare Pages preview. Nothing was pushed, merged or deployed.

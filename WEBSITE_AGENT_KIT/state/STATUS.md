@@ -1,11 +1,11 @@
 # Website program state
 
 **Program:** Astro monorepo learning website
-**Status:** IN_PROGRESS
+**Status:** READY_FOR_OWNER_REVIEW (local; not pushed, merged or deployed)
 **Branch:** `feature/astro-learning-platform` (local only, never pushed)
 **Base commit:** `234d9ee` (`main` = `origin/main`, verified)
 **Owner authorization:** local work only; no push/PR/merge/deploy
-**Updated:** 2026-10-28 09:32 UTC
+**Updated:** 2026-10-28 21:28 UTC
 
 | Phase | Status | Last commit | Evidence | Remaining |
 |---|---|---|---|---|
@@ -19,6 +19,6 @@
 | 07 Search | PASS | phase-07 commit | E-030..E-031, ADR-009, tests/e2e/search.spec.ts | |
 | 08 SEO/a11y/performance | PASS | phase-08 commit | E-032..E-036, ADR-010, a11y/layout/csp specs | |
 | 09 CI/Pages readiness | PASS (local simulation) | 884ea97, 54e9b5d | E-037..E-038, ADR-011, site/README.md | remote CI/Pages run needs owner push (B-003) |
-| 10 Independent audit | PENDING | | | |
+| 10 Independent audit | PASS | afe9882 (+ report commit) | AUDIT.md, E-039..E-042, FINAL_REPORT.md | Windows run, remote CI, Pages preview are owner steps (B-001, B-003) |
 
 States: PENDING, IN_PROGRESS, PASS, FAIL, BLOCKED. Update after each phase with factual test results, not estimates.
