@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { getRepository } from '../lib/content/repository';
+import { SITE_NAME, url } from '../lib/site';
+const repo = getRepository();
+const licenseUrl = `${repo.config.repoUrl}/blob/${repo.config.sourceRef}/LICENSE`;
+const provenance = repo.docs.find((d) => d.slug === 'provenance-and-licensing');
+const tested = repo.labs.filter((l) => l.simulatorStatus === 'tested_pass').length;
+---
+<BaseLayout title="About and licensing" description="Who makes this library, how it is licensed, and what it is not: an independent educational project, not affiliated with Cisco.">
+  <div class="wrap page-head">
+    <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'About' }]} />
+    <h1>About this library</h1>
+  </div>
+  <div class="wrap prose about">
+    <p>
+      The {SITE_NAME} is an open collection of original Cisco Packet Tracer labs for students and independent learners.
+      Every page on this site is built automatically from the Markdown guides and metadata in the
+      <a href={repo.config.repoUrl} rel="noopener noreferrer">public GitHub repository</a>, so the website and the repository always say the same thing.
+    </p>
+
+    <h2 id="independence">Independent, not affiliated with Cisco</h2>
+    <p>
+      This is an independent educational project. It is not affiliated with, sponsored by, or endorsed by Cisco Systems, Inc. or the Cisco Networking Academy.
+      Cisco, Cisco IOS, Cisco Packet Tracer, Cisco Networking Academy and CCNA are trademarks of Cisco Systems, Inc. and are used here only to describe what the labs teach.
+      Completing these labs does not lead to any certification.
+    </p>
+    <p>
+      The <code>.pkt</code> files open in Cisco Packet Tracer, which you download separately from Cisco. They cannot run in your browser, and Packet Tracer itself is not distributed here.
+    </p>
+
+    <h2 id="licensing">Licensing</h2>
+    <div class="table-scroll" role="region" tabindex="0" aria-label="Licensing summary">
+      <table>
+        <thead><tr><th scope="col">Material</th><th scope="col">License</th></tr></thead>
+        <tbody>
+          <tr><td>Lab guides, verification guides, learning paths, reference docs, topology diagrams and Packet Tracer topology files (<code>.pkt</code>)</td><td><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener noreferrer">CC BY-SA 4.0</a></td></tr>
+          <tr><td>Validation tools, tests, CI configuration and this website's source code</td><td><a href="https://opensource.org/licenses/MIT" rel="license noopener noreferrer">MIT</a></td></tr>
+          <tr><td>Fonts: Atkinson Hyperlegible Next and Mono by the Braille Institute, self-hosted</td><td><a href="https://openfontlicense.org/" rel="license noopener noreferrer">SIL Open Font License 1.1</a></td></tr>
+          <tr><td>Third-party software used to build the site (Astro, unified/remark, Pagefind and others)</td><td>Their own licenses, listed in <code>site/package-lock.json</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The MIT license covers code only. It does not apply to the educational content, which stays under CC BY-SA 4.0.
+      If you share or adapt a lab, credit the {SITE_NAME}, link to the license, say what you changed, and share your version under the same license.
+      Full terms are in the repository's <a href={licenseUrl} rel="noopener noreferrer">LICENSE file</a>{provenance && <>, and the <a href={provenance.route}>{provenance.title}</a> explains how content is classified</>}.
+    </p>
+
+    <h2 id="simulator-status">What "Tested in Packet Tracer" means</h2>
+    <p>
+      Each lab's simulator status comes straight from its metadata. "Tested in Packet Tracer" means the lab's topology and configuration were run in Cisco Packet Tracer and the results were recorded in the repository; on each lab page the status links to that record on GitHub.
+      Currently {tested} of {repo.labs.length} labs have that status. A lab without it has been reviewed against Cisco documentation but not yet run in the simulator.
+    </p>
+
+    <h2 id="passwords">Lab passwords are for practice only</h2>
+    <p>
+      Passwords in the guides and solution files (for example <code>cisco</code> or <code>class</code>) exist only for isolated simulator practice.
+      They are not secure settings for real equipment.
+    </p>
+
+    <h2 id="privacy">Privacy</h2>
+    <p>
+      This site has no accounts, analytics, advertising or tracking cookies. Search runs entirely in your browser. If you use the theme switch, your choice is stored in your browser's local storage and never sent anywhere.
+    </p>
+
+    <h2 id="contribute">Report a problem or contribute</h2>
+    <p>
+      Found a wrong command or a broken file? Open an issue on <a href={`${repo.config.repoUrl}/issues`} rel="noopener noreferrer">GitHub</a>.
+      New labs are added as folders in the repository and appear on this site automatically once they pass the repository's checks.
+      See the <a href={`${repo.config.repoUrl}/blob/${repo.config.sourceRef}/CONTRIBUTING.md`} rel="noopener noreferrer">contributing guide</a>.
+    </p>
+  </div>
+</BaseLayout>
+<style>
+  .page-head { padding-top: var(--sp-5); }
+  .page-head h1 { font-size: var(--fs-xl); margin-top: var(--sp-3); }
+  .about { margin-top: var(--sp-5); }
+  .about h2:first-of-type { margin-top: var(--sp-6); }
+</style>

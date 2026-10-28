@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getRepository } from '../../lib/content/repository';
+import { url } from '../../lib/site';
+const repo = getRepository();
+// Order: the order the root README's Quick Navigation lists them is not encoded
+// in metadata, so docs are shown alphabetically by title.
+const docs = [...repo.docs].sort((a, b) => a.title.localeCompare(b.title, 'en'));
+---
+<BaseLayout title="Reference guides" description="Packet Tracer setup, IOS command cheatsheet, troubleshooting method, lab index, curriculum coverage and licensing.">
+  <div class="wrap page-head">
+    <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Reference guides' }]} />
+    <h1>Reference guides</h1>
+    <p class="intro">Setup help, command references and background on how the library is organized.</p>
+  </div>
+  <div class="wrap">
+    <ul class="docs">
+      {docs.map((d) => (
+        <li>
+          <h2><a href={d.route}>{d.title}</a></h2>
+          {d.summary && <p>{d.summary}</p>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+<style>
+  .page-head { padding-top: var(--sp-5); }
+  .page-head h1 { font-size: var(--fs-xl); margin-top: var(--sp-3); }
+  .intro { color: var(--c-ink-soft); max-width: 66ch; margin: var(--sp-3) 0 0; }
+  .docs { list-style: none; margin: var(--sp-5) 0 0; padding: 0; border-top: 2px solid var(--c-ink); display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr)); column-gap: var(--sp-7); }
+  .docs li { padding-block: var(--sp-4); border-bottom: 1px solid var(--c-line); }
+  .docs h2 { font-size: var(--fs-md); }
+  .docs p { margin: var(--sp-2) 0 0; color: var(--c-ink-soft); font-size: var(--fs-sm); }
+</style>

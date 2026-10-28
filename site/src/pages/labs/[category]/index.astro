@@ -1,0 +1,45 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import LabCard from '../../../components/LabCard.astro';
+import WireSwatch from '../../../components/WireSwatch.astro';
+import { getRepository, type Category } from '../../../lib/content/repository';
+import { labById, url } from '../../../lib/site';
+
+export const getStaticPaths = (() => getRepository().categories.map((category) => ({ params: { category: category.slug }, props: { category } }))) satisfies GetStaticPaths;
+
+const { category } = Astro.props as { category: Category };
+const labs = category.labIds.map((id) => labById(id)!);
+const others = getRepository().categories.filter((c) => c.slug !== category.slug);
+---
+<BaseLayout title={`${category.label} labs`} description={`${labs.length} Cisco Packet Tracer ${labs.length === 1 ? 'lab' : 'labs'} in ${category.label}: ${labs.map((l) => l.title).join('; ')}.`}>
+  <div class="wrap page-head">
+    <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Labs', href: url('/labs/') }, { label: category.label }]} />
+    <h1><WireSwatch category={category.slug} /> {category.label}</h1>
+    <p class="intro">{labs.length} {labs.length === 1 ? 'lab' : 'labs'} in this topic area, in recommended learning order.</p>
+  </div>
+  <div class="wrap">
+    <ol class="lab-list">
+      {labs.map((lab) => <LabCard lab={lab} showCategory={false} />)}
+    </ol>
+    <nav class="other-cats" aria-label="Other topic areas">
+      <h2>Other topic areas</h2>
+      <ul>
+        {others.map((c) => <li><WireSwatch category={c.slug} /> <a href={c.route}>{c.label}</a> <span class="n">{c.labIds.length}</span></li>)}
+      </ul>
+    </nav>
+  </div>
+</BaseLayout>
+<style>
+  .page-head { padding-top: var(--sp-5); }
+  .page-head h1 { font-size: var(--fs-xl); margin-top: var(--sp-3); display: flex; align-items: center; gap: var(--sp-3); }
+  .page-head h1 :global(.wire) { font-size: 1.4rem; }
+  .intro { color: var(--c-ink-soft); margin: var(--sp-3) 0 0; }
+  .lab-list { list-style: none; margin: var(--sp-5) 0 0; padding: 0; border-top: 2px solid var(--c-ink); }
+  .other-cats { margin-top: var(--sp-7); }
+  .other-cats h2 { font-size: var(--fs-md); }
+  .other-cats ul { list-style: none; margin: var(--sp-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-6); }
+  .other-cats li { display: flex; align-items: center; gap: var(--sp-2); }
+  .n { color: var(--c-muted); font-size: var(--fs-sm); }
+</style>

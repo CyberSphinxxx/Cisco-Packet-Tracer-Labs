@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getRepository } from '../../lib/content/repository';
+import { url } from '../../lib/site';
+const repo = getRepository();
+---
+<BaseLayout title="Learning paths" description={`${repo.paths.length} curated sequences through the Cisco Packet Tracer labs: ${repo.paths.map((p) => p.title).join(', ')}.`}>
+  <div class="wrap page-head">
+    <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Learning paths' }]} />
+    <h1>Learning paths</h1>
+    <p class="intro">Each path is a curated order through the labs and reference guides. Pick the one that matches where you are starting from.</p>
+  </div>
+  <div class="wrap">
+    <ol class="paths">
+      {repo.paths.map((p) => {
+        const labs = p.steps.filter((s) => s.kind === 'lab');
+        return (
+          <li>
+            <h2><a href={p.route}>{p.title}</a></h2>
+            {p.summary && <p>{p.summary}</p>}
+            <p class="count">{p.steps.length} steps: {labs.length} labs{p.steps.length - labs.length > 0 && `, ${p.steps.length - labs.length} guides or projects`}</p>
+            <ol class="preview">
+              {p.steps.slice(0, 4).map((s) => <li><a href={s.url}>{s.label}</a></li>)}
+              {p.steps.length > 4 && <li class="more"><a href={p.route}>{p.steps.length - 4} more steps</a></li>}
+            </ol>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</BaseLayout>
+<style>
+  .page-head { padding-top: var(--sp-5); }
+  .page-head h1 { font-size: var(--fs-xl); margin-top: var(--sp-3); }
+  .intro { color: var(--c-ink-soft); max-width: 66ch; margin: var(--sp-3) 0 0; }
+  .paths { list-style: none; margin: var(--sp-5) 0 0; padding: 0; border-top: 2px solid var(--c-ink); }
+  .paths > li { padding-block: var(--sp-5); border-bottom: 1px solid var(--c-line); }
+  .paths h2 { font-size: var(--fs-lg); }
+  .paths p { margin: var(--sp-2) 0 0; max-width: 70ch; color: var(--c-ink-soft); }
+  .paths .count { color: var(--c-muted); font-size: var(--fs-sm); }
+  .preview { margin: var(--sp-3) 0 0; padding-left: 1.4em; font-size: var(--fs-sm); display: grid; gap: var(--sp-1); }
+  .preview .more { list-style: none; margin-left: -1.4em; }
+</style>

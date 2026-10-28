@@ -58,13 +58,13 @@ describe('clean build auto-discovers a new lab folder', () => {
     expect(fs.readFileSync(page, 'utf8')).toContain(FIXTURE.title);
     expect(fs.readFileSync(path.join(withFixture, 'labs', FIXTURE.category, FIXTURE.slug, 'assets', 'starter.pkt'), 'utf8')).toBe('fixture-starter-bytes');
     const catalog = path.join(withFixture, 'labs', 'index.html');
-    if (fs.existsSync(catalog)) expect(fs.readFileSync(catalog, 'utf8')).toContain(FIXTURE.id);
+    expect(fs.readFileSync(catalog, 'utf8')).toContain(`data-lab-id="${FIXTURE.id}"`);
 
     fs.rmSync(dir, { recursive: true, force: true });
     const without = path.join(tmp, 'dist-without');
     build(without);
     expect(fs.existsSync(path.join(without, 'labs', FIXTURE.category, FIXTURE.slug))).toBe(false);
     expect(fs.existsSync(path.join(without, 'labs', 'routing', 'single-area-ospfv2', 'index.html'))).toBe(true);
-    if (fs.existsSync(path.join(without, 'labs', 'index.html'))) expect(fs.readFileSync(path.join(without, 'labs', 'index.html'), 'utf8')).not.toContain(FIXTURE.id);
+    expect(fs.readFileSync(path.join(without, 'labs', 'index.html'), 'utf8')).not.toContain(FIXTURE.id);
   }, 240_000);
 });

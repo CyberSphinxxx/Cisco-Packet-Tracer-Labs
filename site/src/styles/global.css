@@ -88,6 +88,11 @@ samp {
   display: none !important;
 }
 
+/* Shown only when JavaScript is unavailable (the head script swaps no-js for js). */
+.js .nojs-only {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px;

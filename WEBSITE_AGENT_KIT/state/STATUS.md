@@ -5,7 +5,7 @@
 **Branch:** `feature/astro-learning-platform` (local only, never pushed)
 **Base commit:** `234d9ee` (`main` = `origin/main`, verified)
 **Owner authorization:** local work only; no push/PR/merge/deploy
-**Updated:** 2026-10-28 08:52 UTC
+**Updated:** 2026-10-28 09:00 UTC
 
 | Phase | Status | Last commit | Evidence | Remaining |
 |---|---|---|---|---|
@@ -13,9 +13,9 @@
 | 01 Ingestion proof | PASS | phase-01 commit | E-007..E-012, tests/unit/ingestion.test.ts | clean-checkout `npm ci` re-verified in Phase 02 |
 | 02 Content graph | PASS | phase-02 commit | E-013..E-018, INGESTION_PROOF.md | |
 | 03 Design foundation | PASS | phase-03 commit | E-019..E-021, ADR-008, screenshots (agent workspace) | 320/768/1024 widths re-checked in Phase 08 |
-| 04 Catalog filters | PENDING | | | |
+| 04 Catalog filters | PASS | phase-04 commit | E-022..E-025, tests/unit/filters.test.ts, tests/e2e/catalog.spec.ts | |
 | 05 Lab details | PENDING | | | |
-| 06 Paths/capstone/docs | PENDING | | | |
+| 06 Paths/capstone/docs | IN_PROGRESS | | index pages + about built early (E-025) | path/capstone/doc detail layouts |
 | 07 Search | PENDING | | | |
 | 08 SEO/a11y/performance | PENDING | | | |
 | 09 CI/Pages readiness | PENDING | | | |
