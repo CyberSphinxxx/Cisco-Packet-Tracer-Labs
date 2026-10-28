@@ -1,0 +1,17 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getRepository, type VerificationPage } from '../../../lib/content/repository';
+
+export const getStaticPaths = (() =>
+  getRepository()
+    .projects.filter((p) => p.verification)
+    .map((p) => ({ params: { slug: p.slug }, props: { page: p.verification! } }))) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: VerificationPage };
+---
+<BaseLayout title={page.title}>
+  <h1>{page.title}</h1>
+  <p><a href={page.parentRoute}>Back to {page.parentTitle}</a></p>
+  <div class="prose" set:html={page.html} />
+</BaseLayout>

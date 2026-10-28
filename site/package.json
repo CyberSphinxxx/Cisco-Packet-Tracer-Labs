@@ -14,7 +14,8 @@
     "test": "vitest run",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "verify:dist": "node scripts/check-dist.mjs"
   },
   "dependencies": {
     "astro": "7.3.8",

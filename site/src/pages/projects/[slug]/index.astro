@@ -1,0 +1,14 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getRepository, type Project } from '../../../lib/content/repository';
+
+export const getStaticPaths = (() =>
+  getRepository().projects.map((project) => ({ params: { slug: project.slug }, props: { project } }))) satisfies GetStaticPaths;
+
+const { project } = Astro.props as { project: Project };
+---
+<BaseLayout title={project.title} description={project.summary ?? undefined}>
+  <h1>{project.title}</h1>
+  <div class="prose" set:html={project.doc.html} />
+</BaseLayout>

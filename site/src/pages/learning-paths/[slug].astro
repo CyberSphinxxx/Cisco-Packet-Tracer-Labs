@@ -1,0 +1,14 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRepository, type LearningPath } from '../../lib/content/repository';
+
+export const getStaticPaths = (() =>
+  getRepository().paths.map((path) => ({ params: { slug: path.slug }, props: { path } }))) satisfies GetStaticPaths;
+
+const { path } = Astro.props as { path: LearningPath };
+---
+<BaseLayout title={path.title} description={path.summary ?? undefined}>
+  <h1>{path.title}</h1>
+  <div class="prose" set:html={path.doc.html} />
+</BaseLayout>

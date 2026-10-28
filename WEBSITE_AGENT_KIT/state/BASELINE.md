@@ -44,7 +44,7 @@ Existing CI: `.github/workflows/validate.yml` (ubuntu-latest, Python 3.12, `cont
 | Capstone | **1** | `projects/small-office-network/{README.md, verification.md, configs/R1,R2,S1.txt, assets/...}`. **Has no `metadata.json`** (title/status come from its README). |
 | Learning paths | **3** | `learning-paths/{networking-beginner,bsit-networking,ccna-aligned}.md` |
 | Reference docs | **8** | `docs/{getting-started,installation,cisco-ios-cheatsheet,troubleshooting,lab-index,coverage-matrix,migration-map,provenance-and-licensing}.md` (all 8 are linked from README "Quick Navigation") |
-| Config files | 33 lab + 3 capstone | `configs/*.txt` |
+| Config files | 27 lab + 3 capstone (30) | `configs/*.txt` (corrected in Phase 02 from an earlier miscount) |
 | Binary assets | **43** | 14 `starter.pkt`, 14 `completed.pkt`, 14 `topology.png`, 1 historical `labs/routing/dual-stack-static-routing/dual-stack-static-routing.pkt` |
 
 - Lab IDs PTL-0001..PTL-0013, all unique; all `source.type = original`, `license_decision = approved_dual_license`, `status.documentation = reviewed`, `status.simulator = tested_pass`, `difficulty` in {beginner (4), intermediate (9)}, `estimated_minutes` 30-45, `packet_tracer_version = 8.2+`.

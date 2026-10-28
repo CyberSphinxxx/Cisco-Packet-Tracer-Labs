@@ -1,0 +1,14 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRepository, type DocPage } from '../../lib/content/repository';
+
+export const getStaticPaths = (() =>
+  getRepository().docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))) satisfies GetStaticPaths;
+
+const { doc } = Astro.props as { doc: DocPage };
+---
+<BaseLayout title={doc.title} description={doc.summary ?? undefined}>
+  <h1>{doc.title}</h1>
+  <div class="prose" set:html={doc.doc.html} />
+</BaseLayout>
