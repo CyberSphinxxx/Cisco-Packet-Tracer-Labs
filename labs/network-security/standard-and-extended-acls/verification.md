@@ -2,8 +2,7 @@
 
 **Lab ID:** PTL-0013  
 **Title:** Configuring Standard and Extended IPv4 Access Control Lists  
-**Target Simulator:** Cisco Packet Tracer 8.0+  
-**Status:** `NOT_TESTED` (Authoritative Engineering Specification)
+**Status:** `TESTED_PASS` (Verified live in Cisco Packet Tracer 9.0.1 via MCP loopback bridge automation)
 
 ---
 
@@ -14,7 +13,7 @@ To construct or manually verify this topology in Cisco Packet Tracer:
 ### Device Inventory
 | Device Role | PT Device Model | Display Name | Modules / Slots |
 |---|---|---|---|
-| Border Router & Firewall | Cisco ISR 4321 | R1 | Default GigabitEthernet interfaces (3 GE ports) |
+| Border Router & Firewall | Cisco ISR 4331 | R1 | Default GigabitEthernet interfaces (3 GE ports: Gi0/0/0, Gi0/0/1, Gi0/0/2) |
 | Accounting Switch | Cisco Catalyst 2960-24TT | S1 | 24 FastEthernet + 2 GigabitEthernet ports |
 | Sales Switch | Cisco Catalyst 2960-24TT | S2 | 24 FastEthernet + 2 GigabitEthernet ports |
 | Server Farm Switch | Cisco Catalyst 2960-24TT | S3 | 24 FastEthernet + 2 GigabitEthernet ports |

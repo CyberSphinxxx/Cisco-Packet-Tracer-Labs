@@ -207,6 +207,57 @@ def validate(root: Path) -> list[tuple[str, str, str]]:
                 href=next((x for x in linkmatch.groups() if x is not None),'')
                 valid_rel_link(readme,href.split(' "',1)[0])
 
+            # Cross-file verification checks
+            verification_path = lab / 'verification.md'
+            v_prose = ''
+            if verification_path.exists():
+                v_prose = verification_path.read_text(encoding='utf-8', errors='replace')
+                if uid not in v_prose:
+                    add('ERROR', verification_path, f'verification guide missing lab ID {uid}')
+                if sim == 'tested_pass' and 'NOT_TESTED' in v_prose:
+                    add('ERROR', verification_path, 'verification guide indicates NOT_TESTED while metadata claims tested_pass')
+                for linkmatch in LINK.finditer(v_prose):
+                    href = next((x for x in linkmatch.groups() if x is not None), '')
+                    valid_rel_link(verification_path, href.split(' "', 1)[0])
+
+            configs_dir = lab / 'configs'
+            if configs_dir.is_dir():
+                cfg_files = sorted(configs_dir.glob('*.txt'))
+                if not cfg_files:
+                    add('ERROR', configs_dir, 'configs directory contains no .txt configuration files')
+                for cfg in cfg_files:
+                    if cfg.stat().st_size == 0:
+                        add('ERROR', cfg, f'configuration file {cfg.name} is empty')
+                        continue
+                    cfg_text = cfg.read_text(encoding='utf-8', errors='replace')
+                    for ip_match in re.finditer(r'^\s*ip\s+address\s+(\d+\.\d+\.\d+\.\d+)\s+(\d+\.\d+\.\d+\.\d+)', cfg_text, flags=re.M):
+                        configured_ip = ip_match.group(1)
+                        if configured_ip in {'0.0.0.0', '255.255.255.255'}:
+                            continue
+                        if configured_ip not in prose and configured_ip not in v_prose:
+                            add('ERROR', cfg, f'configured interface IP {configured_ip} not found in README.md or verification.md')
+
+    projects = root / 'projects'
+    if projects.exists():
+        for proj in sorted(p for p in projects.iterdir() if p.is_dir()):
+            p_readme = proj / 'README.md'
+            p_verif = proj / 'verification.md'
+            p_prose = p_readme.read_text(encoding='utf-8', errors='replace') if p_readme.exists() else ''
+            p_v_prose = p_verif.read_text(encoding='utf-8', errors='replace') if p_verif.exists() else ''
+            p_configs = proj / 'configs'
+            if p_configs.is_dir():
+                for cfg in sorted(p_configs.glob('*.txt')):
+                    if cfg.stat().st_size == 0:
+                        add('ERROR', cfg, f'configuration file {cfg.name} is empty')
+                        continue
+                    cfg_text = cfg.read_text(encoding='utf-8', errors='replace')
+                    for ip_match in re.finditer(r'^\s*ip\s+address\s+(\d+\.\d+\.\d+\.\d+)\s+(\d+\.\d+\.\d+\.\d+)', cfg_text, flags=re.M):
+                        configured_ip = ip_match.group(1)
+                        if configured_ip in {'0.0.0.0', '255.255.255.255'}:
+                            continue
+                        if configured_ip not in p_prose and configured_ip not in p_v_prose:
+                            add('ERROR', cfg, f'configured interface IP {configured_ip} not found in README.md or verification.md')
+
     lab_index = root / 'docs' / 'lab-index.md'
     if lab_index.exists():
         index_text = lab_index.read_text(encoding='utf-8', errors='replace')

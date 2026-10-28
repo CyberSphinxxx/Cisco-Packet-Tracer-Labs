@@ -32,6 +32,12 @@
 3. Under **End Devices**, drag two **PC**s. Label them `PC-Admin` and `PC-Sales`.
 4. Cable the devices according to the matrix above using **Copper Straight-Through** cables.
 5. Configure host IP addressing:
+   - **S1 (VLAN 1 SVI):**
+     - IPv4 Address: `192.168.1.2` / `255.255.255.0`
+     - IPv4 Gateway: `192.168.1.1`
+   - **S2 (VLAN 1 SVI):**
+     - IPv4 Address: `192.168.2.2` / `255.255.255.0`
+     - IPv4 Gateway: `192.168.2.1`
    - **PC-Admin:**
      - IPv4 Address: `192.168.1.10` / `255.255.255.0`
      - IPv4 Gateway: `192.168.1.1`

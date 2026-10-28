@@ -40,8 +40,8 @@ To construct or manually verify this capstone network in Cisco Packet Tracer:
   - `Gi0/0/0.30` (VLAN 30 Guest): `192.168.30.1/24` (ACL filtered)
 - **S1 Management SVI (VLAN 10):** `192.168.10.2/24`, Gateway: `192.168.10.1`
 - **PC-Mgmt:** Static IP: `192.168.10.10/24`, Gateway: `192.168.10.1`
-- **PC-Staff:** DHCP Assigned (`192.168.20.11/24`), Gateway: `192.168.20.1`, DNS: `208.67.222.222`
-- **PC-Guest:** DHCP Assigned (`192.168.30.11/24`), Gateway: `192.168.30.1`, DNS: `208.67.222.222`
+- **PC-Staff:** DHCP Assigned (`192.168.20.11/24`), Gateway: `192.168.20.1`, DNS Server: `208.67.222.222`, Domain Name: `apex.local`
+- **PC-Guest:** DHCP Assigned (`192.168.30.11/24`), Gateway: `192.168.30.1`, DNS Server: `208.67.222.222`, Domain Name: `guest.apex.local`
 
 ---
 
@@ -50,10 +50,10 @@ To construct or manually verify this capstone network in Cisco Packet Tracer:
 | Test ID | Objective | Command / Procedure | Expected Result | Pass Criteria |
 |---|---|---|---|---|
 | **V-01** | Verify 802.1Q Trunking & Subinterfaces | `S1# show interfaces trunk`<br>`R1# show ip interface brief` | S1 Gi0/1 is trunking, native VLAN is 999, allowed VLANs 10,20,30. R1 subinterfaces `Gi0/0/0.10`, `.20`, `.30` are `up/up`. | Router-on-a-Stick trunk fully active |
-| **V-02** | Staff Dynamic DHCP Acquisition | PC-Staff Desktop -> IP Configuration -> Click **DHCP** | Status: `DHCP request successful`. IP: `192.168.20.11`, Mask: `255.255.255.0`, Gateway: `192.168.20.1`, DNS: `208.67.222.222`. | Dynamic lease assigned within Staff pool |
-| **V-03** | Guest Dynamic DHCP Acquisition | PC-Guest Desktop -> IP Configuration -> Click **DHCP** | Status: `DHCP request successful`. IP: `192.168.30.11`, Mask: `255.255.255.0`, Gateway: `192.168.30.1`, DNS: `208.67.222.222`. | Dynamic lease assigned within Guest pool |
+| **V-02** | Staff Dynamic DHCP Acquisition | PC-Staff Desktop -> IP Configuration -> Click **DHCP** | Status: `DHCP request successful`. IP: `192.168.20.11`, Mask: `255.255.255.0`, Gateway: `192.168.20.1`, DNS: `208.67.222.222`, Domain Name: `apex.local`. | Dynamic lease assigned within Staff pool |
+| **V-03** | Guest Dynamic DHCP Acquisition | PC-Guest Desktop -> IP Configuration -> Click **DHCP** | Status: `DHCP request successful`. IP: `192.168.30.11`, Mask: `255.255.255.0`, Gateway: `192.168.30.1`, DNS: `208.67.222.222`, Domain Name: `guest.apex.local`. | Dynamic lease assigned within Guest pool |
 | **V-04** | Inter-VLAN Routing (Staff to Mgmt) | `PC-Staff> ping 192.168.10.10` | 4 echo requests sent; ICMP replies received (success rate 75-100%). | Routed communication between internal VLANs works |
-| **V-05** | Internet / HQ Reachability | `PC-Staff> ping 209.165.201.1`<br>`PC-Guest> ping 209.165.201.1` | Both Staff and Guest workstations successfully ping the HQ/Internet simulated cloud service. | Default routing to WAN functional |
+| **V-05** | Simulated WAN / HQ Reachability | `PC-Staff> ping 209.165.201.1`<br>`PC-Guest> ping 209.165.201.1` | Both Staff and Guest workstations successfully ping upstream HQ router Loopback0 (`209.165.201.1`). *(Note: Validates default static routing across simulated WAN transit; live Internet access and active DNS resolution are not simulated).* | Default routing to WAN functional |
 | **V-06** | Port Security Sticky Binding | `S1# show port-security address` | PC-Staff MAC address learned dynamically on Fa0/6, Type `SecureSticky`. Interface is `Secure-up`. | Hardware MAC pinned to edge port |
 | **V-07** | In-Band SSH Management Access | `PC-Mgmt> ssh -l admin 192.168.10.1`<br>`PC-Mgmt> ssh -l admin 192.168.10.2` | Passwords accepted (`adminpass123`); encrypted administrative access granted to R1 and S1. | SSHv2 remote management functional |
 

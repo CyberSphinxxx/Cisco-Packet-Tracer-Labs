@@ -87,8 +87,8 @@
   - `assets/topology.png`: 52,405 bytes (SHA: `af94fb49...`) — verified canvas capture.
   - Starter and completed files are genuine, non-identical deliverables.
 - **Functional Validation:**
-  - Cross-topology ping between PC1 (`192.168.1.10`) and PC2 (`192.168.2.10`): **100% Pass** (TTL=126).
-  - Cross-topology IPv6 ping between PC1 (`2001:db8:acad:1::10`) and PC2 (`2001:db8:acad:2::10`): **100% Pass**.
+  - Cross-topology ping between PC0 (`192.168.10.2`) and PC2 (`10.1.1.2`): **100% Pass** (TTL=126).
+  - Cross-topology IPv6 ping between PC0 (`2001:db8:acad:10::2`) and PC2 (`2001:db8:cafe:1::2`): **100% Pass** (TTL=126).
 
 ---
 
@@ -99,12 +99,13 @@
   - Native VLAN 999 and parking-lot VLAN 99 configured.
   - Switch `S1` `Gi0/1` trunk matches router `R1` subinterfaces (`Gi0/0/0.10`, `Gi0/0/0.20`, `Gi0/0/0.30`).
 - **Dynamic DHCP Services:**
-  - Router `R1` hosts DHCP pools for Staff and Guest with exclusions.
-  - `PC-Staff` dynamically leases `192.168.20.11/24` (DNS: `apex.local`).
-  - `PC-Guest` dynamically leases `192.168.30.11/24`.
-- **Perimeter ACL Isolation:**
+  - Router `R1` hosts DHCP pools for Staff (`STAFF_POOL`) and Guest (`GUEST_POOL`) with excluded addresses (`.1-.10`).
+  - `PC-Staff` dynamically leases `192.168.20.11/24`, default gateway `192.168.20.1`, DNS server `208.67.222.222`, and domain name `apex.local`.
+  - `PC-Guest` dynamically leases `192.168.30.11/24`, default gateway `192.168.30.1`, DNS server `208.67.222.222`, and domain name `guest.apex.local`.
+- **Perimeter ACL Isolation & Simulated WAN Reachability:**
   - Inbound ACL on `Gi0/0/0.30` drops guest traffic toward internal Staff (`192.168.20.0/24`) and Management (`192.168.10.0/24`).
-  - Permitted guest traffic successfully routes to HQ border router `R2` (`209.165.201.1`).
+  - Permitted guest traffic successfully routes to HQ border router `R2` simulated service (`Loopback0` `209.165.201.1`) across WAN transit link (`209.165.200.224/30`).
+  - *Distinction Note:* WAN connectivity is verified via ICMP ping to `209.165.201.1`; actual live Internet access and external DNS name resolution are simulated via static defaults and are not active live Internet lookups.
 - **Switchport Port Security:**
   - `S1` `Fa0/6` dynamically binds `PC-Staff` sticky MAC.
   - Swapping to `Rogue-Laptop` triggers immediate shutdown violation (`err-disabled`).

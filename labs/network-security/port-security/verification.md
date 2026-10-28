@@ -2,8 +2,7 @@
 
 **Lab ID:** PTL-0004  
 **Title:** Implementing Switchport Port Security  
-**Target Simulator:** Cisco Packet Tracer 8.0+  
-**Status:** `NOT_TESTED` (Authoritative Engineering Specification)
+**Status:** `TESTED_PASS` (Verified live in Cisco Packet Tracer 9.0.1 via MCP loopback bridge automation)
 
 ---
 

@@ -2,8 +2,7 @@
 
 **Lab ID:** PTL-0012  
 **Title:** Configuring Cisco IOS DHCPv4 Server and Relay Agent  
-**Target Simulator:** Cisco Packet Tracer 8.0+  
-**Status:** `NOT_TESTED` (Authoritative Engineering Specification)
+**Status:** `TESTED_PASS` (Verified live in Cisco Packet Tracer 9.0.1 via MCP loopback bridge automation)
 
 ---
 

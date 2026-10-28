@@ -209,7 +209,37 @@ class RepoValidationTests(unittest.TestCase):
         (self.lab / 'restricted.pka').write_bytes(b'pka_binary')
         self.assertTrue(any('restricted NetAcad .pka file detected' in x for x in self.errors()))
 
+    def test_verification_missing_lab_id(self):
+        (self.lab / 'verification.md').write_text('# Verification\nSome text without ID\n', encoding='utf8')
+        self.assertTrue(any('verification guide missing lab ID' in x for x in self.errors()))
+
+    def test_verification_not_tested_when_metadata_tested_pass(self):
+        (self.root / 'ev.md').write_text('# Ev\n', encoding='utf8')
+        (self.lab / 'starter.pkt').write_bytes(b'starter')
+        (self.lab / 'completed.pkt').write_bytes(b'completed')
+        (self.lab / 'topology.png').write_bytes(b'\x89PNG\r\n\x1a\nimage')
+        self.meta['status']['simulator'] = 'tested_pass'
+        self.meta['status']['simulator_evidence'] = 'ev.md'
+        self.meta['assets']['starter'] = 'starter.pkt'
+        self.meta['assets']['completed'] = 'completed.pkt'
+        self.meta['assets']['topology'] = 'topology.png'
+        self.save()
+        (self.lab / 'verification.md').write_text(f'# PTL-0001\nStatus: NOT_TESTED\n', encoding='utf8')
+        self.assertTrue(any('indicates NOT_TESTED while metadata claims tested_pass' in x for x in self.errors()))
+
+    def test_empty_config_file(self):
+        configs = self.lab / 'configs'
+        configs.mkdir(parents=True)
+        (configs / 'R1.txt').write_text('', encoding='utf8')
+        self.assertTrue(any('is empty' in x for x in self.errors()))
+
+    def test_config_ip_not_in_docs(self):
+        configs = self.lab / 'configs'
+        configs.mkdir(parents=True)
+        (configs / 'R1.txt').write_text('interface Gi0/0\n ip address 172.16.50.1 255.255.255.0\n', encoding='utf8')
+        (self.lab / 'README.md').write_text('# Hello IOS\nNo IP here.\n', encoding='utf8')
+        self.assertTrue(any('configured interface IP 172.16.50.1 not found' in x for x in self.errors()))
+
 
 if __name__ == '__main__':
     unittest.main()
-

@@ -65,7 +65,7 @@ All deliverables have been saved as authentic `.pkt` binary packages (`assets/st
 
 ### Batch B: Advanced Layer 2/3 Switching & Routing
 - **PTL-0006 (Layer 2 EtherChannel with LACP):** Dual Catalyst 2960 switches with 2-port bundle (`Fa0/1 - 2`) in Port-Channel 1; verified 802.3ad LACP protocol negotiation (`active`/`active`), bundling state (`SU` / `P`), link-down failover without packet loss, and channel-group configuration mode (`8f91709`).
-- **PTL-0001 (Dual-Stack IPv4/IPv6 Static Routing):** Two Cisco ISR 4321 routers with dual-stack IPv4 (`192.168.1.0/24`, `10.0.0.0/30`, `192.168.2.0/24`) and IPv6 (`2001:db8:acad::/64`); verified recursive/next-hop static routes, end-to-end ping, and bit-identical preservation of legacy asset (`1573d6d`).
+- **PTL-0001 (Dual-Stack IPv4/IPv6 Static Routing):** Two Cisco ISR 4331 routers with dual-stack IPv4 (LAN 1: `192.168.10.0/24`, Transit: `209.165.200.224/30`, LAN 2: `10.1.1.0/24`) and IPv6 (`2001:db8:acad:10::/64`, `2001:db8:feed:224::/64`, `2001:db8:cafe:1::/64`); verified recursive/next-hop static routes, end-to-end ping, and bit-identical preservation of legacy asset (`1573d6d`).
 - **PTL-0010 (Router-on-a-Stick Inter-VLAN Routing):** Cisco ISR 4321 and Catalyst 2960; verified 802.1Q encapsulation subinterfaces (`Gi0/0/0.10` and `Gi0/0/0.20`), native VLAN matching, trunk forwarding, and inter-VLAN routing (`0a2ab48`).
 
 ### Batch C: Dynamic Routing & Infrastructure Services

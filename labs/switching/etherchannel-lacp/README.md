@@ -31,16 +31,21 @@ The topology features two Cisco Catalyst 2960 switches connected via redundant F
 ```text
                ┌─────────── FastEthernet0/1 ───────────┐
 [Switch S1] ───┤                                       ├─── [Switch S2]
-               └─────────── FastEthernet0/2 ───────────┘
-               ◄─── Bundled as Port-channel 1 (Po1) ───►
+   │           └─────────── FastEthernet0/2 ───────────┘          │
+   │           ◄─── Bundled as Port-channel 1 (Po1) ───►          │
+ Fa0/6                                                          Fa0/6
+   │                                                              │
+[PC-A] (192.168.1.1/24)                                        [PC-B] (192.168.1.2/24)
 ```
 
 | Device Name | Model | Interface | Connected Device | Neighbor Interface | Cable Type |
 |---|---|---|---|---|---|
-| **S1** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S2 | FastEthernet0/1 | Copper Straight-Through / Cross-Over |
-| **S1** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S2 | FastEthernet0/2 | Copper Straight-Through / Cross-Over |
-| **S2** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S1 | FastEthernet0/1 | Copper Straight-Through / Cross-Over |
-| **S2** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S1 | FastEthernet0/2 | Copper Straight-Through / Cross-Over |
+| **S1** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S2 | FastEthernet0/1 | Copper Cross-Over / Straight-Through |
+| **S1** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S2 | FastEthernet0/2 | Copper Cross-Over / Straight-Through |
+| **S1** | Catalyst 2960-24TT | FastEthernet0/6 | PC-A | FastEthernet0 | Copper Straight-Through |
+| **S2** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S1 | FastEthernet0/1 | Copper Cross-Over / Straight-Through |
+| **S2** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S1 | FastEthernet0/2 | Copper Cross-Over / Straight-Through |
+| **S2** | Catalyst 2960-24TT | FastEthernet0/6 | PC-B | FastEthernet0 | Copper Straight-Through |
 
 ---
 
@@ -50,6 +55,8 @@ The topology features two Cisco Catalyst 2960 switches connected via redundant F
 |---|---|---|---|---|---|
 | **S1** | VLAN 1 (SVI) | `192.168.1.11` | `255.255.255.0` | `192.168.1.1` | Switch 1 Management |
 | **S2** | VLAN 1 (SVI) | `192.168.1.12` | `255.255.255.0` | `192.168.1.1` | Switch 2 Management |
+| **PC-A** | FastEthernet0 | `192.168.1.1` | `255.255.255.0` | N/A | Host A Access |
+| **PC-B** | FastEthernet0 | `192.168.1.2` | `255.255.255.0` | N/A | Host B Access |
 
 ---
 

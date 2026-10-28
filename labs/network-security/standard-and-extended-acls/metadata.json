@@ -23,7 +23,7 @@
   "activity_reference": null,
   "packet_tracer_version": "8.2+",
   "devices": [
-    "Cisco ISR 4321 Router",
+    "Cisco ISR 4331 Router",
     "Cisco Catalyst 2960-24TT Switch",
     "Server-PT Application Server",
     "PC-PT End Device"

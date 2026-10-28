@@ -43,9 +43,9 @@ The topology features Router R1 connecting an Accounting LAN, a Sales LAN, and a
 
 | Device Name | Model | Interface | Connected Device | Neighbor Interface | Network Subnet |
 |---|---|---|---|---|---|
-| **R1** | ISR 4321 | GigabitEthernet0/0/0 | Switch S1 | GigabitEthernet0/2 | `192.168.10.0/24` (Accounting) |
-| **R1** | ISR 4321 | GigabitEthernet0/0/1 | Switch S2 | GigabitEthernet0/2 | `192.168.20.0/24` (Sales) |
-| **R1** | ISR 4321 | GigabitEthernet0/0/2 | Switch S3 | GigabitEthernet0/2 | `192.168.30.0/24` (Server Farm) |
+| **R1** | ISR 4331 | GigabitEthernet0/0/0 | Switch S1 | GigabitEthernet0/2 | `192.168.10.0/24` (Accounting) |
+| **R1** | ISR 4331 | GigabitEthernet0/0/1 | Switch S2 | GigabitEthernet0/2 | `192.168.20.0/24` (Sales) |
+| **R1** | ISR 4331 | GigabitEthernet0/0/2 | Switch S3 | GigabitEthernet0/2 | `192.168.30.0/24` (Server Farm) |
 | **WebServer** | Server-PT | FastEthernet0 | Switch S3 | GigabitEthernet0/1 | `192.168.30.100/24` |
 
 ---

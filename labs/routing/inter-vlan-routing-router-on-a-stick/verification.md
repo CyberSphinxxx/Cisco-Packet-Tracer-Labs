@@ -12,36 +12,36 @@
 ### Device Hardware & Module Schedule
 | Device Role | Device Label | Packet Tracer Model | Module Slots | Software / IOS Version |
 |---|---|---|---|---|
-| Inter-VLAN Router | **R1** | Cisco ISR 4321 (or 2911) | 2x GigabitEthernet onboard | Cisco IOS XE 16.6.4 / IOS 15.x |
+| Inter-VLAN Router | **R1** | Cisco ISR 4321 | 2x GigabitEthernet onboard | Cisco IOS XE 16.6.4 |
 | Access & Trunk Switch | **S1** | Cisco Catalyst 2960-24TT | 24x 10/100, 2x Gigabit | Cisco IOS 15.0(2)SE4 (LAN Base) |
-| Faculty Workstation | **PC1** | PC-PT | 1x FastEthernet | Generic Host OS |
-| Student Workstation | **PC2** | PC-PT | 1x FastEthernet | Generic Host OS |
+| Faculty Workstation | **PC-Faculty** | PC-PT | 1x FastEthernet | Generic Host OS |
+| Student Workstation | **PC-Student** | PC-PT | 1x FastEthernet | Generic Host OS |
 
 ### Port-to-Port Cabling Matrix
 | Origin Device | Origin Port | Destination Device | Destination Port | Link Role | Cable Type |
 |---|---|---|---|---|---|
-| **R1** | `GigabitEthernet0/0/0` | **Switch S1** | `FastEthernet0/1` | 802.1Q Trunk Link (ROAS) | Copper Straight-Through |
-| **Switch S1** | `FastEthernet0/11` | **PC1** | `FastEthernet0` | Access Port (VLAN 10) | Copper Straight-Through |
-| **Switch S1** | `FastEthernet0/21` | **PC2** | `FastEthernet0` | Access Port (VLAN 20) | Copper Straight-Through |
+| **R1** | `GigabitEthernet0/0/0` | **Switch S1** | `GigabitEthernet0/1` | 802.1Q Trunk Link (ROAS) | Copper Straight-Through |
+| **Switch S1** | `FastEthernet0/1` | **PC-Faculty** | `FastEthernet0` | Access Port (VLAN 10) | Copper Straight-Through |
+| **Switch S1** | `FastEthernet0/11` | **PC-Student** | `FastEthernet0` | Access Port (VLAN 20) | Copper Straight-Through |
 
 ### Addressing Table
 | Device | Interface | IPv4 Address | Subnet Mask | Default Gateway | 802.1Q Tag |
 |---|---|---|---|---|---|
+| **R1** | Gi0/0/0 | Unassigned | N/A | N/A | Physical Trunk Parent Port |
 | **R1** | Gi0/0/0.10 | `192.168.10.1` | `255.255.255.0` | N/A | VLAN 10 |
 | **R1** | Gi0/0/0.20 | `192.168.20.1` | `255.255.255.0` | N/A | VLAN 20 |
-| **S1** | VLAN 99 (SVI) | `192.168.99.2` | `255.255.255.0` | `192.168.99.1` | VLAN 99 |
-| **PC1** | FastEthernet0 | `192.168.10.10` | `255.255.255.0` | `192.168.10.1` | Untagged (Access) |
-| **PC2** | FastEthernet0 | `192.168.20.10` | `255.255.255.0` | `192.168.20.1` | Untagged (Access) |
+| **PC-Faculty** | FastEthernet0 | `192.168.10.10` | `255.255.255.0` | `192.168.10.1` | Untagged (Access VLAN 10) |
+| **PC-Student** | FastEthernet0 | `192.168.20.10` | `255.255.255.0` | `192.168.20.1` | Untagged (Access VLAN 20) |
 
 ---
 
 ## 2. Pre-Configuration & Starter State
 
 In the starter state (`starter`):
-- Switch S1 has VLAN 10 and VLAN 20 configured on access ports `Fa0/11` and `Fa0/21`.
+- Switch S1 has VLAN 10 and VLAN 20 configured on access ports `Fa0/1` and `Fa0/11`.
 - Router R1 is unconfigured and physical link `Gi0/0/0` is shut down.
-- Prior to configuring ROAS, PC1 and PC2 cannot communicate (isolated by VLAN segmentation).
-- Student must configure 802.1Q trunking on Switch S1 `Fa0/1`, enable `Gi0/0/0` without an IP address, configure subinterfaces `Gi0/0/0.10` and `Gi0/0/0.20` with `encapsulation dot1Q` and gateway IPs, and verify routed inter-VLAN reachability.
+- Prior to configuring ROAS, PC-Faculty and PC-Student cannot communicate (isolated by VLAN segmentation).
+- Student must configure 802.1Q trunking on Switch S1 `Gi0/1`, enable `Gi0/0/0` without an IP address, configure subinterfaces `Gi0/0/0.10` and `Gi0/0/0.20` with `encapsulation dot1Q` and gateway IPs, and verify routed inter-VLAN reachability.
 
 Complete reference configurations:
 - [`configs/R1.txt`](configs/R1.txt)
@@ -69,12 +69,12 @@ Complete reference configurations:
   ```text
   S1# show interfaces trunk
   Port        Mode             Encapsulation  Status        Native vlan
-  Fa0/1       on               802.1q         trunking      1
+  Gig0/1      on               802.1q         trunking      1
   ```
-- **Criterion:** Switch port `Fa0/1` is actively trunking using 802.1Q encapsulation.
+- **Criterion:** Switch port `Gig0/1` is actively trunking using 802.1Q encapsulation.
 
 ### Test POS-03: Inter-VLAN Routing Reachability
-- **Action:** From `PC1` (`192.168.10.10`), ping `PC2` (`192.168.20.10`).
+- **Action:** From `PC-Faculty` (`192.168.10.10`), ping `PC-Student` (`192.168.20.10`).
 - **Expected Terminal Output:**
   ```text
   C:\> ping 192.168.20.10
@@ -90,7 +90,7 @@ Complete reference configurations:
 ## 4. Negative Verification Tests
 
 ### Test NEG-01: Encapsulation VLAN Tag Mismatch
-- **Action:** On `R1`, change subinterface encapsulation: `interface Gi0/0/0.10` -> `encapsulation dot1Q 30`. Attempt ping from `PC1` to `192.168.10.1`.
+- **Action:** On `R1`, change subinterface encapsulation: `interface Gi0/0/0.10` -> `encapsulation dot1Q 30`. Attempt ping from `PC-Faculty` to `192.168.10.1`.
 - **Expected Output:**
   ```text
   C:\> ping 192.168.10.1
@@ -99,7 +99,7 @@ Complete reference configurations:
 - **Criterion:** R1 drops frames tagged with VLAN 10 because `Gi0/0/0.10` is expecting VLAN 30 tags.
 
 ### Test NEG-02: Switch Trunk Port Reverted to Access Mode
-- **Action:** On `S1`, change `Fa0/1` to `switchport mode access`.
+- **Action:** On `S1`, change `Gi0/1` to `switchport mode access`.
 - **Expected Output:**
   - `show interfaces trunk` on S1 returns no active trunks.
   - Inter-VLAN routing fails completely because the switch strips VLAN tags or blocks multi-VLAN traffic across an access port.

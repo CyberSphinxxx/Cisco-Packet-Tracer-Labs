@@ -8,10 +8,10 @@ Modern small-to-medium business (SMB) networks require high availability, logica
 ### The Business Scenario
 **Apex Innovations** is opening a new branch office housing three operational groups:
 1. **Management (VLAN 10):** IT administrators and branch managers requiring secure access to network infrastructure and servers.
-2. **Staff (VLAN 20):** General office workers requiring access to internal file servers and the Internet.
-3. **Guest / Visitors (VLAN 30):** Temporary visitors and vendor devices requiring outbound Internet connectivity while being strictly blocked from accessing internal staff and management systems.
+2. **Staff (VLAN 20):** General office workers requiring access to internal file servers and external simulated services.
+3. **Guest / Visitors (VLAN 30):** Temporary visitors and vendor devices requiring outbound WAN connectivity while being strictly blocked from accessing internal staff and management systems.
 
-The branch utilizes a centralized Cisco ISR 4321 router (`R1`) and a Cisco Catalyst 2960 access switch (`S1`), connecting to the corporate headquarters via a routed WAN link.
+The branch utilizes a centralized Cisco ISR 4321 router (`R1`) and a Cisco Catalyst 2960 access switch (`S1`), connecting to the corporate headquarters / simulated ISP border router (`R2`) via a routed WAN link (`209.165.200.224/30`).
 
 ---
 
@@ -26,7 +26,7 @@ The branch utilizes a centralized Cisco ISR 4321 router (`R1`) and a Cisco Catal
                                   [Branch Router R1]
                                          │ Gi0/0/0 (802.1Q Trunk carrying VLANs 10, 20, 30)
                                          ▼
-                                 [Branch Switch S1]
+                                  [Branch Switch S1]
        ┌─────────────────────────────────┼─────────────────────────────────┐
        ▼                                 ▼                                 ▼
    [Fa0/1 - 5]                       [Fa0/6 - 15]                     [Fa0/16 - 24]
@@ -65,20 +65,22 @@ To complete this capstone successfully, review the relevant modular lab guides:
 - **Dual-Stack WAN Routing:** Configure static default route `ip route 0.0.0.0 0.0.0.0 209.165.200.226` or dynamic single-area OSPFv2 ([PTL-0011](../../labs/routing/single-area-ospfv2/README.md)).
 
 ### C. Network Services Automation
-- **Cisco IOS DHCP Server:** Configure DHCP pools for Staff (`VLAN 20`) and Guest (`VLAN 30`) with network addresses, default routers, and DNS servers, excluding the first 10 addresses of each subnet ([PTL-0012](../../labs/network-services/dhcp-server-and-relay/README.md)).
+- **Cisco IOS DHCP Server:** Configure DHCP pools for Staff (`VLAN 20`, `STAFF_POOL`) and Guest (`VLAN 30`, `GUEST_POOL`) with network prefixes, default routers (`.1`), DNS server IP (`208.67.222.222`), and domain names (`apex.local` for Staff, `guest.apex.local` for Guest). Exclude the first 10 addresses of each subnet from dynamic allocation ([PTL-0012](../../labs/network-services/dhcp-server-and-relay/README.md)).
+  > [!NOTE]
+  > The DHCP configuration distributes the DNS server address `208.67.222.222` and appropriate domain suffixes. In this Packet Tracer environment, WAN reachability is validated by ICMP pings to the simulated upstream border router `R2` (`Loopback0` `209.165.201.1`); actual live Internet access and live DNS hostname lookups are neither configured nor simulated.
 
 ### D. Network Security & Traffic Filtering
 - **Administrative SSH Access:** Enforce SSHv2 with 2048-bit RSA keys, local authentication, and Telnet disabling on both router and switch ([PTL-0003](../../labs/network-security/secure-switch-ssh/README.md)).
-- **Traffic Filtering ACL:** Implement a named extended ACL on R1 interface `Gi0/0/0.30` inbound to allow Guest devices outbound Internet browsing while completely blocking access to internal subnets (`192.168.10.0/24` and `192.168.20.0/24`) ([PTL-0013](../../labs/network-security/standard-and-extended-acls/README.md)).
+- **Traffic Filtering ACL:** Implement a named extended ACL on R1 interface `Gi0/0/0.30` inbound to allow Guest devices outbound WAN browsing while completely blocking access to internal subnets (`192.168.10.0/24` and `192.168.20.0/24`) ([PTL-0013](../../labs/network-security/standard-and-extended-acls/README.md)).
 
 ---
 
 ## 5. Acceptance Testing and Quality Checklist
 
 Before submitting or documenting your simulation:
-- [ ] **DHCP Test:** Connect test PCs to ports in VLAN 20 and VLAN 30; confirm they automatically lease correct IP addresses, default gateways, and DNS servers within 10 seconds.
+- [ ] **DHCP Test:** Connect test PCs to ports in VLAN 20 and VLAN 30; confirm they automatically lease correct IP addresses, default gateways (`192.168.20.1` / `192.168.30.1`), DNS server address (`208.67.222.222`), and domain names (`apex.local` / `guest.apex.local`) within 10 seconds.
 - [ ] **Inter-VLAN Test:** Confirm that Staff workstations can ping Management workstations through the router.
-- [ ] **Guest Isolation Test:** Confirm that Guest workstations can ping the WAN gateway (`209.165.200.226`), but are immediately blocked from pinging Staff (`192.168.20.10`) and Management (`192.168.10.10`).
+- [ ] **Guest Isolation Test:** Confirm that Guest workstations can ping the WAN gateway (`209.165.200.226`) and simulated upstream service (`209.165.201.1`), but are immediately blocked from pinging Staff (`192.168.20.10` / `.11`) and Management (`192.168.10.10`).
 - [ ] **Port Security Test:** Swap an unauthorized laptop into a port security-enabled access port; verify that the port transitions to `err-disabled` and generates an alarm.
 - [ ] **Management Security Test:** Attempt an SSH session from Management PC; confirm successful login. Attempt Telnet; confirm connection is rejected.
 

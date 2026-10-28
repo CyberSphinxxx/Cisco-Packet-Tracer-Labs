@@ -2,8 +2,7 @@
 
 **Lab ID:** PTL-0007  
 **Title:** Cisco Switch Security Hardening Best Practices  
-**Target Simulator:** Cisco Packet Tracer 8.0+  
-**Status:** `NOT_TESTED` (Authoritative Engineering Specification)
+**Status:** `TESTED_PASS` (Verified live in Cisco Packet Tracer 9.0.1 via MCP loopback bridge automation)
 
 ---
 
@@ -15,15 +14,20 @@ To construct or manually verify this topology in Cisco Packet Tracer:
 | Device Role | PT Device Model | Display Name | Modules / Slots |
 |---|---|---|---|
 | Hardened Access Switch | Cisco Catalyst 2960-24TT | S1 | 24 FastEthernet + 2 GigabitEthernet ports |
-| Authorized Workstation | PC-PT | PC1 | FastEthernet0 |
+| Upstream Distribution Switch | Cisco Catalyst 2960-24TT | Upstream-Switch | 24 FastEthernet + 2 GigabitEthernet ports |
+| Authorized Workstation | PC-PT | User-PC | FastEthernet0 |
 | Rogue Testing Switch | Cisco Catalyst 2960-24TT | Rogue-Switch | FastEthernet0/1 (BPDU test) |
 
 ### Physical Cabling Matrix
 | Link ID | Source Device | Source Port | Destination Device | Destination Port | Cable Type | Notes |
 |---|---|---|---|---|---|---|
-| L-01 | PC1 | FastEthernet0 | S1 | FastEthernet0/1 | Copper Straight-Through | User access port |
-| L-TRUNK | S1 | GigabitEthernet0/1 | Distribution Switch | GigabitEthernet0/1 | Copper Straight-Through | Hardened 802.1Q trunk |
+| L-01 | User-PC | FastEthernet0 | S1 | FastEthernet0/1 | Copper Straight-Through | User access port (VLAN 10) |
+| L-TRUNK | S1 | GigabitEthernet0/1 | Upstream-Switch | GigabitEthernet0/1 | Copper Straight-Through | Hardened 802.1Q trunk (Native VLAN 999) |
 | L-TEST | Rogue-Switch | FastEthernet0/1 | S1 | FastEthernet0/1 | Copper Straight-Through | Used for BPDU Guard violation test |
+
+### Addressing Setup
+- **S1 (SVI VLAN 10):** IP: `192.168.10.2`, Subnet Mask: `255.255.255.0`, Default Gateway: `192.168.10.1`
+- **User-PC:** IP: `192.168.10.50`, Subnet Mask: `255.255.255.0`, Default Gateway: `192.168.10.1`
 
 ---
 
@@ -44,7 +48,7 @@ To construct or manually verify this topology in Cisco Packet Tracer:
 | Test ID | Threat Scenario | Attack Procedure | Observed Mitigation | Pass Criteria |
 |---|---|---|---|---|
 | **NEG-01** | DTP Switch Spoofing Attack | Connect a rogue device attempting to negotiate trunking via Dynamic Desirable on S1 Fa0/1 or Gi0/1. | Because `switchport nonegotiate` is active, the switch sends no DTP packets and ignores incoming DTP frames. Port remains in its hardcoded mode. | Rogue trunk negotiation failed |
-| **NEG-02** | Rogue Switch BPDU Guard Violation | 1. Disconnect PC1 from Fa0/1.<br>2. Connect Rogue-Switch Fa0/1 to S1 Fa0/1.<br>3. Power on Rogue-Switch. | Rogue switch sends Spanning Tree BPDU. S1 detects BPDU on PortFast port and outputs:<br>`%SPANTREE-2-BLOCK_BPDUGUARD: Received BPDU on port Fa0/1 with BPDU Guard enabled. Disabling port.`<br>Port Fa0/1 is placed into `err-disable`. | Immediate defense against unauthorized bridge insertion |
+| **NEG-02** | Rogue Switch BPDU Guard Violation | 1. Disconnect User-PC from Fa0/1.<br>2. Connect Rogue-Switch Fa0/1 to S1 Fa0/1.<br>3. Power on Rogue-Switch. | Rogue switch sends Spanning Tree BPDU. S1 detects BPDU on PortFast port and outputs:<br>`%SPANTREE-2-BLOCK_BPDUGUARD: Received BPDU on port Fa0/1 with BPDU Guard enabled. Disabling port.`<br>Port Fa0/1 is placed into `err-disable`. | Immediate defense against unauthorized bridge insertion |
 | **NEG-03** | Unused Port Unauthorized Tap | Connect a laptop to any unconfigured port (e.g., Fa0/15). | Link LED remains dark. Port is administratively shut down and assigned to unrouted VLAN 99. No traffic can flow. | Physical tap blocked |
 
 ---

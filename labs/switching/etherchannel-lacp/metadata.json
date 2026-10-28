@@ -22,7 +22,8 @@
   "activity_reference": "EtherChannel-LACP",
   "packet_tracer_version": "8.2+",
   "devices": [
-    "Cisco Catalyst 2960-24TT Switch"
+    "Cisco Catalyst 2960-24TT Switch",
+    "PC-PT End Device"
   ],
   "source": {
     "type": "original",

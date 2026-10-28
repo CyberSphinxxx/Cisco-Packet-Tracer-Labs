@@ -26,6 +26,14 @@
 | **Switch S1** | `GigabitEthernet0/1` | **PC-A** | `FastEthernet0` | Copper Straight-Through | Solid black |
 | **Switch S2** | `GigabitEthernet0/1` | **PC-B** | `FastEthernet0` | Copper Straight-Through | Solid black |
 
+### Addressing Setup
+- **R1 Gi0/0/0:** `192.168.10.1/24`, `2001:db8:acad:10::1/64`, Link-Local: `fe80::1`
+- **R1 Gi0/0/1:** `192.168.20.1/24`, `2001:db8:acad:20::1/64`, Link-Local: `fe80::1`
+- **S1 (VLAN 1 SVI):** `192.168.10.2/24`, Gateway: `192.168.10.1`
+- **S2 (VLAN 1 SVI):** `192.168.20.2/24`, Gateway: `192.168.20.1`
+- **PC-A:** IPv4: `192.168.10.10/24`, Gateway: `192.168.10.1`, IPv6: `2001:db8:acad:10::10/64`
+- **PC-B:** IPv4: `192.168.20.10/24`, Gateway: `192.168.20.1`, IPv6: `2001:db8:acad:20::10/64`
+
 ---
 
 ## 2. Intentional Starter State & Troubleshooting Fault Scenarios

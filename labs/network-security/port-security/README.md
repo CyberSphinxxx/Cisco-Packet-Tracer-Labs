@@ -50,7 +50,7 @@ The topology connects an authorized employee PC and a separate rogue laptop to a
 |---|---|---|---|---|
 | **S1** | VLAN 1 (SVI) | `192.168.1.2` | `255.255.255.0` | `192.168.1.1` |
 | **Authorized-PC** | FastEthernet0 | `192.168.1.10` | `255.255.255.0` | `192.168.1.2` |
-| **Rogue-Laptop** | FastEthernet0 | `192.168.1.99` | `255.255.255.0` | `192.168.1.2` |
+| **Rogue-Laptop** | FastEthernet0 | `192.168.1.50` | `255.255.255.0` | `192.168.1.2` |
 
 ---
 
