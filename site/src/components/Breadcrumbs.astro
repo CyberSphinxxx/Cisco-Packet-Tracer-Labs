@@ -2,6 +2,7 @@
 export interface Crumb { label: string; href?: string }
 interface Props { items: Crumb[] }
 import { absolute, seoPolicy } from '../lib/seo';
+import { scriptJson } from '../lib/json';
 const { items } = Astro.props;
 const site = seoPolicy(process.env, Astro.site).site;
 // BreadcrumbList needs absolute URLs, so it is only emitted with a configured origin.
@@ -18,7 +19,7 @@ const ld = site
     }
   : null;
 ---
-{ld && <script type="application/ld+json" set:html={JSON.stringify(ld).replace(/</g, '\\u003c')} />}
+{ld && <script type="application/ld+json" set:html={scriptJson(ld)} />}
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <ol>
     {items.map((c, i) => (

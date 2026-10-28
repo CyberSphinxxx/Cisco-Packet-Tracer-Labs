@@ -88,7 +88,7 @@ export function isDefault(state: FilterState): boolean {
 }
 
 function normalize(s: string): string {
-  return s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
+  return s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
 }
 
 export function matches(item: CatalogItem, state: FilterState): boolean {

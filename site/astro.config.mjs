@@ -28,5 +28,8 @@ export default defineConfig({
   integrations: [sitemap({ indexable })],
   vite: {
     server: { fs: { allow: ['..'] } },
+    // Emit every bundled script as a file (never inlined) so the CSP only has
+    // to trust the single explicitly marked inline theme script.
+    build: { assetsInlineLimit: 0 },
   },
 });

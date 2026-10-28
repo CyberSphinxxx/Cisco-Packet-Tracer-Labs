@@ -70,8 +70,8 @@ for (const f of fs.readdirSync(path.join(repoRoot, 'learning-paths')).filter((f)
 for (const f of fs.readdirSync(path.join(repoRoot, 'docs')).filter((f) => f.endsWith('.md'))) {
   expected.push(`docs/${f.replace(/\.md$/, '')}/index.html`);
 }
-const baseDir = base.replace(/^\/|\/$/g, '');
-const inDist = (r) => path.join(dist, ...(baseDir ? [baseDir] : []), ...r.split('/'));
+// Astro writes output to dist/ itself; the base path only prefixes URLs.
+const inDist = (r) => path.join(dist, ...r.split('/'));
 for (const e of expected) if (!fs.existsSync(inDist(e))) fail(`missing page for canonical source: /${e.replace(/index\.html$/, '')}`);
 
 // ---- 2. internal links and fragments -------------------------------------------
@@ -91,7 +91,7 @@ const targetFile = (urlPath) => {
   } catch {
     return undefined;
   }
-  const p = path.join(dist, ...(baseDir ? [baseDir] : []), ...decoded.split('/').filter(Boolean));
+  const p = path.join(dist, ...decoded.split('/').filter(Boolean));
   if (urlPath.endsWith('/')) return path.join(p, 'index.html');
   return p;
 };

@@ -18,7 +18,7 @@ import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
 import { getSourceConfig, type SourceConfig } from './config';
 import { ContentError } from './errors';
-import { collectHeadings, extractTitleAndLead, renderMarkdown, type HeadingInfo } from './markdown';
+import { collectHeadings, renderMarkdown, type HeadingInfo } from './markdown';
 import { exists, isFile, listDirs, listFiles, readText, toOs } from './paths';
 import { createResolver, githubUrl, joinBase, pngSize, publishedFileUrl, type IndexedDocument, type ResolverEnv } from './resolver';
 import { formatIssues, labMetadataSchema, type LabMetadata } from './schema';
@@ -331,6 +331,13 @@ export function loadRepository(options: LoadOptions = {}): Repository {
     return { ...r, route: sources.get(rel)!.route, title: r.title ?? `Verification: ${parentTitle}`, parentRoute, parentTitle };
   };
 
+  /** Lab-relative asset path from metadata, normalized and confined to the lab folder. */
+  const assetPath = (dir: string, rel: string): string => {
+    const joined = path.posix.normalize(path.posix.join(dir, rel));
+    if (!joined.startsWith(`${dir}/`)) throw new ContentError(`asset path escapes the lab folder: ${rel}`, `${dir}/metadata.json`);
+    return joined;
+  };
+
   // Learning paths first: they define the curated learning order.
   const pathOrder = orderedPathFiles(root, pathFiles);
   const labByReadme = new Map(labSources.map((l) => [`${l.dir}/README.md`, l]));
@@ -381,15 +388,20 @@ export function loadRepository(options: LoadOptions = {}): Repository {
       lastReviewed: meta.last_reviewed,
       sourceType: meta.source.type,
       licenseDecision: meta.license_decision,
-      starter: meta.assets.starter ? download(`${dir}/${meta.assets.starter}`, 'starter') : null,
-      completed: meta.assets.completed ? download(`${dir}/${meta.assets.completed}`, 'completed') : null,
-      topology: meta.assets.topology ? image(`${dir}/${meta.assets.topology}`) : null,
+      starter: meta.assets.starter ? download(assetPath(dir, meta.assets.starter), 'starter') : null,
+      completed: meta.assets.completed ? download(assetPath(dir, meta.assets.completed), 'completed') : null,
+      topology: meta.assets.topology ? image(assetPath(dir, meta.assets.topology)) : null,
       configs: configs(dir),
       verification: verificationPage(dir, r, meta.title),
       doc,
       learningOrder: learningOrder.get(meta.id)!,
     };
   });
+  for (const lab of labs) {
+    if (lab.simulatorStatus === 'tested_pass' && lab.starter && lab.completed && lab.starter.sha256 === lab.completed.sha256) {
+      throw new ContentError('starter and completed files are identical (not allowed for tested_pass)', `labs/${lab.category}/${lab.slug}/metadata.json`);
+    }
+  }
   labs.sort((a, b) => a.learningOrder - b.learningOrder);
 
   const readmeToLabId = new Map(labSources.map((l) => [`${l.dir}/README.md`, l.meta.id]));

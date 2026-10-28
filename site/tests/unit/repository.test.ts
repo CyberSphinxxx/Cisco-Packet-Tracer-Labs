@@ -200,6 +200,16 @@ describe('path and platform safety', () => {
     for (const u of urls) expect(u).not.toMatch(/\\/);
   });
 
+  it('rejects metadata asset paths that leave the lab folder (audit D3)', () => {
+    fx.patchMetadata(LAB, { assets: { starter: '../../../../outside/evil.pkt', completed: 'assets/completed.pkt', topology: 'assets/topology.png' } });
+    expect(() => load(fx.root)).toThrow(/labs\/routing\/lab-one\/metadata\.json: metadata does not match schema: assets\.starter: must stay inside the lab folder/);
+  });
+
+  it('rejects identical starter and completed files for tested_pass labs', () => {
+    fx.write(`${LAB}/assets/completed.pkt`, Buffer.from('starter-PTL-0001'));
+    expect(() => load(fx.root)).toThrow(/starter and completed files are identical/);
+  });
+
   it('rejects backslash asset paths in metadata', () => {
     fx.patchMetadata(LAB, { assets: { starter: 'assets\\starter.pkt', completed: 'assets/completed.pkt', topology: 'assets/topology.png' } });
     expect(() => load(fx.root)).toThrow(/forward-slash path/);

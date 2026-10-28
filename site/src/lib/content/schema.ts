@@ -21,7 +21,8 @@ const relativeAsset = z
   .min(1)
   .refine((v) => !v.includes('://') && !v.startsWith('/') && !v.includes('\\'), {
     message: 'must be a forward-slash path relative to the lab folder',
-  });
+  })
+  .refine((v) => !v.split('/').includes('..'), { message: 'must stay inside the lab folder (no .. segments)' });
 
 export const labMetadataSchema = z.object({
   id: z.string().regex(/^PTL-\d{4}$/, 'id must look like PTL-0000'),

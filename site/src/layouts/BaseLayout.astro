@@ -5,6 +5,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SearchDialog from '../components/SearchDialog.astro';
 import { SITE_NAME } from '../lib/site';
 import { absolute, seoPolicy } from '../lib/seo';
+import { scriptJson } from '../lib/json';
 import sansFont from '@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2?url';
 
 interface Props {
@@ -46,10 +47,10 @@ const robots = policy.indexable ? 'index, follow' : 'noindex, nofollow';
     {ogImage && <meta property="og:image" content={ogImage} />}
     {ogImage && <meta property="og:image:alt" content={imageAlt ?? SITE_NAME} />}
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
-    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />)}
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={scriptJson(data)} />)}
     <link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
-    <script is:inline>
+    <script is:inline data-csp-allow>
       // Before first paint: mark JS available and apply a saved theme choice.
       (function () {
         var d = document.documentElement;

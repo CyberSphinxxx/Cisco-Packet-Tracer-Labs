@@ -56,7 +56,7 @@ export function isInContentRoots(rel: string): boolean {
 
 /** Read a UTF-8 text file and normalize CRLF/CR to LF (Windows checkouts use CRLF). */
 export function readText(repoRoot: string, rel: string): string {
-  return fs.readFileSync(toOs(repoRoot, rel), 'utf8').replace(/^﻿/, '').replace(/\r\n?/g, '\n');
+  return fs.readFileSync(toOs(repoRoot, rel), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
 }
 
 export function exists(repoRoot: string, rel: string): boolean {

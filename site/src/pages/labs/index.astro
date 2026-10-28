@@ -3,8 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import LabCard from '../../components/LabCard.astro';
 import WireSwatch from '../../components/WireSwatch.astro';
-import { getRepository, labelFromSlug } from '../../lib/content/repository';
+import { getRepository } from '../../lib/content/repository';
 import { facetsOf, type CatalogItem } from '../../lib/filters';
+import { scriptJson } from '../../lib/json';
 import { difficultyLabel, url } from '../../lib/site';
 
 const repo = getRepository();
@@ -95,7 +96,7 @@ const topicCounts = repo.topics;
     </section>
   </div>
 
-  <script type="application/json" id="catalog-data" set:html={JSON.stringify({ items, facets })} />
+  <script type="application/json" id="catalog-data" set:html={scriptJson({ items, facets })} />
   <script>
     import '../../scripts/catalog.ts';
   </script>

@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
  * Post-build: writes dist/_headers (Cloudflare Pages header rules) with a
- * strict Content-Security-Policy. Inline <script> blocks that execute (the
- * pre-paint theme script) are allowed by SHA-256 hash, computed from the
- * built HTML so the policy always matches the output. JSON data blocks
+ * strict Content-Security-Policy. Only inline <script> blocks marked
+ * `data-csp-allow` (the pre-paint theme script) are allowed, by SHA-256 hash
+ * computed from the built HTML; any other executable inline script fails the
+ * build. JSON data blocks
  * (application/json, application/ld+json) are not executed and need no hash.
  */
 import crypto from 'node:crypto';
@@ -13,15 +14,68 @@ import { fileURLToPath } from 'node:url';
 
 const dist = path.resolve(fileURLToPath(new URL('..', import.meta.url)), process.argv[2] ?? 'dist');
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
+/**
+ * Yield every <script> element (attributes + body) in an HTML string using a
+ * small tag scanner that respects quoted attribute values and comments, so
+ * text such as content="...</script><script>..." inside an attribute is not
+ * mistaken for markup.
+ */
+function* scripts(html) {
+  let i = 0;
+  while ((i = html.indexOf('<', i)) !== -1) {
+    if (html.startsWith('<!--', i)) {
+      const end = html.indexOf('-->', i + 4);
+      i = end === -1 ? html.length : end + 3;
+      continue;
+    }
+    const m = /^<\/?([a-zA-Z][a-zA-Z0-9-]*)/.exec(html.slice(i, i + 40));
+    if (!m) {
+      i += 1;
+      continue;
+    }
+    // read to the end of the tag, honouring quotes
+    let j = i + m[0].length;
+    let quote = null;
+    for (; j < html.length; j++) {
+      const c = html[j];
+      if (quote) {
+        if (c === quote) quote = null;
+      } else if (c === '"' || c === "'") quote = c;
+      else if (c === '>') break;
+    }
+    const isOpenScript = m[0][1] !== '/' && m[1].toLowerCase() === 'script';
+    const attrs = html.slice(i + m[0].length, j);
+    i = j + 1;
+    if (!isOpenScript) continue;
+    const close = html.toLowerCase().indexOf('</script', i);
+    const body = html.slice(i, close === -1 ? html.length : close);
+    yield { attrs, body };
+    i = close === -1 ? html.length : close + 8;
+  }
+}
+
 const hashes = new Set();
+const unexpected = [];
 for (const file of walk(dist).filter((f) => f.endsWith('.html'))) {
   const html = fs.readFileSync(file, 'utf8');
-  for (const m of html.matchAll(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/g)) {
-    const attrs = m[1];
+  for (const { attrs, body } of scripts(html)) {
+    if (/\bsrc=/.test(attrs)) continue;
     if (/type="application\/(ld\+)?json"/.test(attrs)) continue;
-    if (!m[2].trim()) continue;
-    hashes.add(`'sha256-${crypto.createHash('sha256').update(m[2]).digest('base64')}'`);
+    if (!body.trim()) continue;
+    // Only inline scripts the site explicitly marks are trusted. Anything else
+    // (e.g. markup that escaped from content) fails the build instead of being
+    // silently allow-listed by hash.
+    if (!/\bdata-csp-allow\b/.test(attrs)) {
+      unexpected.push(`${path.relative(dist, file)}: <script${attrs}>${body.slice(0, 60)}`);
+      continue;
+    }
+    hashes.add(`'sha256-${crypto.createHash('sha256').update(body).digest('base64')}'`);
   }
+}
+if (unexpected.length) {
+  console.error(`write-headers: ${unexpected.length} unexpected inline executable script(s); refusing to trust them:`);
+  for (const u of unexpected.slice(0, 20)) console.error(`  ${u}`);
+  process.exit(1);
 }
 const csp = [
   "default-src 'self'",

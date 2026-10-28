@@ -376,6 +376,11 @@ samp {
   padding: 0;
 }
 
+/* With JavaScript a Copy button sits in the block's top-right corner; keep the first line clear of it. */
+.js .prose .code-block:has(.copy-code:not([hidden])) pre {
+  padding-top: 2.75rem;
+}
+
 .copy-code {
   position: absolute;
   top: var(--sp-2);

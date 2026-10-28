@@ -35,7 +35,7 @@ const tested = repo.labs.filter((l) => l.simulatorStatus === 'tested_pass').leng
       <table>
         <thead><tr><th scope="col">Material</th><th scope="col">License</th></tr></thead>
         <tbody>
-          <tr><td>Lab guides, verification guides, learning paths, reference docs, topology diagrams and Packet Tracer topology files (<code>.pkt</code>)</td><td><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener noreferrer">CC BY-SA 4.0</a></td></tr>
+          <tr><td>Lab guides, verification guides, learning paths, reference docs, topologies and diagrams, as described in the repository's LICENSE file</td><td><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener noreferrer">CC BY-SA 4.0</a></td></tr>
           <tr><td>Validation tools, tests, CI configuration and this website's source code</td><td><a href="https://opensource.org/licenses/MIT" rel="license noopener noreferrer">MIT</a></td></tr>
           <tr><td>Fonts: Atkinson Hyperlegible Next and Mono by the Braille Institute, self-hosted</td><td><a href="https://openfontlicense.org/" rel="license noopener noreferrer">SIL Open Font License 1.1</a></td></tr>
           <tr><td>Third-party software used to build the site (Astro, unified/remark, Pagefind and others)</td><td>Their own licenses, listed in <code>site/package-lock.json</code></td></tr>
@@ -44,14 +44,14 @@ const tested = repo.labs.filter((l) => l.simulatorStatus === 'tested_pass').leng
     </div>
     <p>
       The MIT license covers code only. It does not apply to the educational content, which stays under CC BY-SA 4.0.
-      If you share or adapt a lab, credit the {SITE_NAME}, link to the license, say what you changed, and share your version under the same license.
+      If you share or adapt a lab, credit the Cisco Packet Tracer Labs Contributors (this library), link to the license, say what you changed, and share your version under the same license.
       Full terms are in the repository's <a href={licenseUrl} rel="noopener noreferrer">LICENSE file</a>{provenance && <>, and the <a href={provenance.route}>{provenance.title}</a> explains how content is classified</>}.
     </p>
 
     <h2 id="simulator-status">What "Tested in Packet Tracer" means</h2>
     <p>
       Each lab's simulator status comes straight from its metadata. "Tested in Packet Tracer" means the lab's topology and configuration were run in Cisco Packet Tracer and the results were recorded in the repository; on each lab page the status links to that record on GitHub.
-      Currently {tested} of {repo.labs.length} labs have that status. A lab without it has been reviewed against Cisco documentation but not yet run in the simulator.
+      Currently {tested} of {repo.labs.length} labs have that status. Other statuses are shown exactly as recorded: "Not yet tested in Packet Tracer", "Simulator test failed" or "No simulator file".
     </p>
 
     <h2 id="passwords">Lab passwords are for practice only</h2>
