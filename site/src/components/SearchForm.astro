@@ -22,6 +22,8 @@ const { idPrefix, autofocus = false } = Astro.props;
   .search-ui input:focus-visible { border-color: var(--c-focus); outline-offset: 1px; }
   .search-status { color: var(--c-muted); font-size: var(--fs-sm); margin: var(--sp-3) 0 0; }
   .search-results { list-style: none; margin: var(--sp-3) 0 0; padding: 0; }
+  /* Reserve room on the search page so results arriving do not push the footer (CLS). */
+  :global(.search-page) .search-results { min-height: 60vh; }
   .search-results :global(.search-result) { padding-block: var(--sp-4); border-top: 1px solid var(--c-line); }
   .search-results :global(.search-result-type) { margin: 0; font-size: var(--fs-xs); color: var(--c-muted); }
   .search-results :global(.search-result-title) { font-weight: 700; font-size: var(--fs-md); }

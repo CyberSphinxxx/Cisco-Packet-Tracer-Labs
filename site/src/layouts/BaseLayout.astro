@@ -4,15 +4,28 @@ import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SearchDialog from '../components/SearchDialog.astro';
 import { SITE_NAME } from '../lib/site';
+import { absolute, seoPolicy } from '../lib/seo';
+import sansFont from '@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2?url';
 
 interface Props {
   title: string;
   description?: string;
   /** Exclude the page from the static search index (e.g. 404). */
   noSearchIndex?: boolean;
+  /** Open Graph type. */
+  ogType?: 'website' | 'article';
+  /** Site-relative image path for social previews (defaults to the site card). */
+  image?: string;
+  imageAlt?: string;
+  /** Structured data objects (schema.org) that accurately describe the page. */
+  jsonLd?: Record<string, unknown>[];
 }
-const { title, description, noSearchIndex = false } = Astro.props;
+const { title, description, noSearchIndex = false, ogType = 'website', image, imageAlt, jsonLd = [] } = Astro.props;
 const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
+const policy = seoPolicy(process.env, Astro.site);
+const canonical = absolute(Astro.url.pathname, policy.site);
+const ogImage = absolute(image ?? `${import.meta.env.BASE_URL}og-default.png`, policy.site);
+const robots = policy.indexable ? 'index, follow' : 'noindex, nofollow';
 ---
 <!doctype html>
 <html lang="en" class="no-js" data-base={import.meta.env.BASE_URL}>
@@ -22,6 +35,19 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
     <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content={robots} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={imageAlt ?? SITE_NAME} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />)}
+    <link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
     <script is:inline>
       // Before first paint: mark JS available and apply a saved theme choice.

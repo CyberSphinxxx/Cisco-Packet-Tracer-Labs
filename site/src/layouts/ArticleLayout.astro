@@ -19,10 +19,13 @@ interface Props {
   tocExtra?: { id: string; text: string }[];
   sourceUrl: string;
   sourcePath: string;
+  image?: string;
+  imageAlt?: string;
+  jsonLd?: Record<string, unknown>[];
 }
-const { title, description, crumbs, html, toc, tocExtra = [], sourceUrl, sourcePath } = Astro.props;
+const { title, description, crumbs, html, toc, tocExtra = [], sourceUrl, sourcePath, image, imageAlt, jsonLd } = Astro.props;
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogType="article" image={image} imageAlt={imageAlt} jsonLd={jsonLd}>
   <slot name="head" slot="head" />
   <div class="wrap article-head">
     <Breadcrumbs items={crumbs} />

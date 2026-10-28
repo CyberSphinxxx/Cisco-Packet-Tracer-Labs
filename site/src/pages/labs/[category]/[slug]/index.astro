@@ -8,6 +8,7 @@ import StatusIndicator from '../../../../components/StatusIndicator.astro';
 import WireSwatch from '../../../../components/WireSwatch.astro';
 import { getRepository, labelFromSlug, type Lab } from '../../../../lib/content/repository';
 import { categoryLabel, difficultyLabel, minutesLabel, neighbours, pathsContaining, relatedLabs, url } from '../../../../lib/site';
+import { absolute, seoPolicy } from '../../../../lib/seo';
 
 export const getStaticPaths = (() =>
   getRepository().labs.map((lab) => ({ params: { category: lab.category, slug: lab.slug }, props: { lab } }))) satisfies GetStaticPaths;
@@ -19,6 +20,23 @@ const { prev, next } = neighbours(lab);
 const related = relatedLabs(lab);
 const inPaths = pathsContaining(lab.id);
 const install = repo.docs.find((d) => d.slug === 'installation');
+const policy = seoPolicy(process.env, Astro.site);
+const learningResource: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'LearningResource',
+  name: lab.title,
+  description: lab.summary,
+  identifier: lab.id,
+  learningResourceType: 'Hands-on lab',
+  educationalLevel: difficultyLabel(lab.difficulty),
+  ...(lab.minutes != null && { timeRequired: `PT${lab.minutes}M` }),
+  teaches: lab.objectives,
+  keywords: lab.topics.map(labelFromSlug).join(', '),
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  ...(policy.site && { url: absolute(lab.route, policy.site) }),
+};
 const tocExtra = [
   ...(lab.configs.length ? [{ id: 'site-config-files', text: 'Reference configurations' }] : []),
   ...(lab.verification ? [{ id: 'site-verification', text: 'Verification guide' }] : []),
@@ -33,6 +51,9 @@ const tocExtra = [
   tocExtra={tocExtra}
   sourceUrl={lab.doc.githubUrl}
   sourcePath={lab.doc.sourcePath}
+  image={lab.topology?.url}
+  imageAlt={`Topology diagram for ${lab.id}: ${lab.title}`}
+  jsonLd={[learningResource]}
 >
   <Fragment slot="head">
     <meta name="pagefind-lab-id" content={lab.id} />

@@ -122,3 +122,11 @@ describe('titles and leads', () => {
     expect(extractTitleAndLead(md).lead).toBe('Read this first.');
   });
 });
+
+describe('task lists', () => {
+  it('gives GFM task-list checkboxes an accessible name from the item text', () => {
+    const { html } = render('- [ ] Ping from **PC-Guest** fails\n- [x] VLANs created\n');
+    expect(html).toMatch(/<input type="checkbox" disabled aria-label="Ping from PC-Guest fails">/);
+    expect(html).toMatch(/<input type="checkbox" checked disabled aria-label="VLANs created">/);
+  });
+});

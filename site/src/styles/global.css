@@ -88,6 +88,11 @@ samp {
   display: none !important;
 }
 
+/* JS-only controls are shown from first paint via the .js class set in <head> (no layout shift). */
+.no-js .js-only {
+  display: none !important;
+}
+
 /* Shown only when JavaScript is unavailable (the head script swaps no-js for js). */
 .js .nojs-only {
   display: none !important;

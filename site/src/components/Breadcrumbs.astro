@@ -1,8 +1,24 @@
 ---
 export interface Crumb { label: string; href?: string }
 interface Props { items: Crumb[] }
+import { absolute, seoPolicy } from '../lib/seo';
 const { items } = Astro.props;
+const site = seoPolicy(process.env, Astro.site).site;
+// BreadcrumbList needs absolute URLs, so it is only emitted with a configured origin.
+const ld = site
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.label,
+        item: absolute(c.href ?? Astro.url.pathname, site),
+      })),
+    }
+  : null;
 ---
+{ld && <script type="application/ld+json" set:html={JSON.stringify(ld).replace(/</g, '\\u003c')} />}
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <ol>
     {items.map((c, i) => (

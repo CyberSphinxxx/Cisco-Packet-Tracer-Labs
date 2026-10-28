@@ -241,6 +241,15 @@ function enhance(tree: HastRoot) {
       node.children.unshift(el('p', { className: ['callout-title'] }, [{ type: 'text', value: label }]));
       return undefined;
     }
+    // GFM task-list checkboxes have no accessible name; label them with the item text.
+    if (node.tagName === 'li' && Array.isArray(node.properties?.className) && node.properties.className.includes('task-list-item')) {
+      const box = node.children.find((c): c is Element => c.type === 'element' && c.tagName === 'input');
+      const textOf = (n: Element): string =>
+        n.children.map((c) => (c.type === 'text' ? c.value : c.type === 'element' && !['ul', 'ol', 'input'].includes(c.tagName) ? textOf(c) : '')).join('');
+      const label = textOf(node).replace(/\s+/g, ' ').trim().slice(0, 160);
+      if (box && label) box.properties = { ...box.properties, ariaLabel: label };
+      return undefined;
+    }
     if (!parent || index === undefined) return;
     if (node.tagName === 'table') {
       tableCount += 1;

@@ -26,8 +26,8 @@ const topicCounts = repo.topics;
   </div>
 
   <div class="wrap catalog">
-    <button type="button" class="btn filters-toggle" aria-expanded="false" aria-controls="filters-panel" data-filters-toggle hidden>Show filters</button>
-    <aside class="filters" id="filters-panel" aria-labelledby="filters-title" data-filters hidden>
+    <button type="button" class="btn filters-toggle js-only" aria-expanded="false" aria-controls="filters-panel" data-filters-toggle>Show filters</button>
+    <aside class="filters js-only" id="filters-panel" aria-labelledby="filters-title" data-filters>
       <div class="filters-head">
         <h2 id="filters-title">Filter labs</h2>
         <button type="button" class="link-btn" data-reset hidden>Clear filters</button>
@@ -72,7 +72,7 @@ const topicCounts = repo.topics;
       <div class="results-head">
         <h2 id="results-title" class="visually-hidden">Labs</h2>
         <p class="results-count" role="status" aria-live="polite" data-count>Showing all {items.length} labs</p>
-        <div class="sort" data-sort-wrap hidden>
+        <div class="sort js-only" data-sort-wrap>
           <label for="f-sort">Sort by</label>
           <select id="f-sort" name="sort">
             <option value="recommended">Recommended order</option>

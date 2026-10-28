@@ -12,7 +12,7 @@
     "dev": "astro dev",
     "check": "astro check",
     "test": "vitest run",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist && node scripts/write-headers.mjs",
     "preview": "astro preview",
     "test:e2e": "playwright test",
     "verify:dist": "node scripts/check-dist.mjs"
@@ -40,6 +40,7 @@
     "@types/mdast": "4.0.4",
     "@types/node": "22.20.5",
     "pagefind": "1.5.2",
+    "playwright-core": "1.63.0",
     "typescript": "6.0.3",
     "vitest": "5.0.5"
   }
