@@ -1,6 +1,6 @@
 # Implementing Switchport Port Security
 
-> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0004 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0004 · **Document:** reviewed · **Simulator:** tested_pass
 
 Layer 2 switches forward traffic based on MAC addresses learned from the source address field of incoming Ethernet frames. Without security controls, an attacker can connect an unauthorized rogue device to an open wall jack, flood the switch with spoofed MAC addresses (MAC flooding), or impersonate a legitimate host. Port security restricts the MAC addresses permitted to transmit traffic through a switch port, learning authorized hardware addresses statically or dynamically, and enforcing security policies when violations occur.
 
@@ -25,6 +25,8 @@ Layer 2 switches forward traffic based on MAC addresses learned from the source 
 
 ## Topology
 
+![PTL-0004 Topology](assets/topology.png)
+
 The topology connects an authorized employee PC and a separate rogue laptop to a Cisco Catalyst 2960 switch:
 
 ```text
@@ -48,7 +50,7 @@ The topology connects an authorized employee PC and a separate rogue laptop to a
 |---|---|---|---|---|
 | **S1** | VLAN 1 (SVI) | `192.168.1.2` | `255.255.255.0` | `192.168.1.1` |
 | **Authorized-PC** | FastEthernet0 | `192.168.1.10` | `255.255.255.0` | `192.168.1.2` |
-| **Rogue-Laptop** | FastEthernet0 | `192.168.1.99` | `255.255.255.0` | `192.168.1.2` |
+| **Rogue-Laptop** | FastEthernet0 | `192.168.1.50` | `255.255.255.0` | `192.168.1.2` |
 
 ---
 
@@ -221,8 +223,12 @@ The port resets and returns to `Secure-up`.
 ---
 
 ## Files and Validation Status
+- Starter Activity: [assets/starter.pkt](assets/starter.pkt)
+- Completed Activity: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/S1.txt](configs/S1.txt)
+- Verification Guide: [verification.md](verification.md)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified in Cisco Packet Tracer 9.0.1; see [PTL-0004-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0004-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Passwords shown are educational examples and should not be used in production networks.

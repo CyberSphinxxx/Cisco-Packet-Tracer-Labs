@@ -1,6 +1,6 @@
 # Cisco Switch Security Hardening Best Practices
 
-> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0007 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0007 · **Document:** reviewed · **Simulator:** tested_pass
 
 Default Cisco Catalyst switch configurations prioritize "plug-and-play" convenience over security: all ports default to VLAN 1, Dynamic Trunking Protocol (DTP) negotiates trunks automatically, unused ports remain active, and Spanning Tree Protocol (STP) accepts Bridge Protocol Data Units (BPDUs) from any attached device. Attackers exploit these defaults using techniques like VLAN hopping (double tagging and switch spoofing), unauthorized network tapping, and rogue root bridge injection. This lab teaches the foundational hardening controls recommended by Cisco to secure Layer 2 infrastructure.
 
@@ -23,6 +23,8 @@ Default Cisco Catalyst switch configurations prioritize "plug-and-play" convenie
 ---
 
 ## Topology
+
+![PTL-0007 Topology](assets/topology.png)
 
 The topology models an enterprise access switch connected to legitimate user hosts, an upstream distribution switch, and unused ports:
 
@@ -204,8 +206,12 @@ Verify that VLAN 99 (`Parking_Lot`) contains all unused ports (Fa0/2 - 24, Gi0/2
 ---
 
 ## Files and Validation Status
+- Starter Activity: [assets/starter.pkt](assets/starter.pkt)
+- Completed Activity: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/S1.txt](configs/S1.txt)
+- Verification Guide: [verification.md](verification.md)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified in Cisco Packet Tracer 9.0.1; see [PTL-0007-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0007-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only.

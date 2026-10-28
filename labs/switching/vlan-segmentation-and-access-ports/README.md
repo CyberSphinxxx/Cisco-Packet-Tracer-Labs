@@ -1,6 +1,6 @@
 # VLAN Segmentation and Access Port Configuration
 
-> **Category:** switching · **Difficulty:** beginner · **Lab ID:** PTL-0009 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** switching · **Difficulty:** beginner · **Lab ID:** PTL-0009 · **Document:** reviewed · **Simulator:** tested pass
 
 In a flat Layer 2 network, all connected devices share a single broadcast domain. Every ARP request, DHCP discovery, and broadcast frame is flooded out every switchport, degrading network performance and allowing any connected user to intercept unauthorized traffic. **Virtual Local Area Networks (VLANs)** solve this by logically segmenting a single physical switch into multiple distinct broadcast domains. Devices in different VLANs cannot communicate at Layer 2, even when plugged into adjacent physical ports on the same switch. This lab walks you through creating VLANs, assigning access ports, and verifying traffic isolation.
 
@@ -24,6 +24,8 @@ In a flat Layer 2 network, all connected devices share a single broadcast domain
 ---
 
 ## Topology
+
+![PTL-0009 Topology Diagram](assets/topology.png)
 
 The topology features a single Cisco Catalyst 2960 switch with four workstations divided equally between two departmental VLANs:
 
@@ -200,8 +202,11 @@ Confirm that:
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/S1.txt](configs/S1.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; complete VLAN database verification, intra-VLAN ping pass, and inter-VLAN isolation drop recorded in [PTL-0009-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0009-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only.

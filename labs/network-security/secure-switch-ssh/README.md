@@ -1,6 +1,6 @@
 # Securing Switch Management with SSH
 
-> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0003 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** network-security · **Difficulty:** intermediate · **Lab ID:** PTL-0003 · **Document:** reviewed · **Simulator:** tested_pass
 
 Unencrypted remote management protocols like Telnet transmit credentials and configuration data across the network in cleartext, leaving administrative sessions vulnerable to interception and packet sniffing. Secure Shell (SSH) replaces Telnet by providing strong encryption, message integrity, and mutual authentication. This lab demonstrates how to configure SSH version 2 on a Cisco Catalyst switch, restrict virtual terminal (VTY) lines, establish local user authentication, and verify that legacy Telnet connections are refused.
 
@@ -24,6 +24,8 @@ Unencrypted remote management protocols like Telnet transmit credentials and con
 ---
 
 ## Topology
+
+![PTL-0003 Topology](assets/topology.png)
 
 The topology consists of a dedicated network administrator workstation connected to a Cisco Catalyst 2960 switch:
 
@@ -190,8 +192,12 @@ The connection is immediately rejected because `transport input ssh` disables th
 ---
 
 ## Files and Validation Status
+- Starter Activity: [assets/starter.pkt](assets/starter.pkt)
+- Completed Activity: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/S1.txt](configs/S1.txt)
+- Verification Guide: [verification.md](verification.md)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified in Cisco Packet Tracer 9.0.1; see [PTL-0003-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0003-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Passwords shown (`adminpass123`, `cisco123`) are educational examples and should not be used in production networks.

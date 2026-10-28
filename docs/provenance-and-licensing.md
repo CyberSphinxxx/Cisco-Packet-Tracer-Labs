@@ -31,11 +31,20 @@ Every asset and lab in this library belongs to one of four transparent categorie
 
 4. **`restricted`:**
    - Content with uncertain copyright status, proprietary Cisco NetAcad `.pka` activity packages, institutional exam prompts, or files containing personal student submissions.
-   - **Quarantine Policy:** All restricted files are quarantined in historical legacy directories. They are strictly excluded from the `labs/` directory, excluded from search indexes, and ineligible for public publication.
+   - **Removal & Archival Policy:** All restricted legacy files were completely backed up to private owner archives and permanently expunged from the active working tree and Git history during Phase 11.5. No restricted materials are distributed or tracked in this repository.
 
 ---
 
-## 3. Simulator Verification Policy
+## 3. Dual Licensing Structure
+
+This repository operates under a clear open-source dual-license model:
+- **Educational Content & Documentation:** Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Public License (CC-BY-SA-4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+- **Automation & Quality Tooling:** Licensed under the [MIT License](https://opensource.org/licenses/MIT).
+- See the root [LICENSE](../LICENSE) file for complete legal terms.
+
+---
+
+## 4. Simulator Verification Policy
 
 To maintain absolute academic and technical honesty:
 - **`tested_pass`:** The lab topology and configuration were executed inside an authentic instance of Cisco Packet Tracer, verified against real terminal outputs, and documented with test artifacts.
@@ -44,5 +53,5 @@ To maintain absolute academic and technical honesty:
 
 ---
 
-## 4. Educational Security Notice
+## 5. Educational Security Notice
 Example configuration passwords used throughout these labs (such as `cisco`, `class`, or `cisco123`) are **strictly for isolated simulation training**. They do not constitute secure production practices. In real-world environments, always use strong unique passwords, modern cryptography (RSA >= 2048-bit or ECDSA, AES-GCM), and centralized authentication (RADIUS/TACACS+).

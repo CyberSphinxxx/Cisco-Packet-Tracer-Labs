@@ -105,11 +105,50 @@ def main():
 
     # 5. Capstone Project Check
     print("\n--- 5. CAPSTONE PROJECTS AUDIT ---")
-    proj = root / 'projects' / 'small-office-network' / 'README.md'
-    print(f"Small Office Capstone Project Present: {proj.exists()}")
+    proj_dir = root / 'projects' / 'small-office-network'
+    proj_readme = proj_dir / 'README.md'
+    proj_starter = proj_dir / 'assets' / 'starter.pkt'
+    proj_completed = proj_dir / 'assets' / 'completed.pkt'
+    proj_topology = proj_dir / 'assets' / 'topology.png'
+    proj_ver = proj_dir / 'verification.md'
+    print(f"Small Office Capstone Project Present: {proj_readme.exists()}")
+    print(f"  starter.pkt present:   {proj_starter.exists()} ({proj_starter.stat().st_size if proj_starter.exists() else 0} bytes)")
+    print(f"  completed.pkt present: {proj_completed.exists()} ({proj_completed.stat().st_size if proj_completed.exists() else 0} bytes)")
+    print(f"  topology.png present:  {proj_topology.exists()} ({proj_topology.stat().st_size if proj_topology.exists() else 0} bytes)")
+    print(f"  verification.md:       {proj_ver.exists()}")
+    if proj_starter.exists() and proj_completed.exists():
+        diff = proj_starter.stat().st_size != proj_completed.stat().st_size or proj_starter.read_bytes() != proj_completed.read_bytes()
+        print(f"  Starter != Completed:  {diff}")
 
-    # 6. Learning Paths Check
-    print("\n--- 6. LEARNING PATHS AUDIT ---")
+    # 6. Simulator Assets Verification
+    print("\n--- 6. SIMULATOR DELIVERABLES AUDIT ---")
+    total_starters = 0
+    total_completed = 0
+    total_topos = 0
+    non_identical_pairs = 0
+    all_entities = list(labs_dir.glob('*/*')) + [proj_dir]
+    for ent in all_entities:
+        if not ent.is_dir():
+            continue
+        s = ent / 'assets' / 'starter.pkt'
+        c = ent / 'assets' / 'completed.pkt'
+        t = ent / 'assets' / 'topology.png'
+        if s.is_file() and s.stat().st_size > 0:
+            total_starters += 1
+        if c.is_file() and c.stat().st_size > 0:
+            total_completed += 1
+        if t.is_file() and t.stat().st_size > 0:
+            total_topos += 1
+        if s.is_file() and c.is_file():
+            if s.stat().st_size != c.stat().st_size or s.read_bytes() != c.read_bytes():
+                non_identical_pairs += 1
+    print(f"Verified starter.pkt deliverables:   {total_starters}/14")
+    print(f"Verified completed.pkt deliverables: {total_completed}/14")
+    print(f"Verified topology.png captures:      {total_topos}/14")
+    print(f"Non-identical starter/completed:     {non_identical_pairs}/14")
+
+    # 7. Learning Paths Check
+    print("\n--- 7. LEARNING PATHS AUDIT ---")
     paths_dir = root / 'learning-paths'
     paths = list(paths_dir.glob('*.md'))
     print(f"Learning paths present ({len(paths)}): {[p.name for p in paths]}")

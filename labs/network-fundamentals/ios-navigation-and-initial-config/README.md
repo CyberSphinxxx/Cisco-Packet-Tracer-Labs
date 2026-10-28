@@ -1,6 +1,6 @@
 # Cisco IOS Navigation and Initial Device Configuration
 
-> **Category:** network-fundamentals · **Difficulty:** beginner · **Lab ID:** PTL-0008 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** network-fundamentals · **Difficulty:** beginner · **Lab ID:** PTL-0008 · **Document:** reviewed · **Simulator:** tested pass
 
 The Cisco Internetwork Operating System (IOS) is the core operating system powering enterprise Cisco routers and switches. Interacting with Cisco IOS requires understanding its hierarchical command mode structure, context-sensitive help system, and configuration memory architecture. This lab provides a foundational, hands-on introduction to navigating the IOS Command Line Interface (CLI), configuring basic device identification and security parameters, and persisting configuration changes to non-volatile memory.
 
@@ -23,6 +23,8 @@ The Cisco Internetwork Operating System (IOS) is the core operating system power
 
 ## Topology
 
+![PTL-0008 Topology Diagram](assets/topology.png)
+
 The topology models an initial out-of-band management connection using an RS-232 serial rollover console cable from a management workstation to a Cisco Catalyst 2960 switch:
 
 ```text
@@ -42,6 +44,8 @@ The topology models an initial out-of-band management connection using an RS-232
 |---|---|---|---|---|---|
 | **S1** | VLAN 1 (SVI) | `192.168.1.5` | `255.255.255.0` | `192.168.1.1` | Management IP (Configured in Task 4) |
 | **PC-Admin** | FastEthernet0 | `192.168.1.10` | `255.255.255.0` | `192.168.1.1` | Management Workstation |
+
+> **Architectural Note on Default Gateway:** Because PC-Admin and S1 VLAN 1 SVI both reside on the same local Layer 2 broadcast domain (`192.168.1.0/24`), local management communication does not require an active default gateway router. The default gateway (`192.168.1.1`) is configured on both devices as a standard enterprise configuration practice to allow remote management access across routed network segments when an upstream gateway router is subsequently introduced.
 
 ---
 
@@ -176,9 +180,11 @@ Verify that both passwords authenticate successfully.
 
 ## Key Takeaways
 - Cisco IOS commands follow a strict hierarchical mode structure (`>` -> `#` -> `(config)#` -> sub-modes).
-- `enable secret` supersedes the legacy `enable password` by utilizing irreversible one-way cryptographic hashing.
-- `service password-encryption` prevents casual shoulder-surfing by obfuscating cleartext passwords with Vigenère/Type-7 ciphering (though it is not cryptographically robust against offline cracking).
 - The `copy running-config startup-config` command is essential for preserving device settings into non-volatile NVRAM.
+- **Cryptographic Limitations vs. Modern Production Security:**
+  - `service password-encryption` applies a weak Type 7 Vigenère-derived algorithm designed only to deter casual over-the-shoulder snooping; it is easily reversible with public tools and must never be considered cryptographically secure.
+  - `enable secret` on the simulated Catalyst 2960 uses legacy Type 5 salted MD5 hashing (`$1$`). While historically standard for Cisco CCNA educational curricula, MD5 is vulnerable to rapid offline dictionary attacks.
+  - In modern enterprise production networks, administrators should deploy PBKDF2/SHA-256 (Type 8) or Scrypt (Type 9) hashes via `enable algorithm-type sha256 secret <password>` or AAA RADIUS/TACACS+ centralized authentication rather than standalone legacy hashes.
 
 ---
 
@@ -189,8 +195,11 @@ Verify that both passwords authenticate successfully.
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/S1.txt](configs/S1.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; complete interactive CLI and IP connectivity verification recorded in [PTL-0008-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0008-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Passwords shown (`cisco`, `class`) are standard lab training placeholders and must never be used in production environments.

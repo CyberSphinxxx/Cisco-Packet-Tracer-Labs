@@ -1,0 +1,41 @@
+! ==========================================
+! Router R2 (HQ / ISP Gateway)
+! Capstone Project: Small Office Multi-VLAN Network Design
+! ==========================================
+enable
+configure terminal
+hostname R2
+
+! Cryptographic SSH Prerequisites & Domain
+ip domain-name apex.local
+crypto key generate rsa modulus 2048
+ip ssh version 2
+enable secret cisco123
+username admin privilege 15 secret adminpass123
+service password-encryption
+
+! WAN Transit Interface to Branch R1
+interface GigabitEthernet0/0/1
+ description WAN Transit Link to Branch R1
+ ip address 209.165.200.226 255.255.255.252
+ no shutdown
+ exit
+
+! Simulated HQ Corporate Cloud / Public Internet Services
+interface Loopback0
+ description Corporate Cloud & DNS Services
+ ip address 209.165.201.1 255.255.255.0
+ no shutdown
+ exit
+
+! Static Route returning branch network traffic to R1
+ip route 192.168.0.0 255.255.0.0 209.165.200.225
+
+! Secure Virtual Terminal Lines
+line vty 0 4
+ transport input ssh
+ login local
+ exit
+
+end
+copy running-config startup-config

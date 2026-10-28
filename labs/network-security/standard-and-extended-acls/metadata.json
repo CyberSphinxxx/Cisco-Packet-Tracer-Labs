@@ -23,7 +23,7 @@
   "activity_reference": null,
   "packet_tracer_version": "8.2+",
   "devices": [
-    "Cisco ISR 4321 Router",
+    "Cisco ISR 4331 Router",
     "Cisco Catalyst 2960-24TT Switch",
     "Server-PT Application Server",
     "PC-PT End Device"
@@ -34,16 +34,16 @@
     "url": null,
     "permission_evidence": null
   },
-  "license_decision": "pending_owner_selection",
+  "license_decision": "approved_dual_license",
   "assets": {
-    "starter": null,
-    "completed": null,
-    "topology": null
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
   },
   "status": {
     "documentation": "reviewed",
-    "simulator": "not_tested",
-    "simulator_evidence": null
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0013-SIMULATOR-RESULTS.md"
   },
   "references": [
     "https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html",

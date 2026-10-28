@@ -1,0 +1,102 @@
+! ==========================================
+! Switch S1 (Branch Access Switch)
+! Capstone Project: Small Office Multi-VLAN Network Design
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! Cryptographic SSH Prerequisites & Domain
+ip domain-name apex.local
+crypto key generate rsa modulus 2048
+ip ssh version 2
+enable secret cisco123
+username admin privilege 15 secret adminpass123
+service password-encryption
+banner motd # Apex Innovations Branch Access Switch S1 - Authorized Access Only #
+
+! VLAN Infrastructure Creation
+vlan 10
+ name Management
+ exit
+vlan 20
+ name Staff_Data
+ exit
+vlan 30
+ name Guest_Access
+ exit
+vlan 99
+ name Parking_Lot
+ exit
+vlan 999
+ name Native_Trunk
+ exit
+
+! Management SVI
+interface vlan 10
+ description In-Band Management Interface
+ ip address 192.168.10.2 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 192.168.10.1
+
+! Hardened 802.1Q Trunk Uplink to Router R1
+interface GigabitEthernet0/1
+ description Uplink 802.1Q Trunk to R1 Gi0/0/0
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30
+ no shutdown
+ exit
+
+! Management Access Ports (Fa0/1 - Fa0/5)
+interface range FastEthernet0/1 - 5
+ description Management Access Ports
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+ exit
+
+! Staff Access Ports with Port Security (Fa0/6 - Fa0/15)
+interface range FastEthernet0/6 - 15
+ description Staff Workstation Access Ports
+ switchport mode access
+ switchport access vlan 20
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security mac-address sticky
+ switchport port-security violation shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+ exit
+
+! Guest Wi-Fi Access Ports (Fa0/16 - Fa0/24)
+interface range FastEthernet0/16 - 24
+ description Guest Access Ports
+ switchport mode access
+ switchport access vlan 30
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+ exit
+
+! Quarantined Unused Uplink Interface
+interface GigabitEthernet0/2
+ description Quarantined Unused Port
+ switchport mode access
+ switchport access vlan 99
+ shutdown
+ exit
+
+! Secure Virtual Terminal Lines
+line vty 0 15
+ transport input ssh
+ login local
+ exit
+
+end
+copy running-config startup-config

@@ -1,6 +1,6 @@
 # Configuring Layer 2 EtherChannel with LACP
 
-> **Category:** switching · **Difficulty:** intermediate · **Lab ID:** PTL-0006 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** switching · **Difficulty:** intermediate · **Lab ID:** PTL-0006 · **Document:** reviewed · **Simulator:** tested pass
 
 In traditional Ethernet switching, connecting multiple parallel physical cables between two switches triggers the Spanning Tree Protocol (STP) to block all but one link to prevent Layer 2 bridging loops. While this provides fault tolerance, it wastes available bandwidth. **EtherChannel** solves this by bundling multiple physical Ethernet links into a single logical channel (Port-channel). STP views the bundle as a single link, allowing all member links to forward traffic simultaneously with automated load sharing and sub-second failover if an individual link fails.
 
@@ -24,21 +24,28 @@ In traditional Ethernet switching, connecting multiple parallel physical cables 
 
 ## Topology
 
+![PTL-0006 Topology Diagram](assets/topology.png)
+
 The topology features two Cisco Catalyst 2960 switches connected via redundant FastEthernet links bundled into Port-channel 1 (Po1):
 
 ```text
                ┌─────────── FastEthernet0/1 ───────────┐
 [Switch S1] ───┤                                       ├─── [Switch S2]
-               └─────────── FastEthernet0/2 ───────────┘
-               ◄─── Bundled as Port-channel 1 (Po1) ───►
+   │           └─────────── FastEthernet0/2 ───────────┘          │
+   │           ◄─── Bundled as Port-channel 1 (Po1) ───►          │
+ Fa0/6                                                          Fa0/6
+   │                                                              │
+[PC-A] (192.168.1.1/24)                                        [PC-B] (192.168.1.2/24)
 ```
 
 | Device Name | Model | Interface | Connected Device | Neighbor Interface | Cable Type |
 |---|---|---|---|---|---|
-| **S1** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S2 | FastEthernet0/1 | Copper Straight-Through / Cross-Over |
-| **S1** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S2 | FastEthernet0/2 | Copper Straight-Through / Cross-Over |
-| **S2** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S1 | FastEthernet0/1 | Copper Straight-Through / Cross-Over |
-| **S2** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S1 | FastEthernet0/2 | Copper Straight-Through / Cross-Over |
+| **S1** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S2 | FastEthernet0/1 | Copper Cross-Over / Straight-Through |
+| **S1** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S2 | FastEthernet0/2 | Copper Cross-Over / Straight-Through |
+| **S1** | Catalyst 2960-24TT | FastEthernet0/6 | PC-A | FastEthernet0 | Copper Straight-Through |
+| **S2** | Catalyst 2960-24TT | FastEthernet0/1 | Switch S1 | FastEthernet0/1 | Copper Cross-Over / Straight-Through |
+| **S2** | Catalyst 2960-24TT | FastEthernet0/2 | Switch S1 | FastEthernet0/2 | Copper Cross-Over / Straight-Through |
+| **S2** | Catalyst 2960-24TT | FastEthernet0/6 | PC-B | FastEthernet0 | Copper Straight-Through |
 
 ---
 
@@ -48,6 +55,8 @@ The topology features two Cisco Catalyst 2960 switches connected via redundant F
 |---|---|---|---|---|---|
 | **S1** | VLAN 1 (SVI) | `192.168.1.11` | `255.255.255.0` | `192.168.1.1` | Switch 1 Management |
 | **S2** | VLAN 1 (SVI) | `192.168.1.12` | `255.255.255.0` | `192.168.1.1` | Switch 2 Management |
+| **PC-A** | FastEthernet0 | `192.168.1.1` | `255.255.255.0` | N/A | Host A Access |
+| **PC-B** | FastEthernet0 | `192.168.1.2` | `255.255.255.0` | N/A | Host B Access |
 
 ---
 
@@ -228,8 +237,11 @@ Notice `Po1(SU)` remains in use with `Fa0/2(P)` carrying all traffic without dro
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/S1.txt](configs/S1.txt), [configs/S2.txt](configs/S2.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; complete EtherChannel LACP bundle formation, 802.1Q trunking, host ping, and member link failover recorded in [PTL-0006-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0006-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only.

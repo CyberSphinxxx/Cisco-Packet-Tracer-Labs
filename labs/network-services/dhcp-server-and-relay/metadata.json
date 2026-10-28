@@ -23,9 +23,9 @@
   "activity_reference": null,
   "packet_tracer_version": "8.2+",
   "devices": [
-    "Cisco ISR 4321 Router",
-    "Cisco Catalyst 2960-24TT Switch",
-    "PC-PT End Device"
+    "Cisco ISR 4321 Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)"
   ],
   "source": {
     "type": "original",
@@ -33,16 +33,16 @@
     "url": null,
     "permission_evidence": null
   },
-  "license_decision": "pending_owner_selection",
+  "license_decision": "approved_dual_license",
   "assets": {
-    "starter": null,
-    "completed": null,
-    "topology": null
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
   },
   "status": {
     "documentation": "reviewed",
-    "simulator": "not_tested",
-    "simulator_evidence": null
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0012-SIMULATOR-RESULTS.md"
   },
   "references": [
     "https://datatracker.ietf.org/doc/html/rfc2131",

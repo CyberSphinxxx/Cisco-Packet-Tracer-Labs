@@ -1,6 +1,6 @@
 # Router-on-a-Stick Inter-VLAN Routing
 
-> **Category:** routing · **Difficulty:** intermediate · **Lab ID:** PTL-0010 · **Document:** reviewed · **Simulator:** not tested
+> **Category:** routing · **Difficulty:** intermediate · **Lab ID:** PTL-0010 · **Document:** reviewed · **Simulator:** tested pass
 
 VLANs isolate network traffic at Layer 2 to provide security and contain broadcasts. However, devices in different VLANs frequently need to communicate—for example, student lab computers accessing a shared web server or faculty members accessing student grade databases. Because a Layer 2 switch cannot route packets between VLANs, a Layer 3 routing device is required. **Router-on-a-Stick (ROAS)** is a classic, cost-effective inter-VLAN routing design that uses a single physical link operating as an IEEE 802.1Q trunk between a switch and a router. The router divides the physical interface into virtual **subinterfaces**, each acting as the default gateway for a specific VLAN.
 
@@ -24,6 +24,8 @@ VLANs isolate network traffic at Layer 2 to provide security and contain broadca
 ---
 
 ## Topology
+
+![PTL-0010 Topology Diagram](assets/topology.png)
 
 The topology features a Cisco ISR 4321 router connected via a single physical link to a Catalyst 2960 switch servicing two VLANs:
 
@@ -232,8 +234,11 @@ Notice the packet traveled up to R1 on VLAN 10 and was forwarded back down the s
 ---
 
 ## Files and Validation Status
+- Starter Packet Tracer File: [assets/starter.pkt](assets/starter.pkt)
+- Completed Packet Tracer File: [assets/completed.pkt](assets/completed.pkt)
+- Topology Diagram: [assets/topology.png](assets/topology.png)
 - Configuration Scripts: [configs/R1.txt](configs/R1.txt), [configs/S1.txt](configs/S1.txt)
 - Documentation Quality: **REVIEWED** (Meets all 12 rubric standards; verified against Cisco IOS documentation).
-- Packet Tracer Simulator Status: **NOT TESTED** (Syntax verified statically against official Cisco IOS configuration guidelines).
+- Packet Tracer Simulator Status: **TESTED PASS** (Verified on Cisco Packet Tracer 9.0.1; router subinterfaces, switch 802.1Q trunking, inter-VLAN routed ICMP ping, and negative mismatch isolation recorded in [PTL-0010-SIMULATOR-RESULTS.md](../../../AI_AGENT_GUIDE/state/PTL-0010-SIMULATOR-RESULTS.md)).
 
 > Independent educational project, not affiliated with or endorsed by Cisco. Lab passwords are provided for educational simulation purposes only.
