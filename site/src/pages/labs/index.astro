@@ -15,7 +15,7 @@ const facets = facetsOf(items);
 const count = (key: 'category' | 'difficulty', v: string) => items.filter((i) => i[key] === v).length;
 const topicCounts = repo.topics;
 ---
-<BaseLayout title="All labs" description={`Browse and filter all ${items.length} Cisco Packet Tracer labs by topic area, difficulty, topic and time.`}>
+<BaseLayout title="All labs" description={`Browse and filter all ${items.length} Cisco Packet Tracer labs by topic area, difficulty, topic and time.`} noSearchIndex>
   <div class="wrap page-head">
     <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Labs' }]} />
     <h1>All labs</h1>

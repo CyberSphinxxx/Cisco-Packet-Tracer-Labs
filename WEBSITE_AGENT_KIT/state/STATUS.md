@@ -5,7 +5,7 @@
 **Branch:** `feature/astro-learning-platform` (local only, never pushed)
 **Base commit:** `234d9ee` (`main` = `origin/main`, verified)
 **Owner authorization:** local work only; no push/PR/merge/deploy
-**Updated:** 2026-10-28 09:07 UTC
+**Updated:** 2026-10-28 09:14 UTC
 
 | Phase | Status | Last commit | Evidence | Remaining |
 |---|---|---|---|---|
@@ -16,7 +16,7 @@
 | 04 Catalog filters | PASS | phase-04 commit | E-022..E-025, tests/unit/filters.test.ts, tests/e2e/catalog.spec.ts | |
 | 05 Lab details | PASS | phase-05 commit | E-026..E-027, tests/e2e/lab-detail.spec.ts | |
 | 06 Paths/capstone/docs | PASS | phase-06 commit | E-025, E-028..E-029, tests/e2e/paths-docs.spec.ts | |
-| 07 Search | PENDING | | | |
+| 07 Search | PASS | phase-07 commit | E-030..E-031, ADR-009, tests/e2e/search.spec.ts | |
 | 08 SEO/a11y/performance | PENDING | | | |
 | 09 CI/Pages readiness | PENDING | | | |
 | 10 Independent audit | PENDING | | | |

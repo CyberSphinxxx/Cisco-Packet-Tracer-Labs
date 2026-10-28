@@ -8,7 +8,7 @@ const repo = getRepository();
 // in metadata, so docs are shown alphabetically by title.
 const docs = [...repo.docs].sort((a, b) => a.title.localeCompare(b.title, 'en'));
 ---
-<BaseLayout title="Reference guides" description="Packet Tracer setup, IOS command cheatsheet, troubleshooting method, lab index, curriculum coverage and licensing.">
+<BaseLayout title="Reference guides" description="Packet Tracer setup, IOS command cheatsheet, troubleshooting method, lab index, curriculum coverage and licensing." noSearchIndex>
   <div class="wrap page-head">
     <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Reference guides' }]} />
     <h1>Reference guides</h1>

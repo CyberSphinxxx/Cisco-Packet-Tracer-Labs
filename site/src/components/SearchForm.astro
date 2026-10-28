@@ -1,0 +1,31 @@
+---
+/** Search box + live status + results list. Behaviour comes from search-core.ts. */
+interface Props { idPrefix: string; autofocus?: boolean }
+const { idPrefix, autofocus = false } = Astro.props;
+---
+<div class="search-ui" data-search-ui>
+  <form role="search" aria-label="Search the library" action={`${import.meta.env.BASE_URL}search/`} method="get" data-search-form>
+    <label for={`${idPrefix}-q`}>Search labs, paths and guides</label>
+    <div class="search-row">
+      <input id={`${idPrefix}-q`} name="q" type="search" autocomplete="off" spellcheck="false" maxlength="120" placeholder="OSPF, DHCP relay, port security..." autofocus={autofocus} data-search-input />
+    </div>
+  </form>
+  <p class="search-status" role="status" aria-live="polite" data-search-status>Type at least two letters, for example OSPF, DHCP relay or VLAN.</p>
+  <ol class="search-results" data-search-results></ol>
+</div>
+<style>
+  .search-ui label { display: block; font-weight: 700; font-size: var(--fs-sm); margin-bottom: var(--sp-2); }
+  .search-ui input {
+    width: 100%; font: inherit; font-size: var(--fs-md); min-height: 3rem; padding: var(--sp-2) var(--sp-4);
+    border: 2px solid var(--c-line-strong); border-radius: var(--radius-md); background: var(--c-surface); color: var(--c-ink);
+  }
+  .search-ui input:focus-visible { border-color: var(--c-focus); outline-offset: 1px; }
+  .search-status { color: var(--c-muted); font-size: var(--fs-sm); margin: var(--sp-3) 0 0; }
+  .search-results { list-style: none; margin: var(--sp-3) 0 0; padding: 0; }
+  .search-results :global(.search-result) { padding-block: var(--sp-4); border-top: 1px solid var(--c-line); }
+  .search-results :global(.search-result-type) { margin: 0; font-size: var(--fs-xs); color: var(--c-muted); }
+  .search-results :global(.search-result-title) { font-weight: 700; font-size: var(--fs-md); }
+  .search-results :global(.search-result-excerpt) { margin: var(--sp-1) 0 0; color: var(--c-ink-soft); font-size: var(--fs-sm); }
+  .search-results :global(mark) { background: var(--c-mark); color: inherit; padding: 0 0.1em; border-radius: 2px; }
+  .search-results :global(.search-result-sections) { margin: var(--sp-2) 0 0; padding-left: 1.1em; font-size: var(--fs-sm); display: grid; gap: var(--sp-1); }
+</style>

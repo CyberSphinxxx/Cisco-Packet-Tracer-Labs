@@ -14,7 +14,7 @@ const gettingStarted = repo.docs.find((d) => d.slug === 'getting-started');
 const labCount = repo.labs.length;
 const description = `${labCount} original Cisco Packet Tracer labs${capstone ? ' and a capstone project' : ''} with starter topologies, step-by-step guides, verification checks and solution files.`;
 ---
-<BaseLayout title={SITE_NAME} description={description}>
+<BaseLayout title={SITE_NAME} description={description} noSearchIndex>
   <section class="hero wrap" aria-labelledby="hero-title">
     <div class="hero-copy">
       <h1 id="hero-title">Build real networks in Cisco Packet Tracer, one lab at a time.</h1>

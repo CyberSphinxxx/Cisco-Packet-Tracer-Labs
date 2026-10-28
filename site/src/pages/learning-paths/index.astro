@@ -5,7 +5,7 @@ import { getRepository } from '../../lib/content/repository';
 import { url } from '../../lib/site';
 const repo = getRepository();
 ---
-<BaseLayout title="Learning paths" description={`${repo.paths.length} curated sequences through the Cisco Packet Tracer labs: ${repo.paths.map((p) => p.title).join(', ')}.`}>
+<BaseLayout title="Learning paths" description={`${repo.paths.length} curated sequences through the Cisco Packet Tracer labs: ${repo.paths.map((p) => p.title).join(', ')}.`} noSearchIndex>
   <div class="wrap page-head">
     <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Learning paths' }]} />
     <h1>Learning paths</h1>

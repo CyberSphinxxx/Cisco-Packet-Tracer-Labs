@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import SearchDialog from '../components/SearchDialog.astro';
 import { SITE_NAME } from '../lib/site';
 
 interface Props {
@@ -14,7 +15,7 @@ const { title, description, noSearchIndex = false } = Astro.props;
 const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
 ---
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-base={import.meta.env.BASE_URL}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,6 +44,7 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
       <slot />
     </main>
     <SiteFooter />
+    <SearchDialog />
     <script>
       import '../scripts/enhance.ts';
     </script>

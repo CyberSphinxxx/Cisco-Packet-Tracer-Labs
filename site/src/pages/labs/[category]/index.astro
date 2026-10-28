@@ -13,7 +13,7 @@ const { category } = Astro.props as { category: Category };
 const labs = category.labIds.map((id) => labById(id)!);
 const others = getRepository().categories.filter((c) => c.slug !== category.slug);
 ---
-<BaseLayout title={`${category.label} labs`} description={`${labs.length} Cisco Packet Tracer ${labs.length === 1 ? 'lab' : 'labs'} in ${category.label}: ${labs.map((l) => l.title).join('; ')}.`}>
+<BaseLayout title={`${category.label} labs`} description={`${labs.length} Cisco Packet Tracer ${labs.length === 1 ? 'lab' : 'labs'} in ${category.label}: ${labs.map((l) => l.title).join('; ')}.`} noSearchIndex>
   <div class="wrap page-head">
     <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Labs', href: url('/labs/') }, { label: category.label }]} />
     <h1><WireSwatch category={category.slug} /> {category.label}</h1>
