@@ -96,7 +96,9 @@ describe('no copied canonical content inside site/', () => {
 
   it('contains no Markdown, metadata.json or .pkt copies', () => {
     const offenders = siteFiles.filter((f) => /\.(md|mdx|pkt|pka)$/i.test(f) || path.basename(f) === 'metadata.json');
-    expect(offenders.filter((f) => !f.endsWith(`${path.sep}README.md`) || path.dirname(f) !== SITE_ROOT)).toEqual([]);
+    // site/README.md (developer docs for the website itself) is the only allowed Markdown file.
+    const allowed = path.resolve(SITE_ROOT, 'README.md');
+    expect(offenders.filter((f) => path.resolve(f) !== allowed)).toEqual([]);
   });
 
   it('contains no paragraph text from any lab README', () => {
