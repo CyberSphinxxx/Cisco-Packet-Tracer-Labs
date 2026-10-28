@@ -1,14 +1,70 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import ConfigFiles from '../../../components/ConfigFiles.astro';
+import DownloadPanel from '../../../components/DownloadPanel.astro';
+import WireSwatch from '../../../components/WireSwatch.astro';
 import { getRepository, type Project } from '../../../lib/content/repository';
+import { difficultyLabel, labById, url } from '../../../lib/site';
 
-export const getStaticPaths = (() =>
-  getRepository().projects.map((project) => ({ params: { slug: project.slug }, props: { project } }))) satisfies GetStaticPaths;
+export const getStaticPaths = (() => getRepository().projects.map((project) => ({ params: { slug: project.slug }, props: { project } }))) satisfies GetStaticPaths;
 
 const { project } = Astro.props as { project: Project };
+const install = getRepository().docs.find((d) => d.slug === 'installation');
+const prereqs = project.linkedLabIds.map((id) => labById(id)!).sort((a, b) => a.learningOrder - b.learningOrder);
+const tocExtra = [
+  ...(project.configs.length ? [{ id: 'site-config-files', text: 'Reference configurations' }] : []),
+  ...(project.verification ? [{ id: 'site-verification', text: 'Verification guide' }] : []),
+];
 ---
-<BaseLayout title={project.title} description={project.summary ?? undefined}>
-  <h1>{project.title}</h1>
-  <div class="prose" set:html={project.doc.html} />
-</BaseLayout>
+<ArticleLayout
+  title={project.title}
+  description={project.summary ?? undefined}
+  crumbs={[{ label: 'Home', href: url('/') }, { label: 'Capstone' }]}
+  html={project.doc.html}
+  toc={project.doc.toc}
+  tocExtra={tocExtra}
+  sourceUrl={project.doc.githubUrl}
+  sourcePath={project.doc.sourcePath}
+>
+  <header slot="header" class="proj-header">
+    <p class="kicker">Capstone project</p>
+    <h1>{project.title}</h1>
+    {project.summary && <p class="lead">{project.summary}</p>}
+    <span hidden data-pagefind-filter="type">Capstone</span>
+  </header>
+  <Fragment slot="before">
+    <DownloadPanel starter={project.starter} completed={project.completed} installUrl={install?.route} label={project.title} />
+    {prereqs.length > 0 && (
+      <section class="prereqs" aria-labelledby="prereq-title" data-pagefind-ignore>
+        <h2 id="prereq-title">Labs this project builds on</h2>
+        <p>The project guide links these labs. Complete them first, in this order:</p>
+        <ol>
+          {prereqs.map((l) => (
+            <li><WireSwatch category={l.category} /> <span class="lab-id">{l.id}</span> <a href={l.route}>{l.title}</a> <span class="m">{difficultyLabel(l.difficulty)}{l.minutes != null && `, ${l.minutes} min`}</span></li>
+          ))}
+        </ol>
+      </section>
+    )}
+  </Fragment>
+  <Fragment slot="after">
+    <ConfigFiles configs={project.configs} />
+    {project.verification && (
+      <section class="prose" aria-labelledby="site-verification">
+        <h2 id="site-verification">Verification guide</h2>
+        <p>Assembly checklist, expected outputs and negative tests: <a href={project.verification.route}>{project.verification.title}</a>.</p>
+      </section>
+    )}
+  </Fragment>
+</ArticleLayout>
+<style>
+  .proj-header { margin-top: var(--sp-4); }
+  .kicker { margin: 0; color: var(--c-amber); font-weight: 700; }
+  .proj-header h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); letter-spacing: -0.02em; margin-top: var(--sp-2); max-width: 24ch; }
+  .lead { font-size: var(--fs-md); color: var(--c-ink-soft); max-width: 62ch; margin: var(--sp-4) 0 0; line-height: 1.5; }
+  .prereqs { max-width: var(--measure); }
+  .prereqs h2 { font-size: var(--fs-md); }
+  .prereqs p { margin: var(--sp-2) 0 0; color: var(--c-ink-soft); }
+  .prereqs ol { margin: var(--sp-3) 0 0; padding-left: 1.6em; display: grid; gap: var(--sp-2); }
+  .prereqs .lab-id, .prereqs .m { color: var(--c-muted); font-size: var(--fs-sm); }
+</style>

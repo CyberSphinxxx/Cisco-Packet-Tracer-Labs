@@ -87,45 +87,50 @@ export function collectHeadings(markdown: string): HeadingInfo[] {
 
 /**
  * Plain text of the first H1 and the document's lead (used for titles and
- * descriptions). The lead is the first top-level paragraph before the first
- * h2. If the introduction is a blockquote/callout instead, its first sentence
- * is used, without a leading bold label such as "Disclaimer:".
+ * descriptions). Preference order:
+ *   1. the first top-level paragraph before the first h2;
+ *   2. the first sentence of an introductory GitHub alert callout
+ *      (`> [!IMPORTANT]`), without a leading bold label such as "Disclaimer:";
+ *   3. the first top-level paragraph anywhere in the document.
+ * Plain blockquotes (e.g. a lab's "Category: ... | Difficulty: ..." line) are
+ * never used.
  */
 export function extractTitleAndLead(markdown: string): { title: string | null; lead: string | null } {
   const tree = parse(markdown);
   let title: string | null = null;
-  let lead: string | null = null;
-  let quoted: string | null = null;
+  let beforeH2: string | null = null;
+  let alert: string | null = null;
+  let anyParagraph: string | null = null;
+  let seenH2 = false;
   const clean = (t: string) => t.replace(/\s+/g, ' ').trim();
   for (const node of tree.children) {
-    if (node.type === 'heading' && node.depth === 1) {
-      title ??= mdastToString(node).trim();
+    if (node.type === 'heading') {
+      if (node.depth === 1) title ??= mdastToString(node).trim();
+      else seenH2 = true;
       continue;
     }
-    if (node.type === 'heading') break;
     if (node.type === 'paragraph') {
-      lead = clean(mdastToString(node));
-      break;
+      const text = clean(mdastToString(node));
+      if (!text) continue;
+      anyParagraph ??= text;
+      if (!seenH2 && !beforeH2) beforeH2 = text;
+      continue;
     }
-    if (node.type === 'blockquote' && !quoted) {
+    if (node.type === 'blockquote' && !seenH2 && !alert) {
       const para = node.children.find((c): c is Paragraph => c.type === 'paragraph');
-      if (para) {
-        const kids = [...para.children];
-        const lead0 = kids[0];
-        if (lead0?.type === 'text' && /^\s*\[![A-Za-z]+\]/.test(lead0.value)) {
-          const rest = lead0.value.replace(/^\s*\[![A-Za-z]+\]\s*/, '');
-          if (rest) kids[0] = { ...lead0, value: rest };
-          else kids.shift();
-        }
-        const first = kids[0];
-        if (first?.type === 'strong' && /:\s*$/.test(mdastToString(first))) kids.shift();
-        const text = clean(kids.map((k) => mdastToString(k)).join(''));
-        const sentence = /^(.+?[.!?])(\s|$)/.exec(text)?.[1] ?? text;
-        if (sentence) quoted = sentence;
-      }
+      const lead0 = para?.children[0];
+      if (!para || lead0?.type !== 'text' || !/^\s*\[![A-Za-z]+\]/.test(lead0.value)) continue;
+      const kids = [...para.children];
+      const rest = lead0.value.replace(/^\s*\[![A-Za-z]+\]\s*/, '');
+      if (rest) kids[0] = { ...lead0, value: rest };
+      else kids.shift();
+      const first = kids[0];
+      if (first?.type === 'strong' && /:\s*$/.test(mdastToString(first))) kids.shift();
+      const text = clean(kids.map((k) => mdastToString(k)).join(''));
+      alert = /^(.+?[.!?])(\s|$)/.exec(text)?.[1] ?? (text || null);
     }
   }
-  return { title, lead: lead ?? quoted };
+  return { title, lead: beforeH2 ?? alert ?? anyParagraph };
 }
 
 /** Replace raw HTML: `<br>` becomes a hard break, anything else literal text. */

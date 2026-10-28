@@ -113,7 +113,12 @@ describe('titles and leads', () => {
     const md = '# Path\n\n> [!IMPORTANT]\n> **Independent Disclaimer:**\n> This path organizes labs by domain. Not affiliated.\n\n## Domain 1\n\nUnderstanding cabling.\n';
     expect(extractTitleAndLead(md).lead).toBe('This path organizes labs by domain.');
   });
-  it('never takes a lead from after the first section heading', () => {
-    expect(extractTitleAndLead('# T\n\n## A\n\nSection text.\n').lead).toBeNull();
+  it('ignores plain blockquotes and falls back to the first paragraph of the document', () => {
+    const md = '# Capstone\n\n> **Project Level:** Capstone · **Status:** Tested\n\n## 1. Summary\n\nModern networks need isolation.\n';
+    expect(extractTitleAndLead(md).lead).toBe('Modern networks need isolation.');
+  });
+  it('prefers an alert callout over a later section paragraph', () => {
+    const md = '# P\n\n> [!NOTE]\n> Read this first. Then more.\n\n## A\n\nSection text.\n';
+    expect(extractTitleAndLead(md).lead).toBe('Read this first.');
   });
 });

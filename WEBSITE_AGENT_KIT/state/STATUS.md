@@ -5,7 +5,7 @@
 **Branch:** `feature/astro-learning-platform` (local only, never pushed)
 **Base commit:** `234d9ee` (`main` = `origin/main`, verified)
 **Owner authorization:** local work only; no push/PR/merge/deploy
-**Updated:** 2026-10-28 09:03 UTC
+**Updated:** 2026-10-28 09:07 UTC
 
 | Phase | Status | Last commit | Evidence | Remaining |
 |---|---|---|---|---|
@@ -15,7 +15,7 @@
 | 03 Design foundation | PASS | phase-03 commit | E-019..E-021, ADR-008, screenshots (agent workspace) | 320/768/1024 widths re-checked in Phase 08 |
 | 04 Catalog filters | PASS | phase-04 commit | E-022..E-025, tests/unit/filters.test.ts, tests/e2e/catalog.spec.ts | |
 | 05 Lab details | PASS | phase-05 commit | E-026..E-027, tests/e2e/lab-detail.spec.ts | |
-| 06 Paths/capstone/docs | IN_PROGRESS | | index pages + about built early (E-025) | path/capstone/doc detail layouts |
+| 06 Paths/capstone/docs | PASS | phase-06 commit | E-025, E-028..E-029, tests/e2e/paths-docs.spec.ts | |
 | 07 Search | PENDING | | | |
 | 08 SEO/a11y/performance | PENDING | | | |
 | 09 CI/Pages readiness | PENDING | | | |
