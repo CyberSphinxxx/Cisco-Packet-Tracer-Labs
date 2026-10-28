@@ -1,0 +1,14 @@
+---
+import type { HeadingInfo } from '../lib/content/markdown';
+export type TocNode = { h: { id: string; text: string }; children: HeadingInfo[] };
+interface Props { tree: TocNode[] }
+const { tree } = Astro.props;
+---
+<ol>
+  {tree.map((n) => (
+    <li>
+      <a href={`#${n.h.id}`}>{n.h.text}</a>
+      {n.children.length > 0 && <ol>{n.children.map((c) => <li><a href={`#${c.id}`}>{c.text}</a></li>)}</ol>}
+    </li>
+  ))}
+</ol>

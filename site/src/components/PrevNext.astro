@@ -1,0 +1,21 @@
+---
+import type { Lab } from '../lib/content/repository';
+interface Props { prev: Lab | null; next: Lab | null; label?: string }
+const { prev, next, label = 'Recommended learning order' } = Astro.props;
+---
+{(prev || next) && (
+  <nav class="prev-next" aria-label={label} data-pagefind-ignore>
+    {prev ? <a class="pn pn-prev" href={prev.route} rel="prev"><span class="dir">Previous lab</span><span class="t"><span class="lab-id">{prev.id}</span> {prev.title}</span></a> : <span />}
+    {next ? <a class="pn pn-next" href={next.route} rel="next"><span class="dir">Next lab</span><span class="t"><span class="lab-id">{next.id}</span> {next.title}</span></a> : <span />}
+  </nav>
+)}
+<style>
+  .prev-next { display: grid; gap: var(--sp-3); grid-template-columns: minmax(0, 1fr); max-width: var(--measure); }
+  @media (min-width: 40rem) { .prev-next { grid-template-columns: 1fr 1fr; } }
+  .pn { display: grid; gap: var(--sp-1); padding: var(--sp-4); border: 1px solid var(--c-line); border-radius: var(--radius-md); background: var(--c-surface); text-decoration: none; color: var(--c-ink); }
+  .pn:hover { border-color: var(--c-ink-soft); color: var(--c-ink); }
+  .pn-next { text-align: right; }
+  .dir { font-size: var(--fs-sm); color: var(--c-muted); }
+  .t { font-weight: 700; color: var(--c-link); }
+  .t .lab-id { color: var(--c-muted); font-weight: 600; }
+</style>

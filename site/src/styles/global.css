@@ -206,13 +206,17 @@ samp {
 
 /* ---- long-form tutorial prose (rendered canonical Markdown) ---------------------- */
 .prose {
-  max-width: var(--measure);
   font-size: var(--fs-base);
   overflow-wrap: break-word;
 }
 
-.prose > * + * {
-  margin-top: var(--sp-4);
+/* Text keeps a readable measure; tables, code and figures may use the full column. */
+.prose > :not(.table-scroll, .code-block, .md-figure) {
+  max-width: var(--measure);
+}
+
+.prose > .md-figure {
+  max-width: min(100%, 60rem);
 }
 
 .prose p,

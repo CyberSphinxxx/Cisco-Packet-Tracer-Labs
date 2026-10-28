@@ -1,0 +1,61 @@
+---
+/**
+ * Long-form page: breadcrumbs, header slot, rendered canonical Markdown with
+ * a table of contents (sticky sidebar on wide screens, collapsible above the
+ * article otherwise), and slots before/after the body.
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs, { type Crumb } from '../components/Breadcrumbs.astro';
+import Toc from '../components/Toc.astro';
+import type { HeadingInfo } from '../lib/content/markdown';
+
+interface Props {
+  title: string;
+  description?: string;
+  crumbs: Crumb[];
+  html: string;
+  toc: HeadingInfo[];
+  /** Extra TOC entries for sections the page adds after the Markdown body. */
+  tocExtra?: { id: string; text: string }[];
+  sourceUrl: string;
+  sourcePath: string;
+}
+const { title, description, crumbs, html, toc, tocExtra = [], sourceUrl, sourcePath } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <slot name="head" slot="head" />
+  <div class="wrap article-head">
+    <Breadcrumbs items={crumbs} />
+    <slot name="header" />
+  </div>
+  <div class="wrap article-grid">
+    <div class="article-main">
+      <div class="toc-inline-wrap"><Toc headings={toc} variant="inline" extra={tocExtra} /></div>
+      <slot name="before" />
+      <article class="prose" set:html={html} />
+      <slot name="after" />
+      <p class="source-note" data-pagefind-ignore>
+        This page is generated from <a href={sourceUrl} rel="noopener noreferrer"><code>{sourcePath}</code></a> in the repository.
+        Corrections go there.
+      </p>
+    </div>
+    <aside class="article-aside">
+      <Toc headings={toc} variant="sidebar" extra={tocExtra} />
+    </aside>
+  </div>
+  <script>
+    import '../scripts/toc.ts';
+  </script>
+</BaseLayout>
+<style>
+  .article-head { padding-top: var(--sp-5); }
+  .article-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-7); margin-top: var(--sp-5); }
+  .article-aside { display: none; }
+  .article-main > :global(* + *) { margin-top: var(--sp-5); }
+  @media (min-width: 75rem) {
+    .article-grid { grid-template-columns: minmax(0, 1fr) 16rem; }
+    .article-aside { display: block; }
+    .toc-inline-wrap { display: none; }
+  }
+  .source-note { margin-top: var(--sp-7) !important; padding-top: var(--sp-4); border-top: 1px solid var(--c-line); color: var(--c-muted); font-size: var(--fs-sm); max-width: var(--measure); }
+</style>

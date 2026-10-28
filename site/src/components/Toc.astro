@@ -1,0 +1,37 @@
+---
+/** "On this page" navigation from the rendered headings (h2 with nested h3). */
+import type { HeadingInfo } from '../lib/content/markdown';
+import TocList, { type TocNode } from './TocList.astro';
+interface Props { headings: HeadingInfo[]; variant: 'sidebar' | 'inline'; extra?: { id: string; text: string }[] }
+const { headings, variant, extra = [] } = Astro.props;
+const tree: TocNode[] = [];
+for (const h of headings) {
+  if (h.depth === 2 || tree.length === 0) tree.push({ h, children: [] });
+  else tree[tree.length - 1].children.push(h);
+}
+for (const e of extra) tree.push({ h: e, children: [] });
+---
+{tree.length > 0 && (variant === 'sidebar' ? (
+  <nav class="toc toc-sidebar" aria-label="On this page" data-pagefind-ignore>
+    <p class="toc-title">On this page</p>
+    <TocList tree={tree} />
+  </nav>
+) : (
+  <details class="toc toc-inline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page (collapsed)"><TocList tree={tree} /></nav>
+  </details>
+))}
+<style>
+  .toc { font-size: var(--fs-sm); }
+  .toc :global(ol) { list-style: none; margin: 0; padding: 0; }
+  .toc :global(ol ol) { padding-left: var(--sp-3); margin-block: var(--sp-1); border-left: 1px solid var(--c-line); }
+  .toc :global(a) { display: block; padding: 0.2rem var(--sp-2); color: var(--c-ink-soft); text-decoration: none; border-radius: var(--radius-sm); line-height: 1.35; }
+  .toc :global(a:hover) { color: var(--c-link-hover); background: var(--c-surface-sunk); }
+  .toc :global(a[aria-current='true']) { color: var(--c-ink); font-weight: 700; box-shadow: inset 3px 0 0 var(--c-go); }
+  .toc-title { margin: 0 0 var(--sp-2); font-weight: 700; color: var(--c-ink); }
+  .toc-sidebar { position: sticky; top: calc(var(--header-h) + var(--sp-5)); max-height: calc(100vh - var(--header-h) - var(--sp-7)); overflow-y: auto; padding-bottom: var(--sp-4); }
+  .toc-inline { border: 1px solid var(--c-line); border-radius: var(--radius-md); background: var(--c-surface); }
+  .toc-inline summary { padding: var(--sp-3) var(--sp-4); cursor: pointer; font-weight: 700; min-height: 2.75rem; }
+  .toc-inline nav { padding: 0 var(--sp-3) var(--sp-3); }
+</style>

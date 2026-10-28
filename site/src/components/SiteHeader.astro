@@ -141,6 +141,8 @@ const githubUrl = getRepository().config.repoUrl;
     :global(.js) .site-nav[data-open] a[aria-current='page'] { box-shadow: inset 3px 0 0 var(--c-go); border-radius: 0; }
   }
   @media (max-width: 26.25rem) {
+    .header-inner { column-gap: var(--sp-2); }
+    .search-trigger, .theme-toggle, .menu-toggle { padding-inline: var(--sp-2); }
     .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   }
   @media (min-width: 60.01rem) {
