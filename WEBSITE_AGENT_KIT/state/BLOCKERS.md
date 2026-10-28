@@ -16,3 +16,7 @@ Kit was extracted into `Cisco_Packet_Tracer_Astro_Claude_Opus_55_Agent_Kit/`. Ve
 ## O-001 Topology screenshots show the owner's local path (2026-10-28, Info, OWNER DECISION)
 
 The 14 `topology.png` files are Packet Tracer window captures whose title bar shows `C:\L3mxr\Github Repositories\Cisco-Packet-Tracer-Labs\...`. They are already public in the repository; the website publishes them unchanged (binaries are protected). If this is unwanted, the owner can re-capture or crop them in a separate content change.
+
+## B-003 GitHub Actions and Cloudflare Pages not exercised remotely (2026-10-28, Medium, OPEN by design)
+
+The new `site` CI job and the documented Cloudflare Pages settings were validated by a step-for-step local simulation in a clean clone, not on GitHub or Cloudflare, because pushing and deploying are not authorized. Owner action after review: push the branch / open a PR, confirm both CI jobs pass, then create a Pages preview deployment and check downloads, search and `_headers`.

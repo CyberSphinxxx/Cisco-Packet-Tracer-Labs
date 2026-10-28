@@ -1,13 +1,13 @@
 # Session handoff
 
-**Current phase:** 09 (next)
-**Last completed task:** Phase 08 PASS: SEO policy, axe 0 violations, layout widths, CLS 0, CSP headers
+**Current phase:** 10 (next)
+**Last completed task:** Phase 09 PASS (local CI simulation): site CI job, README, Cloudflare notes
 **Current branch and commit:** `feature/astro-learning-platform`, see `git log -1`
 **Verified environment:** Linux workspace (Node 22.23.4, npm 10.9.9, Python 3.13.18). Owner machine: Windows, file bridge only (see DECISIONS ADR-000)
 **Changed files:** kit files at repo root (`CLAUDE.md`, `.claude/skills/website-build/`, `WEBSITE_AGENT_KIT/`), state files
 **Tests last run:** Python validator, 29 unit tests, audit: all exit 0 at base commit
 **Open blockers:** B-001 (Windows build to be run by owner)
-**Next precise action:** Phase 09: website CI workflow (separate job after Python), site README with Windows/Linux commands, Cloudflare Pages settings doc
+**Next precise action:** Phase 10 independent adversarial audit (real-repo temporary lab, metadata title change, missing asset, traversal), FINAL_REPORT.md
 
 ## How the owner imports the work (PowerShell, from repo root)
 
