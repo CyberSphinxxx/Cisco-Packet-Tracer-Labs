@@ -22,3 +22,23 @@ Astro 7.3.8, Node 22 LTS (>= 22.12.0), TypeScript 6.0.x, Pagefind 1.5.2. Rationa
 All 8 `docs/*.md` are published under `/docs/{slug}/`: they are public in the repo and all 8 appear in README "Quick Navigation". `AI_AGENT_GUIDE/**` is never published; links into it are rewritten to the public GitHub blob URL of the same file.
 
 Further mandatory ADRs (loader, link rewrite, `.pkt` delivery, images, path order, search, CSS, tests/CI, Pages config, licensing) are recorded in the phase where they are proven.
+
+## ADR-004: Custom build-time content module instead of the Content Layer `glob` loader (2026-10-28, Accepted, proven)
+
+- **Context:** Labs need a join of `README.md` + adjacent `metadata.json` (+ `verification.md`, `configs/`, assets) by folder; READMEs have no frontmatter and share the filename `README.md`; link rewriting needs a global route table and heading index (two passes) to validate cross-document fragments.
+- **Options:** (a) Astro `glob()` loaders per folder + a second JSON collection joined in pages; (b) a custom Content Layer loader; (c) a framework-independent TypeScript module (`site/src/lib/content/`) called from `getStaticPaths`.
+- **Decision:** (c). It runs unchanged under Vitest against fixture repositories, has explicit file-to-metadata joins by path, and fails loudly with the source path. Astro still prerenders every route statically. IDs are path-derived (`labs/<category>/<slug>`), so `README.md` collisions cannot happen.
+- **Repo root:** resolved in `astro.config.mjs` from `new URL('..', import.meta.url)` and passed as `PTL_REPO_ROOT` (bundled chunks do not keep a stable `import.meta.url`). No developer-specific absolute paths.
+- **Proof:** `tests/unit/ingestion.test.ts` (7 tests), Phase 01 evidence E-007..E-012.
+
+## ADR-005: Markdown pipeline and link rewriting (2026-10-28, Accepted, proven)
+
+unified + remark-parse + remark-gfm; mdast transforms for raw HTML (`<br>` -> line break, any other HTML becomes literal text), GitHub alerts, GitHub-compatible heading ids (github-slugger, same as GitHub anchors), and link/image/definition rewriting; then remark-rehype -> rehype-sanitize (strict schema, http/https/mailto only) -> trusted presentation transforms (heading anchors, scrollable table regions, code-copy wrappers, figures) -> rehype-stringify. Code and inline code are never rewritten because only `link`/`image`/`definition` nodes are visited. No syntax highlighter: sources use only `text` fences.
+
+## ADR-006: `.pkt`, image and config delivery (2026-10-28, Accepted, proven)
+
+Every repository file that metadata declares or canonical Markdown links (`.pkt`, `.png`, `.txt` inside `labs/` or `projects/`) is emitted by the static endpoint `src/pages/[...file].ts` at **the same path it has in the repository** (e.g. `/labs/routing/x/assets/starter.pkt`), with bytes read from source and returned unchanged. Original file names are preserved (no rename on download). Works identically for preview branches and offline builds; no dependency on GitHub raw URLs. Rejected: GitHub raw links (break on unmerged previews, MIME/redirect variability). Proof: 43/43 baseline hashes equal in `dist/` and via HTTP from `astro preview` (E-011).
+
+## ADR-007: Topology images (2026-10-28, Accepted)
+
+Images are copied as-is (no Astro image pipeline, no re-encoding), with `width`/`height` read from the PNG header to prevent layout shift, `loading="lazy"`, the README alt text as `<figcaption>`, and a link to the full-size file.

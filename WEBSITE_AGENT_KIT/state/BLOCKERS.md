@@ -12,3 +12,7 @@ Each entry: timestamp, severity, reproduction, workaround, owner action, resolut
 ## B-002 Agent kit not at repo root in owner tree (2026-10-28, Low, RESOLVED on branch)
 
 Kit was extracted into `Cisco_Packet_Tracer_Astro_Claude_Opus_55_Agent_Kit/`. Verified and copied to the repo root on the feature branch. The owner can delete the untracked subfolder after importing the branch.
+
+## O-001 Topology screenshots show the owner's local path (2026-10-28, Info, OWNER DECISION)
+
+The 14 `topology.png` files are Packet Tracer window captures whose title bar shows `C:\L3mxr\Github Repositories\Cisco-Packet-Tracer-Labs\...`. They are already public in the repository; the website publishes them unchanged (binaries are protected). If this is unwanted, the owner can re-capture or crop them in a separate content change.

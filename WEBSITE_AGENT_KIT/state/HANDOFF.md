@@ -1,13 +1,13 @@
 # Session handoff
 
-**Current phase:** 01 (next)
-**Last completed task:** Phase 00 preflight PASS (baseline, inventory, branch, state)
+**Current phase:** 02 (next)
+**Last completed task:** Phase 01 PASS: site/ scaffold, content module, PTL-0008 proof, 13 labs discovered
 **Current branch and commit:** `feature/astro-learning-platform`, see `git log -1`
 **Verified environment:** Linux workspace (Node 22.23.4, npm 10.9.9, Python 3.13.18). Owner machine: Windows, file bridge only (see DECISIONS ADR-000)
 **Changed files:** kit files at repo root (`CLAUDE.md`, `.claude/skills/website-build/`, `WEBSITE_AGENT_KIT/`), state files
 **Tests last run:** Python validator, 29 unit tests, audit: all exit 0 at base commit
 **Open blockers:** B-001 (Windows build to be run by owner)
-**Next precise action:** scaffold `site/` with Astro 7.3.8 and prove PTL-0008 renders from canonical source
+**Next precise action:** Phase 02 failure-case fixtures (duplicate id, traversal, unsafe scheme, missing asset, broken fragment, CRLF), temporary lab auto-discovery, clean-checkout npm ci
 
 ## How the owner imports the work (PowerShell, from repo root)
 

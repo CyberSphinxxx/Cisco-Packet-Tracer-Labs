@@ -1,0 +1,21 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { getRepository, type Lab } from '../../../../lib/content/repository';
+
+export const getStaticPaths = (() =>
+  getRepository().labs.map((lab) => ({ params: { category: lab.category, slug: lab.slug }, props: { lab } }))) satisfies GetStaticPaths;
+
+const { lab } = Astro.props as { lab: Lab };
+---
+<BaseLayout title={`${lab.id}: ${lab.title}`} description={lab.summary}>
+  <article data-lab-id={lab.id}>
+    <h1>{lab.title}</h1>
+    <p>{lab.id} · {lab.category} · {lab.difficulty} · {lab.minutes} min · simulator {lab.simulatorStatus}</p>
+    <ul>
+      {lab.starter && <li><a href={lab.starter.url} download data-download="starter">Download starter ({lab.starter.fileName}, {lab.starter.bytes} bytes)</a></li>}
+      {lab.completed && <li><a href={lab.completed.url} download data-download="completed">Solution / Reference ({lab.completed.fileName})</a></li>}
+    </ul>
+    <div class="prose" set:html={lab.doc.html} />
+  </article>
+</BaseLayout>

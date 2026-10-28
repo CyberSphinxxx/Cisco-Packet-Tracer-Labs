@@ -5,12 +5,12 @@
 **Branch:** `feature/astro-learning-platform` (local only, never pushed)
 **Base commit:** `234d9ee` (`main` = `origin/main`, verified)
 **Owner authorization:** local work only; no push/PR/merge/deploy
-**Updated:** 2026-10-28 08:30 UTC
+**Updated:** 2026-10-28 08:40 UTC
 
 | Phase | Status | Last commit | Evidence | Remaining |
 |---|---|---|---|---|
 | 00 Preflight | PASS | see `git log` (phase-00 commit) | BASELINE.md, EVIDENCE E-001..E-006 | Windows-side commands are owner verification (BLOCKERS B-001) |
-| 01 Ingestion proof | PENDING | | | |
+| 01 Ingestion proof | PASS | phase-01 commit | E-007..E-012, tests/unit/ingestion.test.ts | clean-checkout `npm ci` re-verified in Phase 02 |
 | 02 Content graph | PENDING | | | |
 | 03 Design foundation | PENDING | | | |
 | 04 Catalog filters | PENDING | | | |
