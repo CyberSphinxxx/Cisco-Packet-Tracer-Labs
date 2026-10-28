@@ -1,0 +1,137 @@
+/*
+ * Design tokens: Cisco Packet Tracer Learning Library
+ *
+ * Signature: the eight T568B Ethernet wire colours code lab categories
+ * (solid and white-striped variants). Semantic accents borrow switch-port
+ * LEDs: green = link up / start here (starter files, primary actions),
+ * amber = attention (solution files, cautions). Everything else is a quiet
+ * cool slate so long tutorials stay readable.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* --- palette: light -------------------------------------------------- */
+  --c-bg: #f6f8f9;
+  --c-surface: #ffffff;
+  --c-surface-sunk: #eef2f4;
+  --c-ink: #17212b;
+  --c-ink-soft: #3a4754;
+  --c-muted: #52606d;
+  --c-line: #d5dce2;
+  --c-line-strong: #b4c0ca;
+  --c-link: #1f5a99;
+  --c-link-hover: #143f6e;
+  --c-go: #1d7348;          /* port LED green: start / starter download */
+  --c-go-ink: #ffffff;
+  --c-go-soft: #e3f3ea;
+  --c-amber: #8a5300;       /* port LED amber: solutions / caution (text-safe) */
+  --c-amber-line: #d99a2b;
+  --c-amber-soft: #fbf1df;
+  --c-focus: #1f5a99;
+  --c-code-bg: #1c2731;     /* console window */
+  --c-code-ink: #e4ebf0;
+  --c-code-inline-bg: #e8edf1;
+  --c-mark: #fff2b8;
+
+  /* T568B wire colours (category coding). */
+  --wire-orange: #e3761c;
+  --wire-green: #2f9a4e;
+  --wire-blue: #2f6fd1;
+  --wire-brown: #8a5a35;
+  --wire-white: #ffffff;
+
+  /* --- type ---------------------------------------------------------------- */
+  --font-sans: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Atkinson Hyperlegible Mono Variable', 'Atkinson Hyperlegible Mono', ui-monospace, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
+  /* modular scale, ratio 1.25 from a 17px body */
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.25rem;
+  --fs-lg: 1.5625rem;
+  --fs-xl: 1.953rem;
+  --fs-2xl: clamp(2.1rem, 1.6rem + 2.2vw, 3.05rem);
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-body: 1.6;
+  --measure: 70ch;
+
+  /* --- space, shape, motion -------------------------------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --radius-sm: 3px;   /* inline code, tags */
+  --radius-md: 6px;   /* buttons, inputs, code blocks */
+  --radius-lg: 10px;  /* panels that contain other components */
+  --shadow-raise: 0 1px 2px rgb(23 33 43 / 0.06), 0 4px 14px rgb(23 33 43 / 0.06);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 160ms;
+  --header-h: 4rem;
+  --page-max: 82rem;
+  --gutter: clamp(1rem, 0.5rem + 2.4vw, 2.5rem);
+}
+
+/* --- palette: dark (system preference unless the reader chose light) ------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --c-bg: #121a21;
+    --c-surface: #18222b;
+    --c-surface-sunk: #0e151b;
+    --c-ink: #e3e9ee;
+    --c-ink-soft: #c3ced7;
+    --c-muted: #9aa8b4;
+    --c-line: #2a3742;
+    --c-line-strong: #3c4c59;
+    --c-link: #8ab9f0;
+    --c-link-hover: #b5d3f7;
+    --c-go: #4cc38a;
+    --c-go-ink: #08130d;
+    --c-go-soft: #15301f;
+    --c-amber: #f0b45a;
+    --c-amber-line: #c98a2a;
+    --c-amber-soft: #2e2312;
+    --c-focus: #8ab9f0;
+    --c-code-bg: #0b1116;
+    --c-code-ink: #dbe4ea;
+    --c-code-inline-bg: #23303b;
+    --c-mark: #4a3f12;
+    --wire-white: #dfe6ec;
+    --shadow-raise: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.25);
+  }
+}
+
+:root[data-theme='dark'] {
+  --c-bg: #121a21;
+  --c-surface: #18222b;
+  --c-surface-sunk: #0e151b;
+  --c-ink: #e3e9ee;
+  --c-ink-soft: #c3ced7;
+  --c-muted: #9aa8b4;
+  --c-line: #2a3742;
+  --c-line-strong: #3c4c59;
+  --c-link: #8ab9f0;
+  --c-link-hover: #b5d3f7;
+  --c-go: #4cc38a;
+  --c-go-ink: #08130d;
+  --c-go-soft: #15301f;
+  --c-amber: #f0b45a;
+  --c-amber-line: #c98a2a;
+  --c-amber-soft: #2e2312;
+  --c-focus: #8ab9f0;
+  --c-code-bg: #0b1116;
+  --c-code-ink: #dbe4ea;
+  --c-code-inline-bg: #23303b;
+  --c-mark: #4a3f12;
+  --wire-white: #dfe6ec;
+  --shadow-raise: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.25);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}

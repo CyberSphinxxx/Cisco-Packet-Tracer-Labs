@@ -1,19 +1,50 @@
 ---
+import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { SITE_NAME } from '../lib/site';
+
 interface Props {
   title: string;
   description?: string;
+  /** Exclude the page from the static search index (e.g. 404). */
+  noSearchIndex?: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, noSearchIndex = false } = Astro.props;
+const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | Cisco Packet Tracer Learning Library</title>
+    <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <script is:inline>
+      // Before first paint: mark JS available and apply a saved theme choice.
+      (function () {
+        var d = document.documentElement;
+        d.classList.remove('no-js');
+        d.classList.add('js');
+        try {
+          var t = localStorage.getItem('ptl-theme');
+          if (t === 'light' || t === 'dark') d.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <slot name="head" />
   </head>
   <body>
-    <main id="main"><slot /></main>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main" tabindex="-1" data-pagefind-body={noSearchIndex ? undefined : ''}>
+      <slot />
+    </main>
+    <SiteFooter />
+    <script>
+      import '../scripts/enhance.ts';
+    </script>
   </body>
 </html>

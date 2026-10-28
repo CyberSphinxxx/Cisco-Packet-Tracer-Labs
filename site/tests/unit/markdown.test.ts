@@ -4,7 +4,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { ContentError } from '../../src/lib/content/errors';
-import { collectHeadings, renderMarkdown, type HrefResolver } from '../../src/lib/content/markdown';
+import { collectHeadings, extractTitleAndLead, renderMarkdown, type HrefResolver } from '../../src/lib/content/markdown';
 
 /** Resolver that tags every local link so rewrites are visible. */
 const tagging: HrefResolver = (href) => {
@@ -102,5 +102,18 @@ describe('presentation transforms', () => {
     const { html } = render('> [!IMPORTANT]\n> **Disclaimer:** not affiliated.\n');
     expect(html).toContain('<div class="callout callout-important" role="note"><p class="callout-title">Important</p>');
     expect(html).not.toContain('[!IMPORTANT]');
+  });
+});
+
+describe('titles and leads', () => {
+  it('uses the first top-level paragraph before the first h2', () => {
+    expect(extractTitleAndLead('# T\n\n> **Category:** x\n\nIntro text here.\n\n## A\n\nLater.\n')).toEqual({ title: 'T', lead: 'Intro text here.' });
+  });
+  it('falls back to the first sentence of an intro callout without its bold label', () => {
+    const md = '# Path\n\n> [!IMPORTANT]\n> **Independent Disclaimer:**\n> This path organizes labs by domain. Not affiliated.\n\n## Domain 1\n\nUnderstanding cabling.\n';
+    expect(extractTitleAndLead(md).lead).toBe('This path organizes labs by domain.');
+  });
+  it('never takes a lead from after the first section heading', () => {
+    expect(extractTitleAndLead('# T\n\n## A\n\nSection text.\n').lead).toBeNull();
   });
 });

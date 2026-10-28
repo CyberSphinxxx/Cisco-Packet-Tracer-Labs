@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloadIcon from '../components/DownloadIcon.astro';
+import WireSwatch from '../components/WireSwatch.astro';
+import { getRepository } from '../lib/content/repository';
+import { SITE_NAME, categoryLabel, difficultyLabel, formatBytes, labById, minutesLabel, url } from '../lib/site';
+
+const repo = getRepository();
+const firstPath = repo.paths[0];
+const firstLab = (firstPath?.steps.find((s) => s.labId) && labById(firstPath.steps.find((s) => s.labId)!.labId!)) || repo.labs[0];
+const capstone = repo.projects[0];
+const installGuide = repo.docs.find((d) => d.slug === 'installation');
+const gettingStarted = repo.docs.find((d) => d.slug === 'getting-started');
+const labCount = repo.labs.length;
+const description = `${labCount} original Cisco Packet Tracer labs${capstone ? ' and a capstone project' : ''} with starter topologies, step-by-step guides, verification checks and solution files.`;
+---
+<BaseLayout title={SITE_NAME} description={description}>
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">Build real networks in Cisco Packet Tracer, one lab at a time.</h1>
+      <p class="lead">
+        {labCount} original labs{capstone && <> and a capstone project</>}, written for students with no networking background.
+        Each lab gives you a starter topology to configure, a guided walkthrough, verification checks, and the finished file to compare against.
+      </p>
+      <div class="hero-actions">
+        {firstPath && <a class="btn btn-go" href={firstPath.route}>Start the {firstPath.title.replace(/ Learning Path$/, '').toLowerCase()} path</a>}
+        <a class="btn" href={url('/labs/')}>Browse all {labCount} labs</a>
+      </div>
+      {installGuide && (
+        <p class="hero-note">
+          You need Cisco Packet Tracer (free with a Cisco Networking Academy account) to open the <code>.pkt</code> files.
+          <a href={installGuide.route}>How to install it</a>.
+        </p>
+      )}
+    </div>
+
+    {firstLab && (
+      <aside class="start-panel" aria-labelledby="start-title">
+        <p class="start-kicker">Start here</p>
+        <p class="start-meta">
+          <WireSwatch category={firstLab.category} />
+          <span>{categoryLabel(firstLab.category)}</span>
+          <span class="lab-id">{firstLab.id}</span>
+        </p>
+        <h2 id="start-title"><a href={firstLab.route}>{firstLab.title}</a></h2>
+        <dl class="start-facts">
+          <div><dt>Level</dt><dd>{difficultyLabel(firstLab.difficulty)}</dd></div>
+          <div><dt>Time</dt><dd>{minutesLabel(firstLab.minutes)}</dd></div>
+          {firstLab.packetTracerVersion && <div><dt>Packet Tracer</dt><dd>{firstLab.packetTracerVersion}</dd></div>}
+        </dl>
+        <p class="start-sub">You will:</p>
+        <ul class="start-objectives">
+          {firstLab.objectives.slice(0, 3).map((o) => <li>{o}</li>)}
+        </ul>
+        <div class="start-actions">
+          {firstLab.starter && (
+            <a class="btn btn-go" href={firstLab.starter.url} download>
+              <DownloadIcon /> Download starter file <span class="file-size">({formatBytes(firstLab.starter.bytes)})</span>
+            </a>
+          )}
+          <a class="btn" href={firstLab.route}>Open the lab guide</a>
+        </div>
+      </aside>
+    )}
+  </section>
+
+  <section class="band" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">How every lab works</h2>
+      <ol class="how-steps">
+        <li>
+          <h3>Download the starter file</h3>
+          <p>A Packet Tracer topology with the devices placed and cabled, but not yet configured.</p>
+        </li>
+        <li>
+          <h3>Follow the walkthrough</h3>
+          <p>Objectives, addressing table, tasks and the exact IOS commands, explained step by step.</p>
+        </li>
+        <li>
+          <h3>Verify your work</h3>
+          <p>Run the listed <code>show</code> commands and pings, and compare against the expected output.</p>
+        </li>
+        <li>
+          <h3>Check the solution</h3>
+          <p>Open the completed file only when you are done, or when you are stuck and need a reference.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="paths-title">
+    <div class="section-head">
+      <h2 id="paths-title">Learning paths</h2>
+      <a href={url('/learning-paths/')}>All learning paths</a>
+    </div>
+    <ul class="path-list">
+      {repo.paths.map((p) => {
+        const labs = p.steps.filter((s) => s.kind === 'lab').length;
+        return (
+          <li>
+            <h3><a href={p.route}>{p.title}</a></h3>
+            {p.summary && <p>{p.summary}</p>}
+            <p class="path-count">{p.steps.length} steps, {labs} labs</p>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <section class="wrap section" aria-labelledby="topics-title">
+    <div class="section-head">
+      <h2 id="topics-title">Labs by topic area</h2>
+      <a href={url('/labs/')}>Filter the full catalog</a>
+    </div>
+    <div class="category-index">
+      {repo.categories.map((c) => (
+        <div class="category-row">
+          <h3>
+            <WireSwatch category={c.slug} />
+            <a href={c.route}>{c.label}</a>
+            <span class="count">{c.labIds.length} {c.labIds.length === 1 ? 'lab' : 'labs'}</span>
+          </h3>
+          <ul>
+            {c.labIds.map((id) => {
+              const lab = labById(id)!;
+              return <li><span class="lab-id">{lab.id}</span> <a href={lab.route}>{lab.title}</a></li>;
+            })}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {capstone && (
+    <section class="wrap section" aria-labelledby="capstone-title">
+      <div class="capstone">
+        <div>
+          <h2 id="capstone-title">Put it all together</h2>
+          <p><a href={capstone.route}>{capstone.title}</a></p>
+          {capstone.summary && <p class="muted">{capstone.summary}</p>}
+        </div>
+        <a class="btn" href={capstone.route}>View the capstone</a>
+      </div>
+    </section>
+  )}
+
+  {gettingStarted && (
+    <section class="wrap section" aria-label="New to Packet Tracer">
+      <p class="muted">New to Packet Tracer? Read the <a href={gettingStarted.route}>{gettingStarted.title}</a> guide first.</p>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--sp-6) var(--sp-7);
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: var(--sp-7) var(--sp-7);
+    align-items: start;
+  }
+  @media (min-width: 62rem) {
+    .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); padding-block: var(--sp-8); }
+  }
+  .hero h1 {
+    font-size: var(--fs-2xl);
+    line-height: var(--lh-tight);
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+  }
+  .lead { font-size: var(--fs-md); line-height: 1.5; color: var(--c-ink-soft); max-width: 46ch; margin: var(--sp-5) 0 0; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-6); }
+  .hero-note { margin-top: var(--sp-5); color: var(--c-muted); font-size: var(--fs-sm); max-width: 52ch; }
+
+  .start-panel {
+    position: relative;
+    padding: var(--sp-5) var(--sp-5) var(--sp-5) calc(var(--sp-5) + 6px);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-raise);
+    overflow: hidden;
+  }
+  .start-panel::before {
+    /* the pair stripe: the panel is "plugged in" to the green (go) pair */
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 6px;
+    background: repeating-linear-gradient(180deg, var(--wire-green) 0 14px, var(--wire-white) 14px 22px);
+  }
+  .start-kicker { margin: 0; font-weight: 700; color: var(--c-go); }
+  .start-meta { display: flex; align-items: center; gap: var(--sp-2); margin: var(--sp-2) 0 0; color: var(--c-muted); font-size: var(--fs-sm); flex-wrap: wrap; }
+  .start-panel h2 { font-size: var(--fs-lg); margin-top: var(--sp-2); }
+  .start-panel h2 a { color: var(--c-ink); text-decoration: none; }
+  .start-panel h2 a:hover { text-decoration: underline; }
+  .start-facts { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); margin: var(--sp-4) 0 0; font-size: var(--fs-sm); }
+  .start-facts dt { color: var(--c-muted); }
+  .start-facts dd { margin: 0; font-weight: 700; }
+  .start-sub { margin: var(--sp-4) 0 0; font-weight: 700; }
+  .start-objectives { margin: var(--sp-2) 0 0; padding-left: 1.2em; color: var(--c-ink-soft); }
+  .start-objectives li + li { margin-top: var(--sp-1); }
+  .start-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-5); }
+  .file-size { font-weight: 400; opacity: 0.85; }
+
+  .band { background: var(--c-surface); border-block: 1px solid var(--c-line); padding-block: var(--sp-7); }
+  .band h2, .section h2 { font-size: var(--fs-xl); letter-spacing: -0.01em; }
+  .how-steps {
+    list-style: none;
+    counter-reset: step;
+    margin: var(--sp-5) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--sp-5);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  }
+  .how-steps li { counter-increment: step; padding-top: var(--sp-4); border-top: 3px solid var(--c-line); }
+  .how-steps li:first-child { border-top-color: var(--c-go); }
+  .how-steps li:last-child { border-top-color: var(--c-amber-line); }
+  .how-steps h3 { font-size: var(--fs-base); display: flex; gap: var(--sp-2); }
+  .how-steps h3::before { content: counter(step); color: var(--c-muted); font-variant-numeric: tabular-nums; }
+  .how-steps p { margin: var(--sp-2) 0 0; color: var(--c-ink-soft); font-size: var(--fs-sm); }
+
+  .section { padding-top: var(--sp-7); }
+  .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--sp-2) var(--sp-5); }
+  .path-list { list-style: none; margin: var(--sp-4) 0 0; padding: 0; border-top: 1px solid var(--c-line); }
+  .path-list li { padding-block: var(--sp-4); border-bottom: 1px solid var(--c-line); display: grid; gap: var(--sp-1) var(--sp-6); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 52rem) { .path-list li { grid-template-columns: minmax(14rem, 1fr) minmax(0, 2fr) auto; align-items: baseline; } }
+  .path-list h3 { font-size: var(--fs-md); }
+  .path-list p { margin: 0; color: var(--c-ink-soft); font-size: var(--fs-sm); max-width: 70ch; }
+  .path-list .path-count { color: var(--c-muted); white-space: nowrap; }
+
+  .category-index { display: grid; gap: var(--sp-5) var(--sp-6); margin-top: var(--sp-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
+  .category-row h3 { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-base); padding-bottom: var(--sp-2); border-bottom: 1px solid var(--c-line); }
+  .category-row h3 a { color: var(--c-ink); }
+  .category-row .count { margin-left: auto; color: var(--c-muted); font-weight: 400; font-size: var(--fs-sm); }
+  .category-row ul { list-style: none; margin: var(--sp-2) 0 0; padding: 0; }
+  .category-row li { padding-block: var(--sp-1); font-size: var(--fs-sm); display: flex; gap: var(--sp-2); align-items: baseline; }
+  .category-row .lab-id { color: var(--c-muted); flex: none; }
+
+  .capstone { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-4); padding: var(--sp-5); border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); }
+  .capstone p { margin: var(--sp-2) 0 0; max-width: 70ch; }
+  .muted { color: var(--c-muted); }
+</style>

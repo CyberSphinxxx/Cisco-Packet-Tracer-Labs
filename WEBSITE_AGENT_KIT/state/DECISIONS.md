@@ -42,3 +42,7 @@ Every repository file that metadata declares or canonical Markdown links (`.pkt`
 ## ADR-007: Topology images (2026-10-28, Accepted)
 
 Images are copied as-is (no Astro image pipeline, no re-encoding), with `width`/`height` read from the PNG header to prevent layout shift, `loading="lazy"`, the README alt text as `<figcaption>`, and a link to the full-size file.
+
+## ADR-008: CSS approach and visual system (2026-10-28, Accepted)
+
+Hand-written CSS with design tokens (`site/src/styles/tokens.css`) and Astro component-scoped styles; no Tailwind, no UI framework, no React. Rationale: few dependencies, no build-time CSS tooling to keep in sync, full control of long-form prose typography. Signature: T568B Ethernet wire colours code categories (assigned in curated order, so new categories get the next code automatically; always paired with a text label). Semantic accents from switch-port LEDs: green = starter/primary action, amber = solution file/caution. Type: Atkinson Hyperlegible Next + Mono (Braille Institute, SIL OFL 1.1), self-hosted from `@fontsource-variable` packages so no third-party font requests are made. Light/dark follow the system; an optional toggle persists in localStorage (try/catch guarded); pages render fully without JavaScript.

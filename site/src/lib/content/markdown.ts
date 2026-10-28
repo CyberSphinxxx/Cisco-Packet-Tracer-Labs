@@ -85,19 +85,47 @@ export function collectHeadings(markdown: string): HeadingInfo[] {
   return assignHeadingIds(parse(markdown));
 }
 
-/** Plain text of the first H1 and first paragraph (used for titles/descriptions). */
+/**
+ * Plain text of the first H1 and the document's lead (used for titles and
+ * descriptions). The lead is the first top-level paragraph before the first
+ * h2. If the introduction is a blockquote/callout instead, its first sentence
+ * is used, without a leading bold label such as "Disclaimer:".
+ */
 export function extractTitleAndLead(markdown: string): { title: string | null; lead: string | null } {
   const tree = parse(markdown);
   let title: string | null = null;
   let lead: string | null = null;
+  let quoted: string | null = null;
+  const clean = (t: string) => t.replace(/\s+/g, ' ').trim();
   for (const node of tree.children) {
-    if (!title && node.type === 'heading' && node.depth === 1) title = mdastToString(node).trim();
-    else if (title && !lead && node.type === 'paragraph') {
-      lead = mdastToString(node).replace(/\s+/g, ' ').trim();
+    if (node.type === 'heading' && node.depth === 1) {
+      title ??= mdastToString(node).trim();
+      continue;
+    }
+    if (node.type === 'heading') break;
+    if (node.type === 'paragraph') {
+      lead = clean(mdastToString(node));
       break;
     }
+    if (node.type === 'blockquote' && !quoted) {
+      const para = node.children.find((c): c is Paragraph => c.type === 'paragraph');
+      if (para) {
+        const kids = [...para.children];
+        const lead0 = kids[0];
+        if (lead0?.type === 'text' && /^\s*\[![A-Za-z]+\]/.test(lead0.value)) {
+          const rest = lead0.value.replace(/^\s*\[![A-Za-z]+\]\s*/, '');
+          if (rest) kids[0] = { ...lead0, value: rest };
+          else kids.shift();
+        }
+        const first = kids[0];
+        if (first?.type === 'strong' && /:\s*$/.test(mdastToString(first))) kids.shift();
+        const text = clean(kids.map((k) => mdastToString(k)).join(''));
+        const sentence = /^(.+?[.!?])(\s|$)/.exec(text)?.[1] ?? text;
+        if (sentence) quoted = sentence;
+      }
+    }
   }
-  return { title, lead };
+  return { title, lead: lead ?? quoted };
 }
 
 /** Replace raw HTML: `<br>` becomes a hard break, anything else literal text. */
