@@ -5,15 +5,40 @@ import { fileURLToPath } from 'node:url';
 
 export const REPO_ROOT = path.resolve(fileURLToPath(new URL('../../..', import.meta.url)));
 
-export interface LabInfo { id: string; category: string; slug: string; route: string; starter: string; completed: string }
+export interface LabInfo {
+  id: string;
+  category: string;
+  slug: string;
+  route: string;
+  difficulty: string;
+  topics: string[];
+  minutes: number | null;
+  starter: string;
+  completed: string;
+}
 
 /** Lab list read straight from canonical metadata (independent of site code). */
 export function canonicalLabs(): LabInfo[] {
   const out: LabInfo[] = [];
-  for (const category of fs.readdirSync(path.join(REPO_ROOT, 'labs'))) {
-    for (const slug of fs.readdirSync(path.join(REPO_ROOT, 'labs', category))) {
-      const meta = JSON.parse(fs.readFileSync(path.join(REPO_ROOT, 'labs', category, slug, 'metadata.json'), 'utf8'));
-      out.push({ id: meta.id, category, slug, route: `/labs/${category}/${slug}/`, starter: meta.assets.starter, completed: meta.assets.completed });
+  const labsDir = path.join(REPO_ROOT, 'labs');
+  for (const category of fs.readdirSync(labsDir)) {
+    const catDir = path.join(labsDir, category);
+    if (!fs.statSync(catDir).isDirectory()) continue;
+    for (const slug of fs.readdirSync(catDir)) {
+      const metaPath = path.join(catDir, slug, 'metadata.json');
+      if (!fs.existsSync(metaPath)) continue;
+      const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+      out.push({
+        id: meta.id,
+        category,
+        slug,
+        route: `/labs/${category}/${slug}/`,
+        difficulty: meta.difficulty,
+        topics: meta.topics ?? [],
+        minutes: meta.estimated_minutes ?? null,
+        starter: meta.assets.starter,
+        completed: meta.assets.completed,
+      });
     }
   }
   return out.sort((a, b) => a.id.localeCompare(b.id));

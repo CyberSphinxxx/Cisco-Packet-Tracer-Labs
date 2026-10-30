@@ -21,7 +21,8 @@ describe('catalog filters on the real lab metadata', () => {
     const intermediate = ids('difficulty=intermediate');
     const both = ids('category=routing&difficulty=intermediate');
     expect(both).toEqual(routing.filter((id) => intermediate.includes(id)));
-    expect(ids('category=routing&difficulty=beginner')).toEqual([]);
+    const routingBeginner = items.filter((i) => i.category === 'routing' && i.difficulty === 'beginner').map((i) => i.id);
+    expect(ids('category=routing&difficulty=beginner').sort()).toEqual(routingBeginner.sort());
   });
 
   it('ORs values within one facet', () => {
@@ -43,7 +44,8 @@ describe('catalog filters on the real lab metadata', () => {
 
   it('time filter keeps labs at or under the limit', () => {
     for (const id of ids('time=30')) expect(items.find((i) => i.id === id)!.minutes).toBeLessThanOrEqual(30);
-    expect(ids('time=45')).toHaveLength(items.length);
+    const expected45 = items.filter((i) => i.minutes !== null && i.minutes <= 45).map((i) => i.id);
+    expect(ids('time=45').sort()).toEqual(expected45.sort());
   });
 
   it('drops unknown or hostile URL values instead of applying them', () => {
