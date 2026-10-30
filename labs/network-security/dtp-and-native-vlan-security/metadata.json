@@ -1,0 +1,53 @@
+{
+  "id": "PTL-0018",
+  "title": "Dynamic Trunking Protocol and Native VLAN Security",
+  "slug": "dtp-and-native-vlan-security",
+  "category": "network-security",
+  "summary": "Investigate Cisco Dynamic Trunking Protocol (DTP) operational modes, mitigate trunk negotiation risks with switchport nonegotiate, secure untagged traffic with an isolated Native VLAN 999, and prune unauthorized traffic with explicit allowed VLAN lists.",
+  "difficulty": "intermediate",
+  "topics": [
+    "dtp",
+    "trunking",
+    "native-vlan",
+    "vlan-hopping",
+    "switchport-security",
+    "layer-2-security"
+  ],
+  "learning_objectives": [
+    "Analyze Cisco Dynamic Trunking Protocol (DTP) operational states and evaluate the risks of unmanaged dynamic auto and dynamic desirable negotiation.",
+    "Eliminate DTP frame spoofing and negotiation vulnerabilities by configuring static IEEE 802.1Q trunks with switchport nonegotiate.",
+    "Evaluate security vulnerabilities surrounding default VLAN 1 and isolate untagged traffic using a dedicated, unused Native VLAN 999.",
+    "Diagnose native VLAN mismatches using Cisco Discovery Protocol (CDP) syslog alerts and Spanning Tree Protocol (PVST+) inconsistent port blocking states.",
+    "Implement and verify explicit allowed VLAN lists (switchport trunk allowed vlan) to prevent unauthorized VLAN traffic traversal.",
+    "Verify intra-VLAN cross-switch reachability across hardened trunks while confirming strict Layer 2 isolation between distinct VLANs without a router."
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": "Original BSIT/CCNA Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "2x Cisco Catalyst 2960-24TT Switch (S1, S2)",
+    "4x Generic End-Host PC (PC1, PC2, PC3, PC4)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored intermediate Layer 2 security lab",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "CC-BY-SA-4.0",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0018-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swvlan.html",
+    "https://datatracker.ietf.org/doc/html/rfc7727"
+  ],
+  "last_reviewed": "2026-10-31"
+}

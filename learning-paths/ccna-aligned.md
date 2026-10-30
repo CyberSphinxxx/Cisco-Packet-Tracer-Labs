@@ -32,8 +32,8 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
   *Topics:* Switch MAC address table learning, frame forwarding, unknown unicast flooding, ARP request/reply exchange, table aging.
 - **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
   *Topics:* Access ports, VLAN creation, broadcast isolation, MAC address table behavior.
-- **[PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/switching/dtp-and-native-vlan-security/README.md)**
-  *Topics:* DTP frame negotiation mitigation (`switchport nonegotiate`), Dedicated Native VLAN 99 reassignment, allowed VLAN list pruning.
+- **[PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md)**
+  *Topics:* DTP frame negotiation mitigation (`switchport nonegotiate`), Dedicated Native VLAN 999 reassignment, allowed VLAN list pruning.
 - **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
   *Topics:* IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, port role election, edge PortFast, and BPDU Guard errdisable defense.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**
