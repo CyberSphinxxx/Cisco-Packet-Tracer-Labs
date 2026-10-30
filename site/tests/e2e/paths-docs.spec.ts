@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { expect, test } from '@playwright/test';
-import { REPO_ROOT, sha256, sourceSha } from './helpers';
+import { REPO_ROOT, canonicalLabs, sha256, sourceSha } from './helpers';
 
 /** Lab README links in a learning path, in source order (independent parse). */
 function pathLabLinks(file: string): string[] {
@@ -75,7 +75,7 @@ test.describe('learning paths, capstone and docs', () => {
     const res = await page.goto('/labs/not-a-real-lab/');
     expect(res?.status()).toBe(404);
     await expect(page.locator('h1')).toHaveText('This page does not exist');
-    await page.getByRole('link', { name: /browse all 13 labs/i }).click();
+    await page.getByRole('link', { name: new RegExp(`browse all ${canonicalLabs().length} labs`, 'i') }).click();
     await expect(page).toHaveURL(/\/labs\/$/);
   });
 
