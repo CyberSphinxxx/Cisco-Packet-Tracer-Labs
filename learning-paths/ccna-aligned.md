@@ -49,7 +49,7 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
 
 - **[PTL-0010: Router-on-a-Stick Inter-VLAN Routing](../labs/routing/inter-vlan-routing-router-on-a-stick/README.md)**
   *Topics:* 802.1Q trunking on router subinterfaces, encapsulation dot1Q, default gateway configuration.
-- **[PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/switching/l3-switch-svi-and-routed-ports/README.md)**
+- **[PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/routing/layer-3-switch-svis-and-routed-ports/README.md)**
   *Topics:* Multilayer switching, hardware CEF inter-VLAN routing, Switch Virtual Interfaces (SVIs), Layer 3 routed ports (`no switchport`), SVI autostate, and default route forwarding.
 - **[PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md)**
   *Topics:* Recursive, next-hop, and directly connected static routes; IPv6 static routes; `ipv6 unicast-routing`.

@@ -53,7 +53,7 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
 ### 5. Inter-VLAN and Static Routing
 - **[PTL-0010: Router-on-a-Stick Inter-VLAN Routing](../labs/routing/inter-vlan-routing-router-on-a-stick/README.md)**
   802.1Q subinterface routing (`g0/0/0.10`), default gateway assignment, and cross-VLAN packet delivery.
-- **[PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/switching/l3-switch-svi-and-routed-ports/README.md)**
+- **[PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/routing/layer-3-switch-svis-and-routed-ports/README.md)**
   Multilayer switching, hardware CEF routing, Switch Virtual Interfaces (SVIs), SVI autostate, routed ports (`no switchport`), and default gateway routing.
 - **[PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md)**
   Recursive and next-hop static routes, `ipv6 unicast-routing`, default static routes (`0.0.0.0/0` and `::/0`).

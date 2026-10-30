@@ -1,0 +1,56 @@
+{
+  "id": "PTL-0019",
+  "title": "Layer 3 Switch SVIs and Routed Ports",
+  "slug": "layer-3-switch-svis-and-routed-ports",
+  "category": "routing",
+  "summary": "Configure multilayer switch inter-VLAN routing with Switched Virtual Interfaces (SVIs), convert physical interfaces to Layer 3 routed ports using no switchport, and establish static default routing to an upstream router.",
+  "difficulty": "intermediate",
+  "topics": [
+    "multilayer-switching",
+    "svi",
+    "routed-ports",
+    "inter-vlan-routing",
+    "static-routing",
+    "routing"
+  ],
+  "learning_objectives": [
+    "Contrast Layer 2 switches with multilayer Layer 3 switches and explain hardware-based CEF routing.",
+    "Create and activate Switched Virtual Interfaces (SVIs) as default gateways for multiple VLAN domains.",
+    "Enable global IPv4 routing on a multilayer switch using the ip routing command.",
+    "Convert a supported physical switchport into a Layer 3 routed port using no switchport and assign an IPv4 subnet.",
+    "Configure a default static route to connect a multilayer switch to an upstream router and configure return routes.",
+    "Compare multilayer switching performance, scalability, and latency against legacy Router-on-a-Stick architectures.",
+    "Diagnose and troubleshoot SVI operational states, routing table convergence, and asymmetric return routing issues."
+  ],
+  "estimated_minutes": 50,
+  "activity_reference": "Original BSIT/CCNA Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "1x Cisco Catalyst 3560-24PS Multilayer Switch (MLS1)",
+    "1x Cisco Catalyst 2960-24TT Switch (S1)",
+    "1x Cisco 2911 Router (R1)",
+    "2x Generic PC Workstation (PC-Staff, PC-Management)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored intermediate routing lab",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "CC-BY-SA-4.0",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0019-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_52_se/configuration/guide/3560scg/swipstat.html",
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/inter-vlan-routing/41860-howto-L3-interVLANrouting.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
