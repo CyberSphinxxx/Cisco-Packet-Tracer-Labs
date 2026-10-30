@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroNetwork from '../components/HeroNetwork.astro';
 import PatchPanel from '../components/PatchPanel.astro';
 import WireSwatch from '../components/WireSwatch.astro';
-import { getRepository } from '../lib/content/repository';
+import { getRepository, labelFromSlug } from '../lib/content/repository';
 import { SITE_NAME, difficultyLabel, labById, minutesLabel, simulatorLabel, url, wireFor } from '../lib/site';
 
 const repo = getRepository();
@@ -22,25 +23,64 @@ const runs = repo.paths.map((p) => ({
   labCount: p.steps.filter((s) => s.kind === 'lab').length,
 }));
 const pathName = (title: string) => title.replace(/ Learning Path$/, '').replace(/ Path$/, '');
+// Topics you configure across the labs, in learning order (category names and
+// the ubiquitous "Cisco IOS" are already obvious, so they are left out).
+const generic = new Set(['cisco-ios', ...repo.categories.map((c) => c.slug)]);
+const topics = [...new Set(repo.labs.flatMap((l) => l.topics))].filter((t) => !generic.has(t)).slice(0, 18);
+// The hero console replays the opening of the first lab (commands from its guide).
+const consoleLines: [string, string][] = [
+  ['Switch>', 'enable'],
+  ['Switch#', 'configure terminal'],
+  ['Switch(config)#', 'hostname S1'],
+  ['S1(config)#', 'interface vlan 1'],
+  ['S1(config-if)#', 'ip address 192.168.1.5 255.255.255.0'],
+  ['S1(config-if)#', 'no shutdown'],
+];
 ---
 <BaseLayout title={SITE_NAME} description={description} noSearchIndex>
-  <section class="hero wrap" aria-labelledby="hero-title">
-    <h1 id="hero-title">Patch into a lab. Configure it. Prove it works.</h1>
-    <div class="hero-side">
-      <p class="lead">
-        {labCount} original Cisco Packet Tracer labs{capstone && <> and a capstone project</>}, written for students with no networking background.
-        Each one gives you a cabled starter topology, a step-by-step walkthrough, verification commands and the finished file to compare against.
-      </p>
-      <div class="hero-actions">
-        {firstPath && <a class="btn btn-go" href={firstPath.route}>Start the {pathName(firstPath.title).toLowerCase()} path</a>}
-        <a class="btn" href={url('/labs/')}>Browse all {labCount} labs</a>
-      </div>
-      {installGuide && (
-        <p class="hero-note">
-          Packet Tracer is free with a Cisco Networking Academy account. <a href={installGuide.route}>How to install it</a>.
+  <section class="hero-band" aria-labelledby="hero-title">
+    <HeroNetwork />
+    <div class="hero wrap">
+      <div class="hero-copy">
+        <h1 id="hero-title"><span>Patch into a lab.</span> <span>Configure it.</span> <span>Prove it works.</span></h1>
+        <p class="lead">
+          {labCount} original Cisco Packet Tracer labs{capstone && <> and a capstone project</>}, written for students with no networking background.
+          Each one gives you a cabled starter topology, a step-by-step walkthrough, verification commands and the finished file to compare against.
         </p>
+        <div class="hero-actions">
+          {firstPath && <a class="btn btn-go" href={firstPath.route}>Start the {pathName(firstPath.title).toLowerCase()} path</a>}
+          <a class="btn" href={url('/labs/')}>Browse all {labCount} labs</a>
+        </div>
+        {installGuide && (
+          <p class="hero-note">
+            Packet Tracer is free with a Cisco Networking Academy account. <a href={installGuide.route}>How to install it</a>.
+          </p>
+        )}
+        {topics.length > 0 && (
+          <div class="hero-topics">
+            <h2 id="topics-title" class="topics-title">Topics you will configure</h2>
+            <ul class="topic-list" aria-labelledby="topics-title">
+              {topics.map((t) => <li><a href={url(`/labs/?topic=${encodeURIComponent(t)}`)}>{labelFromSlug(t)}</a></li>)}
+              <li class="topic-more"><a href={url('/labs/')}>All topics</a></li>
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {firstLab && (
+        <figure class="hero-console on-steel">
+          <div class="console-bar" aria-hidden="true">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="console-title">S1 console</span>
+          </div>
+          <pre><code>{consoleLines.map(([prompt, cmd], i) => (
+            <span class="cl" style={`--i: ${i}`}><span class="ios-prompt">{prompt}</span> {cmd}{'\n'}</span>
+          ))}<span class="cl cl-last" style={`--i: ${consoleLines.length}`}><span class="ios-prompt">S1(config-if)#</span> <span class="cursor" aria-hidden="true"></span></span></code></pre>
+          <figcaption>Your first commands, from <a href={firstLab.route}>{firstLab.id}: {firstLab.title}</a>.</figcaption>
+        </figure>
       )}
     </div>
+
   </section>
 
   <section class="wrap panel-section" aria-labelledby="ports-title">
@@ -149,22 +189,77 @@ const pathName = (title: string) => title.replace(/ Learning Path$/, '').replace
 </BaseLayout>
 
 <style>
+  .hero-band { position: relative; overflow: hidden; isolation: isolate; border-bottom: 1px solid var(--c-line); }
+  .hero-band > :not(.hero-net, .pdu-layer) { position: relative; }
   .hero {
     display: grid;
-    gap: var(--sp-5) var(--sp-7);
+    gap: var(--sp-6) var(--sp-7);
     grid-template-columns: minmax(0, 1fr);
     padding-block: var(--sp-7) var(--sp-6);
-    align-items: end;
+    align-items: center;
   }
-  @media (min-width: 62rem) {
-    .hero { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); padding-block: var(--sp-8) var(--sp-6); }
+  @media (min-width: 64rem) {
+    .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding-block: var(--sp-8) calc(var(--sp-8) + 5rem); align-items: end; }
+    /* The console docks low on the right, under the topology, like a CLI window opened in Packet Tracer. */
+    .hero-console { justify-self: end; width: min(100%, 31rem); margin-bottom: 1rem; }
   }
-  .hero h1 { font-size: var(--fs-hero); font-stretch: 66%; font-weight: 850; max-width: 12ch; }
-  .lead { font-size: var(--fs-md); line-height: 1.5; color: var(--c-ink-soft); max-width: 44ch; margin: 0; }
+  .hero h1 { font-size: clamp(2.6rem, 1.1rem + 4.4vw, 5.4rem); font-stretch: 66%; font-weight: 850; line-height: 0.98; }
+  .hero h1 span { display: block; white-space: nowrap; }
+  .lead { font-size: var(--fs-md); line-height: 1.5; color: var(--c-ink-soft); max-width: 46ch; margin: var(--sp-5) 0 0; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-5); }
   .hero-note { margin: var(--sp-4) 0 0; color: var(--c-muted); font-size: var(--fs-sm); }
 
-  .panel-section { padding-top: var(--sp-4); }
+  .hero-console {
+    margin: 0;
+    background: var(--c-code-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 0 1px var(--c-panel-edge), 0 18px 40px -18px rgb(0 0 0 / 0.45);
+    overflow: hidden;
+    color: var(--c-code-ink);
+  }
+  .console-bar { display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 0.9rem; background: var(--c-steel); border-bottom: 1px solid #15191d; }
+  .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--c-steel-line); }
+  .console-title { margin-left: var(--sp-2); font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--c-steel-muted); }
+  /* Long commands wrap rather than scroll, so the console is never a scroll region. */
+  .hero-console pre { margin: 0; padding: var(--sp-4) var(--sp-5); font-family: var(--font-mono); font-size: var(--fs-sm); line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .hero-console code { white-space: inherit; }
+  .cl { display: inline; }
+  .cursor { display: inline-block; width: 0.6em; height: 1.05em; vertical-align: -0.15em; background: var(--c-prompt); }
+  .hero-console figcaption { padding: var(--sp-3) var(--sp-5) var(--sp-4); border-top: 1px solid rgb(255 255 255 / 0.08); font-size: var(--fs-sm); color: var(--c-code-muted); }
+  .hero-console figcaption a { color: var(--c-code-ink); }
+  /* One orchestrated moment on load: the session types itself out, then the cursor blinks. */
+  @media (prefers-reduced-motion: no-preference) {
+    .cl { opacity: 0; animation: cl-in 1ms linear forwards; animation-delay: calc(0.45s + var(--i) * 0.32s); }
+    .cursor { animation: blink 1.1s steps(1) infinite; animation-delay: 3.6s; }
+  }
+  @keyframes cl-in { to { opacity: 1; } }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-topics { margin-top: var(--sp-6); }
+  .topics-title { font-size: var(--fs-sm); font-weight: 700; color: var(--c-ink-soft); }
+  .topic-list { list-style: none; margin: var(--sp-2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+  .topic-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding: 0 0.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--c-line-strong);
+    background: color-mix(in srgb, var(--c-surface) 85%, transparent);
+    color: var(--c-ink);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .topic-list a:hover { border-color: var(--c-ink); }
+  .topic-more { display: none; }
+  @media (max-width: 40rem) {
+    .topic-list li:nth-child(n + 11):not(.topic-more) { display: none; }
+    .topic-more { display: list-item; }
+    .topic-more a { border-style: dashed; }
+  }
+
+  .panel-section { padding-top: var(--sp-7); }
   .legend {
     list-style: none;
     margin: var(--sp-5) 0 0;
