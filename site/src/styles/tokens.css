@@ -49,6 +49,9 @@
   --c-led-on: #2bd06b;       /* decorative LED glow (never carries text) */
   --c-panel-edge: #1a1e22;   /* outline of steel panels against the page */
   --c-run: #2a3036;          /* cable between learning-path stops */
+  --net-line: #a7b0b9;       /* hero network diagram (decorative) */
+  --net-fill: #eef0f2;
+  --net-pdu-edge: #15191d;
 
   /* T568B wire colours (category coding). */
   --wire-orange: #e3761c;
@@ -126,6 +129,9 @@
     --c-steel-line: #444d56;
     --c-panel-edge: #444d56;
     --c-run: #6b7681;
+    --net-line: #3d4650;
+    --net-fill: #1b1f23;
+    --net-pdu-edge: #0b0e11;
     --wire-white: #dfe6ec;
     --shadow-raise: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 1px 2px rgb(0 0 0 / 0.4);
   }
@@ -159,6 +165,9 @@
   --c-steel-line: #444d56;
   --c-panel-edge: #444d56;
   --c-run: #6b7681;
+  --net-line: #3d4650;
+  --net-fill: #1b1f23;
+  --net-pdu-edge: #0b0e11;
   --wire-white: #dfe6ec;
   --shadow-raise: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 1px 2px rgb(0 0 0 / 0.4);
   color-scheme: dark;
