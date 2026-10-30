@@ -11,8 +11,9 @@ interface Props { starter: Download | null; completed: Download | null; ptVersio
 const { starter, completed, ptVersion, installUrl, label } = Astro.props;
 ---
 {(starter || completed) && (
-  <section class="downloads" aria-labelledby="downloads-title" data-pagefind-ignore>
+  <section class="downloads on-steel" aria-labelledby="downloads-title" data-pagefind-ignore>
     <h2 id="downloads-title" class="visually-hidden">Packet Tracer files for {label}</h2>
+    <span class="jack" aria-hidden="true"><span class="latch"></span><span class="plug"></span></span>
     {starter && (
       <div class="dl-starter">
         <a class="btn btn-go dl-btn" href={starter.url} download data-download="starter">
@@ -51,18 +52,55 @@ const { starter, completed, ptVersion, installUrl, label } = Astro.props;
   </section>
 )}
 <style>
-  .downloads { display: grid; gap: var(--sp-4); padding: var(--sp-5); background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-lg); max-width: var(--measure); }
+  .downloads {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: var(--sp-5);
+    row-gap: var(--sp-4);
+    padding: var(--sp-5);
+    background: var(--c-steel);
+    color: var(--c-steel-ink);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 0 1px var(--c-panel-edge), inset 0 1px 0 var(--c-steel-line);
+    max-width: var(--measure);
+  }
+  .downloads > :not(.jack) { grid-column: 2; }
+  .jack {
+    grid-row: 1;
+    grid-column: 1;
+    position: relative;
+    width: 3.1rem;
+    height: 2.6rem;
+    margin-top: 0.5rem;
+    background: var(--c-jack);
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 2px #46505a;
+  }
+  .latch { position: absolute; left: 50%; top: -0.4rem; width: 1.25rem; height: 0.5rem; transform: translateX(-50%); background: var(--c-jack); box-shadow: inset 2px 2px 0 #46505a, inset -2px 0 0 #46505a; }
+  .plug { position: absolute; left: 0.5rem; right: 0.5rem; bottom: 0.4rem; height: 0.8rem; border-radius: 2px; background: var(--c-led-on); }
   .dl-starter { display: grid; gap: var(--sp-2); }
   .dl-btn { justify-self: start; font-size: var(--fs-md); min-height: 3.1rem; }
-  .dl-meta { margin: 0; color: var(--c-muted); font-size: var(--fs-sm); }
-  .dl-meta code { color: var(--c-ink-soft); }
-  .dl-solution { border-top: 1px solid var(--c-line); padding-top: var(--sp-3); }
+  .downloads .btn-go { background: var(--c-led-on); border-color: var(--c-led-on); color: #06140b; }
+  .downloads .btn-go:hover { background: #5fe090; border-color: #5fe090; color: #06140b; }
+  .dl-meta { margin: 0; color: var(--c-steel-muted); font-size: var(--fs-sm); }
+  .dl-meta code { color: var(--c-steel-ink); background: none; padding: 0; }
+  .downloads a:not(.btn) { color: var(--c-steel-ink); }
+  .dl-solution { border-top: 1px solid var(--c-steel-line); padding-top: var(--sp-3); }
   .dl-solution summary, .dl-checksums summary { cursor: pointer; font-weight: 700; min-height: 2.25rem; display: list-item; }
-  .dl-solution summary { color: var(--c-amber); }
-  .dl-solution-body { display: grid; gap: var(--sp-3); margin-top: var(--sp-2); padding: var(--sp-4); background: var(--c-amber-soft); border-radius: var(--radius-md); border-left: 4px solid var(--c-amber-line); }
+  .dl-solution summary { color: var(--c-tape); }
+  .dl-solution-body { display: grid; gap: var(--sp-3); margin-top: var(--sp-2); padding: var(--sp-4); background: var(--c-steel-raised); border-radius: var(--radius-md); border-left: 4px solid var(--c-amber-line); }
   .dl-solution-body p { margin: 0; }
   .dl-solution-body .btn { justify-self: start; }
-  .dl-checksums { font-size: var(--fs-sm); color: var(--c-muted); }
+  .downloads .btn-amber { background: transparent; border-color: var(--c-tape); color: var(--c-tape); }
+  .downloads .btn-amber:hover { background: rgb(243 213 74 / 0.12); color: var(--c-tape); border-color: var(--c-tape); }
+  .dl-checksums { font-size: var(--fs-sm); color: var(--c-steel-muted); }
+  .dl-checksums summary { font-weight: 600; }
   .dl-checksums dl { margin: var(--sp-2) 0 0; display: grid; gap: var(--sp-1); }
   .dl-checksums dd { margin: 0 0 var(--sp-2); overflow-wrap: anywhere; }
+  .dl-checksums code { color: var(--c-steel-ink); background: none; padding: 0; }
+  @media (max-width: 30rem) {
+    .downloads { grid-template-columns: minmax(0, 1fr); }
+    .downloads > :not(.jack) { grid-column: 1; }
+    .jack { display: none; }
+  }
 </style>

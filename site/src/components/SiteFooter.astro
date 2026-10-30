@@ -3,7 +3,7 @@ import { getRepository } from '../lib/content/repository';
 import { SITE_NAME, url } from '../lib/site';
 const repo = getRepository();
 ---
-<footer class="site-footer">
+<footer class="site-footer on-steel">
   <div class="wrap footer-inner">
     <div class="footer-about">
       <p class="footer-name">{SITE_NAME}</p>
@@ -30,11 +30,14 @@ const repo = getRepository();
 <style>
   .site-footer {
     margin-top: var(--sp-8);
-    border-top: 1px solid var(--c-line);
-    background: var(--c-surface-sunk);
-    color: var(--c-muted);
+    background: var(--c-steel);
+    color: var(--c-steel-muted);
     font-size: var(--fs-sm);
+    box-shadow: inset 0 1px 0 var(--c-steel-line);
   }
+  .site-footer a { color: var(--c-steel-ink); }
+  .site-footer a:hover { color: #ffffff; }
+  .site-footer code { color: var(--c-steel-ink); }
   .footer-inner {
     display: grid;
     gap: var(--sp-5) var(--sp-7);
@@ -44,6 +47,6 @@ const repo = getRepository();
   @media (min-width: 48rem) { .footer-inner { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
   .footer-about { max-width: 62ch; }
   .footer-about p { margin: 0 0 var(--sp-3); }
-  .footer-name { color: var(--c-ink); font-weight: 700; }
+  .footer-name { color: var(--c-steel-ink); font-family: var(--font-display); font-stretch: 78%; font-weight: 800; font-size: var(--fs-md); }
   .footer-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-2); }
 </style>

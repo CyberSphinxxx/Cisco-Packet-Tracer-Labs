@@ -130,3 +130,52 @@ describe('task lists', () => {
     expect(html).toMatch(/<input type="checkbox" checked disabled aria-label="VLANs created">/);
   });
 });
+
+describe('Cisco IOS prompts in console blocks', () => {
+  const md = [
+    '# Lab',
+    '',
+    '## Configure R1',
+    '',
+    '```text',
+    'Router> enable',
+    'Router# configure terminal',
+    '! name the router',
+    'Router(config)# hostname R1',
+    ' interface Gi0/0/0',
+    'R1(config-if)#no shutdown',
+    '```',
+    '',
+    '## Notes',
+    '',
+    '```text',
+    '#!/bin/sh',
+    'e.g# not a prompt',
+    'PC1 is connected to S1',
+    '```',
+  ].join('\n');
+
+  it('wraps each line-leading prompt and mutes comments, keeping the text intact', () => {
+    const { html } = render(md);
+    expect(html).toMatch(/<span class="ios-prompt">Router(&#x3E;|>)<\/span> enable/);
+    expect(html).toContain('<span class="ios-prompt">Router(config)#</span> hostname R1');
+    expect(html).toContain('<span class="ios-prompt">R1(config-if)#</span>no shutdown');
+    expect(html).toContain('<span class="ios-comment">! name the router</span>');
+    expect(html).toContain(' interface Gi0/0/0');
+    expect(html).toContain('data-prompts');
+  });
+
+  it('records the first prompt of each section for the table of contents', () => {
+    const { headings } = render(md);
+    expect(headings.find((h) => h.id === 'configure-r1')?.prompt).toBe('Router>');
+    expect(headings.find((h) => h.id === 'notes')?.prompt).toBeUndefined();
+  });
+
+  it('leaves non-IOS code untouched', () => {
+    const { html } = render(md);
+    const notes = html.slice(html.indexOf('id="notes"'));
+    expect(notes).not.toContain('ios-prompt');
+    expect(notes).toContain('#!/bin/sh');
+    expect(notes).toContain('PC1 is connected to S1');
+  });
+});

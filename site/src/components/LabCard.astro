@@ -12,8 +12,8 @@ const H = headingLevel;
 <li class="lab-card" data-lab-id={lab.id}>
   <div class="lab-card-main">
     <p class="lab-card-meta">
+      <span class="tape">{lab.id}</span>
       {showCategory && <span class="cat"><WireSwatch category={lab.category} />{categoryLabel(lab.category)}</span>}
-      <span class="lab-id">{lab.id}</span>
     </p>
     <H class="lab-card-title"><a href={lab.route}>{lab.title}</a></H>
     <p class="lab-card-summary">{lab.summary}</p>
@@ -36,9 +36,9 @@ const H = headingLevel;
     border-bottom: 1px solid var(--c-line);
   }
   @media (min-width: 48rem) { .lab-card { grid-template-columns: minmax(0, 1fr) 13rem; } }
-  .lab-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); margin: 0; font-size: var(--fs-sm); color: var(--c-muted); }
+  .lab-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); margin: 0; font-size: var(--fs-sm); color: var(--c-ink-soft); }
   .cat { display: inline-flex; align-items: center; gap: var(--sp-2); }
-  .lab-card-title { font-size: var(--fs-md); margin-top: var(--sp-1); }
+  .lab-card-title { font-family: var(--font-display); font-stretch: 80%; font-weight: 780; font-size: var(--fs-lg); line-height: 1.1; margin-top: var(--sp-2); }
   .lab-card-title a { color: var(--c-ink); text-decoration-color: var(--c-line-strong); }
   .lab-card-title a:hover { color: var(--c-link-hover); text-decoration-color: currentColor; }
   .lab-card-summary { margin: var(--sp-2) 0 0; color: var(--c-ink-soft); max-width: 68ch; }

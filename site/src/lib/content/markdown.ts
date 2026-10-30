@@ -39,7 +39,17 @@ export interface HeadingInfo {
   depth: number;
   id: string;
   text: string;
+  /** First Cisco IOS prompt shown in this section's console blocks (e.g. `R1(config)#`), if any. */
+  prompt?: string;
 }
+
+/**
+ * A Cisco IOS prompt at the start of a console line: hostname, optional mode
+ * in parentheses, then `>` (user EXEC) or `#` (privileged and config modes).
+ * Hostnames start with a capital letter (Router, Switch, R1, S1, HQ-RTR), which
+ * keeps prose-like lines and comments from matching.
+ */
+export const IOS_PROMPT = /^([A-Z][\w.-]*(?:\([\w-]+\))?[>#])(?=\s|$|[a-z])/;
 
 export interface RenderResult {
   html: string;
@@ -219,13 +229,43 @@ function el(tagName: string, properties: Element['properties'], children: Elemen
   return { type: 'element', tagName, properties, children };
 }
 
+/**
+ * Wrap IOS prompts at the start of each line of a console block in
+ * `<span class="ios-prompt">`. Returns the first prompt found, or null.
+ * Only plain-text code is touched (fenced code has no child elements).
+ */
+function markPrompts(code: Element): string | null {
+  if (code.children.length !== 1 || code.children[0].type !== 'text') return null;
+  const lines = code.children[0].value.split('\n');
+  let first: string | null = null;
+  const out: ElementContent[] = [];
+  lines.forEach((line, i) => {
+    const m = IOS_PROMPT.exec(line);
+    if (m) {
+      first ??= m[1];
+      out.push(el('span', { className: ['ios-prompt'] }, [{ type: 'text', value: m[1] }]));
+      out.push({ type: 'text', value: line.slice(m[1].length) + (i < lines.length - 1 ? '\n' : '') });
+    } else if (/^\s*!/.test(line)) {
+      out.push(el('span', { className: ['ios-comment'] }, [{ type: 'text', value: line }]));
+      if (i < lines.length - 1) out.push({ type: 'text', value: '\n' });
+    } else {
+      out.push({ type: 'text', value: line + (i < lines.length - 1 ? '\n' : '') });
+    }
+  });
+  if (first) code.children = out;
+  return first;
+}
+
 /** Trusted, post-sanitize presentation: anchors, scrollable tables, code blocks, figures. */
-function enhance(tree: HastRoot) {
+function enhance(tree: HastRoot): Map<string, string> {
   let lastHeading = 'Content';
+  let lastTocId: string | null = null;
+  const prompts = new Map<string, string>();
   let tableCount = 0;
   visit(tree, 'element', (node: Element, index, parent) => {
     if (/^h[2-4]$/.test(node.tagName) && typeof node.properties?.id === 'string') {
       lastHeading = hastToString(node).trim();
+      if (node.tagName !== 'h4') lastTocId = node.properties.id;
       node.children.push(
         el('a', { className: ['heading-anchor'], href: `#${node.properties.id}`, ariaLabel: `Link to section: ${lastHeading}`, dataPagefindIgnore: '' }, [
           { type: 'text', value: '#' },
@@ -263,6 +303,12 @@ function enhance(tree: HastRoot) {
     }
     if (node.tagName === 'pre') {
       node.properties = { ...node.properties, tabIndex: 0 };
+      const code = node.children.find((c): c is Element => c.type === 'element' && c.tagName === 'code');
+      const prompt = code ? markPrompts(code) : null;
+      if (prompt) {
+        node.properties.dataPrompts = '';
+        if (lastTocId && !prompts.has(lastTocId)) prompts.set(lastTocId, prompt);
+      }
       const wrapper = el('div', { className: ['code-block'] }, [
         el('button', { type: 'button', className: ['copy-code'], hidden: true, dataPagefindIgnore: '' }, [{ type: 'text', value: 'Copy' }]),
         node,
@@ -287,6 +333,7 @@ function enhance(tree: HastRoot) {
     }
     return undefined;
   });
+  return prompts;
 }
 
 export function renderMarkdown(markdown: string, options: RenderOptions): RenderResult {
@@ -309,7 +356,8 @@ export function renderMarkdown(markdown: string, options: RenderOptions): Render
 
   const hast = unified().use(remarkRehype).runSync(tree) as HastRoot;
   const sanitized = unified().use(rehypeSanitize, sanitizeSchema).runSync(hast) as HastRoot;
-  enhance(sanitized);
+  const prompts = enhance(sanitized);
   const html = unified().use(rehypeStringify).stringify(sanitized);
+  headings = headings.map((h) => (prompts.has(h.id) ? { ...h, prompt: prompts.get(h.id) } : h));
   return { html, headings, title, lead };
 }

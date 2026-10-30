@@ -53,9 +53,18 @@ python tools/audit_repo.py
 | `PTL_SOURCE_REF` | `CF_PAGES_COMMIT_SHA`, then `GITHUB_SHA`, then `main` | Git ref in GitHub links, so preview builds link to the commit they were built from. |
 | `PTL_REPO_ROOT` | parent of `site/` | Content root (tests point it at fixtures). |
 
-## Cloudflare Pages (owner action; not configured by this branch)
+## Design
 
-Recommended settings for connecting the existing GitHub repository:
+The site is dressed as network-closet hardware ("patch panel"): an aluminium page, rack steel for the header, footer and file faceplates, label-tape lab IDs, and switch-port LEDs for status. Tokens live in `src/styles/tokens.css` (light and dark); global type, tape, wire and console styles in `src/styles/global.css`.
+
+- Category colours are the T568B wire colours, assigned in curated order (`wireFor` in `src/lib/site.ts`), always paired with a text label.
+- The homepage patch panel (`src/components/PatchPanel.astro`) is generated from the content graph: one port per lab by ID, plus the capstone. It is a visual index (`aria-hidden`); the port map list below it is the accessible equivalent.
+- Console blocks highlight Cisco IOS prompts (`Router>`, `R1(config-router)#`) and mute `!` comments at build time (`markPrompts` in `src/lib/content/markdown.ts`). Each section's first prompt appears in the table of contents, and Copy copies the commands without prompts.
+- Display type is Archivo (condensed widths); body and code are Atkinson Hyperlegible Next and Mono. All fonts are self-hosted.
+
+## Cloudflare Pages
+
+The Pages project `cisco-packet-tracer-labs` is connected to this repository with these settings:
 
 | Setting | Value |
 |---|---|
@@ -69,4 +78,4 @@ Recommended settings for connecting the existing GitHub repository:
 
 ## Licensing
 
-Website source code in `site/` is MIT (see the repository `LICENSE`, section 2). The educational content it renders stays under CC BY-SA 4.0. The self-hosted Atkinson Hyperlegible fonts are under the SIL Open Font License 1.1. Third-party packages keep their own licenses (`package-lock.json`).
+Website source code in `site/` is MIT (see the repository `LICENSE`, section 2). The educational content it renders stays under CC BY-SA 4.0. The self-hosted Atkinson Hyperlegible and Archivo fonts are under the SIL Open Font License 1.1. Third-party packages keep their own licenses (`package-lock.json`).

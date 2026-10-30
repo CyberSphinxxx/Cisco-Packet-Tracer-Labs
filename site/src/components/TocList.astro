@@ -1,14 +1,14 @@
 ---
 import type { HeadingInfo } from '../lib/content/markdown';
-export type TocNode = { h: { id: string; text: string }; children: HeadingInfo[] };
+export type TocNode = { h: { id: string; text: string; prompt?: string }; children: HeadingInfo[] };
 interface Props { tree: TocNode[] }
 const { tree } = Astro.props;
 ---
 <ol>
   {tree.map((n) => (
     <li>
-      <a href={`#${n.h.id}`}>{n.h.text}</a>
-      {n.children.length > 0 && <ol>{n.children.map((c) => <li><a href={`#${c.id}`}>{c.text}</a></li>)}</ol>}
+      <a href={`#${n.h.id}`}>{n.h.text}{n.h.prompt && <span class="toc-prompt"><span class="visually-hidden">, starts at </span>{n.h.prompt}</span>}</a>
+      {n.children.length > 0 && <ol>{n.children.map((c) => <li><a href={`#${c.id}`}>{c.text}{c.prompt && <span class="toc-prompt"><span class="visually-hidden">, starts at </span>{c.prompt}</span>}</a></li>)}</ol>}
     </li>
   ))}
 </ol>

@@ -7,7 +7,7 @@ const current = Astro.url.pathname;
 const items = navItems(getRepository());
 const githubUrl = getRepository().config.repoUrl;
 ---
-<header class="site-header">
+<header class="site-header on-steel">
   <div class="wrap header-inner">
     <a class="brand" href={url('/')}>
       <RJ45Mark size={30} uid="header-rj45" />
@@ -29,7 +29,7 @@ const githubUrl = getRepository().config.repoUrl;
     </nav>
 
     <div class="header-tools">
-      <a class="search-trigger" href={url('/search/')} data-search-trigger>
+      <a class="search-trigger" href={url('/search/')} data-search-trigger aria-label="Search">
         <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="m13 13 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
         <span class="search-label">Search</span>
         <kbd class="search-kbd js-only">/</kbd>
@@ -47,9 +47,10 @@ const githubUrl = getRepository().config.repoUrl;
     position: sticky;
     top: 0;
     z-index: 20;
-    background: color-mix(in srgb, var(--c-bg) 92%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--c-line);
+    background: var(--c-steel);
+    color: var(--c-steel-ink);
+    border-bottom: 1px solid #1a1e22;
+    box-shadow: inset 0 -1px 0 var(--c-steel-line);
   }
   .header-inner {
     min-height: var(--header-h);
@@ -61,15 +62,17 @@ const githubUrl = getRepository().config.repoUrl;
     display: inline-flex;
     align-items: center;
     gap: var(--sp-3);
-    color: var(--c-ink);
+    color: var(--c-steel-ink);
     text-decoration: none;
-    font-weight: 700;
-    font-size: var(--fs-md);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    font-family: var(--font-display);
+    font-stretch: 78%;
+    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1;
     margin-right: auto;
   }
-  .brand:hover { color: var(--c-ink); }
+  .brand :global(.rj45) { color: var(--c-steel-ink); }
+  .brand:hover { color: #ffffff; }
   .site-nav ul {
     display: flex;
     flex-wrap: wrap;
@@ -82,14 +85,14 @@ const githubUrl = getRepository().config.repoUrl;
     display: inline-block;
     padding: var(--sp-2) var(--sp-3);
     border-radius: var(--radius-md);
-    color: var(--c-ink-soft);
+    color: var(--c-steel-muted);
     text-decoration: none;
     font-weight: 600;
   }
-  .site-nav a:hover { color: var(--c-ink); background: var(--c-surface-sunk); }
+  .site-nav a:hover { color: #ffffff; background: var(--c-steel-raised); }
   .site-nav a[aria-current='page'] {
-    color: var(--c-ink);
-    box-shadow: inset 0 -3px 0 var(--c-go);
+    color: #ffffff;
+    box-shadow: inset 0 -3px 0 var(--c-tape);
     border-radius: var(--radius-md) var(--radius-md) 0 0;
   }
   .header-tools { display: flex; align-items: center; gap: var(--sp-2); }
@@ -101,22 +104,23 @@ const githubUrl = getRepository().config.repoUrl;
     min-width: 2.5rem;
     justify-content: center;
     padding: var(--sp-1) var(--sp-3);
-    border: 1px solid var(--c-line);
+    border: 1px solid var(--c-steel-line);
     border-radius: var(--radius-md);
-    background: var(--c-surface);
-    color: var(--c-ink-soft);
+    background: var(--c-steel-raised);
+    color: var(--c-steel-ink);
     font: inherit;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
   }
-  .search-trigger:hover, .theme-toggle:hover, .menu-toggle:hover { color: var(--c-ink); border-color: var(--c-line-strong); }
+  .search-trigger:hover, .theme-toggle:hover, .menu-toggle:hover { color: #ffffff; border-color: var(--c-steel-muted); }
   .search-kbd {
     font-size: var(--fs-xs);
     padding: 0 0.4em;
-    border: 1px solid var(--c-line-strong);
+    border: 1px solid var(--c-steel-line);
     border-radius: var(--radius-sm);
-    color: var(--c-muted);
+    color: var(--c-steel-muted);
+    font-family: var(--font-mono);
   }
   .theme-toggle .icon-sun { display: none; }
   :global([data-resolved-theme='dark']) .theme-toggle .icon-sun { display: block; }
@@ -127,18 +131,17 @@ const githubUrl = getRepository().config.repoUrl;
   @media (max-width: 60rem) {
     .header-inner { flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); padding-block: var(--sp-2); }
     .site-nav { order: 3; width: 100%; }
-    .header-inner { flex-wrap: wrap; }
     .header-tools { order: 1; }
     .menu-toggle { order: 2; }
-    .brand { gap: var(--sp-2); }
-    .brand-text { font-size: var(--fs-sm); max-width: 9.5em; line-height: 1.15; }
-    .search-label { display: none; }
+    .brand { gap: var(--sp-2); font-size: 1.05rem; }
+    .brand-text { max-width: 9.5em; line-height: 1.05; }
+    .search-label, .search-kbd { display: none !important; }
     :global(.js) .menu-toggle { display: inline-flex; }
     :global(.js) .site-nav { display: none; }
     :global(.js) .site-nav[data-open] { display: block; }
     :global(.js) .site-nav[data-open] ul { flex-direction: column; padding-bottom: var(--sp-3); }
     :global(.js) .site-nav[data-open] a { display: block; padding: var(--sp-3); }
-    :global(.js) .site-nav[data-open] a[aria-current='page'] { box-shadow: inset 3px 0 0 var(--c-go); border-radius: 0; }
+    :global(.js) .site-nav[data-open] a[aria-current='page'] { box-shadow: inset 3px 0 0 var(--c-tape); border-radius: 0; }
   }
   @media (max-width: 26.25rem) {
     .header-inner { column-gap: var(--sp-2); }
