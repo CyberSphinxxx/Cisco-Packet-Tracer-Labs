@@ -230,7 +230,7 @@ S1(config)# interface GigabitEthernet0/1
 S1(config-if)# shutdown
 ```
 
-Within milliseconds, RSTP detects the topology change and unblocks `S3 Gi0/2` to Forwarding (`Root FWD`), maintaining uninterrupted host communication:
+Rapidly, RSTP detects the topology change and transitions `S3 Gi0/2` to Forwarding (`Root FWD`) via proposal/agreement negotiation, maintaining uninterrupted host communication without the 30-50 second listening/learning delay of legacy 802.1D:
 
 ```text
 S3# show spanning-tree vlan 10

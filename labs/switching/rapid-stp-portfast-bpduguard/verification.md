@@ -128,7 +128,7 @@ S1(config)# interface GigabitEthernet0/1
 S1(config-if)# shutdown
 ```
 
-Within milliseconds, `S3` unblocks `Gi0/2` directly into Forwarding. Re-testing ping from `PC1` confirms continuous connectivity:
+Rapidly, `S3` transitions alternate port `Gi0/2` directly into Forwarding via proposal/agreement negotiation. Re-testing ping from `PC1` confirms continuous connectivity:
 
 ```text
 C:\> ping 192.168.10.20
