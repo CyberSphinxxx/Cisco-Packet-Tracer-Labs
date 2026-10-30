@@ -1,0 +1,55 @@
+{
+  "id": "PTL-0017",
+  "title": "Rapid Spanning Tree Protocol, PortFast, and BPDU Guard",
+  "slug": "rapid-stp-portfast-bpduguard",
+  "category": "switching",
+  "summary": "Configure IEEE 802.1w Rapid Spanning Tree Protocol (Rapid PVST+), tune bridge priorities for deterministic root bridge election, and secure edge access switchports with PortFast and BPDU Guard.",
+  "difficulty": "intermediate",
+  "topics": [
+    "stp",
+    "rstp",
+    "rapid-pvst",
+    "portfast",
+    "bpdu-guard",
+    "switching",
+    "loop-prevention"
+  ],
+  "learning_objectives": [
+    "Explain the operation of Spanning Tree Protocol (STP) and how IEEE 802.1w Rapid PVST+ improves convergence speed over legacy 802.1D.",
+    "Configure and verify Rapid PVST+ mode across a redundant triangle topology of Cisco Catalyst 2960 switches.",
+    "Influence the root bridge election deterministically using the spanning-tree vlan priority command.",
+    "Identify spanning-tree port roles (Root, Designated, Alternate) and states (Forwarding, Blocking).",
+    "Configure edge access ports with Spanning Tree PortFast to eliminate listening and learning delays for host workstations.",
+    "Implement Spanning Tree BPDU Guard to protect edge switchports from rogue switch attachments and bridge loop injection.",
+    "Verify dynamic failover convergence when a primary trunk link fails and observe rapid port unblocking."
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": "Original BSIT/CCNA Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "3x Cisco Catalyst 2960-24TT Switch (S1, S2, S3)",
+    "2x Generic End-Host PC (PC1, PC2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored intermediate switching lab",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "CC-BY-SA-4.0",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0017-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swstp.html",
+    "https://datatracker.ietf.org/doc/html/rfc7727"
+  ],
+  "last_reviewed": "2026-10-30"
+}

@@ -1,0 +1,27 @@
+!
+! Configuration for S2 (Secondary Root Bridge)
+!
+hostname S2
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10 priority 8192
+!
+vlan 10
+ name Staff
+!
+interface FastEthernet0/10
+ description Access Port to PC1
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet0/1
+ description Trunk to S1
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description Trunk to S3
+ switchport mode trunk
+!
+end

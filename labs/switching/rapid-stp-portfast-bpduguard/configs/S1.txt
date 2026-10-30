@@ -1,0 +1,20 @@
+!
+! Configuration for S1 (Primary Root Bridge)
+!
+hostname S1
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10 priority 4096
+!
+vlan 10
+ name Staff
+!
+interface GigabitEthernet0/1
+ description Trunk to S2
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description Trunk to S3
+ switchport mode trunk
+!
+end

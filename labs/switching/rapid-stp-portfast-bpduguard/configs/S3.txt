@@ -1,0 +1,26 @@
+!
+! Configuration for S3 (Non-Root Switch with Alternate Blocking Port)
+!
+hostname S3
+!
+spanning-tree mode rapid-pvst
+!
+vlan 10
+ name Staff
+!
+interface FastEthernet0/10
+ description Access Port to PC2
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet0/1
+ description Trunk to S1
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description Trunk to S2 (Alternate Blocking Port)
+ switchport mode trunk
+!
+end
