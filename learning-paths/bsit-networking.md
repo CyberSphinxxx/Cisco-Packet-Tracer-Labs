@@ -35,6 +35,8 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
 Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing, automatic IP addressing, and packet filtering.
 
 ### 4. Router Interfaces and Connected Subnets
+- **[PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md)**
+  VLSM subnet calculations, prefix allocation (/26, /28, /30), and multi-site WAN point-to-point addressing.
 - **[PTL-0002: Configuring Cisco Router Interfaces](../labs/ip-addressing/router-interface-configuration/README.md)**
   IPv4 subnetting, dual-stack IPv6 interface configuration, link-local addresses, and loopback verification.
 - **[PTL-0005: Verifying Directly Connected Networks](../labs/ip-addressing/verify-connected-networks/README.md)**

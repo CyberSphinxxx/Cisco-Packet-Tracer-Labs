@@ -19,6 +19,8 @@ Understanding physical components, cabling, device configuration, and IP address
   *Topics:* Interpreting routing table output, comparing directly connected (`C`) and local host interface (`L`) routes.
 - **[PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md)**
   *Topics:* Default gateway role, host routing decision process, ARP resolution boundary, troubleshooting missing or incorrect gateways.
+- **[PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md)**
+  *Topics:* VLSM prefix calculation, host requirements, /30 point-to-point links, avoiding address exhaustion.
 
 ---
 

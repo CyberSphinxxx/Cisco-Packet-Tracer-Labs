@@ -23,6 +23,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 ### 2. IP Addressing (`ip-addressing`)
 - [PTL-0002: Configuring Cisco Router Interfaces](../labs/ip-addressing/router-interface-configuration/README.md) — Dual-stack IPv4/IPv6 interface setup on Cisco ISR routers (`reviewed`, `beginner`).
 - [PTL-0005: Verifying Directly Connected Networks](../labs/ip-addressing/verify-connected-networks/README.md) — Interpreting routing table `C` and `L` codes and interface states (`reviewed`, `beginner`).
+- [PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md) — Variable length subnet masking (/26, /27, /28, /30), addressing tables, and point-to-point routing (`reviewed`, `beginner`).
 
 ### 3. Switching (`switching`)
 - [PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md) — Broadcast domain isolation, access port assignment, and VLAN verification (`reviewed`, `beginner`).
