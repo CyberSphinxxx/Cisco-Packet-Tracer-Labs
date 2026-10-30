@@ -54,4 +54,32 @@ describe('write-headers.mjs', () => {
     expect(r.status, r.stderr).toBe(0);
     expect(r.headers!.match(/'sha256-/g)).toHaveLength(1);
   });
+
+  it('gives HTML pages their own caching and prerender rules, separate from hashed assets', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ptl-headers-'));
+    for (const rel of ['index.html', 'labs/index.html', 'labs/routing/x/index.html']) {
+      fs.mkdirSync(path.join(dir, path.dirname(rel)), { recursive: true });
+      fs.writeFileSync(path.join(dir, rel), '<script data-csp-allow>theme()</script>');
+    }
+    const r = spawnSync(process.execPath, [path.join(SITE_ROOT, 'scripts/write-headers.mjs'), dir], { encoding: 'utf8' });
+    const headers = fs.readFileSync(path.join(dir, '_headers'), 'utf8');
+    const rules = JSON.parse(fs.readFileSync(path.join(dir, 'speculation-rules.json'), 'utf8'));
+    fs.rmSync(dir, { recursive: true, force: true });
+    expect(r.status, r.stderr).toBe(0);
+    // One rule per directory depth; placeholders are letters only (Cloudflare Pages syntax).
+    for (const rule of ['/', '/:a/', '/:a/:b/:c/']) {
+      expect(headers).toContain(`\n${rule}\n  Cache-Control: public, max-age=60, stale-while-revalidate=86400\n  Speculation-Rules: "/speculation-rules.json"`);
+    }
+    expect(headers).not.toMatch(/\/:[a-z]*\d/);
+    // The catch-all rule never sets Cache-Control, so it cannot combine with the immutable asset rule.
+    const catchAll = /(?:^|\n)\/\*\n[\s\S]*?(?:\n\n|$)/.exec(headers)![0];
+    expect(catchAll).not.toContain('Cache-Control');
+    expect(headers).toContain('/_astro/*\n  Cache-Control: public, max-age=31536000, immutable');
+    expect(headers).toContain('/speculation-rules.json\n  Content-Type: application/speculationrules+json');
+    const rule = rules.prerender[0];
+    expect(rule.eagerness).toBe('moderate');
+    const excluded = rule.where.and[1].not.href_matches as string[];
+    for (const x of ['/search/*', '/pagefind/*', '/*.pkt']) expect(excluded).toContain(x);
+    expect(rule.where.and[2].not.selector_matches).toContain('[download]');
+  });
 });

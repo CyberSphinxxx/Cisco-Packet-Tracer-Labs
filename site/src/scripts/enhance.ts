@@ -110,6 +110,49 @@ function initCopyButtons() {
   }
 }
 
+/**
+ * Instant navigation fallback. Browsers that support speculation rules get
+ * them from the Speculation-Rules response header and prerender on hover.
+ * Others fetch the page into the HTTP cache when the reader hovers or focuses
+ * an internal link, so the click is served from cache (pages may be reused
+ * for 60 seconds; see scripts/write-headers.mjs).
+ */
+function initPrefetchFallback() {
+  if (typeof HTMLScriptElement !== 'undefined' && 'supports' in HTMLScriptElement && HTMLScriptElement.supports('speculationrules')) return;
+  const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  if (conn?.saveData) return;
+  const base = document.documentElement.dataset.base ?? '/';
+  const skip = /\/(search|pagefind)\/|\.(pkt|png|txt|xml|json)$/i;
+  const done = new Set<string>();
+  const useLink = document.createElement('link').relList?.supports?.('prefetch') ?? false;
+  let timer: number | undefined;
+  const warm = (a: HTMLAnchorElement) => {
+    const url = new URL(a.href, location.href);
+    url.hash = '';
+    if (url.origin !== location.origin || !url.pathname.startsWith(base) || skip.test(url.pathname)) return;
+    if (a.hasAttribute('download') || a.target || url.href === location.href.split('#')[0] || done.has(url.href)) return;
+    done.add(url.href);
+    if (useLink) {
+      const l = document.createElement('link');
+      l.rel = 'prefetch';
+      l.href = url.href;
+      document.head.append(l);
+    } else {
+      fetch(url.href, { credentials: 'same-origin', priority: 'low' } as RequestInit).catch(() => done.delete(url.href));
+    }
+  };
+  const onIntent = (e: Event) => {
+    const a = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
+    if (!a) return;
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => warm(a), e.type === 'pointerover' ? 80 : 0);
+  };
+  document.addEventListener('pointerover', onIntent, { passive: true });
+  document.addEventListener('focusin', onIntent);
+  document.addEventListener('touchstart', onIntent, { passive: true });
+}
+
 initTheme();
 initMenu();
+initPrefetchFallback();
 initCopyButtons();

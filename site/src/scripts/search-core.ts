@@ -13,6 +13,7 @@ interface PagefindResultData {
   sub_results?: PagefindSubResult[];
 }
 interface PagefindApi {
+  init?: () => Promise<void>;
   options?: (o: Record<string, unknown>) => Promise<void>;
   search: (q: string) => Promise<{ results: { id: string; data: () => Promise<PagefindResultData> }[] } | null>;
   debouncedSearch?: unknown;
