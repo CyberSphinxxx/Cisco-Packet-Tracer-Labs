@@ -1,1 +1,0 @@
-Read `AI_AGENT_GUIDE/state/PROGRESS.md`, `BLOCKERS.md`, and current `git status` without changing files. Report the active phase, passed/blocked phases with evidence, number of published and draft labs, rights-review status, simulator-tested labs, latest validation results, what should happen next, and any owner-only approvals required. Do not claim active background execution.

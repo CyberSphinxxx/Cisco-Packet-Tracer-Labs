@@ -9,7 +9,7 @@
  *     and every #fragment exists as an id in the target page;
  *  3. every lab page links its starter and completed .pkt, and those files
  *     are byte-identical to the canonical source (and to the baseline hashes
- *     when WEBSITE_AGENT_KIT/state/baseline-checksums.json is present);
+ *     when site/tests/fixtures/baseline-checksums.json is present);
  *  4. the output contains nothing private or unexpected (agent state,
  *     Markdown sources, .pka, scratch/download folders, env files).
  *
@@ -135,7 +135,7 @@ for (const file of htmlFiles) {
 }
 
 // ---- 3. downloads are linked and byte-identical ------------------------------------
-const baselinePath = path.join(repoRoot, 'WEBSITE_AGENT_KIT/state/baseline-checksums.json');
+const baselinePath = path.join(siteRoot, 'tests/fixtures/baseline-checksums.json');
 const baseline = fs.existsSync(baselinePath) ? JSON.parse(fs.readFileSync(baselinePath, 'utf8')).files : {};
 let downloadCount = 0;
 for (const { category, slug, meta } of labs) {

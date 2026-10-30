@@ -73,7 +73,7 @@ describe('canonical ingestion (real repository)', () => {
   });
 
   it('publishes every baseline binary with its recorded hash', () => {
-    const baseline = JSON.parse(fs.readFileSync(path.join(REAL_ROOT, 'WEBSITE_AGENT_KIT/state/baseline-checksums.json'), 'utf8')).files as Record<string, { sha256: string }>;
+    const baseline = JSON.parse(fs.readFileSync(path.join(REAL_ROOT, 'site/tests/fixtures/baseline-checksums.json'), 'utf8')).files as Record<string, { sha256: string }>;
     const published = new Map(repo.files.map((f) => [f.repoPath, f.sha256]));
     for (const [rel, { sha256 }] of Object.entries(baseline)) expect(published.get(rel), rel).toBe(sha256);
   });

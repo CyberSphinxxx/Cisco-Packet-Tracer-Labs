@@ -80,3 +80,13 @@ legacy_coursework_backup.zip
 # ==============================================================================
 !*.pkt
 !*.pka
+
+# Agent tooling and planning files (kept locally, not published)
+/.claude/
+/CLAUDE.md
+/WEBSITE_AGENT_KIT/
+# AI_AGENT_GUIDE: only the Packet Tracer simulator results that labs cite stay public
+/AI_AGENT_GUIDE/*
+!/AI_AGENT_GUIDE/state/
+/AI_AGENT_GUIDE/state/*
+!/AI_AGENT_GUIDE/state/PTL-*-SIMULATOR-RESULTS.md
