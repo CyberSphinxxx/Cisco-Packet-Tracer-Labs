@@ -21,6 +21,8 @@ Understanding physical components, cabling, device configuration, and IP address
   *Topics:* Default gateway role, host routing decision process, ARP resolution boundary, troubleshooting missing or incorrect gateways.
 - **[PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md)**
   *Topics:* VLSM prefix calculation, host requirements, /30 point-to-point links, avoiding address exhaustion.
+- **[PTL-0026: IPv6 SLAAC and Neighbor Discovery](../labs/ip-addressing/ipv6-slaac-and-neighbor-discovery/README.md)**
+  *Topics:* Stateless Address Autoconfiguration (SLAAC), ICMPv6 Router Advertisements (RA), EUI-64 interface identifiers, IPv6 neighbor cache resolution.
 
 ---
 
