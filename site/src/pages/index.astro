@@ -230,10 +230,11 @@ const consoleLines: [string, string][] = [
   .hero-console figcaption a { color: var(--c-code-ink); }
   /* One orchestrated moment on load: the session types itself out, then the cursor blinks. */
   @media (prefers-reduced-motion: no-preference) {
-    .cl { opacity: 0; animation: cl-in 1ms linear forwards; animation-delay: calc(0.45s + var(--i) * 0.32s); }
+    /* visibility (not opacity) so lines not yet typed are hidden, never invisible-but-present text */
+    .cl { visibility: hidden; animation: cl-in 1ms linear forwards; animation-delay: calc(0.45s + var(--i) * 0.32s); }
     .cursor { animation: blink 1.1s steps(1) infinite; animation-delay: 3.6s; }
   }
-  @keyframes cl-in { to { opacity: 1; } }
+  @keyframes cl-in { to { visibility: visible; } }
   @keyframes blink { 50% { opacity: 0; } }
 
   .hero-topics { margin-top: var(--sp-6); }

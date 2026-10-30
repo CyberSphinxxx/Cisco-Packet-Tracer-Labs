@@ -28,10 +28,13 @@ const ports = [
   }),
   ...repo.projects.map((p) => ({ key: p.slug, label: 'Capstone', href: p.route, wire: 'w-capstone', led: 'off', start: false })),
 ];
+// Balanced rows, like a real patch panel: up to 16 ports in one row, otherwise
+// split evenly (17 ports -> 9 + 8), so a new lab never leaves a lone port.
+const cols = Math.ceil(ports.length / Math.ceil(ports.length / 16));
 ---
 <div class="panel" aria-hidden="true">
   <span class="ear"><span class="slot"></span><span class="slot"></span></span>
-  <ol class="ports" role="presentation">
+  <ol class="ports" role="presentation" style={`--cols: ${cols}`}>
     {ports.map((p) => (
       <li class:list={['port', { start: p.start }]}>
         <a href={p.href} tabindex="-1">
@@ -77,6 +80,9 @@ const ports = [
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(4.6rem, 1fr));
     row-gap: var(--sp-2);
+  }
+  @media (min-width: 64rem) {
+    .ports { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
   }
   .port a {
     display: flex;
