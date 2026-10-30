@@ -1,0 +1,11 @@
+!
+version 15.0
+hostname S2
+!
+interface Vlan1
+ ip address 192.168.1.114 255.255.255.240
+ no shutdown
+!
+ip default-gateway 192.168.1.113
+!
+end

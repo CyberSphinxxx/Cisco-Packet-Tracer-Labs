@@ -17,6 +17,10 @@ Understanding physical components, cabling, device configuration, and IP address
   *Topics:* IPv4 subnetting, IPv6 global unicast (`2001:db8::/32`), IPv6 link-local (`fe80::/10`), interface descriptions.
 - **[PTL-0005: Verifying Directly Connected Networks](../labs/ip-addressing/verify-connected-networks/README.md)**
   *Topics:* Interpreting routing table output, comparing directly connected (`C`) and local host interface (`L`) routes.
+- **[PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md)**
+  *Topics:* Default gateway role, host routing decision process, ARP resolution boundary, troubleshooting missing or incorrect gateways.
+- **[PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md)**
+  *Topics:* VLSM prefix calculation, host requirements, /30 point-to-point links, avoiding address exhaustion.
 
 ---
 
@@ -24,6 +28,8 @@ Understanding physical components, cabling, device configuration, and IP address
 
 Configuring and troubleshooting VLANs, trunks, and link aggregation.
 
+- **[PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md)**
+  *Topics:* Switch MAC address table learning, frame forwarding, unknown unicast flooding, ARP request/reply exchange, table aging.
 - **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
   *Topics:* Access ports, VLAN creation, broadcast isolation, MAC address table behavior.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**

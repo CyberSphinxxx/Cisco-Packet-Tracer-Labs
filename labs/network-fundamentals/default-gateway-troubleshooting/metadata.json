@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0014",
+  "title": "Default Gateway Operation and Troubleshooting",
+  "slug": "default-gateway-troubleshooting",
+  "category": "network-fundamentals",
+  "summary": "Master the role of the default gateway in local versus remote packet forwarding, and systematically diagnose missing, incorrect, and unreachable gateway configurations.",
+  "difficulty": "beginner",
+  "topics": [
+    "default-gateway",
+    "arp",
+    "ipv4-addressing",
+    "troubleshooting",
+    "packet-flow"
+  ],
+  "learning_objectives": [
+    "Explain the purpose of a default gateway for inter-subnet communication.",
+    "Contrast local intra-subnet delivery via direct ARP with remote delivery via default gateway MAC forwarding.",
+    "Diagnose and isolate symptoms of a missing default gateway on a host.",
+    "Troubleshoot incorrect default gateway IP configurations using ping and ipconfig.",
+    "Investigate network reachability failures caused by downed router gateway interfaces."
+  ],
+  "estimated_minutes": 30,
+  "activity_reference": "Original BSIT/CCNA Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "1x Cisco ISR 4321 Router (R1)",
+    "2x Cisco Catalyst 2960-24TT Switches (S1, S2)",
+    "3x Generic End-Host PCs (PC1, PC2, PC-Remote)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored beginner educational lab",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "CC-BY-SA-4.0",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0014-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_l2/configuration/15-mt/ip2-15-mt-book.html"
+  ],
+  "last_reviewed": "2026-10-30"
+}

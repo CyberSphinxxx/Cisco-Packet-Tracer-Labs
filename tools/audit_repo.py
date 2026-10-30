@@ -126,10 +126,9 @@ def main():
     total_completed = 0
     total_topos = 0
     non_identical_pairs = 0
-    all_entities = list(labs_dir.glob('*/*')) + [proj_dir]
+    all_entities = [ent for ent in list(labs_dir.glob('*/*')) + [proj_dir] if ent.is_dir()]
+    expected_total = len(all_entities)
     for ent in all_entities:
-        if not ent.is_dir():
-            continue
         s = ent / 'assets' / 'starter.pkt'
         c = ent / 'assets' / 'completed.pkt'
         t = ent / 'assets' / 'topology.png'
@@ -142,10 +141,10 @@ def main():
         if s.is_file() and c.is_file():
             if s.stat().st_size != c.stat().st_size or s.read_bytes() != c.read_bytes():
                 non_identical_pairs += 1
-    print(f"Verified starter.pkt deliverables:   {total_starters}/14")
-    print(f"Verified completed.pkt deliverables: {total_completed}/14")
-    print(f"Verified topology.png captures:      {total_topos}/14")
-    print(f"Non-identical starter/completed:     {non_identical_pairs}/14")
+    print(f"Verified starter.pkt deliverables:   {total_starters}/{expected_total}")
+    print(f"Verified completed.pkt deliverables: {total_completed}/{expected_total}")
+    print(f"Verified topology.png captures:      {total_topos}/{expected_total}")
+    print(f"Non-identical starter/completed:     {non_identical_pairs}/{expected_total}")
 
     # 7. Learning Paths Check
     print("\n--- 7. LEARNING PATHS AUDIT ---")

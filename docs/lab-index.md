@@ -18,10 +18,13 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 
 ### 1. Network Fundamentals (`network-fundamentals`)
 - [PTL-0008: Cisco IOS Navigation and Initial Device Configuration](../labs/network-fundamentals/ios-navigation-and-initial-config/README.md) — CLI modes, shortcuts, password encryption, banners, and NVRAM saving (`reviewed`, `beginner`).
+- [PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md) — Intra-subnet vs. inter-subnet delivery, host routing decisions, and systematic gateway troubleshooting (`reviewed`, `beginner`).
+- [PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md) — Dynamic switch CAM table learning, ARP cache resolution, unknown unicast flooding, and table aging (`reviewed`, `beginner`).
 
 ### 2. IP Addressing (`ip-addressing`)
 - [PTL-0002: Configuring Cisco Router Interfaces](../labs/ip-addressing/router-interface-configuration/README.md) — Dual-stack IPv4/IPv6 interface setup on Cisco ISR routers (`reviewed`, `beginner`).
 - [PTL-0005: Verifying Directly Connected Networks](../labs/ip-addressing/verify-connected-networks/README.md) — Interpreting routing table `C` and `L` codes and interface states (`reviewed`, `beginner`).
+- [PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md) — Variable length subnet masking (/26, /27, /28, /30), addressing tables, and point-to-point routing (`reviewed`, `beginner`).
 
 ### 3. Switching (`switching`)
 - [PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md) — Broadcast domain isolation, access port assignment, and VLAN verification (`reviewed`, `beginner`).

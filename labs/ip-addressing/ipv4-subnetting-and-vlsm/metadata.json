@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0015",
+  "title": "IPv4 Subnetting and VLSM Network Design",
+  "slug": "ipv4-subnetting-and-vlsm",
+  "category": "ip-addressing",
+  "summary": "Design, calculate, and implement a Variable Length Subnet Masking (VLSM) addressing scheme to efficiently allocate subnets of /26, /27, /28, and /30 without address waste.",
+  "difficulty": "beginner",
+  "topics": [
+    "vlsm",
+    "subnetting",
+    "ipv4-addressing",
+    "prefix-lengths",
+    "static-routing"
+  ],
+  "learning_objectives": [
+    "Design a multi-tiered VLSM addressing plan from a single IPv4 /24 classful block.",
+    "Calculate network addresses, valid host ranges, broadcast addresses, and subnet masks for /26, /27, /28, and /30 subnets.",
+    "Configure Cisco router interfaces and host network settings with non-standard subnet masks.",
+    "Verify end-to-end routing reachability across variably subnetted point-to-point and local networks.",
+    "Diagnose Cisco IOS configuration errors involving broadcast address assignment and overlapping subnets."
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": "Original BSIT/CCNA Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "2x Cisco ISR 4321 Routers (R1, R2)",
+    "2x Cisco Catalyst 2960-24TT Switches (S1, S2)",
+    "2x Generic End-Host PCs (PC-Staff, PC-Branch)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored beginner educational lab",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "CC-BY-SA-4.0",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0015-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+    "https://datatracker.ietf.org/doc/html/rfc1878"
+  ],
+  "last_reviewed": "2026-10-30"
+}

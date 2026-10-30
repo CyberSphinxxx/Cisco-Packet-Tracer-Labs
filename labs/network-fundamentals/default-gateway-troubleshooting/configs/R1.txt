@@ -1,0 +1,19 @@
+!
+version 15.6
+hostname R1
+!
+interface GigabitEthernet0/0/0
+ description Gateway for LAN 1
+ ip address 192.168.10.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description Gateway for LAN 2 (Remote)
+ ip address 192.168.20.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+end

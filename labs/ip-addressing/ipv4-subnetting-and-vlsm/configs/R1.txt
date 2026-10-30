@@ -1,0 +1,21 @@
+!
+version 15.6
+hostname R1
+!
+interface GigabitEthernet0/0/0
+ description Staff LAN Gateway (/26)
+ ip address 192.168.1.1 255.255.255.192
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description WAN Point-to-Point Transit Link to R2 (/30)
+ ip address 192.168.1.97 255.255.255.252
+ duplex auto
+ speed auto
+ no shutdown
+!
+ip route 192.168.1.112 255.255.255.240 192.168.1.98
+!
+end
