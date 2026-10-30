@@ -31,14 +31,14 @@ const repo = getRepository();
   </div>
 </BaseLayout>
 <style>
-  .page-head { padding-top: var(--sp-5); }
-  .page-head h1 { font-size: var(--fs-2xl); margin-top: var(--sp-3); }
-  .intro { color: var(--c-ink-soft); max-width: 66ch; margin: var(--sp-3) 0 0; }
-  .paths { list-style: none; margin: var(--sp-5) 0 0; padding: 0; border-top: 2px solid var(--c-ink); }
-  .paths > li { padding-block: var(--sp-5); border-bottom: 1px solid var(--c-line); }
-  .paths h2 { font-size: var(--fs-lg); }
-  .paths p { margin: var(--sp-2) 0 0; max-width: 70ch; color: var(--c-ink-soft); }
-  .paths .count { color: var(--c-muted); font-size: var(--fs-sm); }
+  .paths { list-style: none; margin: var(--sp-6) 0 0; padding: 0; display: grid; gap: 1.25rem; }
+  .paths > li { padding: var(--sp-5); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+  .paths h2 { font-size: var(--fs-xl); letter-spacing: -0.025em; }
+  .paths h2 a { text-decoration: none; }
+  .paths h2 a:hover { text-decoration: underline; }
+  .paths p { margin: var(--sp-2) 0 0; max-width: 70ch; color: var(--ink-2); }
+  .paths .count { color: var(--muted); font-size: var(--fs-sm); }
   .preview { margin: var(--sp-3) 0 0; padding-left: 1.4em; font-size: var(--fs-sm); display: grid; gap: var(--sp-1); }
   .preview .more { list-style: none; margin-left: -1.4em; }
+  .preview .more a { color: var(--link); }
 </style>

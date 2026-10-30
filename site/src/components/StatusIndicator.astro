@@ -11,8 +11,8 @@ const tone = status === 'tested_pass' ? 'pass' : status === 'tested_fail' ? 'fai
 </span>
 <style>
   .status { display: inline-flex; align-items: center; gap: 0.45em; }
-  .led { width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--c-line-strong); flex: none; }
-  .status-pass .led { background: var(--c-go); box-shadow: 0 0 0 3px var(--c-go-soft); }
-  .status-fail .led { background: var(--c-amber-line); box-shadow: 0 0 0 3px var(--c-amber-soft); }
+  .led { width: 0.55em; height: 0.55em; border-radius: 50%; background: var(--line-strong); flex: none; }
+  .status-pass .led { background: var(--accent); box-shadow: 0 0 0 3px var(--tag-green-bg); }
+  .status-fail .led { background: var(--tag-orange); box-shadow: 0 0 0 3px var(--tag-orange-bg); }
   @media (forced-colors: active) { .led { forced-color-adjust: none; border: 1px solid CanvasText; } }
 </style>

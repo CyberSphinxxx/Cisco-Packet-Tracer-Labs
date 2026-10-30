@@ -1,4 +1,4 @@
-# Lab Index — Cisco Packet Tracer Learning Library
+# Lab Index — itnetworking
 
 This index catalogs the educational Packet Tracer lab guides available in this repository.
 

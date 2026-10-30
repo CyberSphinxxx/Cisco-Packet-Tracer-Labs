@@ -14,18 +14,18 @@ import SearchForm from './SearchForm.astro';
     max-height: min(80vh, 46rem);
     margin: 8vh auto auto;
     padding: var(--sp-5);
-    border: 1px solid var(--c-line-strong);
-    border-radius: var(--radius-lg);
-    background: var(--c-bg);
-    color: var(--c-ink);
-    box-shadow: 0 24px 64px rgb(0 0 0 / 0.28);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--bg);
+    color: var(--ink);
+    box-shadow: var(--shadow-pop);
     overflow-y: auto;
   }
-  .search-dialog::backdrop { background: rgb(14 21 27 / 0.55); }
+  .search-dialog::backdrop { background: rgb(15 17 20 / 0.5); }
   .search-dialog-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-3); }
   .search-dialog-head h2 { font-size: var(--fs-md); }
-  .close { font: inherit; font-size: var(--fs-sm); display: inline-flex; gap: var(--sp-2); align-items: center; min-height: 2.25rem; padding: var(--sp-1) var(--sp-3); border: 1px solid var(--c-line); border-radius: var(--radius-md); background: var(--c-surface); color: var(--c-ink-soft); cursor: pointer; }
-  .close kbd { font-size: var(--fs-xs); color: var(--c-muted); }
+  .close { font: inherit; font-size: var(--fs-sm); display: inline-flex; gap: var(--sp-2); align-items: center; min-height: 2.25rem; padding: var(--sp-1) var(--sp-3); border: 1px solid var(--line); border-radius: var(--radius-btn); background: var(--surface); color: var(--ink-2); cursor: pointer; }
+  .close kbd { font-size: var(--fs-xs); color: var(--muted); }
 </style>
 <script>
   import { bindSearch, loadPagefind } from '../scripts/search-core.ts';
@@ -74,10 +74,21 @@ import SearchForm from './SearchForm.astro';
         open(t);
       });
     }
+    // On the homepage "/" goes to the hero search box while it is on screen.
+    const hero = document.querySelector<HTMLInputElement>('[data-hero-input]');
+    const heroInView = () => {
+      if (!hero) return false;
+      const r = hero.getBoundingClientRect();
+      return r.width > 0 && r.top >= 0 && r.bottom <= window.innerHeight;
+    };
     document.addEventListener('keydown', (e) => {
       const target = e.target as HTMLElement;
       const typing = target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
-      if ((e.key === '/' && !typing && !dialog.open) || ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey))) {
+      if (e.key === '/' && !typing && !dialog.open && heroInView()) {
+        e.preventDefault();
+        hero!.focus();
+        hero!.select();
+      } else if ((e.key === '/' && !typing && !dialog.open) || ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey))) {
         e.preventDefault();
         open(triggers[0] ?? null);
       }

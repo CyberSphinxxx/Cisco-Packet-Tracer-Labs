@@ -46,3 +46,16 @@ test.describe('search dialog accessibility', () => {
     expect(results.violations.map((v) => `${v.id}: ${v.nodes[0]?.target}`)).toEqual([]);
   });
 });
+
+for (const scheme of ['light', 'dark'] as const) {
+  test.describe(`hero search panel accessibility (${scheme})`, () => {
+    test.use({ colorScheme: scheme });
+    test('open results panel has no violations', async ({ page }) => {
+      await page.goto('/');
+      await page.locator('#hero-q').fill('OSPF');
+      await expect(page.locator('[data-hero-panel] .search-result-title').first()).toBeVisible({ timeout: 10_000 });
+      const results = await new AxeBuilder({ page }).include('[data-hero-search]').withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+      expect(results.violations.map((v) => `${v.id}: ${v.nodes[0]?.target}`)).toEqual([]);
+    });
+  });
+}

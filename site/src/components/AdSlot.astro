@@ -1,0 +1,40 @@
+---
+/**
+ * A future advertising slot. Ads are planned for, not switched on: while the
+ * PTL_ADS build variable is unset (the default) this renders nothing at all,
+ * so there is no box and no empty space.
+ *
+ * With PTL_ADS set it reserves the slot's exact height (so layout never
+ * shifts when an ad loads) and labels it "Advertisement". Loading the ad
+ * network itself, and the CSP and consent changes it needs, are Phase 5 work.
+ *
+ * Placement rules: never inside lab steps, console blocks, verification
+ * sections or the download panel; never above the fold on mobile; at most
+ * one per screen.
+ */
+interface Props {
+  id: string;
+  size: 'leaderboard' | 'rectangle';
+}
+const { id, size } = Astro.props;
+const enabled = Boolean(process.env.PTL_ADS) && process.env.PTL_ADS !== 'false';
+---
+{enabled && (
+  <aside class:list={['ad-slot', `ad-${size}`]} aria-label="Advertisement" data-ad-slot={id} data-pagefind-ignore>
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-box"></div>
+  </aside>
+)}
+<style>
+  .ad-slot { display: grid; justify-items: center; gap: var(--sp-1); margin-inline: auto; }
+  .ad-label { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.05rem 0.45rem; border-radius: 4px; background: var(--chip-active); color: var(--muted); }
+  .ad-box { width: 100%; }
+  /* 728x90 leaderboard with a 320x100 mobile fallback. */
+  .ad-leaderboard { max-width: 728px; }
+  .ad-leaderboard .ad-box { min-height: 100px; max-width: 320px; }
+  @media (min-width: 48rem) {
+    .ad-leaderboard .ad-box { min-height: 90px; max-width: 728px; }
+  }
+  .ad-rectangle { max-width: 300px; }
+  .ad-rectangle .ad-box { min-height: 250px; }
+</style>

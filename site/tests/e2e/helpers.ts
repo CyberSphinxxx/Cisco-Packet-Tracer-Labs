@@ -46,3 +46,9 @@ export function canonicalLabs(): LabInfo[] {
 
 export const sha256 = (buf: Buffer) => crypto.createHash('sha256').update(buf).digest('hex');
 export const sourceSha = (rel: string) => sha256(fs.readFileSync(path.join(REPO_ROOT, ...rel.split('/'))));
+
+/** Lab README links in a learning path, as site routes in source order (independent parse). */
+export function pathLabLinks(file: string): string[] {
+  const md = fs.readFileSync(path.join(REPO_ROOT, 'learning-paths', file), 'utf8');
+  return [...md.matchAll(/\]\(\.\.\/labs\/([^/]+)\/([^/]+)\/README\.md\)/g)].map((m) => `/labs/${m[1]}/${m[2]}/`);
+}

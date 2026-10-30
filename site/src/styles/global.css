@@ -1,18 +1,42 @@
-@import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
-@import '@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css';
-@import '@fontsource-variable/atkinson-hyperlegible-mono/wght.css';
+/* Instrument Sans (variable weight 400-700, width 75-100%) and DM Mono 400/500,
+   both SIL OFL 1.1, self-hosted from Fontsource. Licences: src/fonts/. */
+@import '@fontsource-variable/instrument-sans/wdth.css';
+@import '@fontsource-variable/instrument-sans/wdth-italic.css';
+@import '@fontsource/dm-mono/400.css';
+@import '@fontsource/dm-mono/500.css';
 @import './tokens.css';
 
-/* Display face: Archivo (SIL OFL 1.1), trimmed to the condensed widths and
-   heavy weights headings use by scripts/make-display-font.py. */
+/* Metric-matched local fallbacks, so text barely moves if a web font arrives
+   after first paint (no layout shift on slow connections). Values measured
+   against the real files: vertical metrics from the font tables, size-adjust
+   from rendered text width (Arial regular for 400-500, bold for 600-700). */
 @font-face {
-  font-family: 'Archivo Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700 900;
-  font-stretch: 62% 80%;
-  src: url('../fonts/archivo-display-latin.woff2') format('woff2-variations');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'Instrument Sans Fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans');
+  font-weight: 400 549;
+  size-adjust: 102.4%;
+  ascent-override: 94.7%;
+  descent-override: 24.4%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Instrument Sans Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold');
+  font-weight: 550 700;
+  size-adjust: 95%;
+  ascent-override: 102.1%;
+  descent-override: 26.3%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'DM Mono Fallback';
+  src: local('Courier New'), local('CourierNewPSMT'), local('Liberation Mono');
+  size-adjust: 100%;
+  ascent-override: 99.2%;
+  descent-override: 31%;
+  line-gap-override: 0%;
 }
 
 /* ---- base ----------------------------------------------------------------- */
@@ -36,13 +60,15 @@ html {
 
 body {
   margin: 0;
-  background: var(--c-bg);
-  color: var(--c-ink);
+  background: var(--bg);
+  color: var(--ink);
   font-family: var(--font-sans);
   font-size: var(--fs-base);
   line-height: var(--lh-body);
   font-kerning: normal;
   font-variant-numeric: lining-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -62,31 +88,26 @@ h2,
 h3,
 h4 {
   line-height: var(--lh-snug);
-  font-weight: 700;
+  font-weight: 650;
   margin: 0;
   text-wrap: balance;
 }
 
-/* Display type: condensed Archivo, like silkscreen on network gear. */
+/* Headlines: slightly condensed Instrument Sans with tight tracking. */
 h1,
 .display {
-  font-family: var(--font-display);
-  font-stretch: var(--display-stretch);
-  font-weight: 820;
-  line-height: var(--lh-tight);
-  letter-spacing: -0.005em;
+  font-stretch: var(--stretch-head);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
 }
 
 h1 {
   font-size: var(--fs-2xl);
 }
 
-.display-sub {
-  font-family: var(--font-display);
-  font-stretch: 78%;
-  font-weight: 780;
-  line-height: 1.05;
-  letter-spacing: 0;
+h2 {
+  letter-spacing: -0.02em;
 }
 
 p {
@@ -94,25 +115,24 @@ p {
 }
 
 a {
-  color: var(--c-link);
+  color: var(--ink);
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 0.2em;
 }
 
 a:hover {
-  color: var(--c-link-hover);
   text-decoration-thickness: 2px;
 }
 
 :focus-visible {
-  outline: 3px solid var(--c-focus);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-/* Steel surfaces (header, footer, file faceplates) keep a high-contrast tape-yellow focus ring. */
-.on-steel :focus-visible {
-  outline-color: var(--c-tape);
+/* Dark panels keep a light focus ring. */
+.on-panel :focus-visible {
+  outline-color: var(--accent);
 }
 
 code,
@@ -120,7 +140,7 @@ kbd,
 pre,
 samp {
   font-family: var(--font-mono);
-  font-size: 0.92em;
+  font-size: 0.9em;
 }
 
 [hidden] {
@@ -155,11 +175,11 @@ samp {
   top: -10rem;
   z-index: 100;
   padding: var(--sp-2) var(--sp-4);
-  background: var(--c-surface);
-  color: var(--c-ink);
-  border: 2px solid var(--c-focus);
-  border-radius: var(--radius-md);
-  font-weight: 700;
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--focus);
+  border-radius: var(--radius-btn);
+  font-weight: 650;
 }
 
 .skip-link:focus {
@@ -173,19 +193,62 @@ samp {
   padding-inline: var(--gutter);
 }
 
+/* ---- page heads (list pages) ------------------------------------------------- */
+.page-head {
+  padding-top: var(--sp-6);
+}
+
+.page-head h1 {
+  margin-top: var(--sp-3);
+}
+
+.intro {
+  color: var(--ink-2);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  max-width: 62ch;
+  margin: var(--sp-3) 0 0;
+}
+
+/* ---- cards ---------------------------------------------------------------------- */
+.card {
+  padding: var(--sp-5);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.panel-card {
+  padding: var(--sp-5);
+  border-radius: var(--radius-card);
+  background: var(--panel);
+  color: var(--panel-text);
+  border: 1px solid var(--panel-line);
+}
+
+.panel-card :is(h2, h3, strong) {
+  color: var(--panel-ink);
+}
+
+.panel-card a:not(.btn) {
+  color: var(--panel-ink);
+}
+
 /* ---- buttons ------------------------------------------------------------------ */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--sp-2);
   min-height: 2.75rem;
-  padding: var(--sp-2) var(--sp-5);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--c-line-strong);
-  background: var(--c-surface);
-  color: var(--c-ink);
+  padding: var(--sp-2) 1.1rem;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
   font: inherit;
-  font-weight: 700;
+  font-size: 0.9375rem;
+  font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
@@ -193,102 +256,123 @@ samp {
 }
 
 .btn:hover {
-  color: var(--c-ink);
-  border-color: var(--c-ink-soft);
-  background: var(--c-surface-sunk);
-  text-decoration: none;
+  border-color: var(--muted);
+  background: var(--chip-active);
 }
 
-.btn-go {
-  background: var(--c-go);
-  border-color: var(--c-go);
-  color: var(--c-go-ink);
+/* Primary: ink on paper, inverting with the theme. */
+.btn-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
 }
 
-.btn-go:hover {
-  background: color-mix(in srgb, var(--c-go) 86%, black);
-  border-color: color-mix(in srgb, var(--c-go) 86%, black);
-  color: var(--c-go-ink);
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--ink) 86%, var(--bg));
+  border-color: color-mix(in srgb, var(--ink) 86%, var(--bg));
+  color: var(--bg);
 }
 
-.btn-amber {
-  border-color: var(--c-amber-line);
-  background: var(--c-amber-soft);
-  color: var(--c-amber);
+/* Accent action on dark panels (e.g. the starter download). */
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0d2a19;
 }
 
-.btn-amber:hover {
-  background: color-mix(in srgb, var(--c-amber-soft) 70%, var(--c-amber-line));
-  color: var(--c-amber);
-  border-color: var(--c-amber);
+.btn-accent:hover {
+  background: #5fdc93;
+  border-color: #5fdc93;
+  color: #0d2a19;
+}
+
+/* Quiet outline action on dark panels (e.g. the solution download). */
+.btn-ghost {
+  background: transparent;
+  border-color: var(--panel-line);
+  color: var(--panel-ink);
+}
+
+.btn-ghost:hover {
+  background: var(--panel-2);
+  border-color: var(--panel-text);
+  color: var(--panel-ink);
 }
 
 .btn svg {
   flex: none;
 }
 
-/* Tape-yellow action for steel panels. */
-.btn-tape {
-  background: var(--c-tape);
-  border-color: var(--c-tape);
-  color: var(--c-tape-ink);
-}
-
-.btn-tape:hover {
-  background: #ffe36b;
-  border-color: #ffe36b;
-  color: var(--c-tape-ink);
-}
-
-/* ---- tags -------------------------------------------------------------------- */
+/* ---- tags and chips ------------------------------------------------------------ */
 .tag {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
-  padding: 0.1em 0.55em;
-  border: 1px solid var(--c-line);
-  border-radius: var(--radius-sm);
+  padding: 0.12rem 0.55rem;
+  border-radius: var(--radius-tag);
+  font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  color: var(--c-ink-soft);
-  background: var(--c-surface);
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: var(--chip-active);
   white-space: nowrap;
 }
 
+.tag-green {
+  background: var(--tag-green-bg);
+  color: var(--tag-green);
+}
+
+.tag-blue {
+  background: var(--tag-blue-bg);
+  color: var(--tag-blue);
+}
+
+.tag-orange {
+  background: var(--tag-orange-bg);
+  color: var(--tag-orange);
+}
+
+/* Lab IDs: DM Mono, quiet. */
 .lab-id {
   font-family: var(--font-mono);
-  font-size: 0.9em;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-size: 0.875em;
+  font-weight: 400;
+  color: var(--muted);
 }
 
-/* Label-maker tape: lab IDs on ports, cards and headers. */
-.tape {
-  display: inline-block;
-  padding: 0.18em 0.45em;
-  border-radius: var(--radius-sm);
-  background: var(--c-tape);
-  color: var(--c-tape-ink);
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  box-shadow: 0 1px 0 rgb(0 0 0 / 0.18);
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
 }
 
-/* A length of T568B wire in a category colour (decorative; always paired with a text label). */
-.w-orange { --w: var(--wire-orange); }
-.w-green { --w: var(--wire-green); }
-.w-blue { --w: var(--wire-blue); }
-.w-brown { --w: var(--wire-brown); }
-.wire-fill { background: var(--w); }
-.wire-fill.striped { background: repeating-linear-gradient(135deg, var(--w) 0 0.42em, var(--wire-white) 0.42em 0.7em); }
-@media (forced-colors: active) { .wire-fill { forced-color-adjust: none; } }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0 0.95rem;
+  border-radius: var(--radius-btn);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a.chip:hover {
+  border-color: var(--line-strong);
+  background: var(--chip-active);
+}
 
 /* ---- long-form tutorial prose (rendered canonical Markdown) ---------------------- */
 .prose {
-  font-size: var(--fs-base);
+  font-size: var(--fs-prose);
+  line-height: 1.65;
   overflow-wrap: break-word;
 }
 
@@ -315,24 +399,28 @@ samp {
   margin-top: var(--sp-4);
 }
 
+.prose a {
+  color: var(--link);
+}
+
 .prose h2 {
-  font-family: var(--font-display);
-  font-stretch: 78%;
-  font-weight: 780;
   font-size: var(--fs-xl);
-  line-height: 1.05;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   margin-top: var(--sp-7);
   padding-top: var(--sp-5);
-  border-top: 2px solid var(--c-line);
+  border-top: 1px solid var(--line);
 }
 
 .prose h3 {
   font-size: var(--fs-md);
+  letter-spacing: -0.015em;
   margin-top: var(--sp-6);
 }
 
 .prose h4 {
-  font-size: var(--fs-base);
+  font-size: var(--fs-prose);
   margin-top: var(--sp-5);
 }
 
@@ -348,7 +436,7 @@ samp {
 
 .prose .heading-anchor {
   margin-left: 0.35em;
-  color: var(--c-muted);
+  color: var(--muted);
   text-decoration: none;
   font-weight: 400;
   opacity: 0;
@@ -381,15 +469,15 @@ samp {
 }
 
 .prose strong {
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .prose blockquote {
   padding: var(--sp-3) var(--sp-4);
-  border-left: 4px solid var(--c-line-strong);
-  background: var(--c-surface);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  color: var(--c-ink-soft);
+  border-left: 3px solid var(--line-strong);
+  background: var(--surface);
+  border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+  color: var(--ink-2);
 }
 
 .prose blockquote > * + * {
@@ -398,10 +486,11 @@ samp {
 
 .prose .callout {
   padding: var(--sp-4);
-  border: 1px solid var(--c-amber-line);
-  border-left-width: 4px;
-  border-radius: var(--radius-md);
-  background: var(--c-amber-soft);
+  border: 1px solid color-mix(in srgb, var(--tag-orange) 30%, transparent);
+  border-left-width: 3px;
+  border-left-color: var(--tag-orange);
+  border-radius: var(--radius-btn);
+  background: var(--tag-orange-bg);
 }
 
 .prose .callout > * + * {
@@ -409,27 +498,28 @@ samp {
 }
 
 .prose .callout-title {
-  font-weight: 700;
-  color: var(--c-amber);
+  font-weight: 650;
+  color: var(--tag-orange);
 }
 
 .prose .callout-note,
 .prose .callout-tip {
-  border-color: var(--c-line-strong);
-  background: var(--c-surface-sunk);
+  border-color: color-mix(in srgb, var(--tag-blue) 25%, transparent);
+  border-left-color: var(--tag-blue);
+  background: var(--tag-blue-bg);
 }
 
 .prose .callout-note .callout-title,
 .prose .callout-tip .callout-title {
-  color: var(--c-ink);
+  color: var(--tag-blue);
 }
 
 /* inline code */
 .prose :not(pre) > code {
   padding: 0.08em 0.36em;
-  border-radius: var(--radius-sm);
-  background: var(--c-code-inline-bg);
-  font-size: 0.88em;
+  border-radius: var(--radius-tag);
+  background: var(--chip-active);
+  font-size: 0.86em;
   overflow-wrap: anywhere;
 }
 
@@ -442,12 +532,13 @@ samp {
   margin: 0;
   padding: var(--sp-4) var(--sp-4);
   padding-right: 4.5rem;
-  background: var(--c-code-bg);
-  color: var(--c-code-ink);
-  border-radius: var(--radius-md);
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border: 1px solid var(--code-line);
+  border-radius: var(--radius-code);
   overflow-x: auto;
-  line-height: 1.55;
-  font-size: var(--fs-sm);
+  line-height: 1.6;
+  font-size: 0.875rem;
   tab-size: 4;
 }
 
@@ -459,12 +550,12 @@ samp {
 
 /* Cisco IOS prompts in console blocks: the mode you should be in before typing. */
 .ios-prompt {
-  color: var(--c-prompt);
-  font-weight: 700;
+  color: var(--tag-green);
+  font-weight: 500;
 }
 
 .ios-comment {
-  color: var(--c-code-muted);
+  color: var(--muted);
 }
 
 /* With JavaScript a Copy button sits in the block's top-right corner; keep the first line clear of it. */
@@ -478,31 +569,33 @@ samp {
   right: var(--sp-2);
   min-height: 2rem;
   padding: 0.2rem 0.65rem;
-  border: 1px solid rgb(255 255 255 / 0.25);
-  border-radius: var(--radius-sm);
-  background: rgb(255 255 255 / 0.08);
-  color: var(--c-code-ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink-2);
   font: inherit;
   font-size: var(--fs-xs);
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
 
 .copy-code:hover {
-  background: rgb(255 255 255 / 0.16);
+  color: var(--ink);
+  border-color: var(--muted);
 }
 
 .copy-code[data-state='copied'] {
-  border-color: var(--c-go);
+  color: var(--tag-green);
+  border-color: var(--tag-green);
 }
 
 /* tables: scroll inside their own region, never the page */
 .prose .table-scroll {
   max-width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--c-line);
-  border-radius: var(--radius-md);
-  background: var(--c-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-code);
+  background: var(--surface);
 }
 
 .prose table {
@@ -515,7 +608,7 @@ samp {
 .prose th,
 .prose td {
   padding: var(--sp-2) var(--sp-3);
-  border-bottom: 1px solid var(--c-line);
+  border-bottom: 1px solid var(--line-subtle);
   text-align: left;
   vertical-align: top;
 }
@@ -525,8 +618,9 @@ samp {
 }
 
 .prose th {
-  background: var(--c-surface-sunk);
-  font-weight: 700;
+  background: var(--bg);
+  border-bottom-color: var(--line);
+  font-weight: 650;
   white-space: nowrap;
 }
 
@@ -538,21 +632,21 @@ samp {
 .prose .md-figure {
   margin-inline: 0;
   padding: var(--sp-3);
-  border: 1px solid var(--c-line);
-  border-radius: var(--radius-lg);
-  background: var(--c-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
 }
 
 .prose .md-figure img {
   display: block;
   margin-inline: auto;
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 }
 
 .prose .md-figure figcaption {
   margin-top: var(--sp-2);
   font-size: var(--fs-sm);
-  color: var(--c-muted);
+  color: var(--muted);
 }
 
 .prose a[data-link-kind='external']::after {
@@ -580,6 +674,9 @@ samp {
 @media (forced-colors: active) {
   .btn,
   .tag,
+  .chip,
+  .card,
+  .panel-card,
   .prose pre {
     border: 1px solid CanvasText;
   }

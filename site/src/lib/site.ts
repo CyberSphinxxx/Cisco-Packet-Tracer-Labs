@@ -4,8 +4,9 @@
  */
 import { getRepository, type Lab, type Repository } from './content/repository';
 
-export const SITE_NAME = 'Cisco Packet Tracer Learning Library';
-export const SHORT_NAME = 'Packet Tracer Learning Library';
+export const SITE_NAME = 'itnetworking';
+export const SHORT_NAME = 'itnetworking';
+export const TAGLINE = 'Packet Tracer labs and networking tools';
 
 export function url(path: string): string {
   const base = import.meta.env.BASE_URL ?? '/';
@@ -23,7 +24,7 @@ export interface NavItem {
 export function navItems(repo: Repository = getRepository()): NavItem[] {
   const items: NavItem[] = [
     { label: 'Labs', href: url('/labs/'), match: url('/labs/') },
-    { label: 'Learning paths', href: url('/learning-paths/'), match: url('/learning-paths/') },
+    { label: 'Paths', href: url('/learning-paths/'), match: url('/learning-paths/') },
     { label: 'Reference guides', href: url('/docs/'), match: url('/docs/') },
   ];
   const capstone = repo.projects[0];
@@ -31,27 +32,61 @@ export function navItems(repo: Repository = getRepository()): NavItem[] {
   return items;
 }
 
+/** The beginner learning path (by slug), else the first path the README lists. */
+export function beginnerPath(repo: Repository = getRepository()) {
+  return repo.paths.find((p) => /beginner/.test(p.slug)) ?? repo.paths[0];
+}
+
+/** Labs of a learning path, in path order (each lab once). */
+export function pathLabs(path: Repository['paths'][number] | undefined, repo: Repository = getRepository()): Lab[] {
+  if (!path) return [];
+  const ids = [...new Set(path.steps.filter((s) => s.labId).map((s) => s.labId!))];
+  return ids.map((id) => labById(id, repo)).filter((l): l is Lab => Boolean(l));
+}
+
+/** "Start with lab 1": the first lab of the beginner path, else the first lab in learning order. */
+export function startLab(repo: Repository = getRepository()): Lab | undefined {
+  return pathLabs(beginnerPath(repo), repo)[0] ?? repo.labs[0];
+}
+
+/** Topics that say nothing on their own here: "Cisco IOS" and the category names. */
+function genericTopics(repo: Repository): Set<string> {
+  return new Set(['cisco-ios', ...repo.categories.map((c) => c.slug)]);
+}
+
+/** Configurable topics across the labs, in learning order (generic ones left out). */
+export function labTopics(repo: Repository = getRepository()): string[] {
+  const generic = genericTopics(repo);
+  return [...new Set(repo.labs.flatMap((l) => l.topics))].filter((t) => !generic.has(t));
+}
+
 /**
- * T568B wire codes in pin order. Categories take codes in curated order
- * (first appearance in the learning paths), solid colours first, then the
- * white-striped variants, so a new category automatically gets the next code.
+ * Short shortcut links for the hero ("Popular:"): the most advanced lab in
+ * each topic area that the beginner path does not already list, then the
+ * remaining ones, most advanced first. Each is named by its most specific
+ * topic (the rarest across the library), e.g. "OSPF" or "ACLs".
  */
-const WIRES = [
-  { color: 'orange', striped: false, name: 'orange' },
-  { color: 'green', striped: false, name: 'green' },
-  { color: 'blue', striped: false, name: 'blue' },
-  { color: 'brown', striped: false, name: 'brown' },
-  { color: 'orange', striped: true, name: 'white-orange' },
-  { color: 'green', striped: true, name: 'white-green' },
-  { color: 'blue', striped: true, name: 'white-blue' },
-  { color: 'brown', striped: true, name: 'white-brown' },
-] as const;
-
-export type Wire = (typeof WIRES)[number];
-
-export function wireFor(category: string, repo: Repository = getRepository()): Wire {
-  const i = repo.categories.findIndex((c) => c.slug === category);
-  return WIRES[(i < 0 ? 0 : i) % WIRES.length];
+export function popularLabs(repo: Repository = getRepository(), limit = 5): { lab: Lab; label: string }[] {
+  const beginner = new Set(pathLabs(beginnerPath(repo), repo).map((l) => l.id));
+  const pool = repo.labs.filter((l) => !beginner.has(l.id)).sort((a, b) => b.learningOrder - a.learningOrder);
+  const picked: Lab[] = [];
+  for (const c of repo.categories) {
+    const lab = pool.find((l) => l.category === c.slug);
+    if (lab) picked.push(lab);
+  }
+  for (const l of pool) if (!picked.includes(l)) picked.push(l);
+  const counts = new Map(repo.topics.map((t) => [t.slug, t.count]));
+  const generic = genericTopics(repo);
+  const out: { lab: Lab; label: string }[] = [];
+  for (const lab of picked) {
+    const specific = lab.topics.filter((t) => !generic.has(t));
+    if (!specific.length) continue;
+    const topic = specific.reduce((best, t) => ((counts.get(t) ?? 0) < (counts.get(best) ?? 0) ? t : best));
+    const label = repo.topics.find((t) => t.slug === topic)?.label ?? topic;
+    if (!out.some((o) => o.label === label)) out.push({ lab, label });
+    if (out.length === limit) break;
+  }
+  return out;
 }
 
 export function categoryLabel(slug: string, repo: Repository = getRepository()): string {

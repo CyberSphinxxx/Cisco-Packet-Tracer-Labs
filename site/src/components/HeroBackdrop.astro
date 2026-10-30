@@ -1,0 +1,180 @@
+---
+/**
+ * Decorative layer behind the homepage headline: a faint engineering dot grid,
+ * thin links between small switch and router squares at the left and right
+ * edges, and a few packets travelling along them. Purely visual (aria-hidden,
+ * no pointer events). A radial mask keeps the centre, behind the headline and
+ * search box, almost empty.
+ *
+ * Packets and pings are HTML elements animated only with transform and opacity
+ * (compositor-only, no SMIL or canvas). A small script maps the 1440x760 design
+ * space onto the hero the same way the SVG's "xMidYMid slice" does, and pauses
+ * the animation while the hero is off-screen or the tab is hidden. Reduced
+ * motion and narrow screens keep the static grid and links only.
+ */
+const W = 1440;
+const H = 760;
+type Pt = [number, number];
+const nodes: Record<string, Pt> = {
+  a: [96, 132], b: [232, 268], c: [64, 420], d: [300, 470], e: [150, 640],
+  f: [1344, 118], g: [1196, 250], h: [1386, 392], i: [1130, 470], j: [1290, 630],
+};
+const P = (k: string | Pt): Pt => (typeof k === 'string' ? nodes[k] : k);
+// Links: [from, to]. Off-canvas points make the wiring continue past the edge;
+// the stubs toward the centre fade out under the mask.
+const links: [string | Pt, string | Pt][] = [
+  [[-40, 132], 'a'], ['a', 'b'], ['b', 'd'], ['c', 'd'], ['c', 'e'], ['d', 'e'], ['b', [560, 268]], [[-40, 640], 'e'],
+  ['d', 'i'],
+  ['f', [1480, 118]], ['f', 'g'], ['g', 'h'], ['g', [880, 250]], ['h', 'i'], ['i', 'j'], ['j', [1480, 630]],
+];
+// Packets: [from, to, colour, duration s, delay s]. Mostly green, one blue, one orange.
+const packets: [string | Pt, string | Pt, 'green' | 'blue' | 'orange', number, number][] = [
+  [[-40, 132], 'a', 'green', 5.2, 0],
+  ['a', 'b', 'green', 4.6, 1.6],
+  ['c', 'd', 'blue', 5.4, 0.8],
+  ['d', 'e', 'green', 4.4, 3],
+  ['b', [560, 268], 'green', 6, 2.4],
+  ['f', 'g', 'green', 4.8, 0.4],
+  ['g', 'h', 'orange', 5.6, 2],
+  ['i', 'j', 'green', 4.6, 3.4],
+  [[880, 250], 'g', 'green', 6.2, 1.2],
+  ['j', [1480, 630], 'green', 5, 4.2],
+];
+const pings: [string, number][] = [['d', 0.5], ['g', 3.5]];
+
+const px = (n: number) => `${n.toFixed(1)}px`;
+const packetStyles = packets.map(([from, to, color, dur, delay]) => {
+  const [x0, y0] = P(from);
+  const [x1, y1] = P(to);
+  return { color, style: `--x0: ${px(x0)}; --y0: ${px(y0)}; --x1: ${px(x1)}; --y1: ${px(y1)}; animation-duration: ${dur}s; animation-delay: ${delay}s;` };
+});
+---
+<div class="hero-backdrop" aria-hidden="true" data-hero-backdrop>
+  <svg class="hb-links" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" focusable="false">
+    <g class="hb-wires">
+      {links.map(([from, to]) => {
+        const [x1, y1] = P(from);
+        const [x2, y2] = P(to);
+        return <line x1={x1} y1={y1} x2={x2} y2={y2} />;
+      })}
+    </g>
+    <g class="hb-nodes">
+      {Object.values(nodes).map(([x, y]) => <rect x={x - 4.5} y={y - 4.5} width="9" height="9" rx="2" />)}
+    </g>
+  </svg>
+  <div class="hb-motion" data-hb-motion>
+    {pings.map(([k, delay]) => (
+      <span class="hb-ping" style={`left: ${px(P(k)[0])}; top: ${px(P(k)[1])}; animation-delay: ${delay}s;`}></span>
+    ))}
+    {packetStyles.map((p) => <span class={`hb-pkt hb-${p.color}`} style={p.style}></span>)}
+  </div>
+</div>
+
+<script>
+  // Map the 1440x760 motion layer onto the hero exactly like the SVG's
+  // preserveAspectRatio="xMidYMid slice", and pause when it cannot be seen.
+  const root = document.querySelector<HTMLElement>('[data-hero-backdrop]');
+  const motion = root?.querySelector<HTMLElement>('[data-hb-motion]');
+  if (root && motion) {
+    const fit = () => {
+      const w = root.clientWidth;
+      const h = root.clientHeight;
+      const s = Math.max(w / 1440, h / 760);
+      motion.style.transform = `translate(${(w - 1440 * s) / 2}px, ${(h - 760 * s) / 2}px) scale(${s})`;
+    };
+    fit();
+    new ResizeObserver(fit).observe(root);
+    motion.classList.add('ready');
+    let onScreen = true;
+    const sync = () => root.classList.toggle('paused', !onScreen || document.hidden);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => {
+        onScreen = e.isIntersecting;
+        sync();
+      }).observe(root);
+    }
+    document.addEventListener('visibilitychange', sync);
+  }
+</script>
+
+<style>
+  .hero-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: var(--backdrop-opacity);
+    background-image: radial-gradient(circle, var(--line-strong) 1.1px, transparent 1.4px);
+    background-size: 24px 24px;
+    background-position: center top;
+    /* Empty centre behind the copy, and a soft fade into the page below. */
+    -webkit-mask-image: radial-gradient(ellipse at 50% 45%, transparent 0 30%, #000 70%), linear-gradient(#000 70%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: radial-gradient(ellipse at 50% 45%, transparent 0 30%, #000 70%), linear-gradient(#000 70%, transparent);
+    mask-composite: intersect;
+  }
+  .hb-links { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hb-wires line { stroke: var(--line-strong); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+  .hb-nodes rect { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+  .hb-motion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 760px;
+    transform-origin: 0 0;
+    visibility: hidden;
+  }
+  .hb-motion.ready { visibility: visible; }
+  .hb-pkt {
+    position: absolute;
+    left: -3.5px;
+    top: -3.5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: hb-travel linear infinite backwards;
+  }
+  .hb-blue { background: var(--tag-blue); }
+  .hb-orange { background: var(--tag-orange); }
+  /* Travel, then rest out of sight for the last part of each cycle. */
+  @keyframes hb-travel {
+    0% { transform: translate(var(--x0), var(--y0)); opacity: 0; }
+    8% { opacity: 1; }
+    62% { opacity: 1; }
+    70% { transform: translate(var(--x1), var(--y1)); opacity: 0; }
+    100% { transform: translate(var(--x1), var(--y1)); opacity: 0; }
+  }
+  .hb-ping {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    border-radius: 50%;
+    border: 1.25px solid var(--accent);
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: hb-ping 5s ease-out infinite backwards;
+  }
+  @keyframes hb-ping {
+    0% { transform: scale(0.3); opacity: 0.7; }
+    45% { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .hero-backdrop.paused .hb-pkt,
+  .hero-backdrop.paused .hb-ping { animation-play-state: paused; }
+  /* Reduced motion and phones: the static grid and links only. */
+  @media (prefers-reduced-motion: reduce) {
+    .hb-motion { display: none; }
+  }
+  @media (max-width: 47.99rem) {
+    .hb-motion { display: none; }
+  }
+  @media (forced-colors: active) {
+    .hero-backdrop { display: none; }
+  }
+</style>

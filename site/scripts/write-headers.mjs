@@ -6,6 +6,7 @@
  * computed from the built HTML; any other executable inline script fails the
  * build. JSON data blocks
  * (application/json, application/ld+json) are not executed and need no hash.
+ * With PTL_REDIRECT_TO set it also writes dist/_redirects (moved address).
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -152,3 +153,26 @@ ${htmlRules}
 `;
 fs.writeFileSync(path.join(dist, '_headers'), headers);
 console.log(`write-headers: ${hashes.size} inline script hash(es) -> ${path.relative(process.cwd(), path.join(dist, '_headers'))}`);
+
+// Moving address: on the old Pages project, PTL_REDIRECT_TO=https://new.origin
+// sends every path to the same path on the new origin with a 301. Cloudflare
+// Pages follows _redirects rules before serving any matching file.
+const redirectsFile = path.join(dist, '_redirects');
+const redirectTo = (process.env.PTL_REDIRECT_TO ?? '').trim();
+if (redirectTo) {
+  let target;
+  try {
+    target = new URL(redirectTo);
+  } catch {
+    target = null;
+  }
+  if (!target || !/^https?:$/.test(target.protocol) || target.username || target.password || target.search || target.hash || /\s/.test(redirectTo)) {
+    console.error(`write-headers: PTL_REDIRECT_TO must be a plain http(s) origin such as https://example.org, got "${redirectTo}"`);
+    process.exit(1);
+  }
+  const destination = `${target.origin}${target.pathname.replace(/\/+$/, '')}`;
+  fs.writeFileSync(redirectsFile, `/* ${destination}/:splat 301\n`);
+  console.log(`write-headers: every path redirects (301) to ${destination}/`);
+} else if (fs.existsSync(redirectsFile)) {
+  fs.rmSync(redirectsFile);
+}

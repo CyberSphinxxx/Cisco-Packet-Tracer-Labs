@@ -5,7 +5,6 @@ import ConfigFiles from '../../../../components/ConfigFiles.astro';
 import DownloadPanel from '../../../../components/DownloadPanel.astro';
 import PrevNext from '../../../../components/PrevNext.astro';
 import StatusIndicator from '../../../../components/StatusIndicator.astro';
-import WireSwatch from '../../../../components/WireSwatch.astro';
 import { getRepository, labelFromSlug, type Lab } from '../../../../lib/content/repository';
 import { categoryLabel, difficultyLabel, minutesLabel, neighbours, pathsContaining, relatedLabs, url } from '../../../../lib/site';
 import { absolute, seoPolicy } from '../../../../lib/seo';
@@ -60,8 +59,8 @@ const tocExtra = [
   </Fragment>
   <header slot="header" class="lab-header" data-lab-id={lab.id}>
     <p class="lab-kicker">
-      <span class="tape" data-pagefind-meta="id">{lab.id}</span>
-      <a class="cat" href={cat.route}><WireSwatch category={lab.category} />{categoryLabel(lab.category)}</a>
+      <span class="tag tag-green" data-pagefind-meta="id">{lab.id}</span>
+      <a class="cat" href={cat.route}>{categoryLabel(lab.category)}</a>
     </p>
     <h1 data-pagefind-meta="title">{lab.title}</h1>
     <p class="lab-summary">{lab.summary}</p>
@@ -105,7 +104,7 @@ const tocExtra = [
       <section class="related" aria-labelledby="related-title" data-pagefind-ignore>
         <h2 id="related-title">Related labs</h2>
         <ul>
-          {related.map((r) => <li><WireSwatch category={r.category} /> <span class="lab-id">{r.id}</span> <a href={r.route}>{r.title}</a></li>)}
+          {related.map((r) => <li><span class="lab-id">{r.id}</span> <a href={r.route}>{r.title}</a></li>)}
         </ul>
       </section>
     )}
@@ -114,29 +113,28 @@ const tocExtra = [
 
 <style>
   .lab-header { margin-top: var(--sp-5); max-width: 64rem; }
-  .lab-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-4); margin: 0; font-size: var(--fs-sm); color: var(--c-muted); }
-  .lab-kicker .tape { font-size: var(--fs-sm); }
-  .cat { display: inline-flex; align-items: center; gap: var(--sp-2); color: var(--c-ink); font-weight: 700; }
+  .lab-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); margin: 0; font-size: var(--fs-sm); color: var(--muted); }
+  .cat { color: var(--ink-2); font-weight: 500; }
   .lab-header h1 { margin-top: var(--sp-3); max-width: 22ch; }
-  .lab-summary { font-size: var(--fs-md); line-height: 1.5; color: var(--c-ink-soft); max-width: 60ch; margin: var(--sp-4) 0 0; }
+  .lab-summary { font-size: var(--fs-md); line-height: 1.5; color: var(--ink-2); max-width: 60ch; margin: var(--sp-4) 0 0; }
   .facts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
     margin: var(--sp-5) 0 0;
-    background: var(--c-surface);
-    border: 1px solid var(--c-line-strong);
-    border-radius: var(--radius-md);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
     font-size: var(--fs-sm);
     overflow: hidden;
   }
-  .facts > div { padding: var(--sp-3) var(--sp-4); box-shadow: 1px 0 0 var(--c-line), 0 1px 0 var(--c-line); }
-  .facts dt { color: var(--c-muted); }
-  .facts dd { margin: 0; font-weight: 700; }
-  .facts .devices { font-family: var(--font-mono); }
-  .in-paths { color: var(--c-ink-soft); font-size: var(--fs-sm); max-width: var(--measure); }
+  .facts > div { padding: var(--sp-3) var(--sp-4); box-shadow: 1px 0 0 var(--line-subtle), 0 1px 0 var(--line-subtle); }
+  .facts dt { color: var(--muted); }
+  .facts dd { margin: 0; font-weight: 550; }
+  .facts .devices { font-family: var(--font-mono); font-weight: 500; }
+  .in-paths { color: var(--ink-2); font-size: var(--fs-sm); max-width: var(--measure); }
+  .in-paths a { color: var(--link); }
   .lab-topics ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-1); }
-  .related h2 { font-family: var(--font-display); font-stretch: 78%; font-weight: 800; font-size: var(--fs-lg); }
+  .related h2 { font-size: var(--fs-lg); }
   .related ul { list-style: none; margin: var(--sp-3) 0 0; padding: 0; display: grid; gap: var(--sp-2); }
-  .related li { display: flex; align-items: baseline; gap: var(--sp-2); }
-  .related .lab-id { color: var(--c-muted); font-size: var(--fs-sm); }
+  .related li { display: flex; align-items: baseline; gap: var(--sp-3); }
 </style>

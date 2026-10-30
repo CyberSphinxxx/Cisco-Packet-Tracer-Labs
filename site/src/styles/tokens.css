@@ -1,85 +1,74 @@
 /*
- * Design tokens: Cisco Packet Tracer Learning Library ("patch panel")
+ * Design tokens: itnetworking ("study hub, search first")
  *
- * The site is dressed as network-closet hardware: an aluminium ground, rack
- * steel for the header, footer and file faceplates, label-maker tape for lab
- * IDs, and switch-port LEDs for status. The eight T568B wire colours code lab
- * categories (solid, then white-striped). Green = link up / start here
- * (starter files, primary actions); amber = attention (solution files,
- * cautions). Display type is Archivo in condensed widths, like equipment
- * silkscreen; body and code stay in Atkinson Hyperlegible for legibility.
+ * A warm paper page, white cards with soft rules, near-black ink for text and
+ * the primary action, and one green accent that only ever decorates (logo dot,
+ * packets, success on dark panels). Three tag tints code the kinds of content:
+ * green for labs, blue for paths and tools, orange for guides and practice.
+ * Type is Instrument Sans (UI and headings, slightly condensed for headlines)
+ * and DM Mono for lab IDs, prompts, commands and tags.
+ *
+ * Dark mode reuses the same token names. Every text pair is measured with axe
+ * in both themes; --faint is for decoration and large text only.
  */
 :root {
   color-scheme: light dark;
 
-  /* --- palette: light -------------------------------------------------- */
-  --c-bg: #e4e7ea;           /* aluminium */
-  --c-surface: #f7f8f9;      /* faceplate */
-  --c-surface-sunk: #d9dde1;
-  --c-ink: #15191d;
-  --c-ink-soft: #2f363d;
-  --c-muted: #4a535c;
-  --c-line: #c3c9cf;
-  --c-line-strong: #98a1aa;
-  --c-link: #1b5a96;
-  --c-link-hover: #0f3d68;
-  --c-go: #17703c;           /* port LED green: start / starter download */
-  --c-go-ink: #ffffff;
-  --c-go-soft: #d6ecdd;
-  --c-amber: #7a4a00;        /* port LED amber: solutions / caution (text-safe) */
-  --c-amber-line: #c98a1e;
-  --c-amber-soft: #f6ead0;
-  --c-focus: #1b5a96;
-  --c-code-bg: #1e2328;      /* console window */
-  --c-code-ink: #eef1f3;
-  --c-code-muted: #a9b6c2;
-  --c-prompt: #f3d54a;       /* IOS prompts inside console blocks */
-  --c-code-inline-bg: #d3d8dd;
-  --c-mark: #fbe58a;
+  /* --- palette: light (from the study hub mock-up) ------------------------- */
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --line: #e7e3da;
+  --line-strong: #dcd7cc;
+  --line-subtle: #f0ede6;
+  --chip-active: #efece5;
+  --ink: #16181d;
+  --ink-2: #4a4f58;
+  --muted: #6b7079;
+  --faint: #8a8f98;          /* about 3.2:1 on --bg: decorative or large text only */
+  --accent: #3ccf7a;         /* never text on light */
+  --tag-green-bg: #e6f8ee;
+  --tag-green: #137a3f;
+  --tag-blue-bg: #e8f0fe;
+  --tag-blue: #1f5fc4;
+  --tag-orange-bg: #fdf0e1;
+  --tag-orange: #a8560b;
+  --panel: #16181d;          /* dark cards: lab steps, downloads */
+  --panel-2: #20232a;
+  --panel-text: #a3a8b0;
+  --panel-ink: #ffffff;
+  --panel-line: #2c3038;
 
-  /* rack steel: header, footer, panels and file faceplates (both themes) */
-  --c-steel: #2a3036;
-  --c-steel-raised: #343b42;
-  --c-steel-line: #46505a;
-  --c-steel-ink: #f6f7f8;
-  --c-steel-muted: #c9d0d6;
-  --c-jack: #0b0e11;
-  --c-tape: #f3d54a;         /* label-maker tape */
-  --c-tape-ink: #1a1a1a;
-  --c-led-on: #2bd06b;       /* decorative LED glow (never carries text) */
-  --c-panel-edge: #1a1e22;   /* outline of steel panels against the page */
-  --c-run: #2a3036;          /* cable between learning-path stops */
-  --net-line: #a7b0b9;       /* hero network diagram (decorative) */
-  --net-fill: #eef0f2;
-  --net-pdu-edge: #15191d;
+  /* derived roles */
+  --link: var(--tag-blue);
+  --focus: #1f5fc4;
+  --logo-bg: #16181d;
+  --code-bg: #f7f6f1;        /* console blocks: prompts in --tag-green, comments in --muted */
+  --code-ink: #16181d;
+  --code-line: #e7e3da;
+  --mark: #fbe9a6;
+  --shadow-search: 0 1px 0 #ece8df, 0 18px 40px -24px rgb(22 24 29 / 0.35);
+  --shadow-pop: 0 18px 48px -18px rgb(22 24 29 / 0.28);
+  --backdrop-opacity: 0.65;  /* hero background animation */
 
-  /* T568B wire colours (category coding). */
-  --wire-orange: #e3761c;
-  --wire-green: #2f9a4e;
-  --wire-blue: #2f6fd1;
-  --wire-brown: #8a5a35;
-  --wire-white: #f7f8f9;
-
-  /* --- type ---------------------------------------------------------------- */
-  --font-sans: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'Atkinson Hyperlegible Mono Variable', 'Atkinson Hyperlegible Mono', ui-monospace, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
-  --font-display: 'Archivo Variable', 'Archivo', 'Arial Narrow', 'Roboto Condensed', var(--font-sans);
-  --display-stretch: 72%;
-  /* modular scale, ratio 1.25 from a 17px body */
-  --fs-xs: 0.8125rem;
-  --fs-sm: 0.9375rem;
-  --fs-base: 1.0625rem;
-  --fs-md: 1.25rem;
-  --fs-lg: 1.5625rem;
-  --fs-xl: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
-  --fs-2xl: clamp(2.5rem, 1.6rem + 3.6vw, 4.75rem);
-  --fs-hero: clamp(3rem, 1.5rem + 6vw, 6.5rem);
-  --lh-tight: 0.95;
+  /* --- type ------------------------------------------------------------------ */
+  --font-sans: 'Instrument Sans Variable', 'Instrument Sans Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'DM Mono', 'DM Mono Fallback', ui-monospace, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
+  --stretch-head: 92%;
+  --fs-xs: 0.8125rem;   /* 13px: tags, meta */
+  --fs-sm: 0.90625rem;  /* 14.5px */
+  --fs-base: 1rem;      /* 16px UI */
+  --fs-prose: 1.0625rem;/* 17px long-form */
+  --fs-md: 1.1875rem;   /* 19px lead */
+  --fs-lg: 1.375rem;    /* 22px section heads */
+  --fs-xl: 1.5rem;      /* 24px card titles */
+  --fs-2xl: clamp(2rem, 1.45rem + 2.2vw, 3rem);
+  --fs-hero: clamp(2.5rem, 1.1rem + 5.2vw, 4.25rem); /* 68px at desktop */
+  --lh-tight: 1.02;
   --lh-snug: 1.2;
   --lh-body: 1.6;
   --measure: 70ch;
 
-  /* --- space, shape, motion -------------------------------------------------- */
+  /* --- space, shape, motion ---------------------------------------------------- */
   --sp-1: 0.25rem;
   --sp-2: 0.5rem;
   --sp-3: 0.75rem;
@@ -88,88 +77,88 @@
   --sp-6: 2rem;
   --sp-7: 3rem;
   --sp-8: 4.5rem;
-  --radius-sm: 2px;   /* tape, tags, inline code */
-  --radius-md: 4px;   /* buttons, inputs, code blocks */
-  --radius-lg: 6px;   /* steel panels and faceplates */
-  --shadow-raise: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 1px 2px rgb(21 25 29 / 0.08);
+  --radius-tag: 6px;
+  --radius-btn: 10px;
+  --radius-chip: 11px;
+  --radius-code: 12px;
+  --radius-search: 16px;
+  --radius-card: 18px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur: 160ms;
-  --header-h: 4rem;
-  --page-max: 82rem;
-  --gutter: clamp(1rem, 0.5rem + 2.4vw, 2.5rem);
+  --header-h: 4.25rem;
+  --page-max: 77.5rem;  /* 1240px */
+  --gutter: clamp(1rem, 0.6rem + 1.6vw, 1.5rem);
 }
 
 /* --- palette: dark (system preference unless the reader chose light) ------- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --c-bg: #16191d;
-    --c-surface: #1f2429;
-    --c-surface-sunk: #111417;
-    --c-ink: #e8ecef;
-    --c-ink-soft: #c9d0d6;
-    --c-muted: #9ca6af;
-    --c-line: #2f363d;
-    --c-line-strong: #4f5963;
-    --c-link: #8fc1f2;
-    --c-link-hover: #bcdaf8;
-    --c-go: #3cc277;
-    --c-go-ink: #07140c;
-    --c-go-soft: #143020;
-    --c-amber: #f0b45a;
-    --c-amber-line: #c98a2a;
-    --c-amber-soft: #2e2312;
-    --c-focus: #f3d54a;
-    --c-code-bg: #0e1114;
-    --c-code-ink: #e4e9ed;
-    --c-code-muted: #9aa8b4;
-    --c-code-inline-bg: #2a3036;
-    --c-mark: #5a4a10;
-    --c-steel: #23282d;
-    --c-steel-raised: #2e353b;
-    --c-steel-line: #444d56;
-    --c-panel-edge: #444d56;
-    --c-run: #6b7681;
-    --net-line: #3d4650;
-    --net-fill: #1b1f23;
-    --net-pdu-edge: #0b0e11;
-    --wire-white: #dfe6ec;
-    --shadow-raise: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 1px 2px rgb(0 0 0 / 0.4);
+    --bg: #0f1114;
+    --surface: #171a1f;
+    --line: #262a31;
+    --line-strong: #323741;
+    --line-subtle: #1d2026;
+    --chip-active: #22262d;
+    --ink: #eceef1;
+    --ink-2: #b4b9c1;
+    --muted: #959ba5;
+    --faint: #6f757f;
+    --accent: #3ccf7a;
+    --tag-green-bg: #123322;
+    --tag-green: #5fd99a;
+    --tag-blue-bg: #14233d;
+    --tag-blue: #8fb4ff;
+    --tag-orange-bg: #3a2612;
+    --tag-orange: #f0a65a;
+    --panel: #0b0d10;
+    --panel-2: #1a1d22;
+    --panel-text: #a3a8b0;
+    --panel-ink: #f3f4f6;
+    --panel-line: #262a31;
+    --focus: #8fb4ff;
+    --logo-bg: #22262d;
+    --code-bg: #0b0d10;
+    --code-ink: #e4e7eb;
+    --code-line: #262a31;
+    --mark: #5a4a10;
+    --shadow-search: 0 1px 0 #1d2026, 0 18px 40px -24px rgb(0 0 0 / 0.7);
+    --shadow-pop: 0 18px 48px -18px rgb(0 0 0 / 0.7);
+    --backdrop-opacity: 0.5;
   }
 }
 
 :root[data-theme='dark'] {
-  --c-bg: #16191d;
-  --c-surface: #1f2429;
-  --c-surface-sunk: #111417;
-  --c-ink: #e8ecef;
-  --c-ink-soft: #c9d0d6;
-  --c-muted: #9ca6af;
-  --c-line: #2f363d;
-  --c-line-strong: #4f5963;
-  --c-link: #8fc1f2;
-  --c-link-hover: #bcdaf8;
-  --c-go: #3cc277;
-  --c-go-ink: #07140c;
-  --c-go-soft: #143020;
-  --c-amber: #f0b45a;
-  --c-amber-line: #c98a2a;
-  --c-amber-soft: #2e2312;
-  --c-focus: #f3d54a;
-  --c-code-bg: #0e1114;
-  --c-code-ink: #e4e9ed;
-  --c-code-muted: #9aa8b4;
-  --c-code-inline-bg: #2a3036;
-  --c-mark: #5a4a10;
-  --c-steel: #23282d;
-  --c-steel-raised: #2e353b;
-  --c-steel-line: #444d56;
-  --c-panel-edge: #444d56;
-  --c-run: #6b7681;
-  --net-line: #3d4650;
-  --net-fill: #1b1f23;
-  --net-pdu-edge: #0b0e11;
-  --wire-white: #dfe6ec;
-  --shadow-raise: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 1px 2px rgb(0 0 0 / 0.4);
+  --bg: #0f1114;
+  --surface: #171a1f;
+  --line: #262a31;
+  --line-strong: #323741;
+  --line-subtle: #1d2026;
+  --chip-active: #22262d;
+  --ink: #eceef1;
+  --ink-2: #b4b9c1;
+  --muted: #959ba5;
+  --faint: #6f757f;
+  --accent: #3ccf7a;
+  --tag-green-bg: #123322;
+  --tag-green: #5fd99a;
+  --tag-blue-bg: #14233d;
+  --tag-blue: #8fb4ff;
+  --tag-orange-bg: #3a2612;
+  --tag-orange: #f0a65a;
+  --panel: #0b0d10;
+  --panel-2: #1a1d22;
+  --panel-text: #a3a8b0;
+  --panel-ink: #f3f4f6;
+  --panel-line: #262a31;
+  --focus: #8fb4ff;
+  --logo-bg: #22262d;
+  --code-bg: #0b0d10;
+  --code-ink: #e4e7eb;
+  --code-line: #262a31;
+  --mark: #5a4a10;
+  --shadow-search: 0 1px 0 #1d2026, 0 18px 40px -24px rgb(0 0 0 / 0.7);
+  --shadow-pop: 0 18px 48px -18px rgb(0 0 0 / 0.7);
+  --backdrop-opacity: 0.5;
   color-scheme: dark;
 }
 

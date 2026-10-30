@@ -1,42 +1,48 @@
 ---
 import { getRepository } from '../lib/content/repository';
-import { navItems, SHORT_NAME, url } from '../lib/site';
-import RJ45Mark from './RJ45Mark.astro';
+import { navItems, SHORT_NAME, startLab, url } from '../lib/site';
 
 const current = Astro.url.pathname;
-const items = navItems(getRepository());
-const githubUrl = getRepository().config.repoUrl;
+const repo = getRepository();
+const items = navItems(repo);
+const githubUrl = repo.config.repoUrl;
+const start = startLab(repo);
 ---
-<header class="site-header on-steel">
+<header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href={url('/')}>
-      <RJ45Mark size={30} uid="header-rj45" />
+      <span class="logo" aria-hidden="true"><span class="logo-dot"></span></span>
       <span class="brand-text">{SHORT_NAME}</span>
     </a>
-
-    <button class="menu-toggle js-only" type="button" aria-expanded="false" aria-controls="site-nav">
-      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-      <span class="menu-label">Menu</span>
-    </button>
 
     <nav id="site-nav" class="site-nav" aria-label="Main">
       <ul>
         {items.map((item) => (
           <li><a href={item.href} aria-current={current.startsWith(item.match) ? 'page' : undefined}>{item.label}</a></li>
         ))}
-        <li><a href={githubUrl} rel="noopener noreferrer">GitHub</a></li>
       </ul>
+      <!-- The menu sheet on small screens also carries the actions from the bar. -->
+      <div class="sheet-actions">
+        <a href={githubUrl} rel="noopener noreferrer">GitHub</a>
+        {start && <a class="btn btn-primary" href={start.route}>Start with lab 1</a>}
+      </div>
     </nav>
 
     <div class="header-tools">
       <a class="search-trigger" href={url('/search/')} data-search-trigger aria-label="Search">
-        <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="m13 13 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" /><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
         <span class="search-label">Search</span>
         <kbd class="search-kbd js-only">/</kbd>
       </a>
-      <button class="theme-toggle js-only" type="button" aria-label="Switch to dark theme" data-theme-toggle>
+      <button class="theme-toggle icon-btn js-only" type="button" aria-label="Switch to dark theme" data-theme-toggle>
         <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.5A6.5 6.5 0 0 1 7.5 4.5a6.5 6.5 0 1 0 8 8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
         <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M10 1.5v2.2M10 16.3v2.2M1.5 10h2.2M16.3 10h2.2M4 4l1.5 1.5M14.5 14.5 16 16M4 16l1.5-1.5M14.5 5.5 16 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+      </button>
+      <a class="gh-link bar-only" href={githubUrl} rel="noopener noreferrer">GitHub</a>
+      {start && <a class="btn btn-primary start bar-only" href={start.route}>Start with lab 1</a>}
+      <button class="menu-toggle icon-btn js-only" type="button" aria-expanded="false" aria-controls="site-nav">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        <span class="menu-label">Menu</span>
       </button>
     </div>
   </div>
@@ -47,108 +53,158 @@ const githubUrl = getRepository().config.repoUrl;
     position: sticky;
     top: 0;
     z-index: 20;
-    background: var(--c-steel);
-    color: var(--c-steel-ink);
-    border-bottom: 1px solid #1a1e22;
-    box-shadow: inset 0 -1px 0 var(--c-steel-line);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
   }
   .header-inner {
     min-height: var(--header-h);
     display: flex;
     align-items: center;
-    gap: var(--sp-5);
+    gap: 2.25rem;
   }
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: var(--sp-3);
-    color: var(--c-steel-ink);
+    gap: 0.6rem;
+    flex: none;
+    color: var(--ink);
     text-decoration: none;
-    font-family: var(--font-display);
-    font-stretch: 78%;
-    font-weight: 800;
-    font-size: 1.3rem;
+    font-size: 1.1875rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     line-height: 1;
-    margin-right: auto;
   }
-  .brand :global(.rj45) { color: var(--c-steel-ink); }
-  .brand:hover { color: #ffffff; }
+  /* Logo: a link light on a dark port. */
+  .logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--logo-bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .logo-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgb(60 207 122 / 0.25);
+  }
+  .site-nav { flex: 1; min-width: 0; }
   .site-nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-1) var(--sp-2);
+    gap: 0.25rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  .site-nav a {
+  .site-nav a:not(.btn) {
     display: inline-block;
-    padding: var(--sp-2) var(--sp-3);
-    border-radius: var(--radius-md);
-    color: var(--c-steel-muted);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+    font-weight: 500;
     text-decoration: none;
-    font-weight: 600;
   }
-  .site-nav a:hover { color: #ffffff; background: var(--c-steel-raised); }
-  .site-nav a[aria-current='page'] {
-    color: #ffffff;
-    box-shadow: inset 0 -3px 0 var(--c-tape);
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-  }
-  .header-tools { display: flex; align-items: center; gap: var(--sp-2); }
-  .search-trigger, .theme-toggle, .menu-toggle {
+  .site-nav a:not(.btn):hover { color: var(--ink); background: var(--chip-active); }
+  .site-nav a[aria-current='page'] { color: var(--ink); background: var(--chip-active); }
+  .sheet-actions { display: none; }
+
+  .header-tools { display: flex; align-items: center; gap: 0.5rem; flex: none; }
+  .search-trigger, .icon-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--sp-2);
     min-height: 2.5rem;
     min-width: 2.5rem;
-    justify-content: center;
-    padding: var(--sp-1) var(--sp-3);
-    border: 1px solid var(--c-steel-line);
-    border-radius: var(--radius-md);
-    background: var(--c-steel-raised);
-    color: var(--c-steel-ink);
+    padding: 0 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-btn);
+    background: var(--surface);
+    color: var(--ink-2);
     font: inherit;
-    font-weight: 600;
+    font-size: 0.9375rem;
+    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
   }
-  .search-trigger:hover, .theme-toggle:hover, .menu-toggle:hover { color: #ffffff; border-color: var(--c-steel-muted); }
+  .search-trigger:hover, .icon-btn:hover { color: var(--ink); border-color: var(--line-strong); }
   .search-kbd {
-    font-size: var(--fs-xs);
-    padding: 0 0.4em;
-    border: 1px solid var(--c-steel-line);
-    border-radius: var(--radius-sm);
-    color: var(--c-steel-muted);
     font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    line-height: 1.4;
+    padding: 0 0.4rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-tag);
+    color: var(--ink-2);
   }
+  .gh-link {
+    padding: 0 0.5rem;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .gh-link:hover { color: var(--ink); text-decoration: underline; }
+  .start { min-height: 2.5rem; height: 2.5rem; }
   .theme-toggle .icon-sun { display: none; }
   :global([data-resolved-theme='dark']) .theme-toggle .icon-sun { display: block; }
   :global([data-resolved-theme='dark']) .theme-toggle .icon-moon { display: none; }
 
-  /* Small screens: with JS, the nav collapses behind the Menu button.
+  /* Mid widths: tighter spacing, the search trigger shows only its icon and shortcut. */
+  @media (max-width: 80rem) {
+    .header-inner { gap: 1.25rem; }
+    .search-label { display: none; }
+  }
+
+  /* Small screens: with JS the nav becomes a sheet behind the Menu button.
      Without JS it stays visible and wraps under the brand. */
-  @media (max-width: 60rem) {
-    .header-inner { flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); padding-block: var(--sp-2); }
-    .site-nav { order: 3; width: 100%; }
+  @media (max-width: 63.99rem) {
+    .header-inner { flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); padding-block: 0.6rem; min-height: 0; }
+    .brand { margin-right: auto; }
     .header-tools { order: 1; }
-    .menu-toggle { order: 2; }
-    .brand { gap: var(--sp-2); font-size: 1.05rem; }
-    .brand-text { max-width: 9.5em; line-height: 1.05; }
-    .search-label, .search-kbd { display: none !important; }
-    :global(.js) .menu-toggle { display: inline-flex; }
+    .site-nav { order: 2; flex-basis: 100%; }
+    .bar-only { display: none !important; }
+    .search-kbd { display: none !important; }
+    .menu-toggle { gap: var(--sp-2); }
     :global(.js) .site-nav { display: none; }
-    :global(.js) .site-nav[data-open] { display: block; }
-    :global(.js) .site-nav[data-open] ul { flex-direction: column; padding-bottom: var(--sp-3); }
-    :global(.js) .site-nav[data-open] a { display: block; padding: var(--sp-3); }
-    :global(.js) .site-nav[data-open] a[aria-current='page'] { box-shadow: inset 3px 0 0 var(--c-tape); border-radius: 0; }
+    :global(.js) .site-nav[data-open] {
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: var(--sp-3) var(--gutter) var(--sp-5);
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-pop);
+    }
+    :global(.js) .site-nav[data-open] ul { flex-direction: column; gap: 0.125rem; }
+    :global(.js) .site-nav[data-open] a:not(.btn) { display: block; padding: 0.7rem 0.8rem; font-size: 1.0625rem; }
+    :global(.js) .site-nav[data-open] .sheet-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      margin-top: var(--sp-3);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line);
+    }
   }
   @media (max-width: 26.25rem) {
-    .header-inner { column-gap: var(--sp-2); }
-    .search-trigger, .theme-toggle, .menu-toggle { padding-inline: var(--sp-2); }
     .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   }
-  @media (min-width: 60.01rem) {
+  @media (min-width: 64rem) {
     .menu-toggle { display: none !important; }
+  }
+  @media (forced-colors: active) {
+    .logo { border: 1px solid CanvasText; }
+    .logo-dot { forced-color-adjust: none; }
   }
 </style>

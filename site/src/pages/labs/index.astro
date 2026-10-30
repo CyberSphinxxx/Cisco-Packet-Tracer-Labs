@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import LabCard from '../../components/LabCard.astro';
-import WireSwatch from '../../components/WireSwatch.astro';
 import { getRepository } from '../../lib/content/repository';
 import { facetsOf, type CatalogItem } from '../../lib/filters';
 import { scriptJson } from '../../lib/json';
@@ -41,7 +40,7 @@ const topicCounts = repo.topics;
         <fieldset>
           <legend>Topic area</legend>
           {repo.categories.map((c) => (
-            <label class="check"><input type="checkbox" name="category" value={c.slug} /> <WireSwatch category={c.slug} /> <span>{c.label}</span> <span class="n">{count('category', c.slug)}</span></label>
+            <label class="check"><input type="checkbox" name="category" value={c.slug} /> <span>{c.label}</span> <span class="n">{count('category', c.slug)}</span></label>
           ))}
         </fieldset>
         <fieldset>
@@ -103,42 +102,40 @@ const topicCounts = repo.topics;
 </BaseLayout>
 
 <style>
-  .page-head { padding-top: var(--sp-5); }
-  .page-head h1 { font-size: var(--fs-2xl); margin-top: var(--sp-3); letter-spacing: -0.01em; }
-  .intro { color: var(--c-ink-soft); max-width: 66ch; margin: var(--sp-3) 0 0; }
-  .catalog { display: grid; gap: var(--sp-5) var(--sp-7); grid-template-columns: minmax(0, 1fr); margin-top: var(--sp-5); }
+  .catalog { display: grid; gap: var(--sp-5) var(--sp-7); grid-template-columns: minmax(0, 1fr); margin-top: var(--sp-6); }
   @media (min-width: 62rem) { .catalog { grid-template-columns: 17rem minmax(0, 1fr); } }
   .filters { align-self: start; }
-  @media (min-width: 62rem) { .filters { position: sticky; top: calc(var(--header-h) + var(--sp-4)); max-height: calc(100vh - var(--header-h) - var(--sp-6)); overflow-y: auto; padding-right: var(--sp-2); } }
+  @media (min-width: 62rem) { .filters { position: sticky; top: calc(var(--header-h) + var(--sp-4)); max-height: calc(100vh - var(--header-h) - var(--sp-6)); overflow-y: auto; padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-4); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); } }
   .filters-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-3); }
-  .filters h2 { font-size: var(--fs-md); }
+  .filters h2 { font-size: var(--fs-base); }
   .filters-form { display: grid; gap: var(--sp-5); margin-top: var(--sp-4); }
   .field { display: grid; gap: var(--sp-1); }
-  label, legend, summary { font-weight: 700; font-size: var(--fs-sm); }
+  label, legend, summary { font-weight: 600; font-size: var(--fs-sm); }
   input[type='search'], select {
     font: inherit; font-size: var(--fs-sm); min-height: 2.5rem; padding: var(--sp-2) var(--sp-3);
-    border: 1px solid var(--c-line-strong); border-radius: var(--radius-md); background: var(--c-surface); color: var(--c-ink); width: 100%;
+    border: 1px solid var(--line-strong); border-radius: var(--radius-btn); background: var(--surface); color: var(--ink); width: 100%;
   }
+  input[type='search']::placeholder { color: var(--muted); }
   fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: var(--sp-1); }
   legend { margin-bottom: var(--sp-2); padding: 0; }
   .check { display: flex; align-items: center; gap: var(--sp-2); font-weight: 400; min-height: 2rem; cursor: pointer; }
-  .check input { width: 1.1rem; height: 1.1rem; accent-color: var(--c-go); flex: none; margin: 0; }
-  .n { margin-left: auto; color: var(--c-muted); font-weight: 400; font-variant-numeric: tabular-nums; font-size: var(--fs-xs); }
+  .check input { width: 1.1rem; height: 1.1rem; accent-color: var(--ink); flex: none; margin: 0; }
+  .n { margin-left: auto; color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-size: var(--fs-xs); }
   .topics summary { cursor: pointer; display: flex; gap: var(--sp-2); min-height: 2rem; align-items: center; }
   .topics fieldset { margin-top: var(--sp-2); }
-  .link-btn { background: none; border: 0; padding: var(--sp-1); color: var(--c-link); font: inherit; font-size: var(--fs-sm); text-decoration: underline; cursor: pointer; }
-  .results-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3) var(--sp-5); padding-bottom: var(--sp-3); border-bottom: 2px solid var(--c-ink); }
-  .results-count { margin: 0; font-weight: 700; margin-right: auto; }
+  .link-btn { background: none; border: 0; padding: var(--sp-1); color: var(--link); font: inherit; font-size: var(--fs-sm); text-decoration: underline; cursor: pointer; }
+  .results-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3) var(--sp-5); padding-bottom: var(--sp-3); border-bottom: 1px solid var(--line-strong); }
+  .results-count { margin: 0; font-weight: 600; margin-right: auto; }
   .sort { display: flex; align-items: center; gap: var(--sp-2); }
   .sort select { width: auto; }
   .lab-list { list-style: none; margin: 0; padding: 0; }
   .empty { padding: var(--sp-6) 0; }
   .empty p { margin: 0 0 var(--sp-4); }
-  .noscript { color: var(--c-muted); }
+  .noscript { color: var(--muted); }
   @media (max-width: 61.99rem) {
     .filters-toggle { justify-self: start; }
     :global(.js) .filters:not([data-open]) { display: none; }
-    .filters[data-open] { padding: var(--sp-4); border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); }
+    .filters[data-open] { padding: var(--sp-4); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
   }
   @media (min-width: 62rem) { .filters-toggle { display: none !important; } }
 </style>

@@ -1,6 +1,6 @@
 # Contributing to Cisco Packet Tracer Labs
 
-Thank you for your interest in improving the **Cisco Packet Tracer Learning Library**! This repository provides open, accurate, high-quality educational guides and topologies for BSIT students and independent networking learners.
+Thank you for your interest in improving the **itnetworking**! This repository provides open, accurate, high-quality educational guides and topologies for BSIT students and independent networking learners.
 
 ---
 

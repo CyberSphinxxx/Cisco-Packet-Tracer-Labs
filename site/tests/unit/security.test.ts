@@ -82,4 +82,46 @@ describe('write-headers.mjs', () => {
     for (const x of ['/search/*', '/pagefind/*', '/*.pkt']) expect(excluded).toContain(x);
     expect(rule.where.and[2].not.selector_matches).toContain('[download]');
   });
+
+  describe('PTL_REDIRECT_TO', () => {
+    const build = (redirectTo: string | undefined, existing?: string) => {
+      const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ptl-redirects-'));
+      fs.writeFileSync(path.join(dir, 'index.html'), '<script data-csp-allow>theme()</script>');
+      if (existing) fs.writeFileSync(path.join(dir, '_redirects'), existing);
+      const env = { ...process.env };
+      delete env.PTL_REDIRECT_TO;
+      if (redirectTo !== undefined) env.PTL_REDIRECT_TO = redirectTo;
+      const r = spawnSync(process.execPath, [path.join(SITE_ROOT, 'scripts/write-headers.mjs'), dir], { encoding: 'utf8', env });
+      const file = path.join(dir, '_redirects');
+      const redirects = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
+      const headers = fs.existsSync(path.join(dir, '_headers'));
+      fs.rmSync(dir, { recursive: true, force: true });
+      return { status: r.status, stderr: r.stderr, redirects, headers };
+    };
+
+    it('writes no _redirects by default, and removes a stale one', () => {
+      expect(build(undefined).redirects).toBeNull();
+      expect(build('', '/* https://old.example/:splat 301\n').redirects).toBeNull();
+    });
+
+    it('sends every path to the same path on the new origin with a 301', () => {
+      const r = build('https://itnetworking.pages.dev');
+      expect(r.status, r.stderr).toBe(0);
+      expect(r.redirects).toBe('/* https://itnetworking.pages.dev/:splat 301\n');
+      expect(r.headers).toBe(true);
+    });
+
+    it('normalises a trailing slash and surrounding spaces', () => {
+      expect(build('  https://itnetworking.pages.dev/  ').redirects).toBe('/* https://itnetworking.pages.dev/:splat 301\n');
+    });
+
+    it('refuses values that are not a plain http(s) origin', () => {
+      for (const bad of ['itnetworking.pages.dev', 'javascript:alert(1)', 'https://a.example/?x=1', 'https://a.example/#x', 'https://user:pw@a.example', 'https://a.example\n/* /evil 200']) {
+        const r = build(bad);
+        expect(r.status, bad).toBe(1);
+        expect(r.stderr, bad).toContain('PTL_REDIRECT_TO must be');
+        expect(r.redirects, bad).toBeNull();
+      }
+    });
+  });
 });

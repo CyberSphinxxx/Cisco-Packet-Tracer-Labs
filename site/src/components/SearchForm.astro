@@ -14,20 +14,23 @@ const { idPrefix, autofocus = false } = Astro.props;
   <ol class="search-results" data-search-results></ol>
 </div>
 <style>
-  .search-ui label { display: block; font-weight: 700; font-size: var(--fs-sm); margin-bottom: var(--sp-2); }
+  .search-ui label { display: block; font-weight: 600; font-size: var(--fs-sm); margin-bottom: var(--sp-2); }
   .search-ui input {
-    width: 100%; font: inherit; font-size: var(--fs-md); min-height: 3rem; padding: var(--sp-2) var(--sp-4);
-    border: 2px solid var(--c-line-strong); border-radius: var(--radius-md); background: var(--c-surface); color: var(--c-ink);
+    width: 100%; font: inherit; font-size: 1.0625rem; min-height: 3.25rem; padding: var(--sp-2) var(--sp-4);
+    border: 1px solid var(--line-strong); border-radius: var(--radius-search); background: var(--surface); color: var(--ink);
+    box-shadow: var(--shadow-search);
   }
-  .search-ui input:focus-visible { border-color: var(--c-focus); outline-offset: 1px; }
-  .search-status { color: var(--c-muted); font-size: var(--fs-sm); margin: var(--sp-3) 0 0; }
+  .search-ui input::placeholder { color: var(--muted); }
+  .search-ui input:focus-visible { border-color: var(--focus); outline-offset: 1px; }
+  .search-status { color: var(--muted); font-size: var(--fs-sm); margin: var(--sp-3) 0 0; }
   .search-results { list-style: none; margin: var(--sp-3) 0 0; padding: 0; }
   /* Reserve room on the search page so results arriving do not push the footer (CLS). */
   :global(.search-page) .search-results { min-height: 60vh; }
-  .search-results :global(.search-result) { padding-block: var(--sp-4); border-top: 1px solid var(--c-line); }
-  .search-results :global(.search-result-type) { margin: 0; font-size: var(--fs-xs); color: var(--c-muted); }
-  .search-results :global(.search-result-title) { font-weight: 700; font-size: var(--fs-md); }
-  .search-results :global(.search-result-excerpt) { margin: var(--sp-1) 0 0; color: var(--c-ink-soft); font-size: var(--fs-sm); }
-  .search-results :global(mark) { background: var(--c-mark); color: inherit; padding: 0 0.1em; border-radius: 2px; }
+  .search-results :global(.search-result) { padding-block: var(--sp-4); border-top: 1px solid var(--line-subtle); }
+  .search-results :global(.search-result-type) { margin: 0; font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted); }
+  .search-results :global(.search-result-title) { font-weight: 600; font-size: 1.0625rem; color: var(--ink); }
+  .search-results :global(.search-result-excerpt) { margin: var(--sp-1) 0 0; color: var(--ink-2); font-size: var(--fs-sm); }
+  .search-results :global(mark) { background: var(--mark); color: var(--ink); padding: 0 0.1em; border-radius: 2px; }
   .search-results :global(.search-result-sections) { margin: var(--sp-2) 0 0; padding-left: 1.1em; font-size: var(--fs-sm); display: grid; gap: var(--sp-1); }
+  .search-results :global(.search-result-sections a) { color: var(--link); }
 </style>
