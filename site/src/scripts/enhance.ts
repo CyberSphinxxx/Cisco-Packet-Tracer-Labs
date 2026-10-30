@@ -78,18 +78,32 @@ function initCopyButtons() {
   for (const btn of document.querySelectorAll<HTMLButtonElement>('.copy-code')) {
     const code = btn.parentElement?.querySelector('pre code');
     if (!code) continue;
+    // Console blocks: copy the commands without their IOS prompts so they paste straight into the CLI.
+    const withPrompts = Boolean(code.querySelector('.ios-prompt'));
+    const label = withPrompts ? 'Copy commands' : 'Copy';
+    btn.textContent = label;
     btn.hidden = false;
-    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.setAttribute('aria-label', withPrompts ? 'Copy commands to clipboard, without prompts' : 'Copy code to clipboard');
     btn.addEventListener('click', async () => {
+      let text = code.textContent ?? '';
+      if (withPrompts) {
+        const clone = code.cloneNode(true) as Element;
+        for (const p of clone.querySelectorAll('.ios-prompt')) {
+          const next = p.nextSibling;
+          if (next?.nodeType === Node.TEXT_NODE) next.textContent = (next.textContent ?? '').replace(/^ /, '');
+          p.remove();
+        }
+        text = clone.textContent ?? '';
+      }
       try {
-        await navigator.clipboard.writeText(code.textContent ?? '');
+        await navigator.clipboard.writeText(text);
         btn.textContent = 'Copied';
         btn.dataset.state = 'copied';
       } catch {
         btn.textContent = 'Copy failed';
       }
       setTimeout(() => {
-        btn.textContent = 'Copy';
+        btn.textContent = label;
         delete btn.dataset.state;
       }, 2000);
     });

@@ -1,6 +1,7 @@
 @import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
 @import '@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css';
 @import '@fontsource-variable/atkinson-hyperlegible-mono/wght.css';
+@import '@fontsource-variable/archivo/wdth.css';
 @import './tokens.css';
 
 /* ---- base ----------------------------------------------------------------- */
@@ -55,6 +56,28 @@ h4 {
   text-wrap: balance;
 }
 
+/* Display type: condensed Archivo, like silkscreen on network gear. */
+h1,
+.display {
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 820;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.005em;
+}
+
+h1 {
+  font-size: var(--fs-2xl);
+}
+
+.display-sub {
+  font-family: var(--font-display);
+  font-stretch: 78%;
+  font-weight: 780;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
 p {
   text-wrap: pretty;
 }
@@ -74,6 +97,11 @@ a:hover {
   outline: 3px solid var(--c-focus);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* Steel surfaces (header, footer, file faceplates) keep a high-contrast tape-yellow focus ring. */
+.on-steel :focus-visible {
+  outline-color: var(--c-tape);
 }
 
 code,
@@ -188,6 +216,19 @@ samp {
   flex: none;
 }
 
+/* Tape-yellow action for steel panels. */
+.btn-tape {
+  background: var(--c-tape);
+  border-color: var(--c-tape);
+  color: var(--c-tape-ink);
+}
+
+.btn-tape:hover {
+  background: #ffe36b;
+  border-color: #ffe36b;
+  color: var(--c-tape-ink);
+}
+
 /* ---- tags -------------------------------------------------------------------- */
 .tag {
   display: inline-flex;
@@ -208,6 +249,31 @@ samp {
   font-weight: 600;
   letter-spacing: 0.01em;
 }
+
+/* Label-maker tape: lab IDs on ports, cards and headers. */
+.tape {
+  display: inline-block;
+  padding: 0.18em 0.45em;
+  border-radius: var(--radius-sm);
+  background: var(--c-tape);
+  color: var(--c-tape-ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.18);
+}
+
+/* A length of T568B wire in a category colour (decorative; always paired with a text label). */
+.w-orange { --w: var(--wire-orange); }
+.w-green { --w: var(--wire-green); }
+.w-blue { --w: var(--wire-blue); }
+.w-brown { --w: var(--wire-brown); }
+.wire-fill { background: var(--w); }
+.wire-fill.striped { background: repeating-linear-gradient(135deg, var(--w) 0 0.42em, var(--wire-white) 0.42em 0.7em); }
+@media (forced-colors: active) { .wire-fill { forced-color-adjust: none; } }
 
 /* ---- long-form tutorial prose (rendered canonical Markdown) ---------------------- */
 .prose {
@@ -239,10 +305,14 @@ samp {
 }
 
 .prose h2 {
-  font-size: var(--fs-lg);
+  font-family: var(--font-display);
+  font-stretch: 78%;
+  font-weight: 780;
+  font-size: var(--fs-xl);
+  line-height: 1.05;
   margin-top: var(--sp-7);
-  padding-top: var(--sp-4);
-  border-top: 1px solid var(--c-line);
+  padding-top: var(--sp-5);
+  border-top: 2px solid var(--c-line);
 }
 
 .prose h3 {
@@ -306,7 +376,7 @@ samp {
 .prose blockquote {
   padding: var(--sp-3) var(--sp-4);
   border-left: 4px solid var(--c-line-strong);
-  background: var(--c-surface-sunk);
+  background: var(--c-surface);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   color: var(--c-ink-soft);
 }
@@ -376,6 +446,16 @@ samp {
   padding: 0;
 }
 
+/* Cisco IOS prompts in console blocks: the mode you should be in before typing. */
+.ios-prompt {
+  color: var(--c-prompt);
+  font-weight: 700;
+}
+
+.ios-comment {
+  color: var(--c-code-muted);
+}
+
 /* With JavaScript a Copy button sits in the block's top-right corner; keep the first line clear of it. */
 .js .prose .code-block:has(.copy-code:not([hidden])) pre {
   padding-top: 2.75rem;
@@ -390,7 +470,7 @@ samp {
   border: 1px solid rgb(255 255 255 / 0.25);
   border-radius: var(--radius-sm);
   background: rgb(255 255 255 / 0.08);
-  color: #e4ebf0;
+  color: var(--c-code-ink);
   font: inherit;
   font-size: var(--fs-xs);
   font-weight: 700;

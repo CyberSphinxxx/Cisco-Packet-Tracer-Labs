@@ -60,8 +60,8 @@ const tocExtra = [
   </Fragment>
   <header slot="header" class="lab-header" data-lab-id={lab.id}>
     <p class="lab-kicker">
+      <span class="tape" data-pagefind-meta="id">{lab.id}</span>
       <a class="cat" href={cat.route}><WireSwatch category={lab.category} />{categoryLabel(lab.category)}</a>
-      <span class="lab-id" data-pagefind-meta="id">{lab.id}</span>
     </p>
     <h1 data-pagefind-meta="title">{lab.title}</h1>
     <p class="lab-summary">{lab.summary}</p>
@@ -70,6 +70,7 @@ const tocExtra = [
       <div><dt>Time</dt><dd>{minutesLabel(lab.minutes)}</dd></div>
       {lab.packetTracerVersion && <div><dt>Packet Tracer</dt><dd>{lab.packetTracerVersion}</dd></div>}
       <div><dt>Simulator</dt><dd><StatusIndicator status={lab.simulatorStatus} evidenceUrl={lab.simulatorEvidenceUrl} /></dd></div>
+      {lab.configs.length > 0 && <div><dt>You configure</dt><dd class="devices">{lab.configs.map((c) => c.device).join(', ')}</dd></div>}
       {lab.lastReviewed && <div><dt>Last reviewed</dt><dd><time datetime={lab.lastReviewed}>{lab.lastReviewed}</time></dd></div>}
     </dl>
     <span hidden data-pagefind-filter="category">{categoryLabel(lab.category)}</span>
@@ -112,17 +113,29 @@ const tocExtra = [
 </ArticleLayout>
 
 <style>
-  .lab-header { margin-top: var(--sp-4); max-width: 60rem; }
+  .lab-header { margin-top: var(--sp-5); max-width: 64rem; }
   .lab-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-4); margin: 0; font-size: var(--fs-sm); color: var(--c-muted); }
-  .cat { display: inline-flex; align-items: center; gap: var(--sp-2); color: var(--c-ink-soft); }
-  .lab-header h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); letter-spacing: -0.02em; margin-top: var(--sp-3); max-width: 24ch; }
+  .lab-kicker .tape { font-size: var(--fs-sm); }
+  .cat { display: inline-flex; align-items: center; gap: var(--sp-2); color: var(--c-ink); font-weight: 700; }
+  .lab-header h1 { margin-top: var(--sp-3); max-width: 22ch; }
   .lab-summary { font-size: var(--fs-md); line-height: 1.5; color: var(--c-ink-soft); max-width: 60ch; margin: var(--sp-4) 0 0; }
-  .facts { display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-6); margin: var(--sp-5) 0 0; padding-top: var(--sp-4); border-top: 1px solid var(--c-line); font-size: var(--fs-sm); }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+    margin: var(--sp-5) 0 0;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line-strong);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+    overflow: hidden;
+  }
+  .facts > div { padding: var(--sp-3) var(--sp-4); box-shadow: 1px 0 0 var(--c-line), 0 1px 0 var(--c-line); }
   .facts dt { color: var(--c-muted); }
   .facts dd { margin: 0; font-weight: 700; }
+  .facts .devices { font-family: var(--font-mono); }
   .in-paths { color: var(--c-ink-soft); font-size: var(--fs-sm); max-width: var(--measure); }
   .lab-topics ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-1); }
-  .related h2 { font-size: var(--fs-md); }
+  .related h2 { font-family: var(--font-display); font-stretch: 78%; font-weight: 800; font-size: var(--fs-lg); }
   .related ul { list-style: none; margin: var(--sp-3) 0 0; padding: 0; display: grid; gap: var(--sp-2); }
   .related li { display: flex; align-items: baseline; gap: var(--sp-2); }
   .related .lab-id { color: var(--c-muted); font-size: var(--fs-sm); }

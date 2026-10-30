@@ -25,13 +25,42 @@ for (const e of extra) tree.push({ h: e, children: [] });
 <style>
   .toc { font-size: var(--fs-sm); }
   .toc :global(ol) { list-style: none; margin: 0; padding: 0; }
-  .toc :global(ol ol) { padding-left: var(--sp-3); margin-block: var(--sp-1); border-left: 1px solid var(--c-line); }
-  .toc :global(a) { display: block; padding: 0.2rem var(--sp-2); color: var(--c-ink-soft); text-decoration: none; border-radius: var(--radius-sm); line-height: 1.35; }
-  .toc :global(a:hover) { color: var(--c-link-hover); background: var(--c-surface-sunk); }
-  .toc :global(a[aria-current='true']) { color: var(--c-ink); font-weight: 700; box-shadow: inset 3px 0 0 var(--c-go); }
-  .toc-title { margin: 0 0 var(--sp-2); font-weight: 700; color: var(--c-ink); }
-  .toc-sidebar { position: sticky; top: calc(var(--header-h) + var(--sp-5)); max-height: calc(100vh - var(--header-h) - var(--sp-7)); overflow-y: auto; padding-bottom: var(--sp-4); }
+  .toc :global(ol ol) { padding-left: var(--sp-4); margin-block: var(--sp-1); }
+  .toc :global(a) {
+    position: relative;
+    display: block;
+    padding: 0.28rem var(--sp-2) 0.28rem 1.35rem;
+    color: var(--c-ink-soft);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    line-height: 1.35;
+  }
+  /* each entry is a port with a link LED: lit once you reach it */
+  .toc :global(a)::before {
+    content: '';
+    position: absolute;
+    left: 0.4rem;
+    top: 0.72em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--c-line-strong);
+  }
+  .toc :global(a:hover) { color: var(--c-link-hover); background: var(--c-surface); }
+  .toc :global(a[aria-current='true']) { color: var(--c-ink); font-weight: 700; background: var(--c-surface); }
+  .toc :global(a[aria-current='true'])::before { background: var(--c-go); box-shadow: 0 0 0 3px var(--c-go-soft); }
+  .toc :global(.toc-prompt) {
+    display: block;
+    margin-top: 0.1rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--c-muted);
+  }
+  .toc-title { margin: 0 0 var(--sp-2); font-family: var(--font-display); font-stretch: 78%; font-weight: 800; font-size: var(--fs-md); color: var(--c-ink); }
+  .toc-sidebar { position: sticky; top: calc(var(--header-h) + var(--sp-5)); max-height: calc(100vh - var(--header-h) - var(--sp-7)); overflow-y: auto; padding: var(--sp-4); border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--c-surface) 55%, var(--c-bg)); }
   .toc-inline { border: 1px solid var(--c-line); border-radius: var(--radius-md); background: var(--c-surface); }
   .toc-inline summary { padding: var(--sp-3) var(--sp-4); cursor: pointer; font-weight: 700; min-height: 2.75rem; }
   .toc-inline nav { padding: 0 var(--sp-3) var(--sp-3); }
+  @media (forced-colors: active) { .toc :global(a)::before { forced-color-adjust: none; border: 1px solid CanvasText; } }
 </style>
