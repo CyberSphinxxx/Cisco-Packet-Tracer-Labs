@@ -1,0 +1,54 @@
+{
+  "id": "PTL-0021",
+  "title": "Static NAT and Inside Server Publishing",
+  "slug": "static-nat-and-inside-server-publishing",
+  "category": "network-services",
+  "summary": "Configure and verify one-to-one Static NAT on a Cisco edge router to publish an internal enterprise server to external internet clients via a dedicated public IPv4 address, while preserving private host isolation.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-services",
+    "nat",
+    "static-nat",
+    "server-publishing",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Understand the architectural principles and operational use cases of one-to-one Static Network Address Translation",
+    "Distinguish between Inside Local, Inside Global, Outside Local, and Outside Global address classifications",
+    "Designate internal private and external public boundaries using ip nat inside and ip nat outside",
+    "Configure a persistent one-to-one translation mapping using the ip nat inside source static command",
+    "Verify bidirectional address translation and external host isolation using show ip nat translations and ICMP verification"
+  ],
+  "estimated_minutes": 50,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services curriculum guide based on IETF RFC 3022 standards and Cisco IOS Static NAT documentation",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0021-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc3022",
+    "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13772-12.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

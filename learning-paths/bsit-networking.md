@@ -65,6 +65,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Centralized IOS DHCP server, address exclusion pools, lease options, and `ip helper-address` forwarding across subnets.
 - **[PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md)**
   Port Address Translation (NAT Overload), standard ACL interesting traffic classification, inside/outside boundaries, and translation table inspection.
+- **[PTL-0021: Static NAT and Inside Server Publishing](../labs/network-services/static-nat-and-inside-server-publishing/README.md)**
+  One-to-one inside static NAT, public IP publishing, translation table analysis, and host security isolation.
 
 ### 7. Traffic Filtering and Access Control
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**

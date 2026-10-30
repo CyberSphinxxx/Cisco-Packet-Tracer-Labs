@@ -1,0 +1,37 @@
+! ==========================================
+! Router R1 (Enterprise Edge Router with Static NAT)
+! Lab: Static NAT and Inside Server Publishing (PTL-0021)
+! ==========================================
+enable
+configure terminal
+hostname R1
+no ip domain-lookup
+
+! LAN Interface (Inside NAT Domain)
+interface GigabitEthernet0/0/0
+ description Inside Private Server LAN
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! WAN Interface (Outside NAT Domain)
+interface GigabitEthernet0/0/1
+ description Outside Uplink to ISP
+ ip address 203.0.113.1 255.255.255.248
+ ip nat outside
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! Static One-to-One NAT Translation (Inside Local -> Inside Global)
+ip nat inside source static 192.168.10.80 203.0.113.5
+
+! Default Route to ISP Gateway
+ip route 0.0.0.0 0.0.0.0 203.0.113.2
+
+end
+copy running-config startup-config
