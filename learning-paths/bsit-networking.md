@@ -17,6 +17,8 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
   Configuring domain name, 2048-bit RSA keys, local user authentication, SSHv2 enforcement, and disabling plaintext Telnet.
 
 ### 2. VLANs and Broadcast Containment
+- **[PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md)**
+  Switch CAM table population, frame forwarding rules, ARP broadcast/unicast exchange, and dynamic table aging.
 - **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
   Creating department VLANs, access mode configuration, static VLAN database management, and collision/broadcast domain isolation.
 

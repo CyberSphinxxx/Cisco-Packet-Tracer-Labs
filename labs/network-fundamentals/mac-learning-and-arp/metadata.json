@@ -1,0 +1,52 @@
+{
+  "id": "PTL-0016",
+  "title": "MAC Address Learning and ARP Operation",
+  "slug": "mac-learning-and-arp",
+  "category": "network-fundamentals",
+  "summary": "Examine how Layer 2 switches build their MAC address table dynamically from incoming frame source MACs, and how Layer 3 hosts map IPv4 addresses to MAC addresses using ARP.",
+  "difficulty": "beginner",
+  "topics": [
+    "mac-address",
+    "arp",
+    "switching",
+    "frame-forwarding",
+    "network-fundamentals"
+  ],
+  "learning_objectives": [
+    "Explain how a Cisco Catalyst switch dynamically populates its MAC address table using incoming frame source MAC addresses.",
+    "Demonstrate how switches forward frames using unknown unicast flooding versus known unicast filtering and forwarding.",
+    "Inspect host ARP cache tables (arp -a) and explain the ARP request and reply exchange.",
+    "Analyze the interaction between Layer 2 MAC address learning and Layer 3 ARP resolution during ping tests.",
+    "Observe dynamic MAC table aging and manual table clearance using clear mac address-table dynamic."
+  ],
+  "estimated_minutes": 30,
+  "activity_reference": "Original BSIT/CCNA Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "1x Cisco Catalyst 2960-24TT Switch (S1)",
+    "1x Cisco ISR 4321 Router (R1)",
+    "3x Generic End-Host PCs (PC-A, PC-B, PC-C)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored beginner educational lab",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "CC-BY-SA-4.0",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0016-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swmacad.html",
+    "https://datatracker.ietf.org/doc/html/rfc826"
+  ],
+  "last_reviewed": "2026-10-30"
+}

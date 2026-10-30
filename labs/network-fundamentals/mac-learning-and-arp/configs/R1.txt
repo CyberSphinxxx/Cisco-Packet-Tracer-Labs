@@ -1,0 +1,12 @@
+!
+version 15.6
+hostname R1
+!
+interface GigabitEthernet0/0/0
+ description Default Gateway for Local LAN
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+end

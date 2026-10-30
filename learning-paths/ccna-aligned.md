@@ -28,6 +28,8 @@ Understanding physical components, cabling, device configuration, and IP address
 
 Configuring and troubleshooting VLANs, trunks, and link aggregation.
 
+- **[PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md)**
+  *Topics:* Switch MAC address table learning, frame forwarding, unknown unicast flooding, ARP request/reply exchange, table aging.
 - **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
   *Topics:* Access ports, VLAN creation, broadcast isolation, MAC address table behavior.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**

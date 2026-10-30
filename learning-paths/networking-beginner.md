@@ -43,11 +43,14 @@ Transition from local console management to Layer 3 network connectivity.
 
 ---
 
-## Stage 4: Local Network Segmentation
+## Stage 4: Local Network Segmentation and Switching
 
-Learn how to manage broadcast domains on Ethernet switches.
+Learn how Ethernet switches build hardware forwarding tables and manage broadcast domains.
 
-8. **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
+8. **[PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md)**
+   *Category:* `network-fundamentals` | *Difficulty:* Beginner
+   *What you will learn:* Inspecting dynamic CAM tables, watching ARP resolution map IP addresses to physical MAC addresses, and observing unknown unicast flooding.
+9. **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
    *Category:* `switching` | *Difficulty:* Beginner
    *What you will learn:* Creating VLANs (VLAN 10, 20, 99), naming VLANs, assigning switchports to access mode, and verifying MAC address table separation.
 
@@ -57,9 +60,9 @@ Learn how to manage broadcast domains on Ethernet switches.
 
 When pings fail, apply a methodical diagnostic model.
 
-9. **[Troubleshooting Guide](../docs/troubleshooting.md)**
+10. **[Troubleshooting Guide](../docs/troubleshooting.md)**
    *Goal:* Follow the bottom-up OSI troubleshooting framework (Physical -> Data Link -> Network -> Transport) to isolate configuration mistakes.
-10. **[PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md)**
+11. **[PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md)**
    *Category:* `network-fundamentals` | *Difficulty:* Beginner
    *What you will learn:* Distinguishing intra-subnet local frame forwarding from inter-subnet gateway routing, interpreting host ARP tables, and diagnosing missing or incorrect default gateways.
 
