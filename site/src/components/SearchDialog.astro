@@ -59,7 +59,13 @@ import SearchForm from './SearchForm.astro';
       e.preventDefault();
       search.run(input.value);
     });
+    // Warm the search index as soon as the reader shows intent, so the first
+    // results appear without waiting for Pagefind to download.
+    const warm = () => void loadPagefind().then((p) => p?.init?.());
     for (const t of triggers) {
+      t.addEventListener('pointerenter', warm, { once: true });
+      t.addEventListener('focus', warm, { once: true });
+      t.addEventListener('touchstart', warm, { once: true, passive: true });
       t.querySelector('kbd')?.removeAttribute('hidden');
       t.setAttribute('aria-haspopup', 'dialog');
       t.addEventListener('click', (e) => {
