@@ -90,3 +90,6 @@ legacy_coursework_backup.zip
 !/AI_AGENT_GUIDE/state/
 /AI_AGENT_GUIDE/state/*
 !/AI_AGENT_GUIDE/state/PTL-*-SIMULATOR-RESULTS.md
+
+# Local agent kit (not published)
+/Cisco_Packet_Tracer_Astro_Claude_Opus_55_Agent_Kit/
