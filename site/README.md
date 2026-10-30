@@ -45,13 +45,14 @@ python tools/audit_repo.py
 
 | Variable | Default | Effect |
 |---|---|---|
-| `PTL_SITE_URL` | unset | Production origin, e.g. `https://example.org`. **Unset means no canonical URLs, no sitemap, `noindex` on every page and `Disallow: /` in robots.txt.** Set it only for the real production deployment. |
+| `PTL_SITE_URL` | unset | Production origin, `https://itnetworking.pages.dev`. **Unset means no canonical URLs, no sitemap, `noindex` on every page and `Disallow: /` in robots.txt.** Set it only for the real production deployment. |
 | `PTL_PRODUCTION_BRANCH` | `main` | On Cloudflare Pages, any other branch (`CF_PAGES_BRANCH`) is built `noindex`. |
 | `PTL_INDEXING` | unset | Set to `false` to force `noindex` even in production. |
 | `PTL_BASE` | `/` | Serve the site under a sub-path. |
 | `PTL_REPO_URL` | `https://github.com/CyberSphinxxx/Cisco-Packet-Tracer-Labs` | Used for "view source" and evidence links. |
 | `PTL_SOURCE_REF` | `CF_PAGES_COMMIT_SHA`, then `GITHUB_SHA`, then `main` | Git ref in GitHub links, so preview builds link to the commit they were built from. |
 | `PTL_REPO_ROOT` | parent of `site/` | Content root (tests point it at fixtures). |
+| `PTL_REDIRECT_TO` | unset | Moved address. When set (e.g. `https://itnetworking.pages.dev`), the build writes `dist/_redirects` containing `/* <origin>/:splat 301`, so every path on this deployment redirects to the same path there. Must be a plain `http(s)` origin; anything else fails the build. |
 | `PTL_ADS` | unset | Future ads switch. **Unset (the default) means `AdSlot` renders nothing at all.** When set, each slot reserves its exact height and shows an "Advertisement" label; loading an ad network, its CSP additions and a consent banner are not built yet. |
 
 ## Design
@@ -69,7 +70,7 @@ python tools/audit_repo.py
 
 ## Cloudflare Pages
 
-The Pages project `cisco-packet-tracer-labs` is connected to this repository with these settings:
+The site lives at **<https://itnetworking.pages.dev>**: the Pages project `itnetworking`, connected to this repository with these settings:
 
 | Setting | Value |
 |---|---|
@@ -77,9 +78,13 @@ The Pages project `cisco-packet-tracer-labs` is connected to this repository wit
 | Root directory | *(repository root, leave empty)*. The build reads `labs/`, `projects/`, `learning-paths/` and `docs/` next to `site/`. |
 | Build command | `cd site && npm ci && npm run build` |
 | Build output directory | `site/dist` |
-| Environment variables | `NODE_VERSION=22` (the v3 build image default is already 22.x), and `PTL_SITE_URL=<your production origin>` for **Production only** |
+| Environment variables | `NODE_VERSION=22` (the v3 build image default is already 22.x), and `PTL_SITE_URL=https://itnetworking.pages.dev` for **Production only** |
 
 `dist/_headers` (generated) sets a Content-Security-Policy, `nosniff`, a referrer policy, `attachment` for `.pkt` files and long-lived caching for hashed assets. Preview deployments are `noindex` automatically. Verify on a preview deployment that downloads, search and headers behave as expected before attaching a custom domain.
+
+### The old address
+
+A `*.pages.dev` name cannot be renamed, so the original project `cisco-packet-tracer-labs` stays, only to forward old links. It builds the same commit with `PTL_REDIRECT_TO=https://itnetworking.pages.dev` (Production) and no `PTL_SITE_URL`, so every `https://cisco-packet-tracer-labs.pages.dev/<path>` answers with a 301 to `https://itnetworking.pages.dev/<path>`. Keep that project; deleting it would break existing links.
 
 ## Licensing
 

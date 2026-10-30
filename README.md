@@ -1,4 +1,6 @@
-# Cisco Packet Tracer Learning Library
+# itnetworking
+
+**Packet Tracer labs and networking tools.** Website: <https://itnetworking.pages.dev>
 
 An open, comprehensive, beginner-friendly Cisco Packet Tracer laboratory curriculum and reference library designed for Bachelor of Science in Information Technology (BSIT) students and independent networking learners.
 

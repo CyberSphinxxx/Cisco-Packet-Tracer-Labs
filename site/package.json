@@ -1,5 +1,5 @@
 {
-  "name": "cisco-packet-tracer-learning-library-site",
+  "name": "itnetworking-site",
   "private": true,
   "version": "0.1.0",
   "description": "Static Astro website generated at build time from the canonical labs/, projects/, learning-paths/ and docs/ Markdown and metadata in this repository.",

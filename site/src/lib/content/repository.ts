@@ -1,5 +1,5 @@
 /**
- * Build-time content graph for the Cisco Packet Tracer Learning Library.
+ * Build-time content graph for itnetworking (the Packet Tracer labs library).
  *
  * Reads the canonical repository folders read-only, joins every lab's
  * `README.md` with its adjacent `metadata.json` by folder path (never by
