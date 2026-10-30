@@ -67,6 +67,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Port Address Translation (NAT Overload), standard ACL interesting traffic classification, inside/outside boundaries, and translation table inspection.
 - **[PTL-0021: Static NAT and Inside Server Publishing](../labs/network-services/static-nat-and-inside-server-publishing/README.md)**
   One-to-one inside static NAT, public IP publishing, translation table analysis, and host security isolation.
+- **[PTL-0022: DNS Records and HTTP Web Services](../labs/network-services/dns-records-and-http-web-services/README.md)**
+  Authoritative DNS resolution, A and CNAME resource record management, HTTP web portal delivery, and client name lookup.
 
 ### 7. Traffic Filtering and Access Control
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**

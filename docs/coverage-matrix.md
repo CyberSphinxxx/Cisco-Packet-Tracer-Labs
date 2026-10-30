@@ -43,6 +43,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | DHCP server & relay agent | `network-services` | `labs/network-services/dhcp-server-and-relay` (`PTL-0012`) | Simulator Verified | Cisco IOS DHCP pools, exclusions, helper-address |
 | IPv4 Dynamic PAT (NAT Overload) | `network-services` | `labs/network-services/ipv4-dynamic-pat-at-the-edge` (`PTL-0020`) | Simulator Verified | Port Address Translation, standard ACL matching, inside/outside boundaries, concurrent translations |
 | IPv4 Static NAT & Server Publishing | `network-services` | `labs/network-services/static-nat-and-inside-server-publishing` (`PTL-0021`) | Simulator Verified | One-to-one inside static NAT, public IP publishing, translation table analysis, host isolation |
+| DNS Records & HTTP Web Services | `network-services` | `labs/network-services/dns-records-and-http-web-services` (`PTL-0022`) | Simulator Verified | Authoritative DNS server, A & CNAME records, HTTP portal hosting, client resolver verification |
 
 ---
 
