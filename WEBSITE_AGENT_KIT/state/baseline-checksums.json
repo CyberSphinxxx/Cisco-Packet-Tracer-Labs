@@ -1,0 +1,179 @@
+{
+  "generated_utc": "2026-10-28",
+  "base_commit": "234d9eedcc93ae0583eac2a319e5147ff3aaa6a2",
+  "note": "SHA-256 of every tracked binary asset at baseline. Used by site tests and final audit to prove no mutation. Contains hashes only (no private content).",
+  "files": {
+    "labs/ip-addressing/router-interface-configuration/assets/completed.pkt": {
+      "sha256": "a5c8299c67985afbdc37337ec6d4d3ce7540130d5b715614d151b7c5451dbb65",
+      "bytes": 52322
+    },
+    "labs/ip-addressing/router-interface-configuration/assets/starter.pkt": {
+      "sha256": "8383b13d82d1f297fed7937a00a1b5a06ee7b1b3f8727e8051979b8822967cce",
+      "bytes": 51368
+    },
+    "labs/ip-addressing/router-interface-configuration/assets/topology.png": {
+      "sha256": "bea962441bb61c1ab9a6eee8b42bf2ae2d34b50996f8d9c943644fc6d3d0d3b2",
+      "bytes": 76223
+    },
+    "labs/ip-addressing/verify-connected-networks/assets/completed.pkt": {
+      "sha256": "fe982b8b5e039254caec7e6284819f935f63be5a7425d4a92aa359e13b280238",
+      "bytes": 52588
+    },
+    "labs/ip-addressing/verify-connected-networks/assets/starter.pkt": {
+      "sha256": "78fb2c13d55af711e36d02abd3edb0a9209a34808a891fb8f77cde91382d98e2",
+      "bytes": 52397
+    },
+    "labs/ip-addressing/verify-connected-networks/assets/topology.png": {
+      "sha256": "c9f5d66ab5f98eb4cb1e04a5da62f81c4e7c98b91ff1bd25b22626d79df1e910",
+      "bytes": 75406
+    },
+    "labs/network-fundamentals/ios-navigation-and-initial-config/assets/completed.pkt": {
+      "sha256": "1ae84b84736933903c880c8d3757715df5b7e211f7b24185fdaba90c4eab82a3",
+      "bytes": 44728
+    },
+    "labs/network-fundamentals/ios-navigation-and-initial-config/assets/starter.pkt": {
+      "sha256": "5541a9bfcf574162fd07a09b92f4fb18d2afc67faff017e53653197918f06545",
+      "bytes": 44426
+    },
+    "labs/network-fundamentals/ios-navigation-and-initial-config/assets/topology.png": {
+      "sha256": "886125586a10ab95788a8697f8ca33e52d12953b7b63c1dac919136de5bd0a02",
+      "bytes": 40076
+    },
+    "labs/network-security/port-security/assets/completed.pkt": {
+      "sha256": "942b2b2e7e3e1d545a696a1a3af2c0ac6bdd1b6d387ee4a74cf7a4a325917203",
+      "bytes": 56885
+    },
+    "labs/network-security/port-security/assets/starter.pkt": {
+      "sha256": "e32275ebaae679bcd1df2cbc842ac74d38e09ff958aed6a359c28355f4907a3b",
+      "bytes": 56537
+    },
+    "labs/network-security/port-security/assets/topology.png": {
+      "sha256": "624b923b16302c1f5191f3f0324434020a03173d62a450792d9dfe139eb99286",
+      "bytes": 43070
+    },
+    "labs/network-security/secure-switch-ssh/assets/completed.pkt": {
+      "sha256": "d407e4657afad3447ad9e57a44e9dc5ab0bc4d4716ff339c1e286b6120e315ba",
+      "bytes": 56368
+    },
+    "labs/network-security/secure-switch-ssh/assets/starter.pkt": {
+      "sha256": "ec0e7c2b6c9b8ead2c15980acee8497006dc04759e71c1783caa97727a8d923d",
+      "bytes": 55552
+    },
+    "labs/network-security/secure-switch-ssh/assets/topology.png": {
+      "sha256": "66ef19bdaac748b2153dcf5ea7688deb8959b89ba042ffe684c2c0abe9a1df41",
+      "bytes": 42669
+    },
+    "labs/network-security/standard-and-extended-acls/assets/completed.pkt": {
+      "sha256": "31a3a116629718f32e02c4d7d4550fcfbe64fe57a9e4a67ed7ae95ca0b189cf2",
+      "bytes": 80624
+    },
+    "labs/network-security/standard-and-extended-acls/assets/starter.pkt": {
+      "sha256": "efa1c483f02a3bb6711466c2aa5f903de22e4d5e683722361e90986fab132ddf",
+      "bytes": 79439
+    },
+    "labs/network-security/standard-and-extended-acls/assets/topology.png": {
+      "sha256": "b7890bc48470bf4e08f10c11393bd9e4f422b7e7c2c918cb6b125ef17ab3646e",
+      "bytes": 46658
+    },
+    "labs/network-security/switch-hardening/assets/completed.pkt": {
+      "sha256": "79d51c76f8017afa5bbdf270b985fffc11cc9632f4770818b202528a41b53830",
+      "bytes": 63799
+    },
+    "labs/network-security/switch-hardening/assets/starter.pkt": {
+      "sha256": "d35ccbb09ff317e0fa41b986cbb44a0672b7aeaaaf5078c23edddfa31667186c",
+      "bytes": 62470
+    },
+    "labs/network-security/switch-hardening/assets/topology.png": {
+      "sha256": "14400ef9ff308a8f2bd14fae2432b3f9ecb9765894d6e1ad9ad6a92d0d1ca1b3",
+      "bytes": 65106
+    },
+    "labs/network-services/dhcp-server-and-relay/assets/completed.pkt": {
+      "sha256": "5847222d3a727d248fdccf2bcb04d6fc554e48a1a697e89b53b0f03e055e9d43",
+      "bytes": 63023
+    },
+    "labs/network-services/dhcp-server-and-relay/assets/starter.pkt": {
+      "sha256": "86dd4eb12b2edd58a2461db2ac7c2b0f5cc5680556efa56ca693dd63b65bdc56",
+      "bytes": 62385
+    },
+    "labs/network-services/dhcp-server-and-relay/assets/topology.png": {
+      "sha256": "f1d32822d50a1f4630bf04870d1b6cf04ad1169b09201ffbc6f1f25d7869fe76",
+      "bytes": 47407
+    },
+    "labs/routing/dual-stack-static-routing/assets/completed.pkt": {
+      "sha256": "363ed1559678cef30c92a9faed5620f6c954d66e7fde997811fd34c61d895b88",
+      "bytes": 65846
+    },
+    "labs/routing/dual-stack-static-routing/assets/starter.pkt": {
+      "sha256": "7c48aeb1ef390275ebd41b9e16a1b804bb361725372e21bf48465d76bc6b8774",
+      "bytes": 65944
+    },
+    "labs/routing/dual-stack-static-routing/assets/topology.png": {
+      "sha256": "af94fb495502cb266abeb3450e3c0fb884ccd1279d07dd1ff263471976da1710",
+      "bytes": 52405
+    },
+    "labs/routing/dual-stack-static-routing/dual-stack-static-routing.pkt": {
+      "sha256": "8d7f62a8b4e36ef0a6efb613b92e84dbed3f1c34cb5d268b9d2b7db487680b31",
+      "bytes": 64145
+    },
+    "labs/routing/inter-vlan-routing-router-on-a-stick/assets/completed.pkt": {
+      "sha256": "e214f739111269451dee0472a358151c57f3ebc5a53edadf0a4f3db4c2bc5681",
+      "bytes": 58410
+    },
+    "labs/routing/inter-vlan-routing-router-on-a-stick/assets/starter.pkt": {
+      "sha256": "6b1e7b9a70dda32edd336e215954f4e502c53913e38690a0ffa587a344a3b676",
+      "bytes": 57192
+    },
+    "labs/routing/inter-vlan-routing-router-on-a-stick/assets/topology.png": {
+      "sha256": "3eeee8d2b7a733c31e29e3b2dc3f8c8956b9cff66780f30ca2fded24f5e678b5",
+      "bytes": 46608
+    },
+    "labs/routing/single-area-ospfv2/assets/completed.pkt": {
+      "sha256": "5de2a73f9cc5840222f0a4fcfb42ae99bf9e0ca05d68c7d2af912c46984122b8",
+      "bytes": 62478
+    },
+    "labs/routing/single-area-ospfv2/assets/starter.pkt": {
+      "sha256": "032a3a0a04cc2c9c631fe3cdeeac04014361d0fef98ce53f5d868ffd69299f57",
+      "bytes": 61862
+    },
+    "labs/routing/single-area-ospfv2/assets/topology.png": {
+      "sha256": "fc37b2bde2d8dab64803931bdba86d4a4086bffca8b891d9700d25e398e6b306",
+      "bytes": 47390
+    },
+    "labs/switching/etherchannel-lacp/assets/completed.pkt": {
+      "sha256": "ed9c34089b572f9d5e38cf6a9e6368bb3cf1e30247cc8cb278ba5debf75a4c0e",
+      "bytes": 50441
+    },
+    "labs/switching/etherchannel-lacp/assets/starter.pkt": {
+      "sha256": "1230da2a9b915522d956e4fa64fe85af5753de36f703a8bde64865c066a114fb",
+      "bytes": 49098
+    },
+    "labs/switching/etherchannel-lacp/assets/topology.png": {
+      "sha256": "eda30ac7391126e74f7e759d5f09c9d76f44d246b082862f7213e616653387d6",
+      "bytes": 38158
+    },
+    "labs/switching/vlan-segmentation-and-access-ports/assets/completed.pkt": {
+      "sha256": "92671b5dc05096cd9c6603142408426ffbd56d1c79c9eb952beb0ca960ad1b76",
+      "bytes": 48261
+    },
+    "labs/switching/vlan-segmentation-and-access-ports/assets/starter.pkt": {
+      "sha256": "11e44722698a3052722a44a5851016bf6c1db29169ff7530ae9e360d6c23a426",
+      "bytes": 47013
+    },
+    "labs/switching/vlan-segmentation-and-access-ports/assets/topology.png": {
+      "sha256": "06f47cdae9a02b7abd6f162df906fde226df977c6aabae055f96f11407f3a952",
+      "bytes": 42297
+    },
+    "projects/small-office-network/assets/completed.pkt": {
+      "sha256": "f7584096ccc462f3c4b87f6a5970b8f27f804151961f281523670313c35b0adb",
+      "bytes": 70599
+    },
+    "projects/small-office-network/assets/starter.pkt": {
+      "sha256": "dae44e8670c6f1a7eae06ef0087fd617c9feff9cf3453f4fd636bb67cabc9347",
+      "bytes": 65968
+    },
+    "projects/small-office-network/assets/topology.png": {
+      "sha256": "e0ed97477ae094e9c427b802bf64b729839155a0d1c3264dab050488b3ec4b15",
+      "bytes": 48377
+    }
+  }
+}

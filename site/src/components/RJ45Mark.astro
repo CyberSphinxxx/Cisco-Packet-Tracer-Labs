@@ -1,0 +1,29 @@
+---
+/** Brand mark: the eight pins of an RJ45 plug wired to T568B. Decorative. */
+interface Props { size?: number; uid?: string }
+const { size = 28, uid = 'rj45' } = Astro.props;
+const maskId = `${uid}-stripe`;
+const pins = [
+  ['orange', true], ['orange', false], ['green', true], ['blue', false],
+  ['blue', true], ['green', false], ['brown', true], ['brown', false],
+] as const;
+---
+<svg class="rj45" width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <rect x="1.5" y="3.5" width="29" height="25" rx="3" fill="none" stroke="currentColor" stroke-width="2" />
+  <rect x="11" y="24" width="10" height="4.5" fill="currentColor" />
+  {pins.map(([c, striped], i) => (
+    <g>
+      <rect x={5 + i * 2.85} y="7" width="2" height="13" rx="0.6" fill={striped ? 'var(--wire-white)' : `var(--wire-${c})`} />
+      {striped && <rect x={5 + i * 2.85} y="7" width="2" height="13" rx="0.6" fill={`var(--wire-${c})`} mask={`url(#${maskId})`} />}
+    </g>
+  ))}
+  <defs>
+    <mask id={maskId} maskUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="32" height="32" fill="black" />
+      {[8, 11, 14, 17].map((y) => <rect x="0" y={y} width="32" height="1.5" fill="white" />)}
+    </mask>
+  </defs>
+</svg>
+<style>
+  .rj45 { color: var(--c-ink); flex: none; }
+</style>

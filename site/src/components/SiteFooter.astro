@@ -1,0 +1,49 @@
+---
+import { getRepository } from '../lib/content/repository';
+import { SITE_NAME, url } from '../lib/site';
+const repo = getRepository();
+---
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-about">
+      <p class="footer-name">{SITE_NAME}</p>
+      <p>
+        An independent educational project. Not affiliated with, sponsored by, or endorsed by Cisco Systems, Inc.
+        Cisco and Packet Tracer are trademarks of Cisco Systems, Inc. The <code>.pkt</code> files require Cisco Packet Tracer, which you install separately.
+      </p>
+      <p>
+        Lab guides, documentation, topologies and diagrams: <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener noreferrer">CC BY-SA 4.0</a>.
+        Tooling and website code: MIT. <a href={url('/about/')}>Licensing and credits</a>.
+      </p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href={url('/labs/')}>All labs</a></li>
+        <li><a href={url('/learning-paths/')}>Learning paths</a></li>
+        <li><a href={url('/docs/')}>Reference guides</a></li>
+        <li><a href={url('/about/')}>About</a></li>
+        <li><a href={repo.config.repoUrl} rel="noopener noreferrer">Source on GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<style>
+  .site-footer {
+    margin-top: var(--sp-8);
+    border-top: 1px solid var(--c-line);
+    background: var(--c-surface-sunk);
+    color: var(--c-muted);
+    font-size: var(--fs-sm);
+  }
+  .footer-inner {
+    display: grid;
+    gap: var(--sp-5) var(--sp-7);
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: var(--sp-6) var(--sp-7);
+  }
+  @media (min-width: 48rem) { .footer-inner { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
+  .footer-about { max-width: 62ch; }
+  .footer-about p { margin: 0 0 var(--sp-3); }
+  .footer-name { color: var(--c-ink); font-weight: 700; }
+  .footer-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-2); }
+</style>

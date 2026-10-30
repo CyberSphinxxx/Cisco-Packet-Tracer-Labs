@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SearchDialog from '../components/SearchDialog.astro';
+import { SITE_NAME } from '../lib/site';
+import { absolute, seoPolicy } from '../lib/seo';
+import { scriptJson } from '../lib/json';
+import sansFont from '@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2?url';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Exclude the page from the static search index (e.g. 404). */
+  noSearchIndex?: boolean;
+  /** Open Graph type. */
+  ogType?: 'website' | 'article';
+  /** Site-relative image path for social previews (defaults to the site card). */
+  image?: string;
+  imageAlt?: string;
+  /** Structured data objects (schema.org) that accurately describe the page. */
+  jsonLd?: Record<string, unknown>[];
+}
+const { title, description, noSearchIndex = false, ogType = 'website', image, imageAlt, jsonLd = [] } = Astro.props;
+const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
+const policy = seoPolicy(process.env, Astro.site);
+const canonical = absolute(Astro.url.pathname, policy.site);
+const ogImage = absolute(image ?? `${import.meta.env.BASE_URL}og-default.png`, policy.site);
+const robots = policy.indexable ? 'index, follow' : 'noindex, nofollow';
+---
+<!doctype html>
+<html lang="en" class="no-js" data-base={import.meta.env.BASE_URL}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content={robots} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={imageAlt ?? SITE_NAME} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={scriptJson(data)} />)}
+    <link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <script is:inline data-csp-allow>
+      // Before first paint: mark JS available and apply a saved theme choice.
+      (function () {
+        var d = document.documentElement;
+        d.classList.remove('no-js');
+        d.classList.add('js');
+        try {
+          var t = localStorage.getItem('ptl-theme');
+          if (t === 'light' || t === 'dark') d.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main" tabindex="-1" data-pagefind-body={noSearchIndex ? undefined : ''}>
+      <slot />
+    </main>
+    <SiteFooter />
+    <SearchDialog />
+    <script>
+      import '../scripts/enhance.ts';
+    </script>
+  </body>
+</html>

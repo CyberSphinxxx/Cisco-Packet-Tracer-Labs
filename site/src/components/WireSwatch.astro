@@ -1,0 +1,31 @@
+---
+/**
+ * Category marker: a short length of Ethernet wire in the category's T568B
+ * colour. Always paired with the category's text label (colour is never the
+ * only cue).
+ */
+import { wireFor } from '../lib/site';
+interface Props { category: string }
+const wire = wireFor(Astro.props.category);
+---
+<span class:list={['wire', `wire-${wire.color}`, { striped: wire.striped }]} aria-hidden="true" data-wire={wire.name}></span>
+<style>
+  .wire {
+    display: inline-block;
+    width: 1.6em;
+    height: 0.5em;
+    border-radius: 0.25em;
+    background: var(--w);
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.12);
+    flex: none;
+    vertical-align: middle;
+  }
+  .wire.striped {
+    background: repeating-linear-gradient(115deg, var(--w) 0 0.32em, var(--wire-white) 0.32em 0.58em);
+  }
+  .wire-orange { --w: var(--wire-orange); }
+  .wire-green { --w: var(--wire-green); }
+  .wire-blue { --w: var(--wire-blue); }
+  .wire-brown { --w: var(--wire-brown); }
+  @media (forced-colors: active) { .wire { forced-color-adjust: none; } }
+</style>

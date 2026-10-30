@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import VerificationHeader from '../../../../components/VerificationHeader.astro';
+import { getRepository, type Lab } from '../../../../lib/content/repository';
+import { url } from '../../../../lib/site';
+
+export const getStaticPaths = (() =>
+  getRepository().labs.filter((lab) => lab.verification).map((lab) => ({ params: { category: lab.category, slug: lab.slug }, props: { lab } }))) satisfies GetStaticPaths;
+
+const { lab } = Astro.props as { lab: Lab };
+const page = lab.verification!;
+const cat = getRepository().categories.find((c) => c.slug === lab.category)!;
+---
+<ArticleLayout
+  title={`${lab.id} verification guide`}
+  description={`Assembly checklist, expected outputs and negative tests for ${lab.id}: ${lab.title}.`}
+  crumbs={[{ label: 'Home', href: url('/') }, { label: 'Labs', href: url('/labs/') }, { label: cat.label, href: cat.route }, { label: lab.id, href: lab.route }, { label: 'Verification' }]}
+  html={page.html}
+  toc={page.toc}
+  sourceUrl={page.githubUrl}
+  sourcePath={page.sourcePath}
+>
+  <VerificationHeader slot="header" page={page} />
+</ArticleLayout>

@@ -1,0 +1,129 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import ConfigFiles from '../../../../components/ConfigFiles.astro';
+import DownloadPanel from '../../../../components/DownloadPanel.astro';
+import PrevNext from '../../../../components/PrevNext.astro';
+import StatusIndicator from '../../../../components/StatusIndicator.astro';
+import WireSwatch from '../../../../components/WireSwatch.astro';
+import { getRepository, labelFromSlug, type Lab } from '../../../../lib/content/repository';
+import { categoryLabel, difficultyLabel, minutesLabel, neighbours, pathsContaining, relatedLabs, url } from '../../../../lib/site';
+import { absolute, seoPolicy } from '../../../../lib/seo';
+
+export const getStaticPaths = (() =>
+  getRepository().labs.map((lab) => ({ params: { category: lab.category, slug: lab.slug }, props: { lab } }))) satisfies GetStaticPaths;
+
+const { lab } = Astro.props as { lab: Lab };
+const repo = getRepository();
+const cat = repo.categories.find((c) => c.slug === lab.category)!;
+const { prev, next } = neighbours(lab);
+const related = relatedLabs(lab);
+const inPaths = pathsContaining(lab.id);
+const install = repo.docs.find((d) => d.slug === 'installation');
+const policy = seoPolicy(process.env, Astro.site);
+const learningResource: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'LearningResource',
+  name: lab.title,
+  description: lab.summary,
+  identifier: lab.id,
+  learningResourceType: 'Hands-on lab',
+  educationalLevel: difficultyLabel(lab.difficulty),
+  ...(lab.minutes != null && { timeRequired: `PT${lab.minutes}M` }),
+  teaches: lab.objectives,
+  keywords: lab.topics.map(labelFromSlug).join(', '),
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  ...(policy.site && { url: absolute(lab.route, policy.site) }),
+};
+const tocExtra = [
+  ...(lab.configs.length ? [{ id: 'site-config-files', text: 'Reference configurations' }] : []),
+  ...(lab.verification ? [{ id: 'site-verification', text: 'Verification guide' }] : []),
+];
+---
+<ArticleLayout
+  title={`${lab.id}: ${lab.title}`}
+  description={lab.summary}
+  crumbs={[{ label: 'Home', href: url('/') }, { label: 'Labs', href: url('/labs/') }, { label: cat.label, href: cat.route }, { label: lab.id }]}
+  html={lab.doc.html}
+  toc={lab.doc.toc}
+  tocExtra={tocExtra}
+  sourceUrl={lab.doc.githubUrl}
+  sourcePath={lab.doc.sourcePath}
+  image={lab.topology?.url}
+  imageAlt={`Topology diagram for ${lab.id}: ${lab.title}`}
+  jsonLd={[learningResource]}
+>
+  <Fragment slot="head">
+    <meta name="pagefind-lab-id" content={lab.id} />
+  </Fragment>
+  <header slot="header" class="lab-header" data-lab-id={lab.id}>
+    <p class="lab-kicker">
+      <a class="cat" href={cat.route}><WireSwatch category={lab.category} />{categoryLabel(lab.category)}</a>
+      <span class="lab-id" data-pagefind-meta="id">{lab.id}</span>
+    </p>
+    <h1 data-pagefind-meta="title">{lab.title}</h1>
+    <p class="lab-summary">{lab.summary}</p>
+    <dl class="facts">
+      <div><dt>Level</dt><dd data-pagefind-filter="difficulty">{difficultyLabel(lab.difficulty)}</dd></div>
+      <div><dt>Time</dt><dd>{minutesLabel(lab.minutes)}</dd></div>
+      {lab.packetTracerVersion && <div><dt>Packet Tracer</dt><dd>{lab.packetTracerVersion}</dd></div>}
+      <div><dt>Simulator</dt><dd><StatusIndicator status={lab.simulatorStatus} evidenceUrl={lab.simulatorEvidenceUrl} /></dd></div>
+      {lab.lastReviewed && <div><dt>Last reviewed</dt><dd><time datetime={lab.lastReviewed}>{lab.lastReviewed}</time></dd></div>}
+    </dl>
+    <span hidden data-pagefind-filter="category">{categoryLabel(lab.category)}</span>
+    <span hidden data-pagefind-filter="type">Lab</span>
+  </header>
+
+  <Fragment slot="before">
+    <DownloadPanel starter={lab.starter} completed={lab.completed} ptVersion={lab.packetTracerVersion} installUrl={install?.route} label={lab.title} />
+    {inPaths.length > 0 && (
+      <p class="in-paths" data-pagefind-ignore>
+        Part of {inPaths.map((x, i) => <>{i > 0 && (i === inPaths.length - 1 ? ' and ' : ', ')}<a href={x.path.route}>{x.path.title}</a> (step {x.step.order} of {x.path.steps.length})</>)}.
+      </p>
+    )}
+  </Fragment>
+
+  <Fragment slot="after">
+    <ConfigFiles configs={lab.configs} />
+    {lab.verification && (
+      <section class="verification-link prose" aria-labelledby="site-verification">
+        <h2 id="site-verification">Verification guide</h2>
+        <p>
+          Device models, cabling, expected <code>show</code> output and negative tests for this lab:
+          <a href={lab.verification.route}>{lab.verification.title}</a>.
+        </p>
+      </section>
+    )}
+    <section class="lab-topics" aria-label="Topics" data-pagefind-ignore>
+      <ul>{lab.topics.map((t) => <li class="tag">{labelFromSlug(t)}</li>)}</ul>
+    </section>
+    <PrevNext prev={prev} next={next} />
+    {related.length > 0 && (
+      <section class="related" aria-labelledby="related-title" data-pagefind-ignore>
+        <h2 id="related-title">Related labs</h2>
+        <ul>
+          {related.map((r) => <li><WireSwatch category={r.category} /> <span class="lab-id">{r.id}</span> <a href={r.route}>{r.title}</a></li>)}
+        </ul>
+      </section>
+    )}
+  </Fragment>
+</ArticleLayout>
+
+<style>
+  .lab-header { margin-top: var(--sp-4); max-width: 60rem; }
+  .lab-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-4); margin: 0; font-size: var(--fs-sm); color: var(--c-muted); }
+  .cat { display: inline-flex; align-items: center; gap: var(--sp-2); color: var(--c-ink-soft); }
+  .lab-header h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); letter-spacing: -0.02em; margin-top: var(--sp-3); max-width: 24ch; }
+  .lab-summary { font-size: var(--fs-md); line-height: 1.5; color: var(--c-ink-soft); max-width: 60ch; margin: var(--sp-4) 0 0; }
+  .facts { display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-6); margin: var(--sp-5) 0 0; padding-top: var(--sp-4); border-top: 1px solid var(--c-line); font-size: var(--fs-sm); }
+  .facts dt { color: var(--c-muted); }
+  .facts dd { margin: 0; font-weight: 700; }
+  .in-paths { color: var(--c-ink-soft); font-size: var(--fs-sm); max-width: var(--measure); }
+  .lab-topics ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-1); }
+  .related h2 { font-size: var(--fs-md); }
+  .related ul { list-style: none; margin: var(--sp-3) 0 0; padding: 0; display: grid; gap: var(--sp-2); }
+  .related li { display: flex; align-items: baseline; gap: var(--sp-2); }
+  .related .lab-id { color: var(--c-muted); font-size: var(--fs-sm); }
+</style>

@@ -1,0 +1,18 @@
+---
+/** Simulator status from metadata, stated without upgrading the claim. */
+import { simulatorLabel } from '../lib/site';
+interface Props { status: string; evidenceUrl?: string | null; compact?: boolean }
+const { status, evidenceUrl, compact = false } = Astro.props;
+const tone = status === 'tested_pass' ? 'pass' : status === 'tested_fail' ? 'fail' : 'neutral';
+---
+<span class:list={['status', `status-${tone}`]}>
+  <span class="led" aria-hidden="true"></span>
+  {evidenceUrl && !compact ? <a href={evidenceUrl} rel="noopener noreferrer">{simulatorLabel(status)}</a> : <span>{simulatorLabel(status)}</span>}
+</span>
+<style>
+  .status { display: inline-flex; align-items: center; gap: 0.45em; }
+  .led { width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--c-line-strong); flex: none; }
+  .status-pass .led { background: var(--c-go); box-shadow: 0 0 0 3px var(--c-go-soft); }
+  .status-fail .led { background: var(--c-amber-line); box-shadow: 0 0 0 3px var(--c-amber-soft); }
+  @media (forced-colors: active) { .led { forced-color-adjust: none; border: 1px solid CanvasText; } }
+</style>

@@ -1,0 +1,78 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import WireSwatch from '../../components/WireSwatch.astro';
+import { getRepository, type LearningPath } from '../../lib/content/repository';
+import { difficultyLabel, labById, url } from '../../lib/site';
+
+export const getStaticPaths = (() => getRepository().paths.map((path) => ({ params: { slug: path.slug }, props: { path } }))) satisfies GetStaticPaths;
+
+const { path } = Astro.props as { path: LearningPath };
+const KIND: Record<string, string> = { lab: 'Lab', doc: 'Guide', project: 'Capstone', path: 'Path', other: 'Link' };
+const labSteps = path.steps.filter((s) => s.labId).map((s) => labById(s.labId!)!);
+const totalMinutes = labSteps.reduce((n, l) => n + (l.minutes ?? 0), 0);
+const unknownTime = labSteps.some((l) => l.minutes == null);
+const hours = Math.floor(totalMinutes / 60);
+const mins = totalMinutes % 60;
+const total = `${hours ? `${hours} h ` : ''}${mins ? `${mins} min` : ''}`.trim();
+const groups: { name: string | null; steps: typeof path.steps }[] = [];
+for (const s of path.steps) {
+  const last = groups[groups.length - 1];
+  if (last && last.name === s.group) last.steps.push(s);
+  else groups.push({ name: s.group, steps: [s] });
+}
+---
+<ArticleLayout
+  title={path.title}
+  description={path.summary ?? `${path.steps.length}-step learning path through the Cisco Packet Tracer labs.`}
+  crumbs={[{ label: 'Home', href: url('/') }, { label: 'Learning paths', href: url('/learning-paths/') }, { label: path.title }]}
+  html={path.doc.html}
+  toc={path.doc.toc}
+  sourceUrl={path.doc.githubUrl}
+  sourcePath={path.doc.sourcePath}
+>
+  <header slot="header" class="path-header">
+    <h1>{path.title}</h1>
+    {path.summary && <p class="lead">{path.summary}</p>}
+    <p class="facts">
+      {path.steps.length} steps, {labSteps.length} labs{total && <>, about {total} of lab work{unknownTime && ' (some labs have no estimate)'}</>}.
+    </p>
+    <span hidden data-pagefind-filter="type">Learning path</span>
+  </header>
+  <section slot="before" class="glance" aria-labelledby="glance-title" data-pagefind-ignore>
+    <h2 id="glance-title">Path at a glance</h2>
+    {groups.map((g) => (
+      <div class="group">
+        {g.name && <h3>{g.name}</h3>}
+        <ol class="steps" start={g.steps[0].order}>
+          {g.steps.map((s) => {
+            const lab = s.labId ? labById(s.labId) : undefined;
+            return (
+              <li class={`step step-${s.kind}`}>
+                <span class="kind">{KIND[s.kind]}</span>
+                <a href={s.url}>{s.label}</a>
+                {lab && <span class="step-meta"><WireSwatch category={lab.category} /> {difficultyLabel(lab.difficulty)}{lab.minutes != null && `, ${lab.minutes} min`}</span>}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    ))}
+  </section>
+</ArticleLayout>
+<style>
+  .path-header { margin-top: var(--sp-4); }
+  .path-header h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); letter-spacing: -0.02em; margin-top: var(--sp-3); max-width: 22ch; }
+  .lead { font-size: var(--fs-md); color: var(--c-ink-soft); max-width: 62ch; margin: var(--sp-4) 0 0; line-height: 1.5; }
+  .facts { color: var(--c-muted); margin: var(--sp-3) 0 0; }
+  .glance { max-width: var(--measure); padding: var(--sp-5); background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-lg); }
+  .glance h2 { font-size: var(--fs-md); }
+  .group h3 { font-size: var(--fs-sm); color: var(--c-muted); font-weight: 700; margin-top: var(--sp-4); }
+  .steps { margin: var(--sp-2) 0 0; padding-left: 2em; display: grid; gap: var(--sp-2); }
+  .steps li::marker { color: var(--c-muted); font-variant-numeric: tabular-nums; }
+  .step { display: list-item; }
+  .kind { display: inline-block; min-width: 4.8em; font-size: var(--fs-xs); color: var(--c-muted); }
+  .step-lab .kind { color: var(--c-go); font-weight: 700; }
+  .step-project .kind { color: var(--c-amber); font-weight: 700; }
+  .step-meta { display: inline-flex; align-items: center; gap: var(--sp-1); margin-left: var(--sp-2); font-size: var(--fs-xs); color: var(--c-muted); white-space: nowrap; }
+</style>

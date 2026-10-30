@@ -1,0 +1,68 @@
+---
+/**
+ * Starter file is the dominant action. The solution file sits behind an
+ * explicit disclosure so learners do not open it by accident. This is a
+ * spoiler guard, not access control: the file is a public download.
+ */
+import type { Download } from '../lib/content/repository';
+import { formatBytes } from '../lib/site';
+import DownloadIcon from './DownloadIcon.astro';
+interface Props { starter: Download | null; completed: Download | null; ptVersion?: string | null; installUrl?: string | null; label: string }
+const { starter, completed, ptVersion, installUrl, label } = Astro.props;
+---
+{(starter || completed) && (
+  <section class="downloads" aria-labelledby="downloads-title" data-pagefind-ignore>
+    <h2 id="downloads-title" class="visually-hidden">Packet Tracer files for {label}</h2>
+    {starter && (
+      <div class="dl-starter">
+        <a class="btn btn-go dl-btn" href={starter.url} download data-download="starter">
+          <DownloadIcon />
+          <span>Download starter file</span>
+        </a>
+        <p class="dl-meta">
+          <code>{starter.fileName}</code>, {formatBytes(starter.bytes)}.
+          Open it in Cisco Packet Tracer{ptVersion ? ` ${ptVersion}` : ''}.
+          {installUrl && <> <a href={installUrl}>Install Packet Tracer</a>.</>}
+        </p>
+      </div>
+    )}
+    {completed && (
+      <details class="dl-solution">
+        <summary>Solution / reference file</summary>
+        <div class="dl-solution-body">
+          <p>
+            The completed topology with every task configured. Try the lab first and use this to check your work or when you are stuck.
+          </p>
+          <a class="btn btn-amber" href={completed.url} download data-download="completed">
+            <DownloadIcon />
+            <span>Download solution file</span>
+          </a>
+          <p class="dl-meta"><code>{completed.fileName}</code>, {formatBytes(completed.bytes)}.</p>
+        </div>
+      </details>
+    )}
+    <details class="dl-checksums">
+      <summary>File checksums (SHA-256)</summary>
+      <dl>
+        {starter && <><dt>{starter.fileName}</dt><dd><code>{starter.sha256}</code></dd></>}
+        {completed && <><dt>{completed.fileName}</dt><dd><code>{completed.sha256}</code></dd></>}
+      </dl>
+    </details>
+  </section>
+)}
+<style>
+  .downloads { display: grid; gap: var(--sp-4); padding: var(--sp-5); background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-lg); max-width: var(--measure); }
+  .dl-starter { display: grid; gap: var(--sp-2); }
+  .dl-btn { justify-self: start; font-size: var(--fs-md); min-height: 3.1rem; }
+  .dl-meta { margin: 0; color: var(--c-muted); font-size: var(--fs-sm); }
+  .dl-meta code { color: var(--c-ink-soft); }
+  .dl-solution { border-top: 1px solid var(--c-line); padding-top: var(--sp-3); }
+  .dl-solution summary, .dl-checksums summary { cursor: pointer; font-weight: 700; min-height: 2.25rem; display: list-item; }
+  .dl-solution summary { color: var(--c-amber); }
+  .dl-solution-body { display: grid; gap: var(--sp-3); margin-top: var(--sp-2); padding: var(--sp-4); background: var(--c-amber-soft); border-radius: var(--radius-md); border-left: 4px solid var(--c-amber-line); }
+  .dl-solution-body p { margin: 0; }
+  .dl-solution-body .btn { justify-self: start; }
+  .dl-checksums { font-size: var(--fs-sm); color: var(--c-muted); }
+  .dl-checksums dl { margin: var(--sp-2) 0 0; display: grid; gap: var(--sp-1); }
+  .dl-checksums dd { margin: 0 0 var(--sp-2); overflow-wrap: anywhere; }
+</style>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SearchForm from '../components/SearchForm.astro';
+import { url } from '../lib/site';
+---
+<BaseLayout title="Search" description="Search the full text of every lab guide, learning path and reference guide." noSearchIndex>
+  <div class="wrap search-page">
+    <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'Search' }]} />
+    <h1>Search</h1>
+    <p class="nojs-only nojs-note">Search runs in your browser and needs JavaScript. You can still <a href={url('/labs/')}>browse all labs</a> or pick a <a href={url('/learning-paths/')}>learning path</a>.</p>
+    <SearchForm idPrefix="page" autofocus />
+  </div>
+  <script>
+    import { bindSearch } from '../scripts/search-core.ts';
+    const root = document.querySelector<HTMLElement>('.search-page [data-search-ui]')!;
+    const input = root.querySelector<HTMLInputElement>('[data-search-input]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-search-form]')!;
+    const search = bindSearch({
+      input,
+      status: root.querySelector('[data-search-status]')!,
+      list: root.querySelector('[data-search-results]')!,
+      limit: 20,
+      onQuery: (q) => {
+        const next = q ? `?q=${encodeURIComponent(q)}` : location.pathname;
+        history.replaceState(null, '', next);
+      },
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      search.run(input.value);
+    });
+    const initial = new URLSearchParams(location.search).get('q') ?? '';
+    if (initial) {
+      input.value = initial.slice(0, 120);
+      search.run(input.value);
+    }
+  </script>
+</BaseLayout>
+<style>
+  .search-page { padding-top: var(--sp-5); max-width: 52rem; }
+  .search-page h1 { font-size: var(--fs-xl); margin: var(--sp-3) 0 var(--sp-5); }
+  .nojs-note { color: var(--c-ink-soft); }
+</style>

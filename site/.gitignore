@@ -1,0 +1,12 @@
+# The root .gitignore (Python template) ignores any "lib/" directory.
+# Re-include the website's TypeScript source library explicitly.
+!/src/lib/
+
+# Website build and tooling output
+node_modules/
+dist/
+.astro/
+test-results/
+playwright-report/
+blob-report/
+*.tsbuildinfo

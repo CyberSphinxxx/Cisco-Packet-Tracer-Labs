@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getRepository } from '../lib/content/repository';
+import { url } from '../lib/site';
+const repo = getRepository();
+const first = repo.labs[0];
+---
+<BaseLayout title="Page not found" description="This page does not exist." noSearchIndex>
+  <div class="wrap nf">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>This page does not exist</h1>
+    <p>The link may be old, or the lab may have moved. Lab pages live at <code>/labs/topic-area/lab-name/</code>.</p>
+    <ul>
+      <li><a href={url('/labs/')}>Browse all {repo.labs.length} labs</a></li>
+      <li><a href={url('/search/')}>Search the library</a></li>
+      <li><a href={url('/learning-paths/')}>Pick a learning path</a></li>
+      {first && <li><a href={first.route}>Start with {first.id}: {first.title}</a></li>}
+      <li><a href={url('/')}>Go to the home page</a></li>
+    </ul>
+  </div>
+</BaseLayout>
+<style>
+  .nf { padding-block: var(--sp-8); max-width: 48rem; margin-inline: auto; }
+  .code { margin: 0; font-family: var(--font-mono); font-size: var(--fs-xl); color: var(--c-amber); font-weight: 700; }
+  .nf h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); margin-top: var(--sp-2); }
+  .nf p { color: var(--c-ink-soft); }
+  .nf ul { margin: var(--sp-5) 0 0; padding-left: 1.2em; display: grid; gap: var(--sp-2); font-size: var(--fs-md); }
+</style>

@@ -1,0 +1,24 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import VerificationHeader from '../../../components/VerificationHeader.astro';
+import { getRepository, type Project } from '../../../lib/content/repository';
+import { url } from '../../../lib/site';
+
+export const getStaticPaths = (() =>
+  getRepository().projects.filter((p) => p.verification).map((p) => ({ params: { slug: p.slug }, props: { project: p } }))) satisfies GetStaticPaths;
+
+const { project } = Astro.props as { project: Project };
+const page = project.verification!;
+---
+<ArticleLayout
+  title={`${project.title}: verification guide`}
+  description={`Assembly checklist, expected outputs and negative tests for the capstone project.`}
+  crumbs={[{ label: 'Home', href: url('/') }, { label: 'Capstone', href: project.route }, { label: 'Verification' }]}
+  html={page.html}
+  toc={page.toc}
+  sourceUrl={page.githubUrl}
+  sourcePath={page.sourcePath}
+>
+  <VerificationHeader slot="header" page={page} />
+</ArticleLayout>

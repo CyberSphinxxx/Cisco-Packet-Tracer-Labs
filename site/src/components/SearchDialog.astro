@@ -1,0 +1,80 @@
+---
+import SearchForm from './SearchForm.astro';
+---
+<dialog class="search-dialog" aria-labelledby="search-dialog-title" data-search-dialog>
+  <div class="search-dialog-head">
+    <h2 id="search-dialog-title">Search</h2>
+    <button type="button" class="close" data-search-close aria-label="Close search">Close <kbd>Esc</kbd></button>
+  </div>
+  <SearchForm idPrefix="dialog" />
+</dialog>
+<style>
+  .search-dialog {
+    width: min(44rem, calc(100vw - 2rem));
+    max-height: min(80vh, 46rem);
+    margin: 8vh auto auto;
+    padding: var(--sp-5);
+    border: 1px solid var(--c-line-strong);
+    border-radius: var(--radius-lg);
+    background: var(--c-bg);
+    color: var(--c-ink);
+    box-shadow: 0 24px 64px rgb(0 0 0 / 0.28);
+    overflow-y: auto;
+  }
+  .search-dialog::backdrop { background: rgb(14 21 27 / 0.55); }
+  .search-dialog-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-3); }
+  .search-dialog-head h2 { font-size: var(--fs-md); }
+  .close { font: inherit; font-size: var(--fs-sm); display: inline-flex; gap: var(--sp-2); align-items: center; min-height: 2.25rem; padding: var(--sp-1) var(--sp-3); border: 1px solid var(--c-line); border-radius: var(--radius-md); background: var(--c-surface); color: var(--c-ink-soft); cursor: pointer; }
+  .close kbd { font-size: var(--fs-xs); color: var(--c-muted); }
+</style>
+<script>
+  import { bindSearch, loadPagefind } from '../scripts/search-core.ts';
+  const dialog = document.querySelector<HTMLDialogElement>('[data-search-dialog]');
+  const triggers = document.querySelectorAll<HTMLAnchorElement>('[data-search-trigger]');
+  if (dialog && typeof dialog.showModal === 'function') {
+    const input = dialog.querySelector<HTMLInputElement>('[data-search-input]')!;
+    const form = dialog.querySelector<HTMLFormElement>('[data-search-form]')!;
+    const search = bindSearch({ input, status: dialog.querySelector('[data-search-status]')!, list: dialog.querySelector('[data-search-results]')! });
+    let returnFocus: HTMLElement | null = null;
+    const open = (from?: HTMLElement | null) => {
+      returnFocus = from ?? (document.activeElement as HTMLElement | null);
+      dialog.showModal();
+      input.focus();
+      input.select();
+      void loadPagefind();
+    };
+    dialog.addEventListener('close', () => returnFocus?.focus());
+    // A search input consumes the first Escape to clear itself; close the dialog anyway.
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        dialog.close();
+      }
+    });
+    dialog.querySelector('[data-search-close]')!.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close(); // backdrop click
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      search.run(input.value);
+    });
+    for (const t of triggers) {
+      t.querySelector('kbd')?.removeAttribute('hidden');
+      t.setAttribute('aria-haspopup', 'dialog');
+      t.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        open(t);
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      const target = e.target as HTMLElement;
+      const typing = target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
+      if ((e.key === '/' && !typing && !dialog.open) || ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey))) {
+        e.preventDefault();
+        open(triggers[0] ?? null);
+      }
+    });
+  }
+</script>
