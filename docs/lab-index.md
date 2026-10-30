@@ -29,6 +29,9 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 ### 3. Switching (`switching`)
 - [PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md) — Broadcast domain isolation, access port assignment, and VLAN verification (`reviewed`, `beginner`).
 - [PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md) — Link aggregation, IEEE 802.3ad LACP bundling, and trunking over Port-channel interfaces (`reviewed`, `intermediate`).
+- [PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md) — IEEE 802.1w Rapid PVST+ deployment, deterministic root bridge election, port role mapping, edge PortFast, and BPDU Guard protection (`reviewed`, `intermediate`).
+- [PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/switching/dtp-and-native-vlan-security/README.md) — DTP spoofing mitigation with switchport nonegotiate, Native VLAN 99 isolation, and allowed VLAN list pruning (`reviewed`, `intermediate`).
+- [PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/switching/l3-switch-svi-and-routed-ports/README.md) — Multilayer switching, hardware CEF inter-VLAN routing with SVIs, Layer 3 routed ports (`no switchport`), and default gateway routing (`reviewed`, `intermediate`).
 
 ### 4. Routing (`routing`)
 - [PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md) — End-to-end static routing with `ipv6 unicast-routing` across multi-router transit links (`reviewed`, `intermediate`).

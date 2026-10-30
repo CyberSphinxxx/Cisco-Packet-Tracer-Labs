@@ -1,0 +1,41 @@
+!
+! Configuration for MLS1 (Catalyst 3560-24PS)
+!
+hostname MLS1
+!
+ip routing
+!
+vlan 10
+ name Admin
+vlan 20
+ name Sales
+!
+interface FastEthernet0/10
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+!
+interface FastEthernet0/20
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description Routed Point-to-Point Uplink to R1
+ no switchport
+ ip address 10.0.0.2 255.255.255.252
+ no shutdown
+!
+interface Vlan10
+ description SVI Gateway for Admin VLAN 10
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+!
+interface Vlan20
+ description SVI Gateway for Sales VLAN 20
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+!
+ip route 0.0.0.0 0.0.0.0 10.0.0.1
+!
+end

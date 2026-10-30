@@ -1,0 +1,19 @@
+!
+! Configuration for R1 (Cisco ISR 4321)
+!
+hostname R1
+!
+interface GigabitEthernet0/0/0
+ description Point-to-Point Link to MLS1
+ ip address 10.0.0.1 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description Server LAN
+ ip address 10.1.1.1 255.255.255.0
+ no shutdown
+!
+ip route 192.168.10.0 255.255.255.0 10.0.0.2
+ip route 192.168.20.0 255.255.255.0 10.0.0.2
+!
+end

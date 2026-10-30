@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0019",
+  "title": "Layer 3 Switch SVIs and Routed Ports",
+  "slug": "l3-switch-svi-and-routed-ports",
+  "category": "switching",
+  "summary": "Configure Switch Virtual Interfaces (SVIs) on a Cisco Catalyst 3560 multilayer switch, enable global hardware IP routing, transform a physical switchport into a point-to-point Layer 3 routed port using no switchport, and establish default gateway routing to an upstream core router.",
+  "difficulty": "intermediate",
+  "topics": [
+    "multilayer-switching",
+    "svi",
+    "routed-ports",
+    "inter-vlan-routing",
+    "switching",
+    "routing"
+  ],
+  "learning_objectives": [
+    "Explain the architecture of multilayer switching and contrast hardware CEF-based inter-VLAN routing with legacy router-on-a-stick topology.",
+    "Enable hardware IPv4 unicast routing globally on a Cisco Catalyst switch using the ip routing command.",
+    "Configure Switch Virtual Interfaces (SVIs) for VLAN 10 (Admin) and VLAN 20 (Sales) to serve as default gateways for local access subnets.",
+    "Understand and diagnose SVI autostate mechanics (interface line protocol dependencies on active member access ports or trunks).",
+    "Convert a physical switchport into a dedicated Layer 3 point-to-point routed uplink using the no switchport command.",
+    "Assign a /30 point-to-point IP subnet to a routed port and verify Layer 3 connectivity with an upstream core router.",
+    "Configure a static default route (ip route 0.0.0.0 0.0.0.0 next-hop) on the multilayer switch to forward non-local traffic toward the core network.",
+    "Verify end-to-end multi-tier reachability and inspect TTL decrements showing multiple hardware and software routing hops."
+  ],
+  "estimated_minutes": 50,
+  "activity_reference": "Original BSIT/CCNA Lab",
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "1x Cisco Catalyst 3560-24PS Multilayer Switch (MLS1)",
+    "1x Cisco ISR 4321 Router (R1)",
+    "1x Enterprise Server (Server-HQ)",
+    "2x Generic End-Host PC (PC1-Admin, PC2-Sales)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored intermediate multilayer switching lab",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "CC-BY-SA-4.0",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0019-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_55_se/configuration/guide/3560_scg/swipaddr.html",
+    "https://datatracker.ietf.org/doc/html/rfc1812"
+  ],
+  "last_reviewed": "2026-10-30"
+}

@@ -32,6 +32,10 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
   *Topics:* Switch MAC address table learning, frame forwarding, unknown unicast flooding, ARP request/reply exchange, table aging.
 - **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
   *Topics:* Access ports, VLAN creation, broadcast isolation, MAC address table behavior.
+- **[PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/switching/dtp-and-native-vlan-security/README.md)**
+  *Topics:* DTP frame negotiation mitigation (`switchport nonegotiate`), Dedicated Native VLAN 99 reassignment, allowed VLAN list pruning.
+- **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
+  *Topics:* IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, port role election, edge PortFast, and BPDU Guard errdisable defense.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**
   *Topics:* Link aggregation IEEE 802.3ad LACP, Port-channel logical interfaces, load distribution.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
@@ -45,6 +49,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
 
 - **[PTL-0010: Router-on-a-Stick Inter-VLAN Routing](../labs/routing/inter-vlan-routing-router-on-a-stick/README.md)**
   *Topics:* 802.1Q trunking on router subinterfaces, encapsulation dot1Q, default gateway configuration.
+- **[PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/switching/l3-switch-svi-and-routed-ports/README.md)**
+  *Topics:* Multilayer switching, hardware CEF inter-VLAN routing, Switch Virtual Interfaces (SVIs), Layer 3 routed ports (`no switchport`), SVI autostate, and default route forwarding.
 - **[PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md)**
   *Topics:* Recursive, next-hop, and directly connected static routes; IPv6 static routes; `ipv6 unicast-routing`.
 - **[PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md)**
