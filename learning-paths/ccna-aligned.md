@@ -64,6 +64,8 @@ Automated host configuration and IP helper services.
 
 - **[PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md)**
   *Topics:* Cisco IOS DHCP pool creation, excluded addresses, default router option, DNS server option, and `ip helper-address` forwarding across router boundaries.
+- **[PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md)**
+  *Topics:* Port Address Translation (NAT Overload), standard ACL matching, inside/outside boundaries, and dynamic translation verification.
 
 ---
 

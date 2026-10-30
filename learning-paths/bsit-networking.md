@@ -63,6 +63,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   OSPF Area 0, router IDs, wildcard masks, passive interfaces on LAN segments, cost calculation, and neighbor states.
 - **[PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md)**
   Centralized IOS DHCP server, address exclusion pools, lease options, and `ip helper-address` forwarding across subnets.
+- **[PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md)**
+  Port Address Translation (NAT Overload), standard ACL interesting traffic classification, inside/outside boundaries, and translation table inspection.
 
 ### 7. Traffic Filtering and Access Control
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**

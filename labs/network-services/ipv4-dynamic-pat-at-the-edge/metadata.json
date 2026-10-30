@@ -1,0 +1,54 @@
+{
+  "id": "PTL-0020",
+  "title": "IPv4 Dynamic PAT at the Edge",
+  "slug": "ipv4-dynamic-pat-at-the-edge",
+  "category": "network-services",
+  "summary": "Configure and verify Port Address Translation (NAT Overload) on a Cisco ISR 4321 edge router, translating private RFC 1918 branch LAN traffic to a single public IP address to access external services.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-services",
+    "nat",
+    "pat",
+    "nat-overload",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Differentiate between Static NAT, Dynamic NAT, and Port Address Translation (NAT Overload)",
+    "Configure a standard access control list (ACL) to identify internal private traffic eligible for translation",
+    "Designate inside and outside NAT interfaces using ip nat inside and ip nat outside",
+    "Configure dynamic PAT using the ip nat inside source list interface overload command",
+    "Verify dynamic translations and interface counters using show ip nat translations and show ip nat statistics"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services curriculum guide based on IETF RFC 3022 standards and Cisco IOS configuration documentation",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0020-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc3022",
+    "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13772-12.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

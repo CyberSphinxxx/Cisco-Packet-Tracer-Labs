@@ -1,0 +1,43 @@
+! ==========================================
+! Switch S1 (Branch LAN Access Switch)
+! Lab: IPv4 Dynamic PAT at the Edge (PTL-0020)
+! ==========================================
+enable
+configure terminal
+hostname S1
+
+! Management SVI
+interface Vlan1
+ description Management SVI
+ ip address 192.168.10.2 255.255.255.0
+ no shutdown
+ exit
+
+! Default Gateway to Edge Router R1
+ip default-gateway 192.168.10.1
+
+! Host Access Ports
+interface FastEthernet0/1
+ description Link to PC-A
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+interface FastEthernet0/2
+ description Link to PC-B
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+! Uplink Port to R1
+interface GigabitEthernet0/1
+ description Uplink to R1 Gi0/0/0
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+ exit
+
+end
+copy running-config startup-config

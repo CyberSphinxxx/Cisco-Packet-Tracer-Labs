@@ -41,6 +41,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | Static & default routes (IPv4 & IPv6) | `routing` | `labs/routing/dual-stack-static-routing` (`PTL-0001`) | Simulator Verified | Symmetrical dual-stack routing |
 | Single-area OSPFv2 dynamic routing | `routing` | `labs/routing/single-area-ospfv2` (`PTL-0011`) | Simulator Verified | Wildcard masks, router-id, passive interfaces |
 | DHCP server & relay agent | `network-services` | `labs/network-services/dhcp-server-and-relay` (`PTL-0012`) | Simulator Verified | Cisco IOS DHCP pools, exclusions, helper-address |
+| IPv4 Dynamic PAT (NAT Overload) | `network-services` | `labs/network-services/ipv4-dynamic-pat-at-the-edge` (`PTL-0020`) | Simulator Verified | Port Address Translation, standard ACL matching, inside/outside boundaries, concurrent translations |
 
 ---
 

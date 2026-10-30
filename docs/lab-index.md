@@ -39,6 +39,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 
 ### 5. Network Services (`network-services`)
 - [PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md) — Cisco IOS dynamic address allocation, pool exclusions, and IP helper-address relaying (`reviewed`, `intermediate`).
+- [PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md) — Port Address Translation (NAT Overload), standard ACL matching, inside/outside boundaries, and dynamic translation verification (`reviewed`, `intermediate`).
 
 ### 6. Network Security (`network-security`)
 - [PTL-0003: Securing Switch Management with SSH](../labs/network-security/secure-switch-ssh/README.md) — SSHv2 configuration, RSA key generation, and Telnet disabling on Catalyst switches (`reviewed`, `intermediate`).
