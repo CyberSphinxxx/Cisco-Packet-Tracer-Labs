@@ -1,12 +1,12 @@
 ---
 import { getRepository } from '../lib/content/repository';
-import { SITE_NAME, url } from '../lib/site';
+import { SITE_NAME, TAGLINE, url } from '../lib/site';
 const repo = getRepository();
 ---
-<footer class="site-footer on-steel">
+<footer class="site-footer">
   <div class="wrap footer-inner">
     <div class="footer-about">
-      <p class="footer-name">{SITE_NAME}</p>
+      <p class="footer-name">{SITE_NAME} <span class="footer-tagline">{TAGLINE}</span></p>
       <p>
         An independent educational project. Not affiliated with, sponsored by, or endorsed by Cisco Systems, Inc.
         Cisco and Packet Tracer are trademarks of Cisco Systems, Inc. The <code>.pkt</code> files require Cisco Packet Tracer, which you install separately.
@@ -30,14 +30,12 @@ const repo = getRepository();
 <style>
   .site-footer {
     margin-top: var(--sp-8);
-    background: var(--c-steel);
-    color: var(--c-steel-muted);
+    border-top: 1px solid var(--line);
+    color: var(--muted);
     font-size: var(--fs-sm);
-    box-shadow: inset 0 1px 0 var(--c-steel-line);
   }
-  .site-footer a { color: var(--c-steel-ink); }
-  .site-footer a:hover { color: #ffffff; }
-  .site-footer code { color: var(--c-steel-ink); }
+  .site-footer a { color: var(--ink-2); }
+  .site-footer a:hover { color: var(--ink); }
   .footer-inner {
     display: grid;
     gap: var(--sp-5) var(--sp-7);
@@ -47,6 +45,7 @@ const repo = getRepository();
   @media (min-width: 48rem) { .footer-inner { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
   .footer-about { max-width: 62ch; }
   .footer-about p { margin: 0 0 var(--sp-3); }
-  .footer-name { color: var(--c-steel-ink); font-family: var(--font-display); font-stretch: 78%; font-weight: 800; font-size: var(--fs-md); }
+  .footer-name { color: var(--ink); font-weight: 700; font-size: var(--fs-base); letter-spacing: -0.02em; }
+  .footer-tagline { margin-left: var(--sp-2); color: var(--muted); font-weight: 400; letter-spacing: 0; }
   .footer-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-2); }
 </style>

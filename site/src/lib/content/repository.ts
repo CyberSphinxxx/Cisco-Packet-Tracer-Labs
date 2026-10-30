@@ -172,6 +172,7 @@ const ACRONYMS: Record<string, string> = {
   cli: 'CLI', nvram: 'NVRAM', mac: 'MAC', svi: 'SVI', wan: 'WAN', lan: 'LAN', rsa: 'RSA', bpdu: 'BPDU',
   dns: 'DNS', icmp: 'ICMP', tcp: 'TCP', udp: 'UDP', nat: 'NAT', ccna: 'CCNA', bsit: 'BSIT', vty: 'VTY',
   '802.1q': '802.1Q', dot1q: '802.1Q', cdp: 'CDP', lldp: 'LLDP', aaa: 'AAA', motd: 'MOTD', ipv6addressing: 'IPv6 Addressing',
+  vlsm: 'VLSM', flsm: 'FLSM', arp: 'ARP', cidr: 'CIDR', etherchannel: 'EtherChannel', portfast: 'PortFast',
 };
 const SMALL = new Set(['and', 'or', 'of', 'the', 'a', 'an', 'on', 'in', 'to', 'for', 'with']);
 

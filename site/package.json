@@ -18,8 +18,8 @@
     "verify:dist": "node scripts/check-dist.mjs"
   },
   "dependencies": {
-    "@fontsource-variable/atkinson-hyperlegible-mono": "5.3.0",
-    "@fontsource-variable/atkinson-hyperlegible-next": "5.3.0",
+    "@fontsource-variable/instrument-sans": "5.3.0",
+    "@fontsource/dm-mono": "5.3.0",
     "astro": "7.3.8",
     "github-slugger": "2.0.0",
     "hast-util-to-string": "3.0.1",
@@ -35,7 +35,6 @@
   "devDependencies": {
     "@astrojs/check": "0.9.12",
     "@axe-core/playwright": "4.14.0",
-    "@fontsource-variable/archivo": "5.3.0",
     "@playwright/test": "1.63.0",
     "@types/hast": "3.0.5",
     "@types/mdast": "4.0.4",

@@ -4,7 +4,6 @@ import type { Lab } from '../lib/content/repository';
 import { categoryLabel, difficultyLabel, minutesLabel } from '../lib/site';
 import { labelFromSlug } from '../lib/content/repository';
 import StatusIndicator from './StatusIndicator.astro';
-import WireSwatch from './WireSwatch.astro';
 interface Props { lab: Lab; headingLevel?: 'h2' | 'h3'; showCategory?: boolean }
 const { lab, headingLevel = 'h2', showCategory = true } = Astro.props;
 const H = headingLevel;
@@ -12,8 +11,8 @@ const H = headingLevel;
 <li class="lab-card" data-lab-id={lab.id}>
   <div class="lab-card-main">
     <p class="lab-card-meta">
-      <span class="tape">{lab.id}</span>
-      {showCategory && <span class="cat"><WireSwatch category={lab.category} />{categoryLabel(lab.category)}</span>}
+      <span class="tag tag-green">{lab.id}</span>
+      {showCategory && <span class="cat">{categoryLabel(lab.category)}</span>}
     </p>
     <H class="lab-card-title"><a href={lab.route}>{lab.title}</a></H>
     <p class="lab-card-summary">{lab.summary}</p>
@@ -33,20 +32,19 @@ const H = headingLevel;
     gap: var(--sp-3) var(--sp-6);
     grid-template-columns: minmax(0, 1fr);
     padding-block: var(--sp-5);
-    border-bottom: 1px solid var(--c-line);
+    border-bottom: 1px solid var(--line);
   }
   @media (min-width: 48rem) { .lab-card { grid-template-columns: minmax(0, 1fr) 13rem; } }
-  .lab-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); margin: 0; font-size: var(--fs-sm); color: var(--c-ink-soft); }
-  .cat { display: inline-flex; align-items: center; gap: var(--sp-2); }
-  .lab-card-title { font-family: var(--font-display); font-stretch: 80%; font-weight: 780; font-size: var(--fs-lg); line-height: 1.1; margin-top: var(--sp-2); }
-  .lab-card-title a { color: var(--c-ink); text-decoration-color: var(--c-line-strong); }
-  .lab-card-title a:hover { color: var(--c-link-hover); text-decoration-color: currentColor; }
-  .lab-card-summary { margin: var(--sp-2) 0 0; color: var(--c-ink-soft); max-width: 68ch; }
+  .lab-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); margin: 0; font-size: var(--fs-sm); color: var(--ink-2); }
+  .lab-card-title { font-size: var(--fs-xl); font-weight: 650; letter-spacing: -0.025em; line-height: 1.15; margin-top: var(--sp-2); }
+  .lab-card-title a { color: var(--ink); text-decoration: none; }
+  .lab-card-title a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+  .lab-card-summary { margin: var(--sp-2) 0 0; color: var(--ink-2); max-width: 68ch; }
   .lab-card-topics { list-style: none; display: flex; flex-wrap: wrap; gap: var(--sp-1); margin: var(--sp-3) 0 0; padding: 0; }
   .lab-card-facts { margin: 0; display: grid; gap: var(--sp-1); font-size: var(--fs-sm); align-content: start; }
   .lab-card-facts div { display: flex; gap: var(--sp-2); }
-  .lab-card-facts dt { color: var(--c-muted); min-width: 5.5em; }
-  .lab-card-facts dd { margin: 0; font-weight: 600; }
+  .lab-card-facts dt { color: var(--muted); min-width: 5.5em; }
+  .lab-card-facts dd { margin: 0; font-weight: 550; }
   @media (max-width: 47.99rem) {
     .lab-card-facts { grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); }
     .lab-card-facts div { flex-direction: column; gap: 0; }

@@ -11,11 +11,11 @@ const tested = repo.labs.filter((l) => l.simulatorStatus === 'tested_pass').leng
 <BaseLayout title="About and licensing" description="Who makes this library, how it is licensed, and what it is not: an independent educational project, not affiliated with Cisco.">
   <div class="wrap page-head">
     <Breadcrumbs items={[{ label: 'Home', href: url('/') }, { label: 'About' }]} />
-    <h1>About this library</h1>
+    <h1>About {SITE_NAME}</h1>
   </div>
   <div class="wrap prose about">
     <p>
-      The {SITE_NAME} is an open collection of original Cisco Packet Tracer labs for students and independent learners.
+      {SITE_NAME} is an open collection of original Cisco Packet Tracer labs for students and independent learners.
       Every page on this site is built automatically from the Markdown guides and metadata in the
       <a href={repo.config.repoUrl} rel="noopener noreferrer">public GitHub repository</a>, so the website and the repository always say the same thing.
     </p>
@@ -37,7 +37,7 @@ const tested = repo.labs.filter((l) => l.simulatorStatus === 'tested_pass').leng
         <tbody>
           <tr><td>Lab guides, verification guides, learning paths, reference docs, topologies and diagrams, as described in the repository's LICENSE file</td><td><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener noreferrer">CC BY-SA 4.0</a></td></tr>
           <tr><td>Validation tools, tests, CI configuration and this website's source code</td><td><a href="https://opensource.org/licenses/MIT" rel="license noopener noreferrer">MIT</a></td></tr>
-          <tr><td>Fonts: Atkinson Hyperlegible Next and Mono by the Braille Institute, and Archivo by Omnibus-Type, self-hosted</td><td><a href="https://openfontlicense.org/" rel="license noopener noreferrer">SIL Open Font License 1.1</a></td></tr>
+          <tr><td>Fonts: Instrument Sans by the Instrument Sans Project Authors and DM Mono by the DM Mono Project Authors, self-hosted</td><td><a href="https://openfontlicense.org/" rel="license noopener noreferrer">SIL Open Font License 1.1</a></td></tr>
           <tr><td>Third-party software used to build the site (Astro, unified/remark, Pagefind and others)</td><td>Their own licenses, listed in <code>site/package-lock.json</code></td></tr>
         </tbody>
       </table>
@@ -74,8 +74,6 @@ const tested = repo.labs.filter((l) => l.simulatorStatus === 'tested_pass').leng
   </div>
 </BaseLayout>
 <style>
-  .page-head { padding-top: var(--sp-5); }
-  .page-head h1 { font-size: var(--fs-2xl); margin-top: var(--sp-3); }
   .about { margin-top: var(--sp-5); }
   .about h2:first-of-type { margin-top: var(--sp-6); }
 </style>

@@ -1,0 +1,129 @@
+---
+/**
+ * The homepage search box. Typing shows the first Pagefind results in a panel
+ * under the box; Enter (or the button) goes to the full search page with the
+ * query in the address. Without JavaScript it is a plain GET form to /search/.
+ */
+import { url } from '../lib/site';
+---
+<form class="hero-search" role="search" aria-label="Search the library" action={url('/search/')} method="get" data-hero-search>
+  <div class="hs-box">
+    <svg class="hs-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+    <label for="hero-q" class="visually-hidden">Search labs, commands and guides</label>
+    <input id="hero-q" name="q" type="search" autocomplete="off" spellcheck="false" maxlength="120" placeholder="Search labs, commands or guides, like ip ospf" data-short-placeholder="Search, like ip ospf" data-hero-input />
+    <kbd class="hs-kbd js-only" aria-hidden="true">/</kbd>
+    <button type="submit" class="btn btn-primary hs-submit">Search</button>
+  </div>
+  <div class="hs-panel" data-hero-panel hidden>
+    <p class="hs-status" role="status" aria-live="polite" data-hero-status></p>
+    <ol class="hs-results" data-hero-results></ol>
+    <p class="hs-more"><button type="submit" class="hs-all">See all results</button></p>
+  </div>
+</form>
+
+<script>
+  import { bindSearch, loadPagefind } from '../scripts/search-core.ts';
+  const form = document.querySelector<HTMLFormElement>('[data-hero-search]');
+  if (form) {
+    const input = form.querySelector<HTMLInputElement>('[data-hero-input]')!;
+    const panel = form.querySelector<HTMLElement>('[data-hero-panel]')!;
+    bindSearch({ input, status: form.querySelector('[data-hero-status]')!, list: form.querySelector('[data-hero-results]')!, limit: 6 });
+    // The full placeholder does not fit a phone-width box; use the short one there.
+    const long = input.placeholder;
+    const narrow = matchMedia('(max-width: 40rem)');
+    const fitPlaceholder = () => (input.placeholder = narrow.matches ? (input.dataset.shortPlaceholder ?? long) : long);
+    fitPlaceholder();
+    narrow.addEventListener('change', fitPlaceholder);
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+    };
+    const warm = () => void loadPagefind().then((p) => p?.init?.());
+    input.addEventListener('focus', warm, { once: true });
+    form.addEventListener('pointerenter', warm, { once: true });
+    input.addEventListener('input', () => setOpen(input.value.trim().length > 0));
+    input.addEventListener('focus', () => setOpen(input.value.trim().length > 0));
+    form.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) {
+        e.preventDefault();
+        setOpen(false);
+        input.focus();
+      }
+    });
+    form.addEventListener('focusout', (e) => {
+      if (!form.contains(e.relatedTarget as Node | null)) setOpen(false);
+    });
+    document.addEventListener('pointerdown', (e) => {
+      if (!form.contains(e.target as Node)) setOpen(false);
+    });
+  }
+</script>
+
+<style>
+  .hero-search { position: relative; max-width: 720px; margin: 2.5rem auto 0; text-align: left; }
+  .hs-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 64px;
+    padding: 0 0.6rem 0 1.3rem;
+    border-radius: var(--radius-search);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    box-shadow: var(--shadow-search);
+  }
+  .hs-box:focus-within { border-color: var(--focus); outline: 3px solid color-mix(in srgb, var(--focus) 35%, transparent); outline-offset: 1px; }
+  .hs-icon { flex: none; color: var(--muted); }
+  .hs-box input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 1.0625rem;
+    outline: none;
+  }
+  .hs-box input::placeholder { color: var(--muted); opacity: 1; }
+  .hs-box input::-webkit-search-cancel-button { cursor: pointer; }
+  .hs-kbd {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--radius-tag);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+  }
+  .hs-submit { flex: none; height: 46px; min-height: 46px; padding-inline: 1.2rem; border-radius: var(--radius-chip); }
+  .hs-panel {
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    max-height: min(26rem, 60vh);
+    overflow-y: auto;
+    padding: var(--sp-3) var(--sp-4) var(--sp-2);
+    border-radius: var(--radius-search);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    box-shadow: var(--shadow-pop);
+  }
+  .hs-status { margin: 0; color: var(--muted); font-size: var(--fs-sm); }
+  .hs-results { list-style: none; margin: var(--sp-2) 0 0; padding: 0; }
+  .hs-results :global(.search-result) { padding-block: var(--sp-3); border-top: 1px solid var(--line-subtle); }
+  .hs-results :global(.search-result-type) { margin: 0; font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted); }
+  .hs-results :global(.search-result-title) { font-weight: 600; color: var(--ink); }
+  .hs-results :global(.search-result-excerpt) { margin: var(--sp-1) 0 0; color: var(--ink-2); font-size: var(--fs-sm); }
+  .hs-results :global(mark) { background: var(--mark); color: var(--ink); padding: 0 0.1em; border-radius: 2px; }
+  .hs-results :global(.search-result-sections) { display: none; }
+  .hs-more { margin: 0; padding-top: var(--sp-2); border-top: 1px solid var(--line-subtle); }
+  .hs-all { min-height: 2.5rem; padding: 0; border: 0; background: none; color: var(--link); font: inherit; font-size: var(--fs-sm); font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
+  @media (max-width: 40rem) {
+    .hero-search { margin-top: 1.75rem; }
+    .hs-box { height: 56px; padding-left: 1rem; gap: 0.5rem; }
+    .hs-kbd { display: none !important; }
+    .hs-submit { height: 42px; min-height: 42px; padding-inline: 0.9rem; }
+  }
+</style>

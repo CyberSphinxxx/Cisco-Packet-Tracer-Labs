@@ -48,7 +48,7 @@ test.describe('responsive layout', () => {
     // the menu still works at this size
     await page.goto('/labs/');
     await page.locator('.menu-toggle').click();
-    await expect(page.locator('#site-nav a', { hasText: 'Learning paths' })).toBeVisible();
+    await expect(page.locator('#site-nav a', { hasText: 'Paths' })).toBeVisible();
     await ctx.close();
   });
 

@@ -1,13 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { expect, test } from '@playwright/test';
-import { canonicalLabs, REPO_ROOT, sha256, sourceSha } from './helpers';
-
-/** Lab README links in a learning path, in source order (independent parse). */
-function pathLabLinks(file: string): string[] {
-  const md = fs.readFileSync(path.join(REPO_ROOT, 'learning-paths', file), 'utf8');
-  return [...md.matchAll(/\]\(\.\.\/labs\/([^/]+)\/([^/]+)\/README\.md\)/g)].map((m) => `/labs/${m[1]}/${m[2]}/`);
-}
+import { canonicalLabs, pathLabLinks, REPO_ROOT, sha256, sourceSha } from './helpers';
 
 test.describe('learning paths, capstone and docs', () => {
   for (const file of fs.readdirSync(path.join(REPO_ROOT, 'learning-paths')).filter((f) => f.endsWith('.md'))) {
@@ -26,7 +20,7 @@ test.describe('learning paths, capstone and docs', () => {
 
   test('beginner path leads to PTL-0008 (kit journey 1)', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('link', { name: /start the beginner networking path/i }).click();
+    await page.locator('[data-beginner-path]').getByRole('link', { name: /view the beginner networking/i }).click();
     await expect(page).toHaveURL(/\/learning-paths\/networking-beginner\/$/);
     await page.locator('.glance').getByRole('link', { name: /PTL-0008/ }).click();
     await expect(page).toHaveURL(/\/labs\/network-fundamentals\/ios-navigation-and-initial-config\/$/);

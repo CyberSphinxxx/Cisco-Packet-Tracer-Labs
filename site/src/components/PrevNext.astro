@@ -12,10 +12,10 @@ const { prev, next, label = 'Recommended learning order' } = Astro.props;
 <style>
   .prev-next { display: grid; gap: var(--sp-3); grid-template-columns: minmax(0, 1fr); max-width: var(--measure); }
   @media (min-width: 40rem) { .prev-next { grid-template-columns: 1fr 1fr; } }
-  .pn { display: grid; gap: var(--sp-1); padding: var(--sp-4); border: 1px solid var(--c-line); border-radius: var(--radius-md); background: var(--c-surface); text-decoration: none; color: var(--c-ink); }
-  .pn:hover { border-color: var(--c-ink-soft); color: var(--c-ink); }
+  .pn { display: grid; gap: var(--sp-1); padding: var(--sp-4) var(--sp-5); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); text-decoration: none; color: var(--ink); }
+  .pn:hover { border-color: var(--line-strong); }
+  .pn:hover .t { text-decoration: underline; }
   .pn-next { text-align: right; }
-  .dir { font-size: var(--fs-sm); color: var(--c-muted); }
-  .t { font-weight: 700; color: var(--c-link); }
-  .t .lab-id { color: var(--c-muted); font-weight: 600; }
+  .dir { font-size: var(--fs-sm); color: var(--muted); }
+  .t { font-weight: 600; color: var(--ink); }
 </style>

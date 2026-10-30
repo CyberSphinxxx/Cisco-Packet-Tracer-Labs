@@ -7,7 +7,7 @@ const first = repo.labs[0];
 ---
 <BaseLayout title="Page not found" description="This page does not exist." noSearchIndex>
   <div class="wrap nf">
-    <p class="code" aria-hidden="true">404</p>
+    <p class="code" aria-hidden="true"><span class="tag tag-orange">404</span></p>
     <h1>This page does not exist</h1>
     <p>The link may be old, or the lab may have moved. Lab pages live at <code>/labs/topic-area/lab-name/</code>.</p>
     <ul>
@@ -21,8 +21,8 @@ const first = repo.labs[0];
 </BaseLayout>
 <style>
   .nf { padding-block: var(--sp-8); max-width: 48rem; margin-inline: auto; }
-  .code { margin: 0; font-family: var(--font-mono); font-size: var(--fs-xl); color: var(--c-amber); font-weight: 700; }
-  .nf h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); margin-top: var(--sp-2); }
-  .nf p { color: var(--c-ink-soft); }
+  .code { margin: 0; }
+  .nf h1 { margin-top: var(--sp-3); }
+  .nf p { color: var(--ink-2); }
   .nf ul { margin: var(--sp-5) 0 0; padding-left: 1.2em; display: grid; gap: var(--sp-2); font-size: var(--fs-md); }
 </style>

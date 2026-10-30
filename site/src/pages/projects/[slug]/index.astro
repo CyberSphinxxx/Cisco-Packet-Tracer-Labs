@@ -3,7 +3,6 @@ import type { GetStaticPaths } from 'astro';
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import ConfigFiles from '../../../components/ConfigFiles.astro';
 import DownloadPanel from '../../../components/DownloadPanel.astro';
-import WireSwatch from '../../../components/WireSwatch.astro';
 import { getRepository, type Project } from '../../../lib/content/repository';
 import { difficultyLabel, labById, url } from '../../../lib/site';
 
@@ -30,7 +29,7 @@ const tocExtra = [
   imageAlt={`Topology diagram for ${project.title}`}
 >
   <header slot="header" class="proj-header">
-    <p class="kicker">Capstone project</p>
+    <p class="kicker"><span class="tag tag-orange">CAPSTONE</span></p>
     <h1>{project.title}</h1>
     {project.summary && <p class="lead">{project.summary}</p>}
     <span hidden data-pagefind-filter="type">Capstone</span>
@@ -43,7 +42,7 @@ const tocExtra = [
         <p>The project guide links these labs. Complete them first, in this order:</p>
         <ol>
           {prereqs.map((l) => (
-            <li><WireSwatch category={l.category} /> <span class="lab-id">{l.id}</span> <a href={l.route}>{l.title}</a> <span class="m">{difficultyLabel(l.difficulty)}{l.minutes != null && `, ${l.minutes} min`}</span></li>
+            <li><span class="lab-id">{l.id}</span> <a href={l.route}>{l.title}</a> <span class="m">{difficultyLabel(l.difficulty)}{l.minutes != null && `, ${l.minutes} min`}</span></li>
           ))}
         </ol>
       </section>
@@ -61,12 +60,12 @@ const tocExtra = [
 </ArticleLayout>
 <style>
   .proj-header { margin-top: var(--sp-4); }
-  .kicker { margin: 0; color: var(--c-amber); font-weight: 700; }
-  .proj-header h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); letter-spacing: -0.02em; margin-top: var(--sp-2); max-width: 24ch; }
-  .lead { font-size: var(--fs-md); color: var(--c-ink-soft); max-width: 62ch; margin: var(--sp-4) 0 0; line-height: 1.5; }
+  .kicker { margin: 0; }
+  .proj-header h1 { margin-top: var(--sp-3); max-width: 24ch; }
+  .lead { font-size: var(--fs-md); color: var(--ink-2); max-width: 62ch; margin: var(--sp-4) 0 0; line-height: 1.5; }
   .prereqs { max-width: var(--measure); }
-  .prereqs h2 { font-size: var(--fs-md); }
-  .prereqs p { margin: var(--sp-2) 0 0; color: var(--c-ink-soft); }
+  .prereqs h2 { font-size: var(--fs-lg); }
+  .prereqs p { margin: var(--sp-2) 0 0; color: var(--ink-2); }
   .prereqs ol { margin: var(--sp-3) 0 0; padding-left: 1.6em; display: grid; gap: var(--sp-2); }
-  .prereqs .lab-id, .prereqs .m { color: var(--c-muted); font-size: var(--fs-sm); }
+  .prereqs .m { color: var(--muted); font-size: var(--fs-sm); }
 </style>
