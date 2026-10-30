@@ -73,6 +73,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Authoritative DNS resolution, A and CNAME resource record management, HTTP web portal delivery, and client name lookup.
 - **[PTL-0023: NTP and Syslog Network Monitoring](../labs/network-services/ntp-and-syslog-network-monitoring/README.md)**
   Network Time Protocol clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and event correlation.
+- **[PTL-0025: TFTP Configuration Backup and Restore](../labs/network-services/tftp-configuration-backup-and-restore/README.md)**
+  Centralized configuration archiving over UDP port 69, simulated disaster alteration, complete state restoration, and failure diagnostic handling.
 
 ### 7. Traffic Filtering and Access Control
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**

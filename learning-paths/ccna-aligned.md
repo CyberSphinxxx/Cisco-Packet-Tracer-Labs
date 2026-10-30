@@ -74,6 +74,8 @@ Automated host configuration and IP helper services.
   *Topics:* Authoritative DNS resolution, A and CNAME record management, HTTP web hosting, and client name lookup.
 - **[PTL-0023: NTP and Syslog Network Monitoring](../labs/network-services/ntp-and-syslog-network-monitoring/README.md)**
   *Topics:* Network Time Protocol clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and real-time fault notification.
+- **[PTL-0025: TFTP Configuration Backup and Restore](../labs/network-services/tftp-configuration-backup-and-restore/README.md)**
+  *Topics:* TFTP configuration archiving over UDP port 69, disaster recovery configuration merge, volatile vs persistent storage, and transfer fault handling.
 
 ---
 
