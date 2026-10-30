@@ -199,9 +199,10 @@ const consoleLines: [string, string][] = [
     align-items: center;
   }
   @media (min-width: 64rem) {
-    .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding-block: var(--sp-8) calc(var(--sp-8) + 5rem); align-items: end; }
-    /* The console docks low on the right, under the topology, like a CLI window opened in Packet Tracer. */
-    .hero-console { justify-self: end; width: min(100%, 31rem); margin-bottom: 1rem; }
+    .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding-block: var(--sp-8) var(--sp-7); align-items: start; }
+    /* The console opens beside the headline, under the routers, like a CLI window in Packet Tracer,
+       high enough to be fully visible on a typical laptop screen without scrolling. */
+    .hero .hero-console { justify-self: end; width: min(100%, 31rem); margin-top: 7.5rem; }
   }
   .hero h1 { font-size: clamp(2.6rem, 1.1rem + 4.4vw, 5.4rem); font-stretch: 66%; font-weight: 850; line-height: 0.98; }
   .hero h1 span { display: block; white-space: nowrap; }
