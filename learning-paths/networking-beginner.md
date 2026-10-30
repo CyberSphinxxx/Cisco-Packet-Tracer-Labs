@@ -56,6 +56,9 @@ When pings fail, apply a methodical diagnostic model.
 
 8. **[Troubleshooting Guide](../docs/troubleshooting.md)**
    *Goal:* Follow the bottom-up OSI troubleshooting framework (Physical -> Data Link -> Network -> Transport) to isolate configuration mistakes.
+9. **[PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md)**
+   *Category:* `network-fundamentals` | *Difficulty:* Beginner
+   *What you will learn:* Distinguishing intra-subnet local frame forwarding from inter-subnet gateway routing, interpreting host ARP tables, and diagnosing missing or incorrect default gateways.
 
 ---
 

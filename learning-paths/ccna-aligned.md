@@ -17,6 +17,8 @@ Understanding physical components, cabling, device configuration, and IP address
   *Topics:* IPv4 subnetting, IPv6 global unicast (`2001:db8::/32`), IPv6 link-local (`fe80::/10`), interface descriptions.
 - **[PTL-0005: Verifying Directly Connected Networks](../labs/ip-addressing/verify-connected-networks/README.md)**
   *Topics:* Interpreting routing table output, comparing directly connected (`C`) and local host interface (`L`) routes.
+- **[PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md)**
+  *Topics:* Default gateway role, host routing decision process, ARP resolution boundary, troubleshooting missing or incorrect gateways.
 
 ---
 

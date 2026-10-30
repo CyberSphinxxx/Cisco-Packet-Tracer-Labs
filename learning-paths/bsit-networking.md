@@ -39,6 +39,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   IPv4 subnetting, dual-stack IPv6 interface configuration, link-local addresses, and loopback verification.
 - **[PTL-0005: Verifying Directly Connected Networks](../labs/ip-addressing/verify-connected-networks/README.md)**
   Routing table interpretation, directly connected `C` routes, and local host `L` (/32 and /128) route verification.
+- **[PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md)**
+  Host routing decisions, ARP resolution boundaries, and systematic troubleshooting of missing and misconfigured gateways.
 
 ### 5. Inter-VLAN and Static Routing
 - **[PTL-0010: Router-on-a-Stick Inter-VLAN Routing](../labs/routing/inter-vlan-routing-router-on-a-stick/README.md)**
