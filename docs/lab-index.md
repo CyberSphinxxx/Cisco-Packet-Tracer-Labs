@@ -42,6 +42,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md) — Port Address Translation (NAT Overload), standard ACL matching, inside/outside boundaries, and dynamic translation verification (`reviewed`, `intermediate`).
 - [PTL-0021: Static NAT and Inside Server Publishing](../labs/network-services/static-nat-and-inside-server-publishing/README.md) — One-to-one inside static NAT, public IP publishing, translation table analysis, and host security isolation (`reviewed`, `intermediate`).
 - [PTL-0022: DNS Records and HTTP Web Services](../labs/network-services/dns-records-and-http-web-services/README.md) — Authoritative DNS server, A and CNAME records, HTTP portal hosting, and client name resolution (`reviewed`, `beginner`).
+- [PTL-0023: NTP and Syslog Network Monitoring](../labs/network-services/ntp-and-syslog-network-monitoring/README.md) — Network Time Protocol (NTP) clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and real-time fault notification (`reviewed`, `intermediate`).
 
 ### 6. Network Security (`network-security`)
 - [PTL-0003: Securing Switch Management with SSH](../labs/network-security/secure-switch-ssh/README.md) — SSHv2 configuration, RSA key generation, and Telnet disabling on Catalyst switches (`reviewed`, `intermediate`).

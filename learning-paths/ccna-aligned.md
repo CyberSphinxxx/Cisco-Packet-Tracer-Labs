@@ -70,6 +70,8 @@ Automated host configuration and IP helper services.
   *Topics:* One-to-one inside static NAT, public IP publishing, translation table analysis, and host security isolation.
 - **[PTL-0022: DNS Records and HTTP Web Services](../labs/network-services/dns-records-and-http-web-services/README.md)**
   *Topics:* Authoritative DNS resolution, A and CNAME record management, HTTP web hosting, and client name lookup.
+- **[PTL-0023: NTP and Syslog Network Monitoring](../labs/network-services/ntp-and-syslog-network-monitoring/README.md)**
+  *Topics:* Network Time Protocol clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and real-time fault notification.
 
 ---
 

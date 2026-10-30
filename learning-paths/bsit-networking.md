@@ -69,6 +69,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   One-to-one inside static NAT, public IP publishing, translation table analysis, and host security isolation.
 - **[PTL-0022: DNS Records and HTTP Web Services](../labs/network-services/dns-records-and-http-web-services/README.md)**
   Authoritative DNS resolution, A and CNAME resource record management, HTTP web portal delivery, and client name lookup.
+- **[PTL-0023: NTP and Syslog Network Monitoring](../labs/network-services/ntp-and-syslog-network-monitoring/README.md)**
+  Network Time Protocol clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and event correlation.
 
 ### 7. Traffic Filtering and Access Control
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**

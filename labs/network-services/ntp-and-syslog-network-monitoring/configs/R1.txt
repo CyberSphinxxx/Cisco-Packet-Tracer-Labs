@@ -1,0 +1,75 @@
+Current configuration : 683 bytes
+!
+version 15.4
+service timestamps log datetime msec
+service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description Connection to LAN via S1
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description Simulated Branch / Diagnostic Interface
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+logging 192.168.1.100
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+ntp server 192.168.1.100
+!
+end

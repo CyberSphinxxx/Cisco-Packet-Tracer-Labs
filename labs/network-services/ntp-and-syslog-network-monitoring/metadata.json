@@ -1,0 +1,56 @@
+{
+  "id": "PTL-0023",
+  "title": "NTP and Syslog Network Monitoring",
+  "slug": "ntp-and-syslog-network-monitoring",
+  "category": "network-services",
+  "summary": "Configure and verify Network Time Protocol (NTP) client synchronization and centralized Syslog logging on a Cisco IOS router, establishing synchronized clock timestamps, configuring message severity traps, forwarding system logs to a dedicated Syslog server, and observing real-time fault notifications.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-services",
+    "ntp",
+    "syslog",
+    "network-monitoring",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Explain the critical role of synchronized network clocks (NTP) in correlating security events and diagnostic logs across enterprise infrastructure",
+    "Configure an enterprise Cisco IOS router as an NTP client synchronized to an authoritative time server",
+    "Implement high-resolution millisecond logging timestamps with 'service timestamps log datetime msec'",
+    "Configure centralized Syslog messaging forwarding to a dedicated remote server with appropriate logging trap levels",
+    "Verify clock synchronization status and peer associations using 'show ntp status' and 'show ntp associations'",
+    "Validate central syslog reception and event generation by inducing administrative link state changes and observing logged notifications"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (1)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services curriculum guide based on IETF RFC 5905 (NTPv4) and RFC 5424 (The Syslog Protocol) standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0023-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc5905",
+    "https://datatracker.ietf.org/doc/html/rfc5424",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/bsm/configuration/15-mt/bsm-15-mt-book.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
