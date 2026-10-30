@@ -19,6 +19,8 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
 ### 2. VLANs and Broadcast Containment
 - **[PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md)**
   Switch CAM table population, frame forwarding rules, ARP broadcast/unicast exchange, and dynamic table aging.
+- **[PTL-0024: CDP Neighbor Discovery and Topology Audit](../labs/network-fundamentals/cdp-neighbor-discovery-and-topology-audit/README.md)**
+  Layer 2 discovery protocol mechanics, neighbor topology reconstruction, TLV inspection, and edge switchport hardening.
 - **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
   Creating department VLANs, access mode configuration, static VLAN database management, and collision/broadcast domain isolation.
 

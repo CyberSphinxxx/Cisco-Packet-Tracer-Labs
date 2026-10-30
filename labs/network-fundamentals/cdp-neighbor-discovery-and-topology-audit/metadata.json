@@ -1,0 +1,55 @@
+{
+  "id": "PTL-0024",
+  "title": "CDP Neighbor Discovery and Topology Audit",
+  "slug": "cdp-neighbor-discovery-and-topology-audit",
+  "category": "network-fundamentals",
+  "summary": "Discover network topology, verify physical interconnects, and audit device capabilities using Cisco Discovery Protocol (CDP) commands, followed by security hardening on edge interfaces.",
+  "difficulty": "beginner",
+  "topics": [
+    "network-fundamentals",
+    "cdp",
+    "discovery-protocols",
+    "layer-2",
+    "cisco-ios",
+    "network-security"
+  ],
+  "learning_objectives": [
+    "Explain the protocol mechanics, TLV structure, and operational role of Cisco Discovery Protocol (CDP) at Layer 2",
+    "Map unknown multi-device network topologies without physical access using 'show cdp neighbors' and 'show cdp neighbors detail'",
+    "Audit neighbor device platforms, hardware capabilities, management IP addresses, and remote port identifiers",
+    "Inspect local and remote interface CDP operational timers and holdtime values using 'show cdp interface'",
+    "Harden access-layer switchports facing untrusted endpoints by selectively disabling CDP with 'no cdp enable'",
+    "Evaluate the operational and security implications of disabling CDP globally using 'no cdp run'"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (3)",
+    "PC-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network fundamentals curriculum guide based on IEEE 802.3 LLC and Cisco Discovery Protocol specifications",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0024-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cdp/configuration/15-mt/cdp-15-mt-book.html",
+    "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13783-cdp.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

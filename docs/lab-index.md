@@ -20,6 +20,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0008: Cisco IOS Navigation and Initial Device Configuration](../labs/network-fundamentals/ios-navigation-and-initial-config/README.md) — CLI modes, shortcuts, password encryption, banners, and NVRAM saving (`reviewed`, `beginner`).
 - [PTL-0014: Default Gateway Operation and Troubleshooting](../labs/network-fundamentals/default-gateway-troubleshooting/README.md) — Intra-subnet vs. inter-subnet delivery, host routing decisions, and systematic gateway troubleshooting (`reviewed`, `beginner`).
 - [PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md) — Dynamic switch CAM table learning, ARP cache resolution, unknown unicast flooding, and table aging (`reviewed`, `beginner`).
+- [PTL-0024: CDP Neighbor Discovery and Topology Audit](../labs/network-fundamentals/cdp-neighbor-discovery-and-topology-audit/README.md) — Layer 2 discovery protocol mechanics, neighbor mapping, TLV inspection, and edge port hardening (`reviewed`, `beginner`).
 
 ### 2. IP Addressing (`ip-addressing`)
 - [PTL-0002: Configuring Cisco Router Interfaces](../labs/ip-addressing/router-interface-configuration/README.md) — Dual-stack IPv4/IPv6 interface setup on Cisco ISR routers (`reviewed`, `beginner`).

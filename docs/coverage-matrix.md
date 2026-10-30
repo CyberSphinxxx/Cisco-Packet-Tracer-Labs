@@ -24,6 +24,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | Default gateway vs static route, multi-router | `routing` | `labs/routing/dual-stack-static-routing` (`PTL-0001`), `PTL-0005` | Simulator Verified | Routing table entries (`C`, `L`), next-hop static routes |
 | Default gateway operation & troubleshooting | `network-fundamentals` | `labs/network-fundamentals/default-gateway-troubleshooting` (`PTL-0014`) | Simulator Verified | Intra vs. inter-subnet delivery, host routing decisions, fault injection |
 | MAC address learning & ARP operation | `network-fundamentals` | `labs/network-fundamentals/mac-learning-and-arp` (`PTL-0016`) | Simulator Verified | Switch CAM table learning, ARP cache resolution, unknown unicast flooding |
+| CDP neighbor discovery & topology mapping | `network-fundamentals` | `labs/network-fundamentals/cdp-neighbor-discovery-and-topology-audit` (`PTL-0024`) | Simulator Verified | Cisco Discovery Protocol, TLV inspection, topology mapping, edge port hardening |
 | Basic switch management & end-host setup | `network-security` | `labs/network-security/secure-switch-ssh` (`PTL-0003`) | Simulator Verified | Switch SVI, gateway, and secure management |
 
 ---
