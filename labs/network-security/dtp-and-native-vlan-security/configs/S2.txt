@@ -1,0 +1,30 @@
+!
+! Configuration for S2
+!
+hostname S2
+!
+vlan 10
+ name Staff
+vlan 20
+ name Management
+vlan 999
+ name Native_Unused
+!
+interface FastEthernet0/10
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+!
+interface FastEthernet0/20
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+!
+interface GigabitEthernet0/1
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,999
+ no shutdown
+!
+end

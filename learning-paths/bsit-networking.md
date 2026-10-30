@@ -25,6 +25,10 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
 ### 3. Switch Port Hardening and Link Bundling
 - **[PTL-0004: Implementing Switchport Port Security](../labs/network-security/port-security/README.md)**
   MAC limiting, sticky MAC learning, violation handling (`protect`, `restrict`, `shutdown`), and `errdisable recovery`.
+- **[PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md)**
+  Static 802.1Q trunking, disabling DTP frame negotiation (`switchport nonegotiate`), dedicated Native VLAN 999, and allowed VLAN list pruning.
+- **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
+  IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, alternate blocking roles, edge PortFast, and BPDU Guard protection.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
   Disabling DTP (`switchport nonegotiate`), dedicated native VLANs, parking lot blackhole VLAN, PortFast, and BPDU Guard.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**
@@ -49,6 +53,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
 ### 5. Inter-VLAN and Static Routing
 - **[PTL-0010: Router-on-a-Stick Inter-VLAN Routing](../labs/routing/inter-vlan-routing-router-on-a-stick/README.md)**
   802.1Q subinterface routing (`g0/0/0.10`), default gateway assignment, and cross-VLAN packet delivery.
+- **[PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/routing/layer-3-switch-svis-and-routed-ports/README.md)**
+  Multilayer switching, hardware CEF routing, Switch Virtual Interfaces (SVIs), SVI autostate, routed ports (`no switchport`), and default gateway routing.
 - **[PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md)**
   Recursive and next-hop static routes, `ipv6 unicast-routing`, default static routes (`0.0.0.0/0` and `::/0`).
 

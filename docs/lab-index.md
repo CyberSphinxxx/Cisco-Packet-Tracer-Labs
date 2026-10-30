@@ -29,11 +29,13 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 ### 3. Switching (`switching`)
 - [PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md) — Broadcast domain isolation, access port assignment, and VLAN verification (`reviewed`, `beginner`).
 - [PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md) — Link aggregation, IEEE 802.3ad LACP bundling, and trunking over Port-channel interfaces (`reviewed`, `intermediate`).
+- [PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md) — IEEE 802.1w Rapid PVST+ deployment, deterministic root bridge election, port role mapping, edge PortFast, and BPDU Guard protection (`reviewed`, `intermediate`).
 
 ### 4. Routing (`routing`)
 - [PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md) — End-to-end static routing with `ipv6 unicast-routing` across multi-router transit links (`reviewed`, `intermediate`).
 - [PTL-0010: Router-on-a-Stick Inter-VLAN Routing](../labs/routing/inter-vlan-routing-router-on-a-stick/README.md) — 802.1Q trunking and subinterface gateway routing between VLANs (`reviewed`, `intermediate`).
 - [PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md) — Dynamic link-state routing in Area 0, wildcard masks, router IDs, and passive interfaces (`reviewed`, `intermediate`).
+- [PTL-0019: Layer 3 Switch SVIs and Routed Ports](../labs/routing/layer-3-switch-svis-and-routed-ports/README.md) — Multilayer switching, hardware CEF inter-VLAN routing with SVIs, Layer 3 routed ports (`no switchport`), and default gateway routing (`reviewed`, `intermediate`).
 
 ### 5. Network Services (`network-services`)
 - [PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md) — Cisco IOS dynamic address allocation, pool exclusions, and IP helper-address relaying (`reviewed`, `intermediate`).
@@ -43,6 +45,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0004: Implementing Switchport Port Security](../labs/network-security/port-security/README.md) — MAC limiting, dynamic sticky learning, violation modes, and err-disable recovery (`reviewed`, `intermediate`).
 - [PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md) — DTP disabling, blackhole parking-lot VLAN, native VLAN hopping defense, PortFast, and BPDU Guard (`reviewed`, `intermediate`).
 - [PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md) — Numbered standard and named extended packet filtering with traffic matrices (`reviewed`, `intermediate`).
+- [PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md) — DTP negotiation analysis, switchport nonegotiate, Native VLAN 999 isolation, and allowed VLAN pruning (`reviewed`, `intermediate`).
 
 ---
 

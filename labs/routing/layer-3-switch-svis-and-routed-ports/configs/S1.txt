@@ -1,0 +1,28 @@
+!
+! Configuration for S1 (Catalyst 2960-24TT)
+!
+hostname S1
+!
+vlan 10
+ name Staff
+vlan 20
+ name Management
+!
+interface FastEthernet0/10
+ description Staff Host Access Port
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+!
+interface FastEthernet0/20
+ description Management Host Access Port
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description 802.1Q Trunk Link to MLS1
+ switchport mode trunk
+ no shutdown
+!
+end

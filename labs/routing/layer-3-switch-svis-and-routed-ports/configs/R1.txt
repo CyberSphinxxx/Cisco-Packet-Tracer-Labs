@@ -1,0 +1,19 @@
+!
+! Configuration for R1 (Cisco 2911 Router)
+!
+hostname R1
+!
+interface GigabitEthernet0/0
+ description Point-to-Point Routed Link to MLS1
+ ip address 10.0.0.2 255.255.255.252
+ no shutdown
+!
+interface Loopback0
+ description Simulated External Destination
+ ip address 203.0.113.1 255.255.255.255
+ no shutdown
+!
+ip route 192.168.10.0 255.255.255.0 10.0.0.1
+ip route 192.168.20.0 255.255.255.0 10.0.0.1
+!
+end
