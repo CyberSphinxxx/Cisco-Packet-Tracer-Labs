@@ -63,6 +63,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md) — Numbered standard and named extended packet filtering with traffic matrices (`reviewed`, `intermediate`).
 - [PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md) — DTP negotiation analysis, switchport nonegotiate, Native VLAN 999 isolation, and allowed VLAN pruning (`reviewed`, `intermediate`).
 - [PTL-0038: DHCP Snooping and Rogue DHCP Detection](../labs/network-security/dhcp-snooping-and-rogue-dhcp-detection/README.md) — Layer 2 DHCP snooping configuration, Option 82 handling, trusted/untrusted port boundaries, rate limiting, and rogue DHCP containment (`reviewed`, `advanced`).
+- [PTL-0039: Dynamic ARP Inspection and Spoofing Defense](../labs/network-security/dynamic-arp-inspection-and-spoofing-defense/README.md) — Dynamic ARP Inspection (DAI) deployment, trusted uplink boundaries, rate limiting, multi-attribute validation checks (src-mac, dst-mac, ip), and ARP spoofing defense (`reviewed`, `advanced`).
 
 ### 7. Wireless and WAN Technologies (`wireless-wan`)
 - [PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md) — Autonomous access point deployment, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP services, and client association verification (`reviewed`, `beginner`).

@@ -115,6 +115,8 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Standard ACL source filtering, extended ACL protocol/port filtering, directional placement (`in`/`out`), traffic sequence matching, implicit deny.
 - **[PTL-0038: DHCP Snooping and Rogue DHCP Detection](../labs/network-security/dhcp-snooping-and-rogue-dhcp-detection/README.md)**
   *Topics:* Layer 2 DHCP snooping activation, trusted vs untrusted interface boundaries, Option 82 interoperability, DHCP rate limiting, and dynamic binding database inspection.
+- **[PTL-0039: Dynamic ARP Inspection and Spoofing Defense](../labs/network-security/dynamic-arp-inspection-and-spoofing-defense/README.md)**
+  *Topics:* Dynamic ARP Inspection (DAI) activation, trusted uplink boundaries, ARP rate limiting, multi-attribute validation checks (`src-mac`, `dst-mac`, `ip`), and ARP spoofing mitigation.
 
 ---
 

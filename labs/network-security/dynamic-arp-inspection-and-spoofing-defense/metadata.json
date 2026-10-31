@@ -1,0 +1,60 @@
+{
+  "id": "PTL-0039",
+  "title": "Dynamic ARP Inspection and Spoofing Defense",
+  "slug": "dynamic-arp-inspection-and-spoofing-defense",
+  "category": "network-security",
+  "summary": "Configure and verify Dynamic ARP Inspection (DAI) on Cisco Catalyst switches, establish trusted and untrusted port boundaries, configure ARP inspection rate limiting, activate multi-attribute validation checks (src-mac, dst-mac, ip), integrate with DHCP snooping bindings, and observe Layer 2 ARP security behavior.",
+  "difficulty": "advanced",
+  "topics": [
+    "network-security",
+    "dynamic-arp-inspection",
+    "arp-spoofing",
+    "man-in-the-middle",
+    "dhcp-snooping",
+    "layer-2-security",
+    "catalyst-switch",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Explain the mechanics of Gratuitous ARP poisoning and ARP cache spoofing attacks in broadcast domains",
+    "Configure DHCP Snooping as a foundational prerequisite to populate the secure Layer 2 IP-to-MAC binding database",
+    "Enable Dynamic ARP Inspection (DAI) globally for active access VLANs",
+    "Designate trusted interfaces for default gateways and network uplinks while maintaining untrusted boundaries on host ports",
+    "Implement ARP packet rate limiting on untrusted access interfaces to protect the switch CPU against denial-of-service floods",
+    "Configure advanced ARP validation rules verifying Source MAC, Destination MAC, and IP address consistency",
+    "Verify DAI operational status, interface trust states, binding integration, and end-to-end legitimate host communication"
+  ],
+  "estimated_minutes": 50,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network security laboratory guide based on RFC 826 (Ethernet Address Resolution Protocol) and Cisco IOS Dynamic ARP Inspection security architecture",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0039-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc826",
+    "https://datatracker.ietf.org/doc/html/rfc5227",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swdynarp.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+
