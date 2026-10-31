@@ -1,0 +1,113 @@
+Current configuration : 1700 bytes
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname S2
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ spanning-tree portfast
+!
+interface FastEthernet0/19
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ spanning-tree portfast
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end

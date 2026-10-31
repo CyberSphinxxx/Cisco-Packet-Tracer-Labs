@@ -93,6 +93,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Centralized configuration archiving over UDP port 69, simulated disaster alteration, complete state restoration, and failure diagnostic handling.
 - **[PTL-0033: Stateful DHCPv6 Address Assignment](../labs/network-services/stateful-dhcpv6-address-assignment/README.md)**
   Cisco IOS Stateful DHCPv6 server pools, ICMPv6 Router Advertisement Managed-config flags, client DUID lease tracking, and end-to-end IPv6 routing.
+- **[PTL-0037: DNS Resolution Failure Troubleshooting](../labs/network-services/dns-resolution-failure-troubleshooting/README.md)**
+  Diagnosing and remediating client resolver address misconfigurations, disabled DNS daemon services, and missing A/CNAME resource records across routed enterprise subnets.
 - **[PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md)**
   Autonomous 802.11 access point integration, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP pool allocation, and authorized client verification.
 - **[PTL-0036: Wireless VLAN Separation and Guest Access](../labs/wireless-wan/wireless-vlan-separation-and-guest-access/README.md)**

@@ -98,6 +98,8 @@ Automated host configuration and IP helper services.
   *Topics:* TFTP configuration archiving over UDP port 69, disaster recovery configuration merge, volatile vs persistent storage, and transfer fault handling.
 - **[PTL-0033: Stateful DHCPv6 Address Assignment](../labs/network-services/stateful-dhcpv6-address-assignment/README.md)**
   *Topics:* Stateful DHCPv6 configuration on Cisco IOS, ICMPv6 Router Advertisement M and A flag manipulation, client DUID bindings, and dual-router IPv6 packet transport.
+- **[PTL-0037: DNS Resolution Failure Troubleshooting](../labs/network-services/dns-resolution-failure-troubleshooting/README.md)**
+  *Topics:* Troubleshooting client DNS resolver settings, diagnosing disabled DNS server daemons, populating missing A and CNAME records, and validating resolution via nslookup and ping.
 
 ---
 
