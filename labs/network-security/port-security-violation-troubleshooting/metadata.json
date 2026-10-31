@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0040",
+  "title": "Port Security Violation Troubleshooting",
+  "slug": "port-security-violation-troubleshooting",
+  "category": "network-security",
+  "summary": "Diagnose and resolve Layer 2 switchport port security faults across Cisco Catalyst access switches. Analyze stale sticky MAC address conflicts, recover interfaces latched in err-disabled state without disabling security, and reconfigure violation modes from silent drop (protect) to audit-compliant (restrict/shutdown).",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-security",
+    "port-security",
+    "switch-security",
+    "sticky-mac",
+    "err-disable",
+    "troubleshooting",
+    "catalyst-switch",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Diagnose port security violation symptoms and error-disabled port states using Cisco IOS show commands",
+    "Resolve sticky MAC address collisions resulting from workstation hardware replacements and stale configuration entries",
+    "Execute the standard administrative recovery sequence (shutdown followed by no shutdown) to restore error-disabled switchports without removing security controls",
+    "Evaluate differences in security posture, logging, and operational behavior between protect, restrict, and shutdown violation modes",
+    "Verify end-to-end IP reachability for recovered legitimate endpoints while ensuring unauthorized devices trigger active security enforcement"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)",
+    "Laptop-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network security troubleshooting laboratory guide based on IEEE 802.1D and Cisco IOS switchport port security architecture",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0040-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swportsec.html",
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/69980-errdisable-recovery.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

@@ -117,6 +117,8 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Layer 2 DHCP snooping activation, trusted vs untrusted interface boundaries, Option 82 interoperability, DHCP rate limiting, and dynamic binding database inspection.
 - **[PTL-0039: Dynamic ARP Inspection and Spoofing Defense](../labs/network-security/dynamic-arp-inspection-and-spoofing-defense/README.md)**
   *Topics:* Dynamic ARP Inspection (DAI) activation, trusted uplink boundaries, ARP rate limiting, multi-attribute validation checks (`src-mac`, `dst-mac`, `ip`), and ARP spoofing mitigation.
+- **[PTL-0040: Port Security Violation Troubleshooting](../labs/network-security/port-security-violation-troubleshooting/README.md)**
+  *Topics:* Diagnosing sticky MAC conflicts, resolving hardware upgrade outages, error-disabled port recovery sequence, and violation mode alignment.
 
 ---
 

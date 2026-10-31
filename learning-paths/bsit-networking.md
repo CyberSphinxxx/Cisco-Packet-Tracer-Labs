@@ -107,6 +107,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Cisco IOS DHCP snooping implementation, Option 82 configuration, trusted uplink definition, untrusted port rate limiting, and rogue DHCP mitigation.
 - **[PTL-0039: Dynamic ARP Inspection and Spoofing Defense](../labs/network-security/dynamic-arp-inspection-and-spoofing-defense/README.md)**
   Dynamic ARP Inspection (DAI) deployment, trusted uplink definition, untrusted interface rate limiting, multi-attribute validation checks (`src-mac`, `dst-mac`, `ip`), and ARP spoofing mitigation.
+- **[PTL-0040: Port Security Violation Troubleshooting](../labs/network-security/port-security-violation-troubleshooting/README.md)**
+  Switchport port security troubleshooting, sticky MAC conflict resolution, administrative recovery of error-disabled ports, and violation mode auditing.
 
 ---
 
