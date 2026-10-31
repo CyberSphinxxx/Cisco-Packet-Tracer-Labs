@@ -119,6 +119,8 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Dynamic ARP Inspection (DAI) activation, trusted uplink boundaries, ARP rate limiting, multi-attribute validation checks (`src-mac`, `dst-mac`, `ip`), and ARP spoofing mitigation.
 - **[PTL-0040: Port Security Violation Troubleshooting](../labs/network-security/port-security-violation-troubleshooting/README.md)**
   *Topics:* Diagnosing sticky MAC conflicts, resolving hardware upgrade outages, error-disabled port recovery sequence, and violation mode alignment.
+- **[PTL-0041: IPv4 ACL Troubleshooting with Traffic Matrix](../labs/network-security/ipv4-acl-troubleshooting-with-traffic-matrix/README.md)**
+  *Topics:* Diagnosing shadowed access control entries, resolving directional placement conflicts (`in` vs `out`), correcting inverted wildcard masks, and verifying traffic matrices.
 
 ---
 

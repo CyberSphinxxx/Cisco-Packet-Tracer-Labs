@@ -109,6 +109,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Dynamic ARP Inspection (DAI) deployment, trusted uplink definition, untrusted interface rate limiting, multi-attribute validation checks (`src-mac`, `dst-mac`, `ip`), and ARP spoofing mitigation.
 - **[PTL-0040: Port Security Violation Troubleshooting](../labs/network-security/port-security-violation-troubleshooting/README.md)**
   Switchport port security troubleshooting, sticky MAC conflict resolution, administrative recovery of error-disabled ports, and violation mode auditing.
+- **[PTL-0041: IPv4 ACL Troubleshooting with Traffic Matrix](../labs/network-security/ipv4-acl-troubleshooting-with-traffic-matrix/README.md)**
+  Traffic matrix validation, shadowed access list entry remediation, directional placement auditing, and wildcard mask calculation corrections.
 
 ---
 
