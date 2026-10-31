@@ -63,6 +63,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* Administrative distance hierarchy, primary vs. floating backup routes, link failure convergence, preemption upon circuit restoration.
 - **[PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md)**
   *Topics:* RFC 2328 OSPF Area 0, router ID election, wildcard masks, point-to-point interface metrics, passive interfaces, neighbor states.
+- **[PTL-0029: OSPFv2 DR and BDR Elections](../labs/routing/ospfv2-dr-bdr-elections/README.md)**
+  *Topics:* RFC 2328 multi-access broadcast networks, interface priorities (`ip ospf priority`), DR/BDR election hierarchy, DROTHER state, DR failover, non-preemptive election mechanics.
 
 ---
 

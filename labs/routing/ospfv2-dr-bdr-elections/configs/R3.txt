@@ -1,0 +1,84 @@
+Current configuration : 893 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R3
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description R3 Management Loopback
+ ip address 10.3.3.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ description Multi-Access Broadcast Link to S1
+ ip address 192.168.1.3 255.255.255.0
+ ip ospf priority 0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+router ospf 1
+ router-id 3.3.3.3
+ log-adjacency-changes
+ network 192.168.1.0 0.0.0.255 area 0
+ network 10.3.3.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C Authorized Access Only - R3 Router ^C
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

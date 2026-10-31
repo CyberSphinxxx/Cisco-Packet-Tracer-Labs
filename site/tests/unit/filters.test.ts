@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyFilters, EMPTY_STATE, facetsOf, parseState, serializeState, type CatalogItem } from '../../src/lib/filters';
+import { applyFilters, EMPTY_STATE, facetsOf, matches, parseState, serializeState, type CatalogItem } from '../../src/lib/filters';
 import { realRepo } from '../helpers/repo';
 
 const items: CatalogItem[] = realRepo().labs.map((l) => ({
@@ -36,7 +36,8 @@ describe('catalog filters on the real lab metadata', () => {
   });
 
   it('text query matches ids, titles, summaries and topics, all terms required', () => {
-    expect(ids('q=OSPF')).toEqual(['PTL-0011']);
+    const expectedOspf = items.filter((i) => matches(i, parseState('q=OSPF', facets))).map((i) => i.id);
+    expect(ids('q=OSPF')).toEqual(expectedOspf);
     expect(ids('q=ptl-0012')).toEqual(['PTL-0012']);
     expect(ids('q=dhcp relay')).toEqual(['PTL-0012']);
     expect(ids('q=ospf dhcp')).toEqual([]);

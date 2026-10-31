@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0029",
+  "title": "OSPFv2 DR and BDR Elections",
+  "slug": "ospfv2-dr-bdr-elections",
+  "category": "routing",
+  "summary": "Configure and verify OSPFv2 Designated Router (DR) and Backup Designated Router (BDR) election mechanics on multi-access broadcast networks using interface priorities.",
+  "difficulty": "intermediate",
+  "topics": [
+    "routing",
+    "ospf",
+    "ospfv2",
+    "dr-bdr-election",
+    "interface-priority",
+    "multi-access",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the necessity and operational role of DR and BDR routers in multi-access broadcast OSPF networks",
+    "Examine default OSPF election criteria based on priority, manual router ID, and highest active IP address",
+    "Configure custom OSPF interface priorities using the ip ospf priority command to deterministically designate DR and BDR routers",
+    "Prevent a multi-access router from ever participating in elections by configuring priority 0 (DROTHER state)",
+    "Verify OSPF adjacency states (FULL/DR, FULL/BDR, FULL/DROTHER) and timer intervals across multi-access interfaces",
+    "Demonstrate deterministic DR failover when the primary DR becomes unavailable",
+    "Verify the non-preemptive nature of OSPF elections when higher priority routers rejoin an established network"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4321 Integrated Services Router (3)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise multi-access OSPFv2 curriculum guide aligned with Cisco CCNA exam topic 3.2",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0029-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/15-mt/iro-15-mt-book.html",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+
