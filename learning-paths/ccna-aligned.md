@@ -113,6 +113,8 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Static and sticky MAC address learning, violation modes (`protect`, `restrict`, `shutdown`), and `errdisable recovery`.
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**
   *Topics:* Standard ACL source filtering, extended ACL protocol/port filtering, directional placement (`in`/`out`), traffic sequence matching, implicit deny.
+- **[PTL-0038: DHCP Snooping and Rogue DHCP Detection](../labs/network-security/dhcp-snooping-and-rogue-dhcp-detection/README.md)**
+  *Topics:* Layer 2 DHCP snooping activation, trusted vs untrusted interface boundaries, Option 82 interoperability, DHCP rate limiting, and dynamic binding database inspection.
 
 ---
 

@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0038",
+  "title": "DHCP Snooping and Rogue DHCP Detection",
+  "slug": "dhcp-snooping-and-rogue-dhcp-detection",
+  "category": "network-security",
+  "summary": "Configure and verify Cisco IOS DHCP Snooping on Catalyst switches to mitigate rogue DHCP server attacks, establish trusted and untrusted port boundaries, enforce Option 82 handling policies, apply DHCP rate limiting, and validate dynamic DHCP snooping binding database population.",
+  "difficulty": "advanced",
+  "topics": [
+    "network-security",
+    "dhcp-snooping",
+    "layer-2-security",
+    "rogue-dhcp",
+    "option-82",
+    "catalyst-switch",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Analyze the operational risks associated with unauthorized rogue DHCP servers on switched Layer 2 access networks",
+    "Enable DHCP Snooping globally and activate snooping inspection per active VLAN",
+    "Configure trust states on switch interfaces, designating authorized server uplinks as trusted and host access ports as untrusted",
+    "Manage DHCP Option 82 (Information Option) insertion policies to maintain compatibility with standard access routers",
+    "Implement DHCP rate limiting on untrusted access interfaces to protect against DHCP starvation attacks",
+    "Inspect and interpret the Cisco IOS DHCP snooping binding database and operational status outputs",
+    "Validate rogue DHCP offer filtering and verify legitimate client dynamic address leasing and gateway reachability"
+  ],
+  "estimated_minutes": 50,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network security laboratory guide based on IEEE 802.1D, RFC 2131, RFC 3046, and Cisco IOS DHCP snooping security architecture",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0038-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc2131",
+    "https://datatracker.ietf.org/doc/html/rfc3046",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swdhcp82.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}

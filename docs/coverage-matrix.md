@@ -70,4 +70,5 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | Port security sticky & violation modes | `network-security` | `labs/network-security/port-security` (`PTL-0004`) | Simulator Verified | Dynamic sticky MACs, err-disable recovery |
 | Standard & extended ACLs | `network-security` | `labs/network-security/standard-and-extended-acls` (`PTL-0013`) | Simulator Verified | Packet filtering, placement rules, traffic matrix |
 | Comprehensive switch hardening | `network-security` | `labs/network-security/switch-hardening` (`PTL-0007`) | Simulator Verified | Unused ports blackholing, DTP disabling |
+| DHCP Snooping & Rogue DHCP Mitigation | `network-security` | `labs/network-security/dhcp-snooping-and-rogue-dhcp-detection` (`PTL-0038`) | Simulator Verified | Layer 2 DHCP snooping, Option 82 handling, trusted uplinks, rate limiting, and binding table verification |
 | Capstone multi-VLAN small office | `projects` | `projects/small-office-network/` | Simulator Verified | Integrated multi-VLAN, ROAS, DHCP, Port Security & ACLs |

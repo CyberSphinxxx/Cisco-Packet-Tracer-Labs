@@ -103,6 +103,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
 ### 7. Traffic Filtering and Access Control
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**
   Standard ACLs near the destination, extended ACLs near the source, TCP/UDP port filtering, ICMP control, and implicit deny.
+- **[PTL-0038: DHCP Snooping and Rogue DHCP Detection](../labs/network-security/dhcp-snooping-and-rogue-dhcp-detection/README.md)**
+  Cisco IOS DHCP snooping implementation, Option 82 configuration, trusted uplink definition, untrusted port rate limiting, and rogue DHCP mitigation.
 
 ---
 
