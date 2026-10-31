@@ -48,6 +48,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | EtherChannel LACP & troubleshooting | `switching` | `labs/switching/etherchannel-lacp` (`PTL-0006`) | Simulator Verified | IEEE 802.3ad link bundling and flag verification |
 | Static & default routes (IPv4 & IPv6) | `routing` | `labs/routing/dual-stack-static-routing` (`PTL-0001`) | Simulator Verified | Symmetrical dual-stack routing |
 | Single-area OSPFv2 dynamic routing | `routing` | `labs/routing/single-area-ospfv2` (`PTL-0011`) | Simulator Verified | Wildcard masks, router-id, passive interfaces |
+| Single-area OSPFv3 dynamic routing for IPv6 | `routing` | `labs/routing/single-area-ospfv3-for-ipv6` (`PTL-0034`) | Simulator Verified | OSPFv3 Area 0, 32-bit Router IDs, Point-to-Point WAN, passive interfaces |
 | DHCP server & relay agent | `network-services` | `labs/network-services/dhcp-server-and-relay` (`PTL-0012`) | Simulator Verified | Cisco IOS DHCP pools, exclusions, helper-address |
 | Stateful DHCPv6 address assignment | `network-services` | `labs/network-services/stateful-dhcpv6-address-assignment` (`PTL-0033`) | Simulator Verified | Stateful DHCPv6 server pools, RA managed-config flags, client DUID bindings, routed IPv6 |
 | IPv4 Dynamic PAT (NAT Overload) | `network-services` | `labs/network-services/ipv4-dynamic-pat-at-the-edge` (`PTL-0020`) | Simulator Verified | Port Address Translation, standard ACL matching, inside/outside boundaries, concurrent translations |

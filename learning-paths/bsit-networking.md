@@ -77,6 +77,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Diagnosing Hello/Dead timer mismatches, resolving Area ID conflicts, fixing missing network statements, and verifying full multi-router SPF convergence.
 - **[PTL-0032: HSRP First-Hop Gateway Failover](../labs/routing/hsrp-first-hop-gateway-failover/README.md)**
   Configuring HSRPv2 priority, preemption, and virtual IP addresses across dual edge routers to provide high-availability default gateway services and transparent failover.
+- **[PTL-0034: Single-Area OSPFv3 for IPv6](../labs/routing/single-area-ospfv3-for-ipv6/README.md)**
+  Configuring single-area OSPFv3 for IPv6, setting 32-bit Router IDs, activating interface Area 0, optimizing point-to-point transit links, and verifying full multi-router IPv6 convergence.
 - **[PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md)**
   Centralized IOS DHCP server, address exclusion pools, lease options, and `ip helper-address` forwarding across subnets.
 - **[PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md)**

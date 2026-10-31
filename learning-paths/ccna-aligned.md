@@ -71,6 +71,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* RFC 2328 neighbor adjacency requirements, Hello and Dead timer synchronization, Area ID validation, stub and transit network statement correction, loopback and LAN passive interface placement.
 - **[PTL-0032: HSRP First-Hop Gateway Failover](../labs/routing/hsrp-first-hop-gateway-failover/README.md)**
   *Topics:* First Hop Redundancy Protocols (FHRP), Cisco HSRPv2 configuration, virtual IP and MAC operations, priority-driven active/standby elections, preemption, hold timer failover, transparent client default gateway redundancy.
+- **[PTL-0034: Single-Area OSPFv3 for IPv6](../labs/routing/single-area-ospfv3-for-ipv6/README.md)**
+  *Topics:* OSPFv3 protocol operation, 32-bit dotted-decimal Router IDs, interface-level Area 0 activation, Point-to-Point WAN network types, passive-interface constraints, and end-to-end multi-hop IPv6 reachability.
 
 ---
 
