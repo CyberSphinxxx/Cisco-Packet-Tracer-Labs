@@ -17,6 +17,8 @@
 
 ## Topology
 
+![PTL-0031 Topology Diagram](assets/topology.png)
+
 The topology models an enterprise hub-and-spoke WAN architecture connecting a corporate headquarters router (`HQ-R1`) to two remote facilities: `Branch-R2` and `Remote-R3`. Both remote sites support local access LANs connected through Catalyst 2960 switches (`S1` and `S2`) servicing end stations (`PC-Branch` and `Server-Remote`).
 
 ```

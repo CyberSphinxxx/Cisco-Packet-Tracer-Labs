@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0032",
+  "title": "HSRP First-Hop Gateway Failover",
+  "slug": "hsrp-first-hop-gateway-failover",
+  "category": "routing",
+  "summary": "Configure Hot Standby Router Protocol (HSRPv2) priority and preemption across redundant gateway routers to provide high-availability default gateway services and verify failover.",
+  "difficulty": "advanced",
+  "topics": [
+    "routing",
+    "hsrp",
+    "fhrp",
+    "high-availability",
+    "preemption",
+    "default-gateway",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the necessity of First-Hop Redundancy Protocols (FHRP) in avoiding single points of failure at the default gateway",
+    "Configure Hot Standby Router Protocol version 2 (HSRPv2) on Cisco IOS edge routers",
+    "Assign and verify virtual IP (VIP) and virtual MAC addresses within an HSRP standby group",
+    "Configure custom HSRP priority and preemption to establish deterministic Active and Standby gateway forwarding roles",
+    "Examine HSRP state machine transitions (Listen, Speak, Standby, Active) using Cisco IOS verification commands",
+    "Simulate an active router interface failure and verify transparent gateway failover to the standby router with uninterrupted host connectivity",
+    "Validate HSRP preemption behavior when the primary gateway recovers from failure"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4321 Integrated Services Router (3)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise first-hop redundancy curriculum guide aligned with Cisco CCNA exam topic 3.5 (Describe the purpose and function of First Hop Redundancy Protocols)",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0032-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/10583-62.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp_fhrp/configuration/15-mt/fhp-15-mt-book.html",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}

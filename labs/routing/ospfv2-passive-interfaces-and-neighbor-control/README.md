@@ -18,6 +18,8 @@
 
 ## Topology
 
+![PTL-0030 Topology Diagram](assets/topology.png)
+
 The topology models an enterprise branch connection linking an edge router (`Edge-R1`) to a core distribution router (`Core-R2`) across a point-to-point transit link (`10.0.0.0/30`). Each router provides Layer 3 gateway services to an access LAN containing end devices and management switches (`S1` and `S2`).
 
 ```

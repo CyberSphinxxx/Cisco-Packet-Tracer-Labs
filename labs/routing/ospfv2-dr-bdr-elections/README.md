@@ -18,6 +18,8 @@
 
 ## Topology
 
+![PTL-0029 Topology Diagram](assets/topology.png)
+
 The topology models an enterprise distribution segment connected through a central Catalyst 2960 switch (`S1`). Three Cisco 4321 routers (`R1`, `R2`, `R3`) connect their `GigabitEthernet0/0/0` interfaces to `S1` on the `192.168.1.0/24` multi-access broadcast subnet. An endpoint test station (`PC-1`) is connected to `S1` on port `FastEthernet0/4` to verify end-to-end data plane reachability across all advertised loopback subnets.
 
 ```

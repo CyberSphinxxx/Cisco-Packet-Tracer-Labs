@@ -1,0 +1,84 @@
+Building configuration...
+[OK]
+Core-R3#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+00:01:38: %OSPF-5-ADJCHG: Process 1, Nbr 1.1.1.1 on GigabitEthernet0/0 from LOADING to FULL, Loading Done
+
+00:02:17: %OSPF-5-ADJCHG: Process 1, Nbr 2.2.2.2 on GigabitEthernet0/1 from LOADING to FULL, Loading Done
+
+
+
+
+
+
+
+
+
+Core-R3 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Core-R3>
+
+
+
+
+
+
+
+
+Core-R3 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Core-R3>terminal length 0
+                 ^
+% Invalid input detected at '^' marker.
+	
+Core-R3>show running-config
+             ^
+% Invalid input detected at '^' marker.
+	
+Core-R3> 
+Core-R3> 
+Core-R3> 
+Core-R3> 
+Core-R3> 
+Core-R3>

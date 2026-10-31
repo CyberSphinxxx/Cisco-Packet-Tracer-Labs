@@ -69,6 +69,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* OSPF Hello suppression, `passive-interface default`, selective interface enablement (`no passive-interface`), stub network propagation, transit link adjacency protection.
 - **[PTL-0031: OSPFv2 Neighbor Adjacency Troubleshooting](../labs/routing/ospfv2-neighbor-adjacency-troubleshooting/README.md)**
   *Topics:* RFC 2328 neighbor adjacency requirements, Hello and Dead timer synchronization, Area ID validation, stub and transit network statement correction, loopback and LAN passive interface placement.
+- **[PTL-0032: HSRP First-Hop Gateway Failover](../labs/routing/hsrp-first-hop-gateway-failover/README.md)**
+  *Topics:* First Hop Redundancy Protocols (FHRP), Cisco HSRPv2 configuration, virtual IP and MAC operations, priority-driven active/standby elections, preemption, hold timer failover, transparent client default gateway redundancy.
 
 ---
 

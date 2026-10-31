@@ -1,0 +1,85 @@
+Building configuration...
+
+Current configuration : 890 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Edge-R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description Uplink to Core-R3
+ ip address 10.10.12.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description LAN to Switch-S1
+ ip address 192.168.1.2 255.255.255.0
+ duplex auto
+ speed auto
+ standby version 2
+ standby 1 ip 192.168.1.1
+ standby 1 priority 110
+ standby 1 preempt
+!
+router ospf 1
+ router-id 1.1.1.1
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0/1
+ network 10.10.12.0 0.0.0.3 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
