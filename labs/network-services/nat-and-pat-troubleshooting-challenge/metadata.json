@@ -1,0 +1,59 @@
+{
+  "id": "PTL-0043",
+  "title": "NAT and PAT Troubleshooting Challenge",
+  "slug": "nat-and-pat-troubleshooting-challenge",
+  "category": "network-services",
+  "summary": "Diagnose and resolve common Port Address Translation (PAT / NAT Overload) misconfigurations on an enterprise edge router. Identify and correct translation ACL subnet mismatches, interface boundary role errors (ip nat inside/outside), and verify end-to-end outbound Internet connectivity for multiple internal subnets using active translation tables and statistical counters.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-services",
+    "nat",
+    "pat",
+    "nat-overload",
+    "troubleshooting",
+    "access-control-lists",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Diagnose NAT and PAT failures using Cisco IOS diagnostic commands (show ip nat translations, show ip nat statistics, show access-lists)",
+    "Identify and remediate interface boundary role misconfigurations (ip nat inside and ip nat outside)",
+    "Correct standard access control list errors that prevent internal subnets from matching NAT overload rules",
+    "Configure dynamic Port Address Translation (PAT) with interface overloading for multiple internal LANs",
+    "Verify active address translations and monitor translation table counters with live ICMP and HTTP traffic probes"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4331 Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (1)",
+    "Laptop-PT End Device (1)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services troubleshooting laboratory guide based on IETF RFC 3022 standards and Cisco IOS NAT/PAT diagnostic best practices",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0043-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc3022",
+    "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13772-12.html",
+    "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/26704-nat-faq-00.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

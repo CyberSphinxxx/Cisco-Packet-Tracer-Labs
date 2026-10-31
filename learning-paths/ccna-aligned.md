@@ -100,6 +100,8 @@ Automated host configuration and IP helper services.
   *Topics:* Stateful DHCPv6 configuration on Cisco IOS, ICMPv6 Router Advertisement M and A flag manipulation, client DUID bindings, and dual-router IPv6 packet transport.
 - **[PTL-0037: DNS Resolution Failure Troubleshooting](../labs/network-services/dns-resolution-failure-troubleshooting/README.md)**
   *Topics:* Troubleshooting client DNS resolver settings, diagnosing disabled DNS server daemons, populating missing A and CNAME records, and validating resolution via nslookup and ping.
+- **[PTL-0043: NAT and PAT Troubleshooting Challenge](../labs/network-services/nat-and-pat-troubleshooting-challenge/README.md)**
+  *Topics:* Diagnosing NAT inside/outside interface role misconfigurations, correcting translation ACL subnet mismatches, dynamic PAT overload verification, and translation table inspection.
 
 ---
 
