@@ -41,6 +41,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0027: IPv6 Static and Default Route Troubleshooting](../labs/routing/ipv6-static-and-default-routing-troubleshooting/README.md) — Recursive and fully specified static routing, default routes (::/0), next-hop debugging, and return path validation across a multi-router topology (`reviewed`, `intermediate`).
 - [PTL-0028: Floating Static Routes and Administrative Distance](../labs/routing/floating-static-routes-and-administrative-distance/README.md) — Primary and backup route configuration with elevated administrative distance, dynamic link failover, and automatic preemption (`reviewed`, `intermediate`).
 - [PTL-0029: OSPFv2 DR and BDR Elections](../labs/routing/ospfv2-dr-bdr-elections/README.md) — Multi-access broadcast OSPF networks, interface priority configuration, DR/BDR election hierarchy, failover, and non-preemption (`reviewed`, `intermediate`).
+- [PTL-0030: OSPFv2 Passive Interfaces and Neighbor Control](../labs/routing/ospfv2-passive-interfaces-and-neighbor-control/README.md) — OSPF Hello suppression on access LANs, selective and default passive configuration, stub network advertisement, and transit neighbor control (`reviewed`, `intermediate`).
 
 ### 5. Network Services (`network-services`)
 - [PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md) — Cisco IOS dynamic address allocation, pool exclusions, and IP helper-address relaying (`reviewed`, `intermediate`).

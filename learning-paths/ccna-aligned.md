@@ -65,6 +65,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* RFC 2328 OSPF Area 0, router ID election, wildcard masks, point-to-point interface metrics, passive interfaces, neighbor states.
 - **[PTL-0029: OSPFv2 DR and BDR Elections](../labs/routing/ospfv2-dr-bdr-elections/README.md)**
   *Topics:* RFC 2328 multi-access broadcast networks, interface priorities (`ip ospf priority`), DR/BDR election hierarchy, DROTHER state, DR failover, non-preemptive election mechanics.
+- **[PTL-0030: OSPFv2 Passive Interfaces and Neighbor Control](../labs/routing/ospfv2-passive-interfaces-and-neighbor-control/README.md)**
+  *Topics:* OSPF Hello suppression, `passive-interface default`, selective interface enablement (`no passive-interface`), stub network propagation, transit link adjacency protection.
 
 ---
 
