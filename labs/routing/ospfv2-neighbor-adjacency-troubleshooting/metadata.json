@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0031",
+  "title": "OSPFv2 Neighbor Adjacency Troubleshooting",
+  "slug": "ospfv2-neighbor-adjacency-troubleshooting",
+  "category": "routing",
+  "summary": "Diagnose, isolate, and repair common OSPFv2 neighbor adjacency failures including Hello and Dead timer mismatches, Area ID errors, and missing network advertisements.",
+  "difficulty": "intermediate",
+  "topics": [
+    "routing",
+    "ospf",
+    "ospfv2",
+    "troubleshooting",
+    "neighbor-adjacency",
+    "hello-dead-timers",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Identify the mandatory operational parameters that must match for two OSPFv2 routers to achieve FULL adjacency",
+    "Diagnose Hello and Dead interval timer mismatches using show ip ospf interface and debug output",
+    "Troubleshoot OSPF Area ID mismatches between transit router interfaces across a point-to-point link",
+    "Identify missing network statements that prevent LAN prefixes from being injected into the OSPF Link-State Database",
+    "Configure appropriate passive interfaces to protect access subnets while maintaining WAN neighbor adjacencies",
+    "Verify complete SPF route convergence and end-to-end data plane reachability across a multi-router topology"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4321 Integrated Services Router (3)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (1)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise OSPFv2 troubleshooting curriculum guide aligned with Cisco CCNA exam topic 3.2",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0031-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/13699-29.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/15-mt/iro-15-mt-book.html",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

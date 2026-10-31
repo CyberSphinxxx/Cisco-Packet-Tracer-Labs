@@ -73,6 +73,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Multi-access broadcast OSPF networks, interface priority configuration (`ip ospf priority`), DR/BDR election hierarchy, DROTHER state, failover and non-preemption.
 - **[PTL-0030: OSPFv2 Passive Interfaces and Neighbor Control](../labs/routing/ospfv2-passive-interfaces-and-neighbor-control/README.md)**
   OSPF Hello suppression, `passive-interface default` with selective interface activation, stub network propagation, and transit link hardening.
+- **[PTL-0031: OSPFv2 Neighbor Adjacency Troubleshooting](../labs/routing/ospfv2-neighbor-adjacency-troubleshooting/README.md)**
+  Diagnosing Hello/Dead timer mismatches, resolving Area ID conflicts, fixing missing network statements, and verifying full multi-router SPF convergence.
 - **[PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md)**
   Centralized IOS DHCP server, address exclusion pools, lease options, and `ip helper-address` forwarding across subnets.
 - **[PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md)**
