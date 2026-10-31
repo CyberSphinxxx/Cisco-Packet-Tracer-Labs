@@ -1,0 +1,86 @@
+Current configuration : 1077 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R2
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Central Data Center Loopback
+ no ip address
+ ipv6 address 2001:DB8:ACAD:202::1/64
+!
+interface GigabitEthernet0/0/0
+ description WAN Link to R1 Branch
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:DB8:ACAD:12::2/64
+!
+interface GigabitEthernet0/0/1
+ description WAN Link to R3 Branch
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:DB8:ACAD:23::2/64
+!
+ip classless
+!
+ip flow-export version 9
+!
+ipv6 route 2001:DB8:ACAD:101::/64 2001:DB8:ACAD:12::1
+ipv6 route 2001:DB8:ACAD:3::/64 2001:DB8:ACAD:23::3
+ipv6 route 2001:DB8:ACAD:303::/64 2001:DB8:ACAD:23::3
+ipv6 route 2001:DB8:ACAD:1::/64 2001:DB8:ACAD:12::1
+!
+!
+banner motd ^C Authorized Access Only - R2 Central Hub Router ^C
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

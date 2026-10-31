@@ -57,6 +57,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* Multilayer switching, hardware CEF inter-VLAN routing, Switch Virtual Interfaces (SVIs), Layer 3 routed ports (`no switchport`), SVI autostate, and default route forwarding.
 - **[PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md)**
   *Topics:* Recursive, next-hop, and directly connected static routes; IPv6 static routes; `ipv6 unicast-routing`.
+- **[PTL-0027: IPv6 Static and Default Route Troubleshooting](../labs/routing/ipv6-static-and-default-routing-troubleshooting/README.md)**
+  *Topics:* Recursive next-hop routing, default routes (`::/0`), multi-router transit verification, asymmetric return path troubleshooting.
 - **[PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md)**
   *Topics:* RFC 2328 OSPF Area 0, router ID election, wildcard masks, point-to-point interface metrics, passive interfaces, neighbor states.
 
