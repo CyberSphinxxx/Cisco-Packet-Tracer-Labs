@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0044",
+  "title": "VLAN Trunk Allowed-List Troubleshooting",
+  "slug": "vlan-trunk-allowed-list-troubleshooting",
+  "category": "switching",
+  "summary": "Diagnose and resolve multi-VLAN trunking failures across an enterprise dual-switch infrastructure. Investigate trunk allowed list omissions, identify and align native VLAN mismatches, and verify end-to-end Layer 2 trunk transport without impacting existing operational VLANs or unrelated access ports.",
+  "difficulty": "intermediate",
+  "topics": [
+    "switching",
+    "vlan",
+    "802.1q",
+    "trunking",
+    "allowed-list",
+    "native-vlan",
+    "troubleshooting",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Diagnose IEEE 802.1Q trunking anomalies using Cisco IOS diagnostic commands (show interfaces trunk, show interfaces switchport)",
+    "Identify trunk allowed-list omissions that prevent specific VLAN traffic from traversing inter-switch links",
+    "Detect and resolve Native VLAN mismatch conditions between adjacent trunk peers",
+    "Safely modify trunk allowed VLAN lists using add and remove modifiers without overwriting existing allowed VLANs",
+    "Verify end-to-end intra-VLAN reachability across trunks while preserving strict Layer 2 broadcast domain isolation between distinct VLANs"
+  ],
+  "estimated_minutes": 50,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (6)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise switching laboratory guide based on IEEE 802.1Q standards and Cisco IOS Layer 2 trunk troubleshooting best practices",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0044-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://standards.ieee.org/ieee/802.1Q/6844/",
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/8021q/17056-741-4.html",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swvlan.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

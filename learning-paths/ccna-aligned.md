@@ -38,6 +38,8 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
   *Topics:* Access ports, VLAN creation, broadcast isolation, MAC address table behavior.
 - **[PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md)**
   *Topics:* DTP frame negotiation mitigation (`switchport nonegotiate`), Dedicated Native VLAN 999 reassignment, allowed VLAN list pruning.
+- **[PTL-0044: VLAN Trunk Allowed-List Troubleshooting](../labs/switching/vlan-trunk-allowed-list-troubleshooting/README.md)**
+  *Topics:* Multi-VLAN trunk pruning diagnosis, allowed-list modification using `add` syntax, Native VLAN mismatch remediation, and broadcast domain isolation verification.
 - **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
   *Topics:* IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, port role election, edge PortFast, and BPDU Guard errdisable defense.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**

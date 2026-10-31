@@ -42,6 +42,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 |---|---|---|---|---|
 | VLAN creation & access ports | `switching` | `labs/switching/vlan-segmentation-and-access-ports` (`PTL-0009`) | Simulator Verified | Local broadcast domains, access switchports |
 | 802.1Q trunk, native VLAN & allowed VLANs | `network-security` | `labs/network-security/dtp-and-native-vlan-security` (`PTL-0018`), `PTL-0007` | Simulator Verified | DTP nonegotiate, Native VLAN 999, allowed list pruning |
+| VLAN Trunk Allowed-List Troubleshooting | `switching` | `labs/switching/vlan-trunk-allowed-list-troubleshooting` (`PTL-0044`) | Simulator Verified | Diagnosis of trunk allowed-list omissions, Native VLAN mismatch remediation, and multi-VLAN trunk transport |
 | Rapid STP (RSTP), PortFast & BPDU Guard | `switching` | `labs/switching/rapid-stp-portfast-bpduguard` (`PTL-0017`), `PTL-0007` | Simulator Verified | Rapid PVST+, root bridge election, edge port acceleration, BPDU Guard |
 | Multilayer Switching, SVIs & Routed Ports | `routing` | `labs/routing/layer-3-switch-svis-and-routed-ports` (`PTL-0019`) | Simulator Verified | Hardware CEF inter-VLAN routing, SVIs, routed ports (no switchport), default gateway |
 | Router-on-a-stick inter-VLAN routing | `routing` | `labs/routing/inter-vlan-routing-router-on-a-stick` (`PTL-0010`) | Simulator Verified | Subinterface dot1q encapsulation |

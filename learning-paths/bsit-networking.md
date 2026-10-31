@@ -29,6 +29,8 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
   MAC limiting, sticky MAC learning, violation handling (`protect`, `restrict`, `shutdown`), and `errdisable recovery`.
 - **[PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md)**
   Static 802.1Q trunking, disabling DTP frame negotiation (`switchport nonegotiate`), dedicated Native VLAN 999, and allowed VLAN list pruning.
+- **[PTL-0044: VLAN Trunk Allowed-List Troubleshooting](../labs/switching/vlan-trunk-allowed-list-troubleshooting/README.md)**
+  Diagnosing trunk allowed-list omissions, non-destructive allowed list remediation using `add`, Native VLAN alignment, and cross-switch broadcast isolation.
 - **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
   IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, alternate blocking roles, edge PortFast, and BPDU Guard protection.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
