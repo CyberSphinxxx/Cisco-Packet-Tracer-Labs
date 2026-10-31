@@ -33,6 +33,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md) — Link aggregation, IEEE 802.3ad LACP bundling, and trunking over Port-channel interfaces (`reviewed`, `intermediate`).
 - [PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md) — IEEE 802.1w Rapid PVST+ deployment, deterministic root bridge election, port role mapping, edge PortFast, and BPDU Guard protection (`reviewed`, `intermediate`).
 - [PTL-0044: VLAN Trunk Allowed-List Troubleshooting](../labs/switching/vlan-trunk-allowed-list-troubleshooting/README.md) — Multi-VLAN trunk pruning diagnosis, allowed list remediation with add modifier, and Native VLAN alignment (`reviewed`, `intermediate`).
+- [PTL-0045: Spanning Tree Root and Blocked-Port Investigation](../labs/switching/spanning-tree-root-and-blocked-port-investigation/README.md) — Spanning tree root inversion diagnosis, deterministic bridge priority calculation, and core transit link unblocking (`reviewed`, `intermediate`).
 
 ### 4. Routing (`routing`)
 - [PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md) — End-to-end static routing with `ipv6 unicast-routing` across multi-router transit links (`reviewed`, `intermediate`).

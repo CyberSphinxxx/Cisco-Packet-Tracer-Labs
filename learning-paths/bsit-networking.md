@@ -33,6 +33,8 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
   Diagnosing trunk allowed-list omissions, non-destructive allowed list remediation using `add`, Native VLAN alignment, and cross-switch broadcast isolation.
 - **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
   IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, alternate blocking roles, edge PortFast, and BPDU Guard protection.
+- **[PTL-0045: Spanning Tree Root and Blocked-Port Investigation](../labs/switching/spanning-tree-root-and-blocked-port-investigation/README.md)**
+  Investigating unexpected access root bridge takeovers, root path cost calculation, primary/secondary priority alignment, and core trunk unblocking.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
   Disabling DTP (`switchport nonegotiate`), dedicated native VLANs, parking lot blackhole VLAN, PortFast, and BPDU Guard.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**

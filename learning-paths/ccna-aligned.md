@@ -42,6 +42,8 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
   *Topics:* Multi-VLAN trunk pruning diagnosis, allowed-list modification using `add` syntax, Native VLAN mismatch remediation, and broadcast domain isolation verification.
 - **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
   *Topics:* IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, port role election, edge PortFast, and BPDU Guard errdisable defense.
+- **[PTL-0045: Spanning Tree Root and Blocked-Port Investigation](../labs/switching/spanning-tree-root-and-blocked-port-investigation/README.md)**
+  *Topics:* Spanning tree root inversion diagnosis, path cost calculation, primary (4096) and secondary (8192) root bridge configuration, and core link unblocking.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**
   *Topics:* Link aggregation IEEE 802.3ad LACP, Port-channel logical interfaces, load distribution.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
