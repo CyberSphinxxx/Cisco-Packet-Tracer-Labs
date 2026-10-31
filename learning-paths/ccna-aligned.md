@@ -46,6 +46,8 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
   *Topics:* Native VLAN hopping mitigation, disabling DTP (`switchport nonegotiate`), PortFast, BPDU Guard.
 - **[PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md)**
   *Topics:* Autonomous access point deployment, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP pool configuration, client 802.11 association, and positive/negative security verification.
+- **[PTL-0036: Wireless VLAN Separation and Guest Access](../labs/wireless-wan/wireless-vlan-separation-and-guest-access/README.md)**
+  *Topics:* Multilayer switch SVIs, corporate vs guest VLAN isolation, multi-pool DHCP, WPA2-PSK security, and Extended ACL guest traffic restriction.
 
 ---
 

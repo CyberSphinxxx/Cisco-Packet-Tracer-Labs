@@ -57,6 +57,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | NTP & Syslog Network Monitoring | `network-services` | `labs/network-services/ntp-and-syslog-network-monitoring` (`PTL-0023`) | Simulator Verified | Network Time Protocol clock synchronization, millisecond logging timestamps, centralized remote Syslog forwarding |
 | TFTP Configuration Backup & Restore | `network-services` | `labs/network-services/tftp-configuration-backup-and-restore` (`PTL-0025`) | Simulator Verified | Centralized TFTP archiving over UDP 69, disaster recovery configuration merge, and timeout/error handling |
 | WPA2 Wireless LAN Fundamentals | `wireless-wan` | `labs/wireless-wan/wpa2-wireless-lan-fundamentals` (`PTL-0035`) | Simulator Verified | Autonomous AP, WPA2-PSK AES encryption, Cisco IOS DHCP pool, authorized vs unauthorized client isolation |
+| Wireless VLAN Separation & Guest Access | `wireless-wan` | `labs/wireless-wan/wireless-vlan-separation-and-guest-access` (`PTL-0036`) | Simulator Verified | Catalyst 3560 SVIs, native DHCP pools, guest wireless cell isolation, and Extended ACL traffic filtering |
 
 ---
 

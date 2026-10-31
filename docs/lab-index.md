@@ -64,6 +64,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 
 ### 7. Wireless and WAN Technologies (`wireless-wan`)
 - [PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md) — Autonomous access point deployment, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP services, and client association verification (`reviewed`, `beginner`).
+- [PTL-0036: Wireless VLAN Separation and Guest Access](../labs/wireless-wan/wireless-vlan-separation-and-guest-access/README.md) — Multilayer switch SVIs, corporate vs guest VLAN isolation, multi-pool DHCP, WPA2-PSK security, and Extended ACL traffic restriction (`reviewed`, `intermediate`).
 
 ---
 

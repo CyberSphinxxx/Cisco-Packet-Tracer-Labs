@@ -1,0 +1,195 @@
+Current configuration : 3247 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Core-SW
+!
+!
+no profinet
+!
+!
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 192.168.10.100
+ip dhcp excluded-address 192.168.20.1 192.168.20.10
+!
+ip dhcp pool CORP-POOL
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 192.168.30.100
+ domain-name corpwifi.local
+ip dhcp pool GUEST-POOL
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 192.168.30.100
+ domain-name guestwifi.local
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description AP-Guest Access Port (VLAN 20)
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description Staff-PC Access Port (VLAN 10)
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description Corp-Server Access Port (VLAN 10)
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ shutdown
+!
+interface FastEthernet0/5
+ shutdown
+!
+interface FastEthernet0/6
+ shutdown
+!
+interface FastEthernet0/7
+ shutdown
+!
+interface FastEthernet0/8
+ shutdown
+!
+interface FastEthernet0/9
+ shutdown
+!
+interface FastEthernet0/10
+ shutdown
+!
+interface FastEthernet0/11
+ shutdown
+!
+interface FastEthernet0/12
+ shutdown
+!
+interface FastEthernet0/13
+ shutdown
+!
+interface FastEthernet0/14
+ shutdown
+!
+interface FastEthernet0/15
+ shutdown
+!
+interface FastEthernet0/16
+ shutdown
+!
+interface FastEthernet0/17
+ shutdown
+!
+interface FastEthernet0/18
+ shutdown
+!
+interface FastEthernet0/19
+ shutdown
+!
+interface FastEthernet0/20
+ shutdown
+!
+interface FastEthernet0/21
+ shutdown
+!
+interface FastEthernet0/22
+ shutdown
+!
+interface FastEthernet0/23
+ shutdown
+!
+interface FastEthernet0/24
+ shutdown
+!
+interface GigabitEthernet0/1
+ description Routed Port to Web-Server (DMZ)
+ no switchport
+ ip address 192.168.30.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ description Corporate Default Gateway
+ mac-address 000c.cf5a.0501
+ ip address 192.168.10.1 255.255.255.0
+!
+interface Vlan20
+ description Guest Default Gateway
+ mac-address 000c.cf5a.0502
+ ip address 192.168.20.1 255.255.255.0
+ ip access-group GUEST-RESTRICTION in
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list extended GUEST-RESTRICTION
+ remark Permit DHCP requests from guests to local gateway
+ permit udp any any eq bootps
+ remark Permit DNS queries to DMZ server
+ permit udp any host 192.168.30.100 eq domain
+ remark Permit Web traffic to DMZ server
+ permit tcp any host 192.168.30.100 eq www
+ permit tcp any host 192.168.30.100 eq 443
+ remark Permit ICMP diagnostics to DMZ server
+ permit icmp any host 192.168.30.100
+ remark Explicitly deny guest access to Corporate Staff VLAN 10
+ deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+ remark Permit guest access to any other external networks
+ permit ip 192.168.20.0 0.0.0.255 any
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
