@@ -62,6 +62,9 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md) — Numbered standard and named extended packet filtering with traffic matrices (`reviewed`, `intermediate`).
 - [PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md) — DTP negotiation analysis, switchport nonegotiate, Native VLAN 999 isolation, and allowed VLAN pruning (`reviewed`, `intermediate`).
 
+### 7. Wireless and WAN Technologies (`wireless-wan`)
+- [PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md) — Autonomous access point deployment, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP services, and client association verification (`reviewed`, `beginner`).
+
 ---
 
 ## Comprehensive Capstone Projects

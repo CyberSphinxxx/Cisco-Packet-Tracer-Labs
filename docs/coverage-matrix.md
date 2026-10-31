@@ -56,6 +56,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | DNS Records & HTTP Web Services | `network-services` | `labs/network-services/dns-records-and-http-web-services` (`PTL-0022`) | Simulator Verified | Authoritative DNS server, A & CNAME records, HTTP portal hosting, client resolver verification |
 | NTP & Syslog Network Monitoring | `network-services` | `labs/network-services/ntp-and-syslog-network-monitoring` (`PTL-0023`) | Simulator Verified | Network Time Protocol clock synchronization, millisecond logging timestamps, centralized remote Syslog forwarding |
 | TFTP Configuration Backup & Restore | `network-services` | `labs/network-services/tftp-configuration-backup-and-restore` (`PTL-0025`) | Simulator Verified | Centralized TFTP archiving over UDP 69, disaster recovery configuration merge, and timeout/error handling |
+| WPA2 Wireless LAN Fundamentals | `wireless-wan` | `labs/wireless-wan/wpa2-wireless-lan-fundamentals` (`PTL-0035`) | Simulator Verified | Autonomous AP, WPA2-PSK AES encryption, Cisco IOS DHCP pool, authorized vs unauthorized client isolation |
 
 ---
 

@@ -44,6 +44,8 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
   *Topics:* Link aggregation IEEE 802.3ad LACP, Port-channel logical interfaces, load distribution.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
   *Topics:* Native VLAN hopping mitigation, disabling DTP (`switchport nonegotiate`), PortFast, BPDU Guard.
+- **[PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md)**
+  *Topics:* Autonomous access point deployment, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP pool configuration, client 802.11 association, and positive/negative security verification.
 
 ---
 
