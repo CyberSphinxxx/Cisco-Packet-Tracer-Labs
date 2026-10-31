@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0048",
+  "title": "Multi-Site Routing with Branch Networks",
+  "slug": "multi-site-routing-with-branch-networks",
+  "category": "routing",
+  "summary": "Design and troubleshoot multi-site hub-and-spoke enterprise WAN routing interconnecting corporate headquarters with two regional branch offices. Audit static routes, diagnose recursive next-hop failures and missing return paths, remediate endpoint default gateways, and verify end-to-end spoke-to-hub and spoke-to-spoke data plane reachability.",
+  "difficulty": "intermediate",
+  "topics": [
+    "routing",
+    "static-routing",
+    "hub-and-spoke",
+    "wan",
+    "default-routes",
+    "troubleshooting",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Design and configure static routing in a multi-site enterprise hub-and-spoke WAN architecture",
+    "Configure static default routes on spoke branch routers pointing toward the central headquarters hub",
+    "Configure explicit static return routes on the hub router to reach remote departmental branch subnets",
+    "Diagnose and remediate recursive next-hop routing failures caused by off-subnet gateway IP assignment",
+    "Verify end-to-end bidirectional data plane reachability between branch offices across intermediate transit routers"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4331 Integrated Services Router (3)",
+    "Cisco Catalyst 2960-24TT Switch (3)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise multi-site WAN static routing guide based on CCNA enterprise architecture blueprints and Cisco IOS IP routing standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0048-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/routers/access/4400/software/configuration/guide/isr4400swcfg.html",
+    "https://datatracker.ietf.org/doc/html/rfc1812",
+    "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/8651-31.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

@@ -1,0 +1,40 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "output": "10.0.0.0/8 is variably subnetted, 4 subnets, 2 masks\nS       10.20.0.0/24 [1/0] via 172.16.12.2\nS       10.30.0.0/24 [1/0] via 172.16.13.2"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "br1_routes": "S*   0.0.0.0/0 [1/0] via 172.16.12.1",
+    "br2_routes": "S*   0.0.0.0/0 [1/0] via 172.16.13.1"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "ping 10.20.0.1\n\nPinging 10.20.0.1 with 32 bytes of data:\n\nReply from 10.20.0.1: bytes=32 time<1ms TTL=255\nReply from 10.20.0.1: bytes=32 time<1ms TTL=255\nReply from 10.20.0.1: bytes=32 time<1ms TTL=255\nReply from 10.20.0.1: bytes=32 time=3ms TTL=255\n\nPing statistics for 10.20.0.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 3ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 10.30.0.1\n\nPinging 10.30.0.1 with 32 bytes of data:\n\nReply from 10.30.0.1: bytes=32 time<1ms TTL=255\nReply from 10.30.0.1: bytes=32 time<1ms TTL=255\nReply from 10.30.0.1: bytes=32 time<1ms TTL=255\nReply from 10.30.0.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 10.30.0.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "Request timed out.\nReply from 10.10.0.10: bytes=32 time<1ms TTL=126\nReply from 10.10.0.10: bytes=32 time<1ms TTL=126\n\nPing statistics for 10.10.0.10:\n    Packets: Sent = 4, Received = 2, Lost = 2 (50% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "ping 10.10.0.10\n\nPinging 10.10.0.10 with 32 bytes of data:\n\nReply from 10.10.0.10: bytes=32 time<1ms TTL=126\nReply from 10.10.0.10: bytes=32 time<1ms TTL=126\nReply from 10.10.0.10: bytes=32 time<1ms TTL=126\nReply from 10.10.0.10: bytes=32 time<1ms TTL=126\n\nPing statistics for 10.10.0.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-07": {
+    "status": "PASS",
+    "output": "ping 10.30.0.10\n\nPinging 10.30.0.10 with 32 bytes of data:\n\nReply from 10.30.0.10: bytes=32 time<1ms TTL=125\nReply from 10.30.0.10: bytes=32 time<1ms TTL=125\nReply from 10.30.0.10: bytes=32 time<1ms TTL=125\nReply from 10.30.0.10: bytes=32 time<1ms TTL=125\n\nPing statistics for 10.30.0.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "ping 10.10.0.10\n\nPinging 10.10.0.10 with 32 bytes of data:\n\nRequest timed out."
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "output": "ping 10.10.0.10\n\nPinging 10.10.0.10 with 32 bytes of data:\n\nRequest timed out.",
+    "hq_static_routes": "10.0.0.0/8 is variably subnetted, 3 subnets, 2 masks\nS       10.20.0.0/24 [1/0] via 172.16.12.2"
+  }
+}

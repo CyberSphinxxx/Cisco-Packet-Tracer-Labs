@@ -73,6 +73,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Recursive next-hop routing, default routes (`::/0`), multi-router transit verification, asymmetric return path troubleshooting.
 - **[PTL-0028: Floating Static Routes and Administrative Distance](../labs/routing/floating-static-routes-and-administrative-distance/README.md)**
   Administrative distance hierarchy, primary vs. floating backup routes, link failure convergence, preemption upon circuit restoration.
+- **[PTL-0048: Multi-Site Routing with Branch Networks](../labs/routing/multi-site-routing-with-branch-networks/README.md)**
+  Multi-site hub-and-spoke static routing, spoke default gateway egress, next-hop resolution troubleshooting, and symmetric return route provisioning.
 
 ### 6. Dynamic Routing and Infrastructure Services
 - **[PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md)**

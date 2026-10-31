@@ -73,6 +73,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* Recursive next-hop routing, default routes (`::/0`), multi-router transit verification, asymmetric return path troubleshooting.
 - **[PTL-0028: Floating Static Routes and Administrative Distance](../labs/routing/floating-static-routes-and-administrative-distance/README.md)**
   *Topics:* Administrative distance hierarchy, primary vs. floating backup routes, link failure convergence, preemption upon circuit restoration.
+- **[PTL-0048: Multi-Site Routing with Branch Networks](../labs/routing/multi-site-routing-with-branch-networks/README.md)**
+  *Topics:* Enterprise hub-and-spoke static routing, spoke default gateway configuration, next-hop reachability validation, and symmetric return route verification.
 - **[PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md)**
   *Topics:* RFC 2328 OSPF Area 0, router ID election, wildcard masks, point-to-point interface metrics, passive interfaces, neighbor states.
 - **[PTL-0029: OSPFv2 DR and BDR Elections](../labs/routing/ospfv2-dr-bdr-elections/README.md)**

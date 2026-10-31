@@ -51,6 +51,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | EtherChannel LACP & troubleshooting | `switching` | `labs/switching/etherchannel-lacp` (`PTL-0006`) | Simulator Verified | IEEE 802.3ad link bundling and flag verification |
 | EtherChannel Member Mismatch Diagnosis | `switching` | `labs/switching/lacp-etherchannel-member-mismatch-diagnosis` (`PTL-0046`) | Simulator Verified | Troubleshooting LACP member parameter mismatches, port suspension, and degraded bundles |
 | Static & default routes (IPv4 & IPv6) | `routing` | `labs/routing/dual-stack-static-routing` (`PTL-0001`) | Simulator Verified | Symmetrical dual-stack routing |
+| Multi-Site Routing with Branch Networks | `routing` | `labs/routing/multi-site-routing-with-branch-networks` (`PTL-0048`) | Simulator Verified | Hub-and-spoke static routing, spoke default routes, and explicit return path design |
 | Single-area OSPFv2 dynamic routing | `routing` | `labs/routing/single-area-ospfv2` (`PTL-0011`) | Simulator Verified | Wildcard masks, router-id, passive interfaces |
 | Single-area OSPFv3 dynamic routing for IPv6 | `routing` | `labs/routing/single-area-ospfv3-for-ipv6` (`PTL-0034`) | Simulator Verified | OSPFv3 Area 0, 32-bit Router IDs, Point-to-Point WAN, passive interfaces |
 | DHCP server & relay agent | `network-services` | `labs/network-services/dhcp-server-and-relay` (`PTL-0012`) | Simulator Verified | Cisco IOS DHCP pools, exclusions, helper-address |
