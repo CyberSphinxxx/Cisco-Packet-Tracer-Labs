@@ -89,6 +89,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Network Time Protocol clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and event correlation.
 - **[PTL-0025: TFTP Configuration Backup and Restore](../labs/network-services/tftp-configuration-backup-and-restore/README.md)**
   Centralized configuration archiving over UDP port 69, simulated disaster alteration, complete state restoration, and failure diagnostic handling.
+- **[PTL-0033: Stateful DHCPv6 Address Assignment](../labs/network-services/stateful-dhcpv6-address-assignment/README.md)**
+  Cisco IOS Stateful DHCPv6 server pools, ICMPv6 Router Advertisement Managed-config flags, client DUID lease tracking, and end-to-end IPv6 routing.
 
 ### 7. Traffic Filtering and Access Control
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**

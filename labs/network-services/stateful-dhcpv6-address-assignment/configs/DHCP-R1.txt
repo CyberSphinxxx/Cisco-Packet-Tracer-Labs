@@ -1,0 +1,170 @@
+Current configuration : 1081 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname DHCP-R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+ipv6 dhcp pool IPV6-STATEFUL-LAN1
+ address prefix 2001:DB8:ACAD:1::/64 lifetime 172800 86400
+ dns-server 2001:4860:4860::8888
+ domain-name cisco.lab
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+
+DHCP-R1#nable
+Translating "nable"
+% Unknown command or computer name, or unable to find computer address
+
+DHCP-R1#terminal length 0
+                 ^
+% Invalid input detected at '^' marker.
+	
+DHCP-R1#show running-config
+Building configuration...
+
+Current configuration : 1081 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname DHCP-R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+
+DHCP-R1#nable
+Translating "nable"
+% Unknown command or computer name, or unable to find computer address
+
+DHCP-R1#show running-config
+Building configuration...
+
+Current configuration : 1081 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname DHCP-R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+ipv6 dhcp pool IPV6-STATEFUL-LAN1
+ address prefix 2001:DB8:ACAD:1::/64 lifetime 172800 86400
+ dns-server 2001:4860:4860::8888
+ domain-name cisco.lab
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description Transit Link to Core-R2
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2001:DB8:ACAD:A::1/64
+!
+interface GigabitEthernet0/0/1
+ description LAN 1 Gateway
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2001:DB8:ACAD:1::1/64
+ ipv6 nd managed-config-flag
+ ipv6 dhcp server IPV6-STATEFUL-LAN1
+!
+ip classless
+!
+ip flow-export version 9
+!
+ipv6 route 2001:DB8:ACAD:2::/64 2001:DB8:ACAD:A::2
+!
+!
+banner motd ^C Authorized Access Only - DHCP-R1 Stateful Server ^C
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

@@ -90,6 +90,8 @@ Automated host configuration and IP helper services.
   *Topics:* Network Time Protocol clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and real-time fault notification.
 - **[PTL-0025: TFTP Configuration Backup and Restore](../labs/network-services/tftp-configuration-backup-and-restore/README.md)**
   *Topics:* TFTP configuration archiving over UDP port 69, disaster recovery configuration merge, volatile vs persistent storage, and transfer fault handling.
+- **[PTL-0033: Stateful DHCPv6 Address Assignment](../labs/network-services/stateful-dhcpv6-address-assignment/README.md)**
+  *Topics:* Stateful DHCPv6 configuration on Cisco IOS, ICMPv6 Router Advertisement M and A flag manipulation, client DUID bindings, and dual-router IPv6 packet transport.
 
 ---
 

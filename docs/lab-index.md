@@ -52,6 +52,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0022: DNS Records and HTTP Web Services](../labs/network-services/dns-records-and-http-web-services/README.md) — Authoritative DNS server, A and CNAME records, HTTP portal hosting, and client name resolution (`reviewed`, `beginner`).
 - [PTL-0023: NTP and Syslog Network Monitoring](../labs/network-services/ntp-and-syslog-network-monitoring/README.md) — Network Time Protocol (NTP) clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and real-time fault notification (`reviewed`, `intermediate`).
 - [PTL-0025: TFTP Configuration Backup and Restore](../labs/network-services/tftp-configuration-backup-and-restore/README.md) — Centralized configuration archiving over UDP port 69, simulated disaster alteration, and complete state restoration (`reviewed`, `intermediate`).
+- [PTL-0033: Stateful DHCPv6 Address Assignment](../labs/network-services/stateful-dhcpv6-address-assignment/README.md) — Cisco IOS Stateful DHCPv6 server pools, ICMPv6 Router Advertisement Managed-config flags, client DUID lease tracking, and end-to-end IPv6 routing (`reviewed`, `advanced`).
 
 ### 6. Network Security (`network-security`)
 - [PTL-0003: Securing Switch Management with SSH](../labs/network-security/secure-switch-ssh/README.md) — SSHv2 configuration, RSA key generation, and Telnet disabling on Catalyst switches (`reviewed`, `intermediate`).

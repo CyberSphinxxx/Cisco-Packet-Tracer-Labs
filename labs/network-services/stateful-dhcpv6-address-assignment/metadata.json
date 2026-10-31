@@ -1,0 +1,59 @@
+{
+  "id": "PTL-0033",
+  "title": "Stateful DHCPv6 Address Assignment",
+  "slug": "stateful-dhcpv6-address-assignment",
+  "category": "network-services",
+  "summary": "Configure and verify a Cisco router as a Stateful DHCPv6 server and examine ICMPv6 Router Advertisement Managed configuration flags, client lease bindings, and end-to-end IPv6 routing.",
+  "difficulty": "advanced",
+  "topics": [
+    "ipv6",
+    "dhcpv6",
+    "stateful-dhcpv6",
+    "slaac",
+    "icmpv6",
+    "router-advertisement",
+    "network-services",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Differentiate between SLAAC, Stateless DHCPv6, and Stateful DHCPv6 address assignment methods",
+    "Configure a Cisco IOS router as a Stateful DHCPv6 server with global unicast address pools, DNS server addresses, and domain search lists",
+    "Modify ICMPv6 Router Advertisement flags using the managed-config-flag and no-autoconfig directives",
+    "Configure end-host PC clients to request IPv6 addresses dynamically via Stateful DHCPv6",
+    "Inspect active DHCPv6 client bindings and DUID database entries on Cisco IOS using verification commands",
+    "Validate end-to-end dual-router IPv6 packet routing and reachability from dynamically configured client hosts"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4321 Integrated Services Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise IPv6 services curriculum guide aligned with Cisco CCNA exam topic 4.4 (Configure and verify DHCP client and relay) and IPv6 stateful address assignment fundamentals",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0033-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-mt/dhcp-15-mt-book/ip6-dhcp-server.html",
+    "https://tools.ietf.org/html/rfc8415",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+
