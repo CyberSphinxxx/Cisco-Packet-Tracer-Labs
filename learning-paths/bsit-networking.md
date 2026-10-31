@@ -111,6 +111,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Switchport port security troubleshooting, sticky MAC conflict resolution, administrative recovery of error-disabled ports, and violation mode auditing.
 - **[PTL-0041: IPv4 ACL Troubleshooting with Traffic Matrix](../labs/network-security/ipv4-acl-troubleshooting-with-traffic-matrix/README.md)**
   Traffic matrix validation, shadowed access list entry remediation, directional placement auditing, and wildcard mask calculation corrections.
+- **[PTL-0042: Named Extended IPv4 ACL for Server Access](../labs/network-security/named-extended-ipv4-acl-for-server-access/README.md)**
+  Named extended ACL configuration, server farm perimeter defense, port-level DNS/HTTP filtering, and internal network segmentation.
 
 ---
 

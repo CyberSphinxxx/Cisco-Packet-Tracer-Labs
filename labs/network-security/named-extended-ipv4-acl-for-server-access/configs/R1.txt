@@ -1,0 +1,93 @@
+Current configuration : 1518 bytes
+!
+version 16.6.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description Staff-LAN
+ ip address 192.168.10.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description Guest-LAN
+ ip address 192.168.20.1 255.255.255.0
+ ip access-group GUEST-FILTER in
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/2
+ description Server-DMZ
+ ip address 192.168.100.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list extended GUEST-FILTER
+ remark --- TM-01: Permit DNS to DNS Server ---
+ permit udp 192.168.20.0 0.0.0.255 host 192.168.100.10 eq domain
+ remark --- TM-02: Permit Web HTTP and HTTPS to Portal ---
+ permit tcp 192.168.20.0 0.0.0.255 host 192.168.100.10 eq www
+ permit tcp 192.168.20.0 0.0.0.255 host 192.168.100.10 eq 443
+ remark --- TM-03: Permit ICMP to Local Gateway ---
+ permit icmp 192.168.20.0 0.0.0.255 host 192.168.20.1 echo
+ remark --- TM-04: Deny Remainder of Server DMZ ---
+ deny ip 192.168.20.0 0.0.0.255 192.168.100.0 0.0.0.255
+ remark --- TM-05: Deny Access to Internal Staff LAN ---
+ deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+ remark --- TM-06: Permit General Outbound ---
+ permit ip 192.168.20.0 0.0.0.255 any
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

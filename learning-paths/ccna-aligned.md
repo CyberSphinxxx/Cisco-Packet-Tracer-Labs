@@ -121,6 +121,8 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Diagnosing sticky MAC conflicts, resolving hardware upgrade outages, error-disabled port recovery sequence, and violation mode alignment.
 - **[PTL-0041: IPv4 ACL Troubleshooting with Traffic Matrix](../labs/network-security/ipv4-acl-troubleshooting-with-traffic-matrix/README.md)**
   *Topics:* Diagnosing shadowed access control entries, resolving directional placement conflicts (`in` vs `out`), correcting inverted wildcard masks, and verifying traffic matrices.
+- **[PTL-0042: Named Extended IPv4 ACL for Server Access](../labs/network-security/named-extended-ipv4-acl-for-server-access/README.md)**
+  *Topics:* Named extended ACL creation, Layer 4 port-specific access control (DNS UDP 53, HTTP TCP 80, HTTPS TCP 443), DMZ perimeter defense, and least privilege enforcement.
 
 ---
 
