@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0028",
+  "title": "Floating Static Routes and Administrative Distance",
+  "slug": "floating-static-routes-and-administrative-distance",
+  "category": "routing",
+  "summary": "Configure and verify primary and floating static routes with deliberate administrative distance separation, validating real-time link failover and preemption.",
+  "difficulty": "intermediate",
+  "topics": [
+    "routing",
+    "static-routing",
+    "floating-static-routes",
+    "administrative-distance",
+    "failover",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the role of Administrative Distance (AD) in Cisco IOS routing table installation and path selection",
+    "Configure a primary static default route with default administrative distance (AD 1) across a primary WAN link",
+    "Configure a floating static default route with elevated administrative distance (AD 5) across a secondary backup link",
+    "Configure bidirectional return static routes and floating backup routes on an upstream provider gateway",
+    "Verify that the floating backup route remains dormant in the routing table while the primary link remains operational",
+    "Demonstrate dynamic route failover and path divergence via traceroute when the primary link is administratively disabled",
+    "Demonstrate automatic preemption and routing table convergence when the primary WAN link is restored"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 2911 Integrated Services Router (2)",
+    "PC-PT End Device (1)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise floating static route curriculum guide aligned with Cisco CCNA exam topic 3.4",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0028-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/general-routing-protocols/16631-forming-routes.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_pi/configuration/15-mt/iri-15-mt-book.html",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

@@ -63,6 +63,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Recursive and next-hop static routes, `ipv6 unicast-routing`, default static routes (`0.0.0.0/0` and `::/0`).
 - **[PTL-0027: IPv6 Static and Default Route Troubleshooting](../labs/routing/ipv6-static-and-default-routing-troubleshooting/README.md)**
   Recursive next-hop routing, default routes (`::/0`), multi-router transit verification, asymmetric return path troubleshooting.
+- **[PTL-0028: Floating Static Routes and Administrative Distance](../labs/routing/floating-static-routes-and-administrative-distance/README.md)**
+  Administrative distance hierarchy, primary vs. floating backup routes, link failure convergence, preemption upon circuit restoration.
 
 ### 6. Dynamic Routing and Infrastructure Services
 - **[PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md)**
