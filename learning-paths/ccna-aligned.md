@@ -46,6 +46,8 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
   *Topics:* Spanning tree root inversion diagnosis, path cost calculation, primary (4096) and secondary (8192) root bridge configuration, and core link unblocking.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**
   *Topics:* Link aggregation IEEE 802.3ad LACP, Port-channel logical interfaces, load distribution.
+- **[PTL-0046: LACP EtherChannel Member Mismatch Diagnosis](../labs/switching/lacp-etherchannel-member-mismatch-diagnosis/README.md)**
+  *Topics:* Link aggregation member parameter mismatch diagnosis, port suspension resolution, and multi-VLAN trunk aggregation.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
   *Topics:* Native VLAN hopping mitigation, disabling DTP (`switchport nonegotiate`), PortFast, BPDU Guard.
 - **[PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md)**

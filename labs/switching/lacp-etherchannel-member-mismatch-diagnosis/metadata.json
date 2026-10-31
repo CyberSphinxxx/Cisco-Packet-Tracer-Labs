@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0046",
+  "title": "LACP EtherChannel Member Mismatch Diagnosis",
+  "slug": "lacp-etherchannel-member-mismatch-diagnosis",
+  "category": "switching",
+  "summary": "Diagnose and resolve link aggregation member configuration mismatches in an IEEE 802.3ad LACP EtherChannel bundle between Catalyst switches. Investigate port mode and trunk inconsistencies that cause member interfaces to be suspended, remediate bundle parameters to achieve full bundling, and verify high-availability multi-VLAN trunking.",
+  "difficulty": "intermediate",
+  "topics": [
+    "switching",
+    "etherchannel",
+    "lacp",
+    "802.3ad",
+    "trunking",
+    "vlan",
+    "troubleshooting",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Diagnose IEEE 802.3ad LACP EtherChannel bundle status using Cisco IOS commands (show etherchannel summary, show etherchannel port-channel)",
+    "Identify member interface configuration discrepancies (access vs. trunk mode, VLAN mismatches) preventing active channel bundling",
+    "Understand the impact of port parameter mismatches causing LACP member suspension and degraded channel bandwidth",
+    "Remediate member interface configurations to achieve full operational bundling (SU flag, P member state)",
+    "Verify resilient Layer 2 trunking and end-to-end multi-VLAN data plane delivery across aggregated links"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (4)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise switching laboratory guide based on IEEE 802.3ad / 802.1AX link aggregation standards and Cisco IOS EtherChannel troubleshooting best practices",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0046-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://standards.ieee.org/ieee/802.3ad/1190/",
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/etherchannel/12023-4.html",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swethchl.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

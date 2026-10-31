@@ -39,6 +39,8 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
   Disabling DTP (`switchport nonegotiate`), dedicated native VLANs, parking lot blackhole VLAN, PortFast, and BPDU Guard.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**
   Multi-link bundling using IEEE 802.3ad LACP, Port-channel logical interfaces, and trunking over aggregated links.
+- **[PTL-0046: LACP EtherChannel Member Mismatch Diagnosis](../labs/switching/lacp-etherchannel-member-mismatch-diagnosis/README.md)**
+  Diagnosing LACP member interface parameter mismatches, resolving suspended member ports, and verifying trunk link aggregation.
 
 ---
 
