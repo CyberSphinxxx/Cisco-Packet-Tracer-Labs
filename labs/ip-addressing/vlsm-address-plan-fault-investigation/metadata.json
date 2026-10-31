@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0047",
+  "title": "VLSM Address Plan Fault Investigation",
+  "slug": "vlsm-address-plan-fault-investigation",
+  "category": "ip-addressing",
+  "summary": "Investigate and resolve Variable Length Subnet Masking (VLSM) address plan discrepancies across an enterprise multi-subnet branch network. Diagnose broadcast address host assignment errors, correct default gateway and transit subnet mask mismatches, and verify end-to-end multi-subnet reachability with minimal non-disruptive configuration adjustments.",
+  "difficulty": "intermediate",
+  "topics": [
+    "ip-addressing",
+    "vlsm",
+    "subnetting",
+    "ipv4",
+    "troubleshooting",
+    "routing",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Audit an enterprise VLSM address allocation plan against actual router interface and host endpoint configurations",
+    "Identify invalid host IP assignments, including directed broadcast and network identifier address misuse",
+    "Diagnose and remediate default gateway and inter-router transit subnet mask mismatches",
+    "Calculate exact prefix lengths, subnet masks, and usable host ranges to optimize IPv4 address conservation",
+    "Verify bidirectional intra-subnet and inter-subnet data plane reachability across routed LAN and WAN boundaries"
+  ],
+  "estimated_minutes": 50,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4331 Integrated Services Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (3)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise IPv4 VLSM addressing and troubleshooting guide based on RFC 1878 variable length subnetting standards and Cisco IOS routing best practices",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0047-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc1878",
+    "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+    "https://www.cisco.com/c/en/us/td/docs/routers/access/4400/software/configuration/guide/isr4400swcfg.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

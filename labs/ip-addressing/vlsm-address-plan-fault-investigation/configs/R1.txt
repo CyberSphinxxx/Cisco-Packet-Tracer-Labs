@@ -1,0 +1,77 @@
+version 16.6.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description Engineering LAN
+ ip address 192.168.100.1 255.255.255.192
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description Sales LAN
+ ip address 192.168.100.65 255.255.255.224
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/2
+ description WAN Transit to R2
+ ip address 192.168.100.113 255.255.255.252
+ duplex auto
+ speed auto
+!
+ip classless
+ip route 192.168.100.96 255.255.255.240 192.168.100.114 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

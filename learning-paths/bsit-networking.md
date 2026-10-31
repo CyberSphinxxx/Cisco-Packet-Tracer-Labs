@@ -51,6 +51,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
 ### 4. Router Interfaces and Connected Subnets
 - **[PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md)**
   VLSM subnet calculations, prefix allocation (/26, /28, /30), and multi-site WAN point-to-point addressing.
+- **[PTL-0047: VLSM Address Plan Fault Investigation](../labs/ip-addressing/vlsm-address-plan-fault-investigation/README.md)**
+  Auditing enterprise VLSM allocations, diagnosing directed broadcast host assignments, remediating gateway capacity deficits, and optimizing WAN prefix lengths.
 - **[PTL-0002: Configuring Cisco Router Interfaces](../labs/ip-addressing/router-interface-configuration/README.md)**
   IPv4 subnetting, dual-stack IPv6 interface configuration, link-local addresses, and loopback verification.
 - **[PTL-0005: Verifying Directly Connected Networks](../labs/ip-addressing/verify-connected-networks/README.md)**

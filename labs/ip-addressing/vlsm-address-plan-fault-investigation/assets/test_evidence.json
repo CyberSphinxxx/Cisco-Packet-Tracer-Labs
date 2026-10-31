@@ -1,0 +1,44 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "r1_brief": "Interface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0/0   192.168.100.1   YES manual up                    up \nGigabitEthernet0/0/1   192.168.100.65  YES manual up                    up \nGigabitEthernet0/0/2   192.168.100.113 YES manual up                    up",
+    "g0_mask": "192.168.100.1/26",
+    "g1_mask": "192.168.100.65/27",
+    "g2_mask": "192.168.100.113/30"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "r2_brief": "Interface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0/0   192.168.100.97  YES manual up                    up \nGigabitEthernet0/0/1   unassigned      YES unset  administratively down down \nGigabitEthernet0/0/2   192.168.100.114 YES manual up                    up",
+    "g0_mask": "192.168.100.97/28",
+    "g2_mask": "192.168.100.114/30"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "ping 192.168.100.1\n\nPinging 192.168.100.1 with 32 bytes of data:\n\nReply from 192.168.100.1: bytes=32 time<1ms TTL=255\nReply from 192.168.100.1: bytes=32 time<1ms TTL=255\nReply from 192.168.100.1: bytes=32 time<1ms TTL=255\nReply from 192.168.100.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.100.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 192.168.100.65\n\nPinging 192.168.100.65 with 32 bytes of data:\n\nReply from 192.168.100.65: bytes=32 time<1ms TTL=255\nReply from 192.168.100.65: bytes=32 time<1ms TTL=255\nReply from 192.168.100.65: bytes=32 time<1ms TTL=255\nReply from 192.168.100.65: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.100.65:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "Type escape sequence to abort.\nSending 5, 100-byte ICMP Echos to 192.168.100.114, timeout is 2 seconds:\n.!!!!\nSuccess rate is 80 percent (4/5), round-trip min/avg/max = 0/0/0 ms\n\nR1#ping 192.168.100.114\n\nType escape sequence to abort.\nSending 5, 100-byte ICMP Echos to 192.168.100.114, timeout is 2 seconds:\n!!!!!\nSuccess rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "ping 192.168.100.98\n\nPinging 192.168.100.98 with 32 bytes of data:\n\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\n\nPing statistics for 192.168.100.98:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-07": {
+    "status": "PASS",
+    "output": "ping 192.168.100.98\n\nPinging 192.168.100.98 with 32 bytes of data:\n\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\nReply from 192.168.100.98: bytes=32 time<1ms TTL=126\n\nPing statistics for 192.168.100.98:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "ping 192.168.100.98\n\nPinging 192.168.100.98 with 32 bytes of data:\n\nRequest timed out."
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "output": "ping 192.168.100.65\n\nPinging 192.168.100.65 with 32 bytes of data:\n\nRequest timed out.",
+    "r1_g1_interface": "GigabitEthernet0/0/1 is up, line protocol is up (connected)\n  Hardware is ISR4331-3x1GE, address is 0002.4ae5.1702 (bia 0002.4ae5.1702)\n  Description: Sales LAN\n  Internet address is 192.168.100.65/28\n  MTU 1500 bytes, BW 1000000 Kbit, DLY 10 usec,\n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive not supported\n  Full Duplex, 100Mbps, link type is auto, media type is Auto Select\n  output flow-control is on, input flow-control is on\n  ARP type: ARPA, ARP Timeout 04:00:00, \n  Last input 00:00:08, output 00:00:05, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 0/375/0 (size/max/drops); Total output drops: 0\n  Queueing strategy: fifo\n  Output queue :0/40 (size/max)\n  5 minute input rate 40 bits/sec, 0 packets/sec\n  5 minute output rate 40 bits/sec, 0 packets/sec\n     12 packets input, 1536 bytes, 0 no buffer\n     Received 0 broadcasts (0 IP multicasts)\n     0 runts, 0 giants, 0 throttles\n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog, 1017 multicast, 0 pause input\n     0 input packets with dribble condition detected\n     12 packets output, 1536 bytes, 0 underruns\n     0 output errors, 0 collisions, 1 interface resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     0 lost carrier, 0 no carrier\n     0 output buffer failures, 0 output buffers swapped out\n\nR1#"
+  }
+}
