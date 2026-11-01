@@ -1,0 +1,59 @@
+{
+  "id": "PTL-0051",
+  "title": "DMZ Services with Edge ACL Policy",
+  "slug": "dmz-services-with-edge-acl-policy",
+  "category": "network-security",
+  "summary": "Architect, deploy, and verify enterprise perimeter security using named extended IPv4 Access Control Lists on a Cisco three-legged edge router. Isolate an untrusted Demilitarized Zone hosting public web services from the private corporate intranet, while permitting controlled database access and public reachability conforming to the principle of least privilege.",
+  "difficulty": "advanced",
+  "topics": [
+    "network-security",
+    "dmz",
+    "access-control-lists",
+    "acls",
+    "extended-acls",
+    "least-privilege",
+    "perimeter-security",
+    "network-segmentation",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Architect a three-legged perimeter firewall network with Inside, Outside, and DMZ trust boundaries",
+    "Configure named extended IPv4 Access Control Lists with protocol, port, and subnet filtering",
+    "Permit external client access to public DMZ web services while dropping unauthorized internal traffic",
+    "Enforce strict DMZ-to-Internal isolation with granular application-layer database exception rules",
+    "Diagnose and remediate ACL directionality, shadowing, and interface application binding errors"
+  ],
+  "estimated_minutes": 75,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 2911 Integrated Services Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (3)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise perimeter security and DMZ edge filtering lab guide based on Cisco IOS extended access list standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0051-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-16/sec-data-acl-xe-16-book.html",
+    "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

@@ -1,0 +1,42 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "output": "Extended IP access list OUTSIDE_TO_DMZ\n    permit tcp any host 172.16.2.10 eq www\n    permit tcp any host 172.16.2.10 eq 443\n    permit icmp any host 172.16.2.10 echo\n    deny ip any 192.168.1.0 0.0.0.255\n    deny ip any any"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "output": "Extended IP access list DMZ_POLICY\n    permit tcp host 172.16.2.10 host 192.168.1.50 eq 3306\n    permit icmp 172.16.2.0 0.0.0.255 host 172.16.2.1 echo\n    deny ip 172.16.2.0 0.0.0.255 192.168.1.0 0.0.0.255\n    permit ip host 172.16.2.10 any\n    deny ip any any\n    permit icmp host 172.16.2.10 192.168.1.0 0.0.0.255 echo-reply"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "ping 172.16.2.10\n\nPinging 172.16.2.10 with 32 bytes of data:\n\nReply from 172.16.2.10: bytes=32 time<1ms TTL=127\nReply from 172.16.2.10: bytes=32 time<1ms TTL=127\nReply from 172.16.2.10: bytes=32 time=1ms TTL=127\nReply from 172.16.2.10: bytes=32 time<1ms TTL=127\n\nPing statistics for 172.16.2.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 1ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 192.168.1.50\n\nPinging 192.168.1.50 with 32 bytes of data:\n\nReply from 192.168.1.50: bytes=32 time=1ms TTL=128\nReply from 192.168.1.50: bytes=32 time<1ms TTL=128\nReply from 192.168.1.50: bytes=32 time<1ms TTL=128\nReply from 192.168.1.50: bytes=32 time<1ms TTL=128\n\nPing statistics for 192.168.1.50:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 1ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "\nCisco Packet Tracer PC Command Line 1.0\nC:\\>\nC:\\>ping 192.168.1.50\n\nPinging 192.168.1.50 with 32 bytes of data:\n\nReply from 192.168.1.50: bytes=32 time=1ms TTL=128\nReply from 192.168.1.50: bytes=32 time<1ms TTL=128\nReply from 192.168.1.50: bytes=32 time<1ms TTL=128\nReply from 192.168.1.50: bytes=32 time<1ms TTL=128\n\nPing statistics for 192.168.1.50:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 1ms, Average = 0ms\n\nC:\\>\nC:\\>ping 172.16.2.10\n\nPinging 172.16.2.10 with 32 bytes of data:\n\nRequest timed out.\nRequest timed out.\n"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "ping 172.16.2.1\n\nPinging 172.16.2.1 with 32 bytes of data:\n\nReply from 172.16.2.1: bytes=32 time<1ms TTL=255\nReply from 172.16.2.1: bytes=32 time=15ms TTL=255\nReply from 172.16.2.1: bytes=32 time<1ms TTL=255\nReply from 172.16.2.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 172.16.2.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 15ms, Average = 3ms\n\nC:\\>"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "ping 192.168.1.10\n\nPinging 192.168.1.10 with 32 bytes of data:\n\nReply from 203.0.113.1: Destination host unreachable.\nReply from 203.0.113.1: Destination host unreachable.\nReply from 203.0.113.1: Destination host unreachable.\nReply from 203.0.113.1: Destination host unreachable.\n\nPing statistics for 192.168.1.10:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "output": "ping 192.168.1.50\n\nPinging 192.168.1.50 with 32 bytes of data:\n\nReply from 203.0.113.1: Destination host unreachable.\nReply from 203.0.113.1: Destination host unreachable.\nReply from 203.0.113.1: Destination host unreachable.\nReply from 203.0.113.1: Destination host unreachable.\n\nPing statistics for 192.168.1.50:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "NEG-03": {
+    "status": "PASS",
+    "output": "ping 192.168.1.10\n\nPinging 192.168.1.10 with 32 bytes of data:\n\nReply from 172.16.2.1: Destination host unreachable.\nReply from 172.16.2.1: Destination host unreachable.\nReply from 172.16.2.1: Destination host unreachable.\nReply from 172.16.2.1: Destination host unreachable.\n\nPing statistics for 192.168.1.10:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "NEG-04": {
+    "status": "PASS",
+    "description": "Verified Gi0/1 lacks inbound filter in starter state"
+  }
+}

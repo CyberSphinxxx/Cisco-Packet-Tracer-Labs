@@ -1,4 +1,4 @@
-# Verification Guide: PTL-0050 — Guest Network Segmentation with ACLs
+# Verification Guide: PTL-0050 — Guest Network Segmentation
 
 This verification guide provides systematic testing procedures for validating guest network isolation, least privilege service access, and extended ACL rule processing on Cisco IOS routers.
 

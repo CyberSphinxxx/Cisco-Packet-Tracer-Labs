@@ -139,6 +139,8 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Named extended ACL creation, Layer 4 port-specific access control (DNS UDP 53, HTTP TCP 80, HTTPS TCP 443), DMZ perimeter defense, and least privilege enforcement.
 - **[PTL-0050: Guest Network Segmentation with ACLs](../labs/network-security/guest-network-segmentation-with-acls/README.md)**
   *Topics:* Enterprise guest network isolation, named extended IPv4 ACLs, least privilege service access, and unauthorized internal subnet blocking.
+- **[PTL-0051: DMZ Services with Edge ACL Policy](../labs/network-security/dmz-services-with-edge-acl-policy/README.md)**
+  *Topics:* Three-legged perimeter DMZ architecture, edge router extended ACLs, outside inbound service filtering, and strict DMZ-to-corporate isolation.
 
 ---
 
