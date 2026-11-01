@@ -133,6 +133,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Enterprise guest network perimeter isolation, named extended IPv4 ACLs, least privilege service access, and unauthorized internal subnet blocking.
 - **[PTL-0051: DMZ Services with Edge ACL Policy](../labs/network-security/dmz-services-with-edge-acl-policy/README.md)**
   Three-legged perimeter DMZ architecture, edge router extended ACLs, outside inbound service filtering, and strict DMZ-to-corporate isolation.
+- **[PTL-0053: Secure Management Network Design](../labs/network-security/secure-management-network-design/README.md)**
+  Dedicated management VLAN segmentation, cryptographic SSHv2 access, VTY access-class filtering, and data-plane boundary defense.
 
 ---
 

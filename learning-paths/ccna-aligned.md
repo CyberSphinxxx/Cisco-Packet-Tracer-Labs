@@ -143,6 +143,8 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Enterprise guest network isolation, named extended IPv4 ACLs, least privilege service access, and unauthorized internal subnet blocking.
 - **[PTL-0051: DMZ Services with Edge ACL Policy](../labs/network-security/dmz-services-with-edge-acl-policy/README.md)**
   *Topics:* Three-legged perimeter DMZ architecture, edge router extended ACLs, outside inbound service filtering, and strict DMZ-to-corporate isolation.
+- **[PTL-0053: Secure Management Network Design](../labs/network-security/secure-management-network-design/README.md)**
+  *Topics:* Dedicated management VLAN segmentation, cryptographic SSHv2 access, VTY access-class filtering, and data-plane isolation.
 
 ---
 

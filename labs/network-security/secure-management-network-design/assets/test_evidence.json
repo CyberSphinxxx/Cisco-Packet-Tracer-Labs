@@ -1,0 +1,56 @@
+{
+  "lab_id": "PTL-0053",
+  "timestamp": "2026-11-01T02:11:58Z",
+  "results": {
+    "POS-01": {
+      "description": "Admin-PC ICMP reachability to R1-Edge management gateway (192.168.99.1)",
+      "status": "PASS",
+      "evidence": "ping 192.168.99.1\n\nPinging 192.168.99.1 with 32 bytes of data:\n\nReply from 192.168.99.1: bytes=32 time<1ms TTL=255\nReply from 192.168.99.1: bytes=32 time<1ms TTL=255\nReply from 192.168.99.1: bytes=32 time<1ms TTL=255\nReply from 192.168.99.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.99.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-02": {
+      "description": "Admin-PC ICMP reachability to SW-Core management SVI (192.168.99.2)",
+      "status": "PASS",
+      "evidence": "ping 192.168.99.2\n\nPinging 192.168.99.2 with 32 bytes of data:\n\nReply from 192.168.99.2: bytes=32 time<1ms TTL=255\nReply from 192.168.99.2: bytes=32 time<1ms TTL=255\nReply from 192.168.99.2: bytes=32 time<1ms TTL=255\nReply from 192.168.99.2: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.99.2:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-03": {
+      "description": "Admin-PC ICMP reachability to SW-Access management SVI (192.168.99.3)",
+      "status": "PASS",
+      "evidence": "ping 192.168.99.3\n\nPinging 192.168.99.3 with 32 bytes of data:\n\nReply from 192.168.99.3: bytes=32 time<1ms TTL=255\nReply from 192.168.99.3: bytes=32 time<1ms TTL=255\nReply from 192.168.99.3: bytes=32 time<1ms TTL=255\nReply from 192.168.99.3: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.99.3:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-04": {
+      "description": "User-PC ICMP reachability to data plane default gateway (192.168.10.1)",
+      "status": "PASS",
+      "evidence": "ping 192.168.10.1\n\nPinging 192.168.10.1 with 32 bytes of data:\n\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time=1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.10.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 1ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-05": {
+      "description": "SSHv2 enabled on R1-Edge, SW-Core, and SW-Access",
+      "status": "PASS",
+      "evidence": "R1: SSH-v2, SWC: SSH-v2, SWA: SSH-v2"
+    },
+    "NEG-01": {
+      "description": "User-PC blocked from probing R1-Edge management interface (192.168.99.1)",
+      "status": "PASS",
+      "evidence": "ping 192.168.99.1\n\nPinging 192.168.99.1 with 32 bytes of data:\n\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\n\nPing statistics for 192.168.99.1:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+    },
+    "NEG-02": {
+      "description": "User-PC blocked from probing SW-Core management SVI (192.168.99.2)",
+      "status": "PASS",
+      "evidence": "ping 192.168.99.2\n\nPinging 192.168.99.2 with 32 bytes of data:\n\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\n\nPing statistics for 192.168.99.2:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+    },
+    "NEG-03": {
+      "description": "User-PC blocked from probing SW-Access management SVI (192.168.99.3)",
+      "status": "PASS",
+      "evidence": "ping 192.168.99.3\n\nPinging 192.168.99.3 with 32 bytes of data:\n\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\n\nPing statistics for 192.168.99.3:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+    },
+    "NEG-04": {
+      "description": "Starter R1-Edge lacks USER_FILTER on Gi0/0.10 (unrestricted user routing)",
+      "status": "PASS",
+      "evidence": "Inbound access list is not set"
+    },
+    "NEG-05": {
+      "description": "Starter SW-Access exposes plaintext Telnet on VTY lines",
+      "status": "PASS",
+      "evidence": "line vty 0 4\n login local\n transport input telnet\nline vty 5 15\n login"
+    }
+  }
+}

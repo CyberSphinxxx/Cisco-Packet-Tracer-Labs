@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0053",
+  "title": "Secure Management Network Design",
+  "slug": "secure-management-network-design",
+  "category": "network-security",
+  "summary": "Design, implement, and verify enterprise management plane security using dedicated management VLAN segmentation, cryptographic SSHv2 access, and VTY access-class filtering on Cisco IOS routers and switches. Isolate infrastructure management interfaces from user data subnets and enforce strict administrative access controls.",
+  "difficulty": "advanced",
+  "topics": [
+    "network-security",
+    "management-plane",
+    "ssh",
+    "vty-hardening",
+    "access-control-lists",
+    "segmentation",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Architect a dedicated out-of-band management network design separating management and user data planes",
+    "Configure isolated Switched Virtual Interfaces on dedicated Management VLAN 99 with default gateway reachability",
+    "Enforce cryptographic SSHv2 device management and disable plaintext Telnet on all VTY lines",
+    "Implement standard and extended access control lists restricting administrative access to authorized workstations",
+    "Diagnose and remediate management plane vulnerabilities including default VLAN 1 exposure and missing VTY filters"
+  ],
+  "estimated_minutes": 75,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 2911 Integrated Services Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise management plane hardening guide based on NIST SP 800-123 and Cisco IOS security baselines",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0053-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://csrc.nist.gov/publications/detail/sp/800-123/final",
+    "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_usr_ssh/configuration/xe-16/sec-usr-ssh-xe-16-book.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+
