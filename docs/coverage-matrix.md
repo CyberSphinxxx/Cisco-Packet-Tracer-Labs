@@ -50,6 +50,7 @@ This matrix tracks the coverage of networking competencies outlined in the conte
 | Router-on-a-stick inter-VLAN routing | `routing` | `labs/routing/inter-vlan-routing-router-on-a-stick` (`PTL-0010`) | Simulator Verified | Subinterface dot1q encapsulation |
 | EtherChannel LACP & troubleshooting | `switching` | `labs/switching/etherchannel-lacp` (`PTL-0006`) | Simulator Verified | IEEE 802.3ad link bundling and flag verification |
 | EtherChannel Member Mismatch Diagnosis | `switching` | `labs/switching/lacp-etherchannel-member-mismatch-diagnosis` (`PTL-0046`) | Simulator Verified | Troubleshooting LACP member parameter mismatches, port suspension, and degraded bundles |
+| Campus Distribution and Access VLAN Design | `switching` | `labs/switching/campus-distribution-and-access-vlan-design` (`PTL-0049`) | Simulator Verified | Multilayer campus distribution switching, 802.1Q trunks, SVIs, and inter-VLAN routing |
 | Static & default routes (IPv4 & IPv6) | `routing` | `labs/routing/dual-stack-static-routing` (`PTL-0001`) | Simulator Verified | Symmetrical dual-stack routing |
 | Multi-Site Routing with Branch Networks | `routing` | `labs/routing/multi-site-routing-with-branch-networks` (`PTL-0048`) | Simulator Verified | Hub-and-spoke static routing, spoke default routes, and explicit return path design |
 | Single-area OSPFv2 dynamic routing | `routing` | `labs/routing/single-area-ospfv2` (`PTL-0011`) | Simulator Verified | Wildcard masks, router-id, passive interfaces |

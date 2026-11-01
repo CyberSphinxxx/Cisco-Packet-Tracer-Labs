@@ -1,0 +1,60 @@
+{
+  "id": "PTL-0049",
+  "title": "Campus Distribution and Access VLAN Design",
+  "slug": "campus-distribution-and-access-vlan-design",
+  "category": "switching",
+  "summary": "Implement and troubleshoot an enterprise campus network utilizing a Cisco Catalyst 3560 multilayer distribution switch and dual Catalyst 2960 access switches. Configure Switch Virtual Interfaces (SVIs), activate hardware CEF routing, enforce 802.1Q trunking with custom Native VLAN 99, diagnose trunk pruning omissions and disabled IP routing, and verify end-to-end inter-VLAN data plane delivery.",
+  "difficulty": "advanced",
+  "topics": [
+    "switching",
+    "multilayer-switching",
+    "vlans",
+    "802.1q",
+    "svi",
+    "inter-vlan-routing",
+    "campus-design",
+    "troubleshooting",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Design and deploy a two-tier hierarchical campus network with distribution multilayer switching and Layer 2 access switches",
+    "Configure Switch Virtual Interfaces (SVIs) as default gateways for departmental and server VLANs on a Catalyst 3560",
+    "Activate global IPv4 hardware routing using the ip routing command on a multilayer switch",
+    "Configure 802.1Q trunking with dedicated Native VLAN 99 and prune allowed VLAN lists across distribution uplinks",
+    "Diagnose and remediate inter-VLAN forwarding failures caused by disabled routing, trunk omissions, and port VLAN misassignments"
+  ],
+  "estimated_minutes": 75,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 3560-24PS Multilayer Switch (1)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise campus distribution and access layer switching lab guide based on Cisco Campus LAN Layer 2/3 design standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0049-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_55_se/configuration/guide/3560_scg/swintvlan.html",
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/inter-vlan-routing/41860-howto-L3-intervlanrouting.html",
+    "https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Campus/camp30BR/campus30SWDG.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

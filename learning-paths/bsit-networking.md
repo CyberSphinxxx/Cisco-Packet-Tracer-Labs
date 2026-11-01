@@ -41,6 +41,8 @@ Focuses on Layer 2 switching architectures, virtual LANs, switch management secu
   Multi-link bundling using IEEE 802.3ad LACP, Port-channel logical interfaces, and trunking over aggregated links.
 - **[PTL-0046: LACP EtherChannel Member Mismatch Diagnosis](../labs/switching/lacp-etherchannel-member-mismatch-diagnosis/README.md)**
   Diagnosing LACP member interface parameter mismatches, resolving suspended member ports, and verifying trunk link aggregation.
+- **[PTL-0049: Campus Distribution and Access VLAN Design](../labs/switching/campus-distribution-and-access-vlan-design/README.md)**
+  Multilayer campus distribution switching, 802.1Q trunking, SVI inter-VLAN routing, and end-to-end multi-VLAN service reachability.
 
 ---
 
