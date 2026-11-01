@@ -127,6 +127,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Traffic matrix validation, shadowed access list entry remediation, directional placement auditing, and wildcard mask calculation corrections.
 - **[PTL-0042: Named Extended IPv4 ACL for Server Access](../labs/network-security/named-extended-ipv4-acl-for-server-access/README.md)**
   Named extended ACL configuration, server farm perimeter defense, port-level DNS/HTTP filtering, and internal network segmentation.
+- **[PTL-0050: Guest Network Segmentation with ACLs](../labs/network-security/guest-network-segmentation-with-acls/README.md)**
+  Enterprise guest network perimeter isolation, named extended IPv4 ACLs, least privilege service access, and unauthorized internal subnet blocking.
 
 ---
 

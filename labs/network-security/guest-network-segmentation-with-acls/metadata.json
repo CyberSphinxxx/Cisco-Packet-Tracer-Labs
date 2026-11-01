@@ -1,0 +1,59 @@
+{
+  "id": "PTL-0050",
+  "title": "Guest Network Segmentation with ACLs",
+  "slug": "guest-network-segmentation-with-acls",
+  "category": "network-security",
+  "summary": "Implement and troubleshoot enterprise guest network segmentation using named extended IPv4 Access Control Lists on a Cisco edge router. Enforce least privilege access by permitting essential public DNS, HTTP, and HTTPS services to external servers while strictly isolating and dropping untrusted guest traffic destined for sensitive corporate intranet subnets.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-security",
+    "access-control-lists",
+    "acls",
+    "extended-acls",
+    "guest-segmentation",
+    "traffic-filtering",
+    "least-privilege",
+    "troubleshooting",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Enforce Layer 3 security boundaries between untrusted guest networks and internal corporate resources",
+    "Configure named extended IPv4 Access Control Lists with protocol, port, and subnet filtering",
+    "Apply inbound ACL filtering on edge router interfaces closest to the traffic source",
+    "Permit designated public services including DNS (UDP 53) and HTTP/HTTPS (TCP 80/443) while blocking private corporate subnets",
+    "Diagnose and remediate ACL directionality errors, rule ordering issues, and missing application statements"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 2911 Integrated Services Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise perimeter security and guest isolation lab guide based on Cisco IOS extended access list filtering standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0050-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-16/sec-data-acl-xe-16-book.html",
+    "https://datatracker.ietf.org/doc/html/rfc1918"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

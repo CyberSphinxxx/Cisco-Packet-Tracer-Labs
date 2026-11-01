@@ -1,0 +1,38 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "output": "Extended IP access list GUEST_FILTER\n    permit udp 172.16.50.0 0.0.0.255 host 203.0.113.53 eq domain\n    permit tcp 172.16.50.0 0.0.0.255 host 203.0.113.53 eq www\n    permit tcp 172.16.50.0 0.0.0.255 host 203.0.113.53 eq 443\n    permit icmp 172.16.50.0 0.0.0.255 host 172.16.50.1 echo (24 match(es))\n    deny ip 172.16.50.0 0.0.0.255 192.168.10.0 0.0.0.255 (24 match(es))\n    deny ip any any (24 match(es))"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "output": "GigabitEthernet0/2 is up, line protocol is up (connected)\n  Internet address is 172.16.50.1/24\n  Broadcast address is 255.255.255.255\n  Address determined by setup command\n  MTU is 1500 bytes\n  Helper address is not set\n  Directed broadcast forwarding is disabled\n  Outgoing access list is not set\n  Inbound  access list is GUEST_FILTER\n  Proxy ARP is enabled\n  Security level is default\n  Split horizon is enabled\n  ICMP redirects are always sent\n  ICMP unreachables are always sent\n  ICMP mask replies are never sent\n  IP fast switching is disabled\n  IP fast switching on the same interface is disabled\n  IP Flow switching is disabled\n  IP Fast switching turbo vector\n  IP multicast fast switching is disabled\n  IP multicast distributed fast switching is disabled\n  Router Discovery is disabled\n  IP output packet accounting is disabled\n  IP access violation accounting is disabled\n  TCP/IP header compression is disabled\n  RTP/IP header compression is disabled\n  Probe proxy name replies are disabled\n  Policy routing is disabled\n  Network address translation is disabled\n  BGP Policy Mapping is disabled\n  Input features: MCI Check\n  WCCP Redirect outbound is disabled\n  WCCP Redirect inbound is disabled\n  WCCP Redirect exclude is disabled\n\nR1-Edge#"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "ping 172.16.50.1\n\nPinging 172.16.50.1 with 32 bytes of data:\n\nReply from 172.16.50.1: bytes=32 time<1ms TTL=255\nReply from 172.16.50.1: bytes=32 time<1ms TTL=255\nReply from 172.16.50.1: bytes=32 time<1ms TTL=255\nReply from 172.16.50.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 172.16.50.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 192.168.10.50\n\nPinging 192.168.10.50 with 32 bytes of data:\n\nReply from 192.168.10.50: bytes=32 time<1ms TTL=128\nReply from 192.168.10.50: bytes=32 time<1ms TTL=128\nReply from 192.168.10.50: bytes=32 time<1ms TTL=128\nReply from 192.168.10.50: bytes=32 time=4ms TTL=128\n\nPing statistics for 192.168.10.50:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 4ms, Average = 1ms\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "ping 203.0.113.53\n\nPinging 203.0.113.53 with 32 bytes of data:\n\nReply from 203.0.113.53: bytes=32 time<1ms TTL=127\nReply from 203.0.113.53: bytes=32 time<1ms TTL=127\nReply from 203.0.113.53: bytes=32 time<1ms TTL=127\nReply from 203.0.113.53: bytes=32 time<1ms TTL=127\n\nPing statistics for 203.0.113.53:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "ping 192.168.10.10\n\nPinging 192.168.10.10 with 32 bytes of data:\n\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\n\nPing statistics for 192.168.10.10:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "output": "ping 192.168.10.50\n\nPinging 192.168.10.50 with 32 bytes of data:\n\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\n\nPing statistics for 192.168.10.50:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "NEG-03": {
+    "status": "PASS",
+    "output": "ping 203.0.113.53\n\nPinging 203.0.113.53 with 32 bytes of data:\n\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\nReply from 172.16.50.1: Destination host unreachable.\n\nPing statistics for 203.0.113.53:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "NEG-04": {
+    "status": "PASS",
+    "output": "GigabitEthernet0/2 is up, line protocol is up (connected)\n  Internet address is 172.16.50.1/24\n  Broadcast address is 255.255.255.255\n  Address determined by setup command\n  MTU is 1500 bytes\n  Helper address is not set\n  Directed broadcast forwarding is disabled\n  Outgoing access list is not set\n  Inbound  access list is not set\n  Proxy ARP is enabled\n  Security level is default\n  Split horizon is enabled\n  ICMP redirects are always sent\n  ICMP unreachables are always sent\n  ICMP mask replies are never sent\n  IP fast switching is disabled\n  IP fast switching on the same interface is disabled\n  IP Flow switching is disabled\n  IP Fast switching turbo vector\n  IP multicast fast switching is disabled\n  IP multicast distributed fast switching is disabled\n  Router Discovery is disabled\n  IP output packet accounting is disabled\n  IP access violation accounting is disabled\n  TCP/IP header compression is disabled\n  RTP/IP header compression is disabled\n  Probe proxy name replies are disabled\n  Policy routing is disabled\n  Network address translation is disabled\n  BGP Policy Mapping is disabled\n  Input features: MCI Check\n  WCCP Redirect outbound is disabled\n  WCCP Redirect inbound is disabled\n  WCCP Redirect exclude is disabled\n\nR1-Edge#"
+  }
+}
