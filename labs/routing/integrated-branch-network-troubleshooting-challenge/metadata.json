@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0055",
+  "title": "Integrated Branch Network Troubleshooting Challenge",
+  "slug": "integrated-branch-network-troubleshooting-challenge",
+  "category": "routing",
+  "summary": "Diagnose and resolve multi-domain branch office faults spanning 802.1Q trunk allowed-VLAN pruning, IP helper forwarding, static return routing, and perimeter access control lists in a multi-tier Cisco IOS environment.",
+  "difficulty": "advanced",
+  "topics": [
+    "troubleshooting",
+    "vlan-trunking",
+    "ip-helper-address",
+    "static-routing",
+    "acls",
+    "router-on-a-stick",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Isolate and resolve 802.1Q trunk allowed-VLAN pruning misconfigurations that drop inter-VLAN traffic",
+    "Verify and repair Cisco IOS IP helper-address configuration across router boundaries",
+    "Diagnose and correct asymmetric or mispointed static return routes that blackhole enterprise traffic",
+    "Analyze and refine extended access control lists to eliminate unintended packet filtering",
+    "Verify complete bidirectional connectivity across multi-domain branch networks"
+  ],
+  "estimated_minutes": 75,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 2911 Integrated Services Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "Server-PT Corporate Server (1)",
+    "PC-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored comprehensive multi-domain branch network troubleshooting challenge integrating VLAN trunking, DHCP helper services, routing, and security policies",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0055-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/xe-16/dhcp-xe-16-book/dhcp-relay-agent.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_pi/configuration/xe-16/iri-xe-16-book.html",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swvlan.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}

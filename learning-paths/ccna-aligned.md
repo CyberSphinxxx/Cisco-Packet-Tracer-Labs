@@ -91,6 +91,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* OSPFv3 protocol operation, 32-bit dotted-decimal Router IDs, interface-level Area 0 activation, Point-to-Point WAN network types, passive-interface constraints, and end-to-end multi-hop IPv6 reachability.
 - **[PTL-0054: Dual-Stack IPv4 and IPv6 Branch Network](../labs/routing/dual-stack-ipv4-and-ipv6-branch-network/README.md)**
   *Topics:* Enterprise dual-stack architecture, simultaneous IPv4 and IPv6 static routing, hub-and-spoke transit design, and route next-hop fault isolation.
+- **[PTL-0055: Integrated Branch Network Troubleshooting Challenge](../labs/routing/integrated-branch-network-troubleshooting-challenge/README.md)**
+  *Topics:* Multi-domain branch office troubleshooting, 802.1Q trunk allowed-VLAN pruning, DHCP relay forwarding, asymmetric static return routing, and perimeter ACL filtering.
 
 ---
 
