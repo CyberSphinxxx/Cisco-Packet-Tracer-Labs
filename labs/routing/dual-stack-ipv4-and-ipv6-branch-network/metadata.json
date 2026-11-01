@@ -1,0 +1,56 @@
+{
+  "id": "PTL-0054",
+  "title": "Dual-Stack IPv4 and IPv6 Branch Network",
+  "slug": "dual-stack-ipv4-and-ipv6-branch-network",
+  "category": "routing",
+  "summary": "Design, deploy, and verify dual-stack IPv4 and IPv6 enterprise branch connectivity using static and default routing across a hub-and-spoke transit topology. Configure simultaneous IPv4 and IPv6 addressing, establish dual-stack default gateways, and isolate routing misconfigurations in Cisco IOS environments.",
+  "difficulty": "advanced",
+  "topics": [
+    "routing",
+    "dual-stack",
+    "ipv6-routing",
+    "static-routing",
+    "branch-network",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Configure dual-stack IPv4 and IPv6 interface addressing and link-local scopes on branch and core routers",
+    "Implement simultaneous IPv4 and IPv6 static and default routes across point-to-point transit networks",
+    "Verify end-to-end bidirectional dual-stack reachability between remote branch LAN subnets",
+    "Diagnose and resolve routing anomalies including invalid next-hop IP addresses and missing IPv6 default routes",
+    "Validate routing tables, neighbor discovery tables, and ARP tables for deterministic dual-stack forwarding"
+  ],
+  "estimated_minutes": 75,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 2911 Integrated Services Router (3)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise dual-stack branch routing laboratory aligned with CCNA Enterprise infrastructure and IPv6 transition guidelines",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0054-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/configuration/xe-16/ipv6-xe-16-book/ip6-stat-routes.html",
+    "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/13600-4.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6_nman/configuration/15-mt/ip6n-15-mt-book/ip6-dual-stack.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

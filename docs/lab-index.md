@@ -51,6 +51,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0031: OSPFv2 Neighbor Adjacency Troubleshooting](../labs/routing/ospfv2-neighbor-adjacency-troubleshooting/README.md) — Diagnosis and remediation of OSPF Hello/Dead timer mismatches, Area ID errors, missing network statements, and passive interface placement (`reviewed`, `intermediate`).
 - [PTL-0032: HSRP First-Hop Gateway Failover](../labs/routing/hsrp-first-hop-gateway-failover/README.md) — Configuration and verification of Cisco Hot Standby Router Protocol (HSRPv2) priority, preemption, VIP ARP resolution, and deliberate gateway failover (`reviewed`, `advanced`).
 - [PTL-0034: Single-Area OSPFv3 for IPv6](../labs/routing/single-area-ospfv3-for-ipv6/README.md) — Single-area OSPFv3 for IPv6 configuration, 32-bit Router IDs, point-to-point transit networks, passive interfaces, and multi-hop route propagation (`reviewed`, `advanced`).
+- [PTL-0054: Dual-Stack IPv4 and IPv6 Branch Network](../labs/routing/dual-stack-ipv4-and-ipv6-branch-network/README.md) — Dual-stack enterprise branch routing architecture, IPv4 and IPv6 static routes across hub-and-spoke transit links, loopback service reachability, and next-hop fault isolation (`reviewed`, `advanced`).
 
 ### 5. Network Services (`network-services`)
 - [PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md) — Cisco IOS dynamic address allocation, pool exclusions, and IP helper-address relaying (`reviewed`, `intermediate`).

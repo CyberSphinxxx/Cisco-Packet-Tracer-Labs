@@ -89,6 +89,8 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* First Hop Redundancy Protocols (FHRP), Cisco HSRPv2 configuration, virtual IP and MAC operations, priority-driven active/standby elections, preemption, hold timer failover, transparent client default gateway redundancy.
 - **[PTL-0034: Single-Area OSPFv3 for IPv6](../labs/routing/single-area-ospfv3-for-ipv6/README.md)**
   *Topics:* OSPFv3 protocol operation, 32-bit dotted-decimal Router IDs, interface-level Area 0 activation, Point-to-Point WAN network types, passive-interface constraints, and end-to-end multi-hop IPv6 reachability.
+- **[PTL-0054: Dual-Stack IPv4 and IPv6 Branch Network](../labs/routing/dual-stack-ipv4-and-ipv6-branch-network/README.md)**
+  *Topics:* Enterprise dual-stack architecture, simultaneous IPv4 and IPv6 static routing, hub-and-spoke transit design, and route next-hop fault isolation.
 
 ---
 
