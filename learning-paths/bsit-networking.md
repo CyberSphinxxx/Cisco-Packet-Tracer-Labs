@@ -109,6 +109,8 @@ Focuses on Layer 3 routing mechanisms, inter-VLAN routing, dynamic OSPF routing,
   Diagnosing and remediating client resolver address misconfigurations, disabled DNS daemon services, and missing A/CNAME resource records across routed enterprise subnets.
 - **[PTL-0043: NAT and PAT Troubleshooting Challenge](../labs/network-services/nat-and-pat-troubleshooting-challenge/README.md)**
   Diagnosing NAT inside/outside interface role errors, fixing translation ACL subnet mismatches, restoring dynamic PAT overload, and verifying translation tables.
+- **[PTL-0052: DHCP Helper-Address Multi-Subnet Troubleshooting](../labs/network-services/dhcp-relay-troubleshooting-across-vlans/README.md)**
+  Diagnosing and remediating multi-subnet DHCP helper-address forwarding failures, subinterface helper-address misdirection, and central server pool scope mismatches.
 - **[PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md)**
   Autonomous 802.11 access point integration, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP pool allocation, and authorized client verification.
 - **[PTL-0036: Wireless VLAN Separation and Guest Access](../labs/wireless-wan/wireless-vlan-separation-and-guest-access/README.md)**

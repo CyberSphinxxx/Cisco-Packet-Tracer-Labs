@@ -1,0 +1,51 @@
+{
+  "lab_id": "PTL-0052",
+  "timestamp": "2026-11-01T01:45:45Z",
+  "results": {
+    "POS-01": {
+      "description": "PC-VLAN10 dynamic IP lease in 192.168.10.0/24 with gateway 192.168.10.1",
+      "status": "PASS",
+      "evidence": "IP=192.168.10.11, Mask=255.255.255.0, GW=192.168.10.1"
+    },
+    "POS-02": {
+      "description": "PC-VLAN20 dynamic IP lease in 192.168.20.0/24 with gateway 192.168.20.1",
+      "status": "PASS",
+      "evidence": "IP=192.168.20.11, Mask=255.255.255.0, GW=192.168.20.1"
+    },
+    "POS-03": {
+      "description": "Central DHCP server R1-HQ maintains active bindings for both VLAN subnets",
+      "status": "PASS",
+      "evidence": "IP address       Client-ID/              Lease expiration        Type\n                 Hardware address\n192.168.10.11    0002.17A5.9307           --                     Automatic\n192.168.20.11    0005.5E2A.C8A3           --                     Automatic"
+    },
+    "POS-04": {
+      "description": "PC-VLAN10 ICMP reachability to subinterface gateway 192.168.10.1",
+      "status": "PASS",
+      "evidence": "ping 192.168.10.1\n\nPinging 192.168.10.1 with 32 bytes of data:\n\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.10.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-05": {
+      "description": "PC-VLAN20 ICMP reachability to subinterface gateway 192.168.20.1",
+      "status": "PASS",
+      "evidence": "ping 192.168.20.1\n\nPinging 192.168.20.1 with 32 bytes of data:\n\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.20.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-06": {
+      "description": "Inter-VLAN ICMP reachability PC-VLAN10 -> PC-VLAN20 (192.168.20.11)",
+      "status": "PASS",
+      "evidence": "ping 192.168.20.11\n\nPinging 192.168.20.11 with 32 bytes of data:\n\nReply from 192.168.20.11: bytes=32 time<1ms TTL=127\nReply from 192.168.20.11: bytes=32 time<1ms TTL=127\nReply from 192.168.20.11: bytes=32 time<1ms TTL=127\nReply from 192.168.20.11: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.20.11:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-07": {
+      "description": "End-to-end ICMP reachability PC-VLAN10 -> R1-HQ WAN (10.0.0.1)",
+      "status": "PASS",
+      "evidence": "ping 10.0.0.1\n\nPinging 10.0.0.1 with 32 bytes of data:\n\nReply from 10.0.0.1: bytes=32 time<1ms TTL=254\nReply from 10.0.0.1: bytes=32 time=16ms TTL=254\nReply from 10.0.0.1: bytes=32 time<1ms TTL=254\nReply from 10.0.0.1: bytes=32 time<1ms TTL=254\n\nPing statistics for 10.0.0.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 16ms, Average = 4ms\n\nC:\\>"
+    },
+    "NEG-01": {
+      "description": "PC-VLAN10 fails to obtain dynamic lease due to wrong helper-address 10.0.0.5",
+      "status": "PASS",
+      "evidence": "Starter IP=169.254.147.7"
+    },
+    "NEG-02": {
+      "description": "PC-VLAN20 fails to obtain dynamic lease due to DHCP pool scope mismatch 192.168.200.0/24",
+      "status": "PASS",
+      "evidence": "Starter IP=169.254.200.163"
+    }
+  }
+}

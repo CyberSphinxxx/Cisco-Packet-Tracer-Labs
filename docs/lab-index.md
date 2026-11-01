@@ -62,6 +62,7 @@ This index catalogs the educational Packet Tracer lab guides available in this r
 - [PTL-0033: Stateful DHCPv6 Address Assignment](../labs/network-services/stateful-dhcpv6-address-assignment/README.md) — Cisco IOS Stateful DHCPv6 server pools, ICMPv6 Router Advertisement Managed-config flags, client DUID lease tracking, and end-to-end IPv6 routing (`reviewed`, `advanced`).
 - [PTL-0037: DNS Resolution Failure Troubleshooting](../labs/network-services/dns-resolution-failure-troubleshooting/README.md) — Diagnosis and remediation of client resolver misconfigurations, disabled DNS services, and missing A/CNAME records across routed subnets (`reviewed`, `beginner`).
 - [PTL-0043: NAT and PAT Troubleshooting Challenge](../labs/network-services/nat-and-pat-troubleshooting-challenge/README.md) — Diagnosis and remediation of NAT inside/outside interface errors, translation ACL mismatches, and dynamic PAT overload verification (`reviewed`, `intermediate`).
+- [PTL-0052: DHCP Helper-Address Multi-Subnet Troubleshooting](../labs/network-services/dhcp-relay-troubleshooting-across-vlans/README.md) — Multi-subnet DHCP helper-address forwarding diagnosis, subinterface helper-address misdirection remediation, and central server scope mismatch resolution (`reviewed`, `intermediate`).
 
 ### 6. Network Security (`network-security`)
 - [PTL-0003: Securing Switch Management with SSH](../labs/network-security/secure-switch-ssh/README.md) — SSHv2 configuration, RSA key generation, and Telnet disabling on Catalyst switches (`reviewed`, `intermediate`).

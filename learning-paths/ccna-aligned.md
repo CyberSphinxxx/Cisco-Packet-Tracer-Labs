@@ -114,6 +114,8 @@ Automated host configuration and IP helper services.
   *Topics:* Troubleshooting client DNS resolver settings, diagnosing disabled DNS server daemons, populating missing A and CNAME records, and validating resolution via nslookup and ping.
 - **[PTL-0043: NAT and PAT Troubleshooting Challenge](../labs/network-services/nat-and-pat-troubleshooting-challenge/README.md)**
   *Topics:* Diagnosing NAT inside/outside interface role misconfigurations, correcting translation ACL subnet mismatches, dynamic PAT overload verification, and translation table inspection.
+- **[PTL-0052: DHCP Helper-Address Multi-Subnet Troubleshooting](../labs/network-services/dhcp-relay-troubleshooting-across-vlans/README.md)**
+  *Topics:* Multi-subnet DHCP helper-address forwarding troubleshooting, subinterface helper-address misdirection remediation, and central server scope mismatch resolution.
 
 ---
 
