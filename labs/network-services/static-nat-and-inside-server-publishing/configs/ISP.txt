@@ -1,0 +1,29 @@
+! ==========================================
+! Router ISP (Upstream Simulated Internet Service Provider)
+! Lab: Static NAT and Inside Server Publishing (PTL-0021)
+! ==========================================
+enable
+configure terminal
+hostname ISP
+no ip domain-lookup
+
+! Link to Enterprise Edge Router R1
+interface GigabitEthernet0/0/0
+ description Link to R1 Enterprise Edge
+ ip address 203.0.113.2 255.255.255.248
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! Link to Simulated External / Public Client Subnet
+interface GigabitEthernet0/0/1
+ description Link to External Internet Client Network
+ ip address 198.51.100.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+end
+copy running-config startup-config

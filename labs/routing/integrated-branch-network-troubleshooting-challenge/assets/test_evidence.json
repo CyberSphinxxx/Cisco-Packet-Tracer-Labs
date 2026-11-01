@@ -1,0 +1,57 @@
+{
+  "lab_id": "PTL-0055",
+  "timestamp": "2026-11-01T04:01:16Z",
+  "reload_verified": true,
+  "results": {
+    "POS-01": {
+      "description": "Staff-PC1 receives dynamic IPv4 configuration via DHCP relay",
+      "status": "PASS",
+      "evidence": "Assigned IP: 192.168.10.11 (via DHCP)"
+    },
+    "POS-02": {
+      "description": "Staff-PC1 ICMP reachability to VLAN 10 default gateway (192.168.10.1)",
+      "status": "PASS",
+      "evidence": "ping 192.168.10.1\n\nPinging 192.168.10.1 with 32 bytes of data:\n\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.10.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-03": {
+      "description": "Eng-PC2 ICMP reachability to VLAN 20 default gateway (192.168.20.1)",
+      "status": "PASS",
+      "evidence": "ping 192.168.20.1\n\nPinging 192.168.20.1 with 32 bytes of data:\n\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time=4ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.20.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 4ms, Average = 1ms\n\nC:\\>"
+    },
+    "POS-04": {
+      "description": "Eng-PC2 inter-VLAN ICMP reachability to Staff-PC1 (192.168.10.11)",
+      "status": "PASS",
+      "evidence": "ping 192.168.10.11\n\nPinging 192.168.10.11 with 32 bytes of data:\n\nReply from 192.168.10.11: bytes=32 time=6ms TTL=127\nReply from 192.168.10.11: bytes=32 time<1ms TTL=127\nReply from 192.168.10.11: bytes=32 time=4ms TTL=127\nReply from 192.168.10.11: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.10.11:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 6ms, Average = 2ms\n\nC:\\>"
+    },
+    "POS-05": {
+      "description": "Eng-PC2 WAN ICMP reachability to HQ-Server (10.0.1.100)",
+      "status": "PASS",
+      "evidence": "ping 10.0.1.100\n\nPinging 10.0.1.100 with 32 bytes of data:\n\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\n\nPing statistics for 10.0.1.100:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-06": {
+      "description": "Staff-PC1 WAN ICMP reachability to HQ-Server (10.0.1.100)",
+      "status": "PASS",
+      "evidence": "ping 10.0.1.100\n\nPinging 10.0.1.100 with 32 bytes of data:\n\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\nReply from 10.0.1.100: bytes=32 time<1ms TTL=126\n\nPing statistics for 10.0.1.100:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "NEG-01": {
+      "description": "Starter Branch-SW1 trunk prunes VLAN 20 (Eng-PC2 gateway unreachable)",
+      "status": "PASS",
+      "evidence": "ping 192.168.20.1\n\nPinging 192.168.20.1 with 32 bytes of data:\n\nRequest timed out."
+    },
+    "NEG-02": {
+      "description": "Starter Branch-R2 lacks DHCP helper (Staff-PC1 fails to obtain dynamic lease)",
+      "status": "PASS",
+      "evidence": "Cisco Packet Tracer PC Command Line 1.0\nC:\\>ipconfig\n\nFastEthernet0 Connection:(default port)\n\n   Connection-specific DNS Suffix..: \n   Link-local IPv6 Address.........: FE80::204:9AFF:FEED:B60E\n   IPv6 Address....................: ::\n   Autoconfiguration IPv4 Address..: 169.254.182.14\n   Subnet Mask.....................: 255.255.0.0\n   Default Gateway.................: ::\n                                     0.0.0.0\n\nBluetooth Connection:\n\n   Connection-specific DNS Suffix..: \n   Link-local IPv6 Address.........: ::\n   IPv6 Address....................: ::\n   IPv4 Address....................: 0.0.0.0\n   Subnet Mask.....................: 0.0.0.0\n   Default Gateway.................: ::\n                                     0.0.0.0\n\nC:\\>"
+    },
+    "NEG-03": {
+      "description": "Starter HQ-R1 static route mispoints to unresolvable next-hop (10.1.12.6)",
+      "status": "PASS",
+      "evidence": "Mispointed static route 192.168.0.0/16 via 10.1.12.6"
+    },
+    "NEG-04": {
+      "description": "Starter Branch-R2 edge ACL explicitly drops ICMP to HQ-Server",
+      "status": "PASS",
+      "evidence": "Extended IP access list 101\n    deny icmp any host 10.0.1.100\n    permit ip any any"
+    }
+  }
+}

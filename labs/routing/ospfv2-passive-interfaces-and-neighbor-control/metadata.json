@@ -1,0 +1,59 @@
+{
+  "id": "PTL-0030",
+  "title": "OSPFv2 Passive Interfaces and Neighbor Control",
+  "slug": "ospfv2-passive-interfaces-and-neighbor-control",
+  "category": "routing",
+  "summary": "Suppress unnecessary OSPFv2 Hello transmissions on access LAN segments while maintaining link-state route advertisements and transit neighbor adjacencies.",
+  "difficulty": "intermediate",
+  "topics": [
+    "routing",
+    "ospf",
+    "ospfv2",
+    "passive-interface",
+    "neighbor-control",
+    "stub-network",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the security risks and resource inefficiencies of sending OSPFv2 Hello packets to edge LAN segments",
+    "Configure individual interface suppression using the passive-interface command under the OSPF router process",
+    "Implement an enterprise security best practice using passive-interface default followed by targeted no passive-interface exclusions",
+    "Verify that passive interfaces suppress Hello packet transmission while continuing to advertise connected subnets into the Link-State Database (LSDB)",
+    "Verify that transit router neighbor adjacencies remain in the FULL state across active point-to-point links",
+    "Verify end-to-end data plane reachability across interconnected multi-hop OSPF networks",
+    "Analyze the operational impact of inadvertently making a transit link passive through negative failure injection"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4321 Integrated Services Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (1)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise OSPFv2 interface security curriculum guide aligned with Cisco CCNA exam topic 3.2",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0030-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/13689-17.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/15-mt/iro-15-mt-book.html",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

@@ -1,0 +1,60 @@
+{
+  "id": "PTL-0035",
+  "title": "WPA2 Wireless LAN Fundamentals",
+  "slug": "wpa2-wireless-lan-fundamentals",
+  "category": "wireless-wan",
+  "summary": "Design, deploy, and verify a standalone 802.11 wireless local area network using an autonomous access point, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP services on an edge router, and client host association verification.",
+  "difficulty": "beginner",
+  "topics": [
+    "wireless",
+    "wpa2-psk",
+    "access-point",
+    "dhcp",
+    "lan-switching",
+    "aes",
+    "802.11",
+    "security"
+  ],
+  "learning_objectives": [
+    "Deploy and configure an autonomous 802.11 wireless access point (AccessPoint-PT) integrated with switched Ethernet infrastructure",
+    "Secure the wireless local area network using WPA2-Personal (Pre-Shared Key) and Advanced Encryption Standard (AES) cipher suites",
+    "Implement Cisco IOS DHCP address pool services on an upstream default gateway router to lease IPv4 parameters to wireless stations",
+    "Equip and configure portable client hosts with 802.11 wireless network interface modules (PT-LAPTOP-NM-1W)",
+    "Verify successful 802.11 association, dynamic IP acquisition, and end-to-end IP reachability from wireless stations to wired intranet servers",
+    "Test and document negative authentication scenarios demonstrating that incorrect Pre-Shared Keys are blocked from network association"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4321 Integrated Services Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "AccessPoint-PT Wireless Access Point (1)",
+    "Server-PT End Device (1)",
+    "Laptop-PT Portable Wireless Station (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored wireless networking curriculum laboratory aligned with Cisco CCNA exam topic 2.6 (Configure and verify wireless LAN using WPA2 PSK GUI / autonomous architectures) and CCNA 200-301 Section 2.0 (Network Access)",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0035-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/wireless/aironet-1200-series/29494-wpa2-psk-config.html",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swstp.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

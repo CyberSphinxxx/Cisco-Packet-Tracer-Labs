@@ -1,0 +1,31 @@
+! ==========================================
+! Router ISP (Simulated Internet Service Provider)
+! Lab: IPv4 Dynamic PAT at the Edge (PTL-0020)
+! ==========================================
+enable
+configure terminal
+hostname ISP
+
+! WAN Interface to Customer Edge Router R1
+interface GigabitEthernet0/0/0
+ description WAN Transit Link to R1
+ ip address 203.0.113.2 255.255.255.252
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! Public Server Segment
+interface GigabitEthernet0/0/1
+ description Public Server LAN
+ ip address 198.51.100.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! Note: ISP maintains only public connected routes.
+! No routing entries exist for RFC 1918 private space (192.168.10.0/24).
+
+end
+copy running-config startup-config

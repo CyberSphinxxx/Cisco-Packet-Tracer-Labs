@@ -1,0 +1,95 @@
+Current configuration : 1225 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ISP-R2
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX1524Q36C-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Internet Service Simulation
+ ip address 198.51.100.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ description Primary WAN Link to Edge-R1
+ ip address 10.1.1.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ description Backup WAN Link to Edge-R1
+ ip address 10.2.2.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ description Server LAN Link to Web-Server
+ ip address 203.0.113.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 192.168.10.0 255.255.255.0 10.1.1.1 
+ip route 192.168.100.0 255.255.255.0 10.1.1.1 
+ip route 192.168.10.0 255.255.255.0 10.2.2.1 5
+ip route 192.168.100.0 255.255.255.0 10.2.2.1 5
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C Authorized Access Only - ISP-R2 Core Gateway ^C
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

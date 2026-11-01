@@ -1,0 +1,59 @@
+{
+  "id": "PTL-0042",
+  "title": "Named Extended IPv4 ACL for Server Access",
+  "slug": "named-extended-ipv4-acl-for-server-access",
+  "category": "network-security",
+  "summary": "Design, implement, and verify named extended IPv4 Access Control Lists to control traffic flow between corporate network zones. Enforce the principle of least privilege by selectively permitting DNS (UDP 53) and web services (TCP 80/443) to public DMZ resources while isolating sensitive internal database servers and departmental subnets.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-security",
+    "access-control-lists",
+    "named-extended-acl",
+    "packet-filtering",
+    "dmz-security",
+    "least-privilege",
+    "traffic-matrix",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Design and configure Cisco IOS named extended access control lists using descriptive naming conventions and remark annotations",
+    "Implement granular Layer 4 filtering to permit specific protocols (DNS UDP 53, HTTP TCP 80, HTTPS TCP 443) while denying all other services",
+    "Enforce network segmentation and zone isolation by placing extended ACLs close to the source traffic on router ingress interfaces",
+    "Protect sensitive internal database servers and corporate departments against unauthorized guest access",
+    "Validate security filtering using end-to-end traffic probes and verify live match statistics using Cisco IOS show access-lists"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4331 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (3)",
+    "PC-PT End Device (1)",
+    "Laptop-PT End Device (1)",
+    "Server-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network security laboratory guide based on Cisco IOS IPv4 named extended access control list architecture and DMZ security best practices",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0042-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-16/sec-data-acl-xe-16-book.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

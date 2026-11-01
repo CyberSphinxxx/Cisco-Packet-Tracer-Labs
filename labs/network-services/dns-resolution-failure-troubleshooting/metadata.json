@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0037",
+  "title": "DNS Resolution Failure Troubleshooting",
+  "slug": "dns-resolution-failure-troubleshooting",
+  "category": "network-services",
+  "summary": "Diagnose and resolve common Domain Name System (DNS) failures in Cisco Packet Tracer, including misconfigured client DNS server addresses, disabled DNS daemon services, and missing A/CNAME resource records, verifying systematic remediation using ipconfig, nslookup, ping, and web browsers.",
+  "difficulty": "beginner",
+  "topics": [
+    "network-services",
+    "dns",
+    "troubleshooting",
+    "nslookup",
+    "ipconfig",
+    "name-resolution",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Isolate DNS resolution issues from underlying layer 1 through layer 3 IP network transport failures",
+    "Verify and correct client DNS resolver settings using ipconfig and IP configuration interfaces",
+    "Diagnose DNS server service status and activate disabled DNS daemon processes on server endpoints",
+    "Identify and create missing Address (A) and Canonical Name (CNAME) resource records in the authoritative DNS database",
+    "Utilize nslookup to query specific DNS servers, distinguish server timeouts from non-existent domain errors, and inspect resource records",
+    "Validate end-to-end name resolution and HTTP web portal delivery following systematic remediation"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services troubleshooting laboratory guide based on IETF RFC 1034, RFC 1035, and RFC 7230 standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0037-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc1034",
+    "https://datatracker.ietf.org/doc/html/rfc1035",
+    "https://datatracker.ietf.org/doc/html/rfc7230"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

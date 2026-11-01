@@ -1,0 +1,85 @@
+Current configuration : 992 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname HQ-R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description HQ Management Loopback
+ ip address 192.168.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ description Transit Link to Branch-R2
+ ip address 10.1.12.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description Transit Link to Remote-R3
+ ip address 10.1.13.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+router ospf 1
+ router-id 1.1.1.1
+ log-adjacency-changes
+ passive-interface Loopback0
+ network 10.1.12.0 0.0.0.3 area 0
+ network 10.1.13.0 0.0.0.3 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C Authorized Access Only - HQ-R1 Hub Router ^C
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

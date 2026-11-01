@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0025",
+  "title": "TFTP Configuration Backup and Restore",
+  "slug": "tftp-configuration-backup-and-restore",
+  "category": "network-services",
+  "summary": "Back up Cisco IOS running configuration to a centralized TFTP server over UDP port 69, simulate a catastrophic router configuration loss, and execute full disaster recovery and state restoration.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-services",
+    "tftp",
+    "backup-and-restore",
+    "disaster-recovery",
+    "cisco-ios",
+    "network-operations"
+  ],
+  "learning_objectives": [
+    "Explain the protocol mechanics and architectural role of the Trivial File Transfer Protocol (TFTP) in enterprise network management",
+    "Execute an interactive Cisco IOS running configuration backup to a remote TFTP server over UDP port 69 using 'copy running-config tftp:'",
+    "Verify file transmission integrity and inspect stored configuration archives on the TFTP server filesystem",
+    "Simulate a catastrophic router configuration alteration and test systematic disaster recovery procedures using 'copy tftp: running-config'",
+    "Validate that restored router parameters, hostnames, interface states, and system banners match the pre-disaster operational baseline",
+    "Diagnose common TFTP transfer failures, including non-existent archive filenames, server IP typos, and UDP reachability timeouts"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (1)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services curriculum guide based on IETF RFC 1350 (The TFTP Protocol Revision 2) standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0025-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc1350",
+    "https://www.cisco.com/c/en/us/support/docs/routers/2500-series-routers/15092-copy-config.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/fundamentals/configuration/15-mt/fundamentals-15-mt-book.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

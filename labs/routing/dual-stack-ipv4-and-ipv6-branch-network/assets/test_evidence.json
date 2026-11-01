@@ -1,0 +1,42 @@
+{
+  "lab_id": "PTL-0054",
+  "timestamp": "2026-11-01T02:52:22Z",
+  "reload_verified": true,
+  "results": {
+    "POS-01": {
+      "description": "PC-BR1 ICMP reachability to PC-BR2 over IPv4 (192.168.20.10)",
+      "status": "PASS",
+      "evidence": "ping 192.168.20.10\n\nPinging 192.168.20.10 with 32 bytes of data:\n\nRequest timed out.\nRequest timed out.\nReply from 192.168.20.10: bytes=32 time<1ms TTL=125\nReply from 192.168.20.10: bytes=32 time<1ms TTL=125\n\nPing statistics for 192.168.20.10:\n    Packets: Sent = 4, Received = 2, Lost = 2 (50% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-02": {
+      "description": "PC-BR1 ICMP reachability to PC-BR2 over IPv6 (2001:db8:acad:20::10)",
+      "status": "PASS",
+      "evidence": "ping 2001:db8:acad:20::10\n\nPinging 2001:db8:acad:20::10 with 32 bytes of data:\n\nReply from 2001:DB8:ACAD:20::10: bytes=32 time<1ms TTL=125\nReply from 2001:DB8:ACAD:20::10: bytes=32 time<1ms TTL=125\nReply from 2001:DB8:ACAD:20::10: bytes=32 time=5ms TTL=125\nReply from 2001:DB8:ACAD:20::10: bytes=32 time<1ms TTL=125\n\nPing statistics for 2001:DB8:ACAD:20::10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 5ms, Average = 1ms\n\nC:\\>"
+    },
+    "POS-03": {
+      "description": "PC-BR2 ICMP reachability to HQ-R2 Loopback0 IPv4 (172.16.1.1)",
+      "status": "PASS",
+      "evidence": "ping 172.16.1.1\n\nPinging 172.16.1.1 with 32 bytes of data:\n\nReply from 172.16.1.1: bytes=32 time<1ms TTL=254\nReply from 172.16.1.1: bytes=32 time<1ms TTL=254\nReply from 172.16.1.1: bytes=32 time<1ms TTL=254\nReply from 172.16.1.1: bytes=32 time<1ms TTL=254\n\nPing statistics for 172.16.1.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-04": {
+      "description": "PC-BR2 ICMP reachability to HQ-R2 Loopback0 IPv6 (2001:db8:acad:100::1)",
+      "status": "PASS",
+      "evidence": "ping 2001:db8:acad:100::1\n\nPinging 2001:db8:acad:100::1 with 32 bytes of data:\n\nReply from 2001:DB8:ACAD:100::1: bytes=32 time<1ms TTL=254\nReply from 2001:DB8:ACAD:100::1: bytes=32 time<1ms TTL=254\nReply from 2001:DB8:ACAD:100::1: bytes=32 time<1ms TTL=254\nReply from 2001:DB8:ACAD:100::1: bytes=32 time<1ms TTL=254\n\nPing statistics for 2001:DB8:ACAD:100::1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+    },
+    "POS-05": {
+      "description": "IPv6 routing enabled and static routes active on all routers",
+      "status": "PASS",
+      "evidence": "R1: PASS, R2: PASS, R3: PASS"
+    },
+    "NEG-01": {
+      "description": "Starter Branch-2-R3 lacks IPv6 default route (IPv6 traffic dropped)",
+      "status": "PASS",
+      "evidence": "::/0 absent from static route table"
+    },
+    "NEG-02": {
+      "description": "Starter Branch-1-R1 has invalid IPv4 default route next-hop (10.1.12.5)",
+      "status": "PASS",
+      "evidence": ""
+    }
+  }
+}

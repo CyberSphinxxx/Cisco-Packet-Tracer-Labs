@@ -1,0 +1,38 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "output": "show ip interface brief\nInterface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0/0   192.168.10.1    YES manual up                    up \nGigabitEthernet0/0/1   192.168.20.1    YES manual up                    up \nGigabitEthernet0/0/2   192.168.30.1    YES manual up                    up\nR1#"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "output": "ping 192.168.10.1\n\nPinging 192.168.10.1 with 32 bytes of data:\n\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.10.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "telnet 192.168.30.10 80\nTrying 192.168.30.10 ...Open\n[Connection established]"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 192.168.30.20\n\nPinging 192.168.30.20 with 32 bytes of data:\n\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\n\nPing statistics for 192.168.30.20:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "ping 192.168.20.10\n\nPinging 192.168.20.10 with 32 bytes of data:\n\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\nReply from 192.168.10.1: Destination host unreachable.\n\nPing statistics for 192.168.20.10:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "ping 192.168.30.10\n\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time=1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.30.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)\n\nping 192.168.30.20\n\nReply from 192.168.30.20: bytes=32 time<1ms TTL=127\nReply from 192.168.30.20: bytes=32 time<1ms TTL=127\nReply from 192.168.30.20: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.30.20:\n    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss)"
+  },
+  "POS-07": {
+    "status": "PASS",
+    "output": "show access-lists\nStandard IP access list 10\n    10 permit host 192.168.20.10\nExtended IP access list SALES-FILTER\n    10 permit tcp 192.168.10.0 0.0.0.255 host 192.168.30.10 eq www (5 match(es))\n    20 permit icmp 192.168.10.0 0.0.0.255 host 192.168.10.1 echo (4 match(es))\n    30 deny ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255 (4 match(es))\n    40 deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255 (4 match(es))\n    50 permit ip 192.168.10.0 0.0.0.255 any\n\nR1#"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "Starter state HTTP probe:\ntelnet 192.168.30.10 80\nTrying 192.168.30.10 ...\n[Timed out / blocked by shadowed deny rule and outbound filter direction]"
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "output": "Starter Gi0/0/0 configuration:\nOutgoing access list is SALES-FILTER\nInbound  access list is not set\n\nStarter show access-lists:\nExtended IP access list SALES-FILTER\n    10 deny ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255\n    20 permit tcp 192.168.10.0 0.0.0.255 host 192.168.30.10 eq www\nStandard IP access list 10\n    10 permit 0.0.0.0 255.255.255.0"
+  }
+}

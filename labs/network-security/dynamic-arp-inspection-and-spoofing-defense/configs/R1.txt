@@ -1,0 +1,97 @@
+Initializing Hardware ...
+
+System integrity status: 00000610
+Rom image verified correctly
+
+System Bootstrap, Version 15.4(3r)S5, RELEASE SOFTWARE
+Copyright (c) 1994-2015  by cisco Systems, Inc.
+
+Current image running: Boot ROM0
+
+Last reset cause: LocalSoft
+Cisco ISR4321/K9 platform with 4194304 Kbytes of main memory
+
+no valid BOOT image found
+Final autoboot attempt from default boot device...
+File size is 0x1d0580a0
+Located isr4300-universalk9.03.16.05.S.155-3.S5-ext.SPA.bin
+Image size 486899872 inode num 12, bks cnt 102567 blk size 8*512
+#######################
+Boot image size = 486899872 (0x1d0580a0) bytes
+
+Package header rev 1 structure detected
+Calculating SHA-1 hash...done
+validate_package: SHA-1 hash:
+        calculated 83acd4f8:dc03c892:f243621c:06872286:6c9f0cf5
+        expected   83acd4f8:dc03c892:f243621c:06872286:6c9f0cf5
+
+RSA Signed RELEASE Image Signature Verification Successful.
+Package Load Test Latency : 6390 msec
+Image validated
+%IOSXEBOOT-4-BOOT_SRC: (rp/0): mounting /boot/super.iso to /tmp/sw/isos
+
+              Restricted Rights Legend
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+Cisco IOS Software, ISR Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 15.5(3)S5, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Thu 19-Jan-17 11:24 by mcpre
+
+Cisco IOS - XE software, Copyright(c) 2005 - 2017 by cisco Systems, Inc.
+All rights reserved.Certain components of Cisco IOS - XE software are
+licensed under the GNU General Public License("GPL") Version 2.0.The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.You can redistribute and / or modify such
+GPL code under the terms of GPL Version 2.0.For more details, see the
+documentation or "License Notice" file accompanying the IOS - XE software,
+or the applicable URL provided on the flyer accompanying the IOS - XE
+software.
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+cisco ISR4321/K9 (1RU) processor with 1687137K/6147K bytes of memory.
+Processor board ID FLM2041W2HD
+2 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+4194304K bytes of physical memory.
+3223551K bytes of flash memory at bootflash:.
+
+         --- System Configuration Dialog ---
+
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+Press RETURN to get started!
+
+Router>end
+Translating "end"...domain server (255.255.255.255)
+% Unknown command or computer name, or unable to find computer address
+
+Router>copy running-config startup-config
+            ^
+% Invalid input detected at '^' marker.
+	
+Router>
+Router>end
+Translating "end"...domain server (255.255.255.255)

@@ -1,0 +1,59 @@
+{
+  "id": "PTL-0045",
+  "title": "Spanning Tree Root and Blocked-Port Investigation",
+  "slug": "spanning-tree-root-and-blocked-port-investigation",
+  "category": "switching",
+  "summary": "Investigate and resolve unexpected Spanning Tree Protocol (STP) root bridge elections and suboptimal blocked-port placement in a redundant multi-switch campus network. Diagnose root path costs, bridge IDs, and port states using Cisco IOS commands, deterministically configure primary and secondary root bridges, and ensure high-capacity distribution links remain unblocked while access uplinks safely absorb loop-prevention blocking.",
+  "difficulty": "intermediate",
+  "topics": [
+    "switching",
+    "stp",
+    "spanning-tree",
+    "root-bridge",
+    "blocked-port",
+    "bridge-priority",
+    "troubleshooting",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Analyze Spanning Tree Protocol (STP) bridge election criteria including bridge priority, system ID extension, and MAC address hierarchy",
+    "Investigate unintended root bridge takeovers using show spanning-tree and identify suboptimal transit path blockages",
+    "Calculate cumulative root path costs across mixed GigabitEthernet (cost 4) and FastEthernet (cost 19) links",
+    "Deterministically configure primary root (priority 4096) and secondary root (priority 8192) bridges using Cisco IOS commands",
+    "Verify that high-speed inter-switch distribution links transition to Forwarding while redundant edge uplinks correctly transition to Alternate/Blocking",
+    "Validate uninterrupted end-to-end host communication across redundant Layer 2 topologies"
+  ],
+  "estimated_minutes": 55,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 2960-24TT Switch (3)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise switching laboratory guide based on IEEE 802.1D / 802.1w standards and Cisco IOS Spanning Tree diagnostic best practices",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0045-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://standards.ieee.org/ieee/802.1D/1381/",
+    "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/5234-5.html",
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swstp.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

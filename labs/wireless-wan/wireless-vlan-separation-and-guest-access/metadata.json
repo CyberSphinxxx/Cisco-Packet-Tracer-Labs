@@ -1,0 +1,61 @@
+{
+  "id": "PTL-0036",
+  "title": "Wireless VLAN Separation and Guest Access",
+  "slug": "wireless-vlan-separation-and-guest-access",
+  "category": "wireless-wan",
+  "summary": "Implement and verify wireless VLAN segmentation and isolated guest Wi-Fi access using a Cisco Catalyst 3560 multilayer switch, autonomous wireless access point, Switched Virtual Interfaces (SVIs), native DHCP pooling, and Extended Access Control Lists (ACLs) to strictly isolate guest stations from corporate staff assets while allowing DMZ web reachability.",
+  "difficulty": "intermediate",
+  "topics": [
+    "wireless",
+    "vlan",
+    "guest-wifi",
+    "dhcp",
+    "svi",
+    "multilayer-switching",
+    "access-control-lists",
+    "wpa2-psk",
+    "security"
+  ],
+  "learning_objectives": [
+    "Design and deploy isolated VLANs for corporate staff (VLAN 10) and guest wireless users (VLAN 20) on a Catalyst multilayer switch",
+    "Configure Switched Virtual Interfaces (SVIs) on the multilayer switch to serve as default gateways and enable inter-VLAN routing",
+    "Provision multi-pool Cisco IOS DHCP services on SVIs to dynamically allocate network parameters to corporate and guest clients",
+    "Integrate an autonomous 802.11 access point onto the designated guest access switchport to broadcast secure guest Wi-Fi",
+    "Construct and apply an Extended Access Control List (ACL) to restrict guest stations from accessing corporate staff hosts while preserving DMZ Internet access",
+    "Verify end-to-end positive connectivity for staff hosts and validate negative security controls blocking guest-to-corporate penetration"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco Catalyst 3560-24PS Multilayer Switch (1)",
+    "AccessPoint-PT Autonomous Access Point (1)",
+    "Server-PT Corporate Intranet Server (1)",
+    "Server-PT DMZ Public Web Server (1)",
+    "PC-PT Corporate Staff Workstation (1)",
+    "Laptop-PT Guest Wireless Station (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored wireless networking and network security curriculum laboratory aligned with Cisco CCNA exam topics 1.1 (Network components), 2.1 (VLANs), 2.6 (Wireless architectures), and 5.6 (Configure and verify access control lists)",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0036-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_55_se/configuration/guide/3560_scg/swvlan.html",
+    "https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}

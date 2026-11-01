@@ -1,0 +1,41 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "output": "C   192.168.10.0/24  is directly connected, Vlan10\n C   192.168.20.0/24  is directly connected, Vlan20\n C   192.168.30.0/24  is directly connected, Vlan30\n C   192.168.99.0/24  is directly connected, Vlan99"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "dls_trunk": "Port        Mode         Encapsulation  Status        Native vlan\nGig0/1      on           802.1q         trunking      99\nGig0/2      on           802.1q         trunking      99\n\nPort        Vlans allowed on trunk\nGig0/1      10,20,30,99\nGig0/2      10,20,30,99\n\nPort        Vlans allowed and active in management domain\nGig0/1      10,20,30,99\nGig0/2      10,20,30,99\n\nPort        Vlans in spanning tree forwarding state and not pruned\nGig0/1      10,20,30,99\nGig0/2      10,20,30,99",
+    "als1_trunk": "Port        Mode         Encapsulation  Status        Native vlan\nGig0/1      on           802.1q         trunking      99\n\nPort        Vlans allowed on trunk\nGig0/1      10,20,30,99\n\nPort        Vlans allowed and active in management domain\nGig0/1      10,20,30,99\n\nPort        Vlans in spanning tree forwarding state and not pruned\nGig0/1      10,20,30,99",
+    "als2_trunk": "Port        Mode         Encapsulation  Status        Native vlan\nGig0/1      on           802.1q         trunking      99\n\nPort        Vlans allowed on trunk\nGig0/1      10,20,30,99\n\nPort        Vlans allowed and active in management domain\nGig0/1      10,20,30,99\n\nPort        Vlans in spanning tree forwarding state and not pruned\nGig0/1      10,20,30,99"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "ping 192.168.10.1\n\nPinging 192.168.10.1 with 32 bytes of data:\n\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\nReply from 192.168.10.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.10.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 192.168.20.1\n\nPinging 192.168.20.1 with 32 bytes of data:\n\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.20.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "ping 192.168.30.10\n\nPinging 192.168.30.10 with 32 bytes of data:\n\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.30.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "ping 192.168.30.10\n\nPinging 192.168.30.10 with 32 bytes of data:\n\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\nReply from 192.168.30.10: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.30.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-07": {
+    "status": "PASS",
+    "output": "ping 192.168.20.10\n\nPinging 192.168.20.10 with 32 bytes of data:\n\nReply from 192.168.20.10: bytes=32 time<1ms TTL=127\nReply from 192.168.20.10: bytes=32 time=3ms TTL=127\nReply from 192.168.20.10: bytes=32 time<1ms TTL=127\nReply from 192.168.20.10: bytes=32 time=3ms TTL=127\n\nPing statistics for 192.168.20.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 3ms, Average = 1ms\n\nC:\\>"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "ping 192.168.20.1\n\nPinging 192.168.20.1 with 32 bytes of data:\n\nRequest timed out."
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "output": "ping 192.168.30.10\n\nPinging 192.168.30.10 with 32 bytes of data:\n\nRequest timed out.",
+    "dls_routing_status": "Default gateway is not set\n\nHost               Gateway           Last Use    Total Uses  Interface\nICMP redirect cache is empty"
+  }
+}

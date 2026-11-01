@@ -1,0 +1,42 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "staff_gw_ping": "Request timed out.\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\n\nPing statistics for 198.51.100.10:\n    Packets: Sent = 4, Received = 2, Lost = 2 (50% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>",
+    "guest_gw_ping": "ping 192.168.20.1\n\nPinging 192.168.20.1 with 32 bytes of data:\n\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time=6ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.20.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 6ms, Average = 1ms\n\nC:\\>"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "output": "Total translations: 8 (0 static, 8 dynamic, 8 extended)\nOutside Interfaces: GigabitEthernet0/0/2\nInside Interfaces: GigabitEthernet0/0/0 , GigabitEthernet0/0/1\nHits: 6  Misses: 8\nExpired translations: 0\nDynamic mappings:"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "Standard IP access list 1\n    permit 192.168.10.0 0.0.0.255 (8 match(es))\n    permit 192.168.20.0 0.0.0.255 (8 match(es))"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 198.51.100.10\n\nPinging 198.51.100.10 with 32 bytes of data:\n\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\n\nPing statistics for 198.51.100.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "ping 198.51.100.10\n\nPinging 198.51.100.10 with 32 bytes of data:\n\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\nReply from 198.51.100.10: bytes=32 time<1ms TTL=126\n\nPing statistics for 198.51.100.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "telnet 198.51.100.10 80\nTrying 198.51.100.10 ...Open"
+  },
+  "POS-07": {
+    "status": "PASS",
+    "translations": "Pro  Inside global     Inside local       Outside local      Outside global\nicmp 203.0.113.1:1024  192.168.20.10:5    198.51.100.10:5    198.51.100.10:1024\nicmp 203.0.113.1:1025  192.168.20.10:6    198.51.100.10:6    198.51.100.10:1025\nicmp 203.0.113.1:1026  192.168.10.10:7    198.51.100.10:7    198.51.100.10:1026\nicmp 203.0.113.1:1027  192.168.10.10:8    198.51.100.10:8    198.51.100.10:1027\nicmp 203.0.113.1:10    192.168.10.10:10   198.51.100.10:10   198.51.100.10:10\nicmp 203.0.113.1:11    192.168.10.10:11   198.51.100.10:11   198.51.100.10:11\nicmp 203.0.113.1:12    192.168.10.10:12   198.51.100.10:12   198.51.100.10:12\nicmp 203.0.113.1:13    192.168.20.10:13   198.51.100.10:13   198.51.100.10:13\nicmp 203.0.113.1:14    192.168.20.10:14   198.51.100.10:14   198.51.100.10:14\nicmp 203.0.113.1:15    192.168.20.10:15   198.51.100.10:15   198.51.100.10:15\nicmp 203.0.113.1:16    192.168.20.10:16   198.51.100.10:16   198.51.100.10:16\nicmp 203.0.113.1:5     192.168.10.10:5    198.51.100.10:5    198.51.100.10:5\nicmp 203.0.113.1:6     192.168.10.10:6    198.51.100.10:6    198.51.100.10:6\nicmp 203.0.113.1:7     192.168.20.10:7    198.51.100.10:7    198.51.100.10:7\nicmp 203.0.113.1:8     192.168.20.10:8    198.51.100.10:8    198.51.100.10:8\nicmp 203.0.113.1:9     192.168.10.10:9    198.51.100.10:9    198.51.100.10:9\ntcp 203.0.113.1:1025   192.168.10.10:1025 198.51.100.10:80   198.51.100.10:80",
+    "statistics": "Total translations: 17 (0 static, 17 dynamic, 17 extended)\nOutside Interfaces: GigabitEthernet0/0/2\nInside Interfaces: GigabitEthernet0/0/0 , GigabitEthernet0/0/1\nHits: 20  Misses: 17\nExpired translations: 0\nDynamic mappings:"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "ping 198.51.100.10\n\nPinging 198.51.100.10 with 32 bytes of data:\n\nRequest timed out.\nRequest timed out."
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "translations": "",
+    "statistics": "Total translations: 0 (0 static, 0 dynamic, 0 extended)\nOutside Interfaces: \nInside Interfaces: GigabitEthernet0/0/0 , GigabitEthernet0/0/2\nHits: 0  Misses: 0\nExpired translations: 0\nDynamic mappings:",
+    "acl": "Standard IP access list 1\n    permit 192.168.1.0 0.0.0.255"
+  }
+}

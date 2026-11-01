@@ -1,0 +1,29 @@
+! ==========================================
+! Router R1 (Default Gateway Router)
+! Lab: DNS Records and HTTP Web Services (PTL-0022)
+! ==========================================
+enable
+configure terminal
+hostname R1
+no ip domain-lookup
+
+! Client LAN Interface
+interface GigabitEthernet0/0/0
+ description Client LAN Gateway
+ ip address 192.168.10.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! Server Farm LAN Interface
+interface GigabitEthernet0/0/1
+ description Datacenter Server Farm Gateway
+ ip address 192.168.20.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+end
+copy running-config startup-config

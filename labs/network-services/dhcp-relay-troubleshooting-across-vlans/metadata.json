@@ -1,0 +1,58 @@
+{
+  "id": "PTL-0052",
+  "title": "DHCP Helper-Address Multi-Subnet Troubleshooting",
+  "slug": "dhcp-relay-troubleshooting-across-vlans",
+  "category": "network-services",
+  "summary": "Diagnose and resolve multi-subnet DHCPv4 helper-address forwarding failures across routed subinterfaces and a central Cisco IOS DHCP server. Troubleshoot helper-address configuration faults, 802.1Q subinterface gateway mappings, and DHCP pool scope mismatches preventing remote branch clients from obtaining dynamic IP leases.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-services",
+    "dhcp",
+    "ip-helper-address",
+    "helper-address",
+    "vlans",
+    "router-on-a-stick",
+    "troubleshooting",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Diagnose and resolve DHCP relay failures across multiple 802.1Q VLANs using Cisco IOS verification tools",
+    "Understand the operation of ip helper-address converting broadcast DHCP Discover messages to routed unicast",
+    "Identify and correct helper-address misconfigurations including wrong destination IP and missing relay bindings",
+    "Identify and correct DHCP pool scope mismatches on the central DHCP server where network subnets do not match giaddr",
+    "Verify end-to-end lease acquisition, gateway distribution, and inter-VLAN routing connectivity across remote subnets"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 2911 Integrated Services Router (2)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise network services troubleshooting lab based on IETF RFC 2131 standards and Cisco IOS DHCP relay documentation",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0052-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc2131",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/xe-16/dhcp-xe-16-book/config-dhcp-server.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/xe-16/dhcp-xe-16-book/dhcp-relay-agent.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}
+

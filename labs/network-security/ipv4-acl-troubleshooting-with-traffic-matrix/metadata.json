@@ -1,0 +1,57 @@
+{
+  "id": "PTL-0041",
+  "title": "IPv4 ACL Troubleshooting with Traffic Matrix",
+  "slug": "ipv4-acl-troubleshooting-with-traffic-matrix",
+  "category": "network-security",
+  "summary": "Troubleshoot and remediate IPv4 standard and extended Access Control Lists using a structured traffic matrix. Identify and correct common ACL design and implementation faults including shadowed rules, directional misplacement (inbound vs. outbound), and inverted wildcard masks on Cisco IOS routers.",
+  "difficulty": "intermediate",
+  "topics": [
+    "network-security",
+    "access-control-lists",
+    "extended-acl",
+    "standard-acl",
+    "wildcard-mask",
+    "troubleshooting",
+    "traffic-matrix",
+    "cisco-ios",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Analyze enterprise traffic matrices to extract and validate granular Layer 3 and Layer 4 security requirements",
+    "Identify shadowed and unexecutable ACL rules caused by broad deny statements preceding specific permit statements",
+    "Distinguish between inbound and outbound interface ACL application directions to prevent unintended packet drops and CPU overhead",
+    "Detect and correct wildcard mask calculation errors, including inverted subnet masks on standard access lists",
+    "Use Cisco IOS verification commands (show access-lists, show ip interface) and traffic probe counters to confirm deterministic traffic filtering"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4331 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (3)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network security troubleshooting laboratory guide based on Cisco IOS IPv4 access control list architecture and security filtering best practices",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0041-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-16/sec-data-acl-xe-16-book.html"
+  ],
+  "last_reviewed": "2026-11-01"
+}

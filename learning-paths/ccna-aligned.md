@@ -21,6 +21,10 @@ Understanding physical components, cabling, device configuration, and IP address
   *Topics:* Default gateway role, host routing decision process, ARP resolution boundary, troubleshooting missing or incorrect gateways.
 - **[PTL-0015: IPv4 Subnetting and VLSM Network Design](../labs/ip-addressing/ipv4-subnetting-and-vlsm/README.md)**
   *Topics:* VLSM prefix calculation, host requirements, /30 point-to-point links, avoiding address exhaustion.
+- **[PTL-0047: VLSM Address Plan Fault Investigation](../labs/ip-addressing/vlsm-address-plan-fault-investigation/README.md)**
+  *Topics:* Enterprise VLSM allocation auditing, directed broadcast host assignment remediation, gateway capacity deficit resolution, and transit link prefix optimization.
+- **[PTL-0026: IPv6 SLAAC and Neighbor Discovery](../labs/ip-addressing/ipv6-slaac-and-neighbor-discovery/README.md)**
+  *Topics:* Stateless Address Autoconfiguration (SLAAC), ICMPv6 Router Advertisements (RA), EUI-64 interface identifiers, IPv6 neighbor cache resolution.
 
 ---
 
@@ -30,16 +34,30 @@ Configuring and troubleshooting VLANs, trunks, and link aggregation.
 
 - **[PTL-0016: MAC Address Learning and ARP Operation](../labs/network-fundamentals/mac-learning-and-arp/README.md)**
   *Topics:* Switch MAC address table learning, frame forwarding, unknown unicast flooding, ARP request/reply exchange, table aging.
+- **[PTL-0024: CDP Neighbor Discovery and Topology Audit](../labs/network-fundamentals/cdp-neighbor-discovery-and-topology-audit/README.md)**
+  *Topics:* Layer 2 neighbor mapping, TLV frame inspection, interface discovery timers, and access port hardening.
 - **[PTL-0009: VLAN Segmentation and Access Port Configuration](../labs/switching/vlan-segmentation-and-access-ports/README.md)**
   *Topics:* Access ports, VLAN creation, broadcast isolation, MAC address table behavior.
 - **[PTL-0018: Dynamic Trunking Protocol and Native VLAN Security](../labs/network-security/dtp-and-native-vlan-security/README.md)**
   *Topics:* DTP frame negotiation mitigation (`switchport nonegotiate`), Dedicated Native VLAN 999 reassignment, allowed VLAN list pruning.
+- **[PTL-0044: VLAN Trunk Allowed-List Troubleshooting](../labs/switching/vlan-trunk-allowed-list-troubleshooting/README.md)**
+  *Topics:* Multi-VLAN trunk pruning diagnosis, allowed-list modification using `add` syntax, Native VLAN mismatch remediation, and broadcast domain isolation verification.
 - **[PTL-0017: Rapid Spanning Tree Protocol, PortFast, and BPDU Guard](../labs/switching/rapid-stp-portfast-bpduguard/README.md)**
   *Topics:* IEEE 802.1w Rapid PVST+ configuration, deterministic root bridge priority, port role election, edge PortFast, and BPDU Guard errdisable defense.
+- **[PTL-0045: Spanning Tree Root and Blocked-Port Investigation](../labs/switching/spanning-tree-root-and-blocked-port-investigation/README.md)**
+  *Topics:* Spanning tree root inversion diagnosis, path cost calculation, primary (4096) and secondary (8192) root bridge configuration, and core link unblocking.
 - **[PTL-0006: Configuring Layer 2 EtherChannel with LACP](../labs/switching/etherchannel-lacp/README.md)**
   *Topics:* Link aggregation IEEE 802.3ad LACP, Port-channel logical interfaces, load distribution.
+- **[PTL-0046: LACP EtherChannel Member Mismatch Diagnosis](../labs/switching/lacp-etherchannel-member-mismatch-diagnosis/README.md)**
+  *Topics:* Link aggregation member parameter mismatch diagnosis, port suspension resolution, and multi-VLAN trunk aggregation.
+- **[PTL-0049: Campus Distribution and Access VLAN Design](../labs/switching/campus-distribution-and-access-vlan-design/README.md)**
+  *Topics:* Multilayer campus distribution switching, 802.1Q trunking, SVI inter-VLAN routing, and end-to-end multi-VLAN service reachability.
 - **[PTL-0007: Cisco Switch Security Hardening Best Practices](../labs/network-security/switch-hardening/README.md)**
   *Topics:* Native VLAN hopping mitigation, disabling DTP (`switchport nonegotiate`), PortFast, BPDU Guard.
+- **[PTL-0035: WPA2 Wireless LAN Fundamentals](../labs/wireless-wan/wpa2-wireless-lan-fundamentals/README.md)**
+  *Topics:* Autonomous access point deployment, WPA2-Personal (Pre-Shared Key with AES encryption), Cisco IOS DHCP pool configuration, client 802.11 association, and positive/negative security verification.
+- **[PTL-0036: Wireless VLAN Separation and Guest Access](../labs/wireless-wan/wireless-vlan-separation-and-guest-access/README.md)**
+  *Topics:* Multilayer switch SVIs, corporate vs guest VLAN isolation, multi-pool DHCP, WPA2-PSK security, and Extended ACL guest traffic restriction.
 
 ---
 
@@ -53,8 +71,28 @@ Inter-VLAN routing, static routes, and dynamic link-state routing.
   *Topics:* Multilayer switching, hardware CEF inter-VLAN routing, Switch Virtual Interfaces (SVIs), Layer 3 routed ports (`no switchport`), SVI autostate, and default route forwarding.
 - **[PTL-0001: Dual-Stack IPv4 and IPv6 Static Routing](../labs/routing/dual-stack-static-routing/README.md)**
   *Topics:* Recursive, next-hop, and directly connected static routes; IPv6 static routes; `ipv6 unicast-routing`.
+- **[PTL-0027: IPv6 Static and Default Route Troubleshooting](../labs/routing/ipv6-static-and-default-routing-troubleshooting/README.md)**
+  *Topics:* Recursive next-hop routing, default routes (`::/0`), multi-router transit verification, asymmetric return path troubleshooting.
+- **[PTL-0028: Floating Static Routes and Administrative Distance](../labs/routing/floating-static-routes-and-administrative-distance/README.md)**
+  *Topics:* Administrative distance hierarchy, primary vs. floating backup routes, link failure convergence, preemption upon circuit restoration.
+- **[PTL-0048: Multi-Site Routing with Branch Networks](../labs/routing/multi-site-routing-with-branch-networks/README.md)**
+  *Topics:* Enterprise hub-and-spoke static routing, spoke default gateway configuration, next-hop reachability validation, and symmetric return route verification.
 - **[PTL-0011: Single-Area OSPFv2 Configuration and Verification](../labs/routing/single-area-ospfv2/README.md)**
   *Topics:* RFC 2328 OSPF Area 0, router ID election, wildcard masks, point-to-point interface metrics, passive interfaces, neighbor states.
+- **[PTL-0029: OSPFv2 DR and BDR Elections](../labs/routing/ospfv2-dr-bdr-elections/README.md)**
+  *Topics:* RFC 2328 multi-access broadcast networks, interface priorities (`ip ospf priority`), DR/BDR election hierarchy, DROTHER state, DR failover, non-preemptive election mechanics.
+- **[PTL-0030: OSPFv2 Passive Interfaces and Neighbor Control](../labs/routing/ospfv2-passive-interfaces-and-neighbor-control/README.md)**
+  *Topics:* OSPF Hello suppression, `passive-interface default`, selective interface enablement (`no passive-interface`), stub network propagation, transit link adjacency protection.
+- **[PTL-0031: OSPFv2 Neighbor Adjacency Troubleshooting](../labs/routing/ospfv2-neighbor-adjacency-troubleshooting/README.md)**
+  *Topics:* RFC 2328 neighbor adjacency requirements, Hello and Dead timer synchronization, Area ID validation, stub and transit network statement correction, loopback and LAN passive interface placement.
+- **[PTL-0032: HSRP First-Hop Gateway Failover](../labs/routing/hsrp-first-hop-gateway-failover/README.md)**
+  *Topics:* First Hop Redundancy Protocols (FHRP), Cisco HSRPv2 configuration, virtual IP and MAC operations, priority-driven active/standby elections, preemption, hold timer failover, transparent client default gateway redundancy.
+- **[PTL-0034: Single-Area OSPFv3 for IPv6](../labs/routing/single-area-ospfv3-for-ipv6/README.md)**
+  *Topics:* OSPFv3 protocol operation, 32-bit dotted-decimal Router IDs, interface-level Area 0 activation, Point-to-Point WAN network types, passive-interface constraints, and end-to-end multi-hop IPv6 reachability.
+- **[PTL-0054: Dual-Stack IPv4 and IPv6 Branch Network](../labs/routing/dual-stack-ipv4-and-ipv6-branch-network/README.md)**
+  *Topics:* Enterprise dual-stack architecture, simultaneous IPv4 and IPv6 static routing, hub-and-spoke transit design, and route next-hop fault isolation.
+- **[PTL-0055: Integrated Branch Network Troubleshooting Challenge](../labs/routing/integrated-branch-network-troubleshooting-challenge/README.md)**
+  *Topics:* Multi-domain branch office troubleshooting, 802.1Q trunk allowed-VLAN pruning, DHCP relay forwarding, asymmetric static return routing, and perimeter ACL filtering.
 
 ---
 
@@ -64,6 +102,24 @@ Automated host configuration and IP helper services.
 
 - **[PTL-0012: Configuring Cisco IOS DHCPv4 Server and Relay Agent](../labs/network-services/dhcp-server-and-relay/README.md)**
   *Topics:* Cisco IOS DHCP pool creation, excluded addresses, default router option, DNS server option, and `ip helper-address` forwarding across router boundaries.
+- **[PTL-0020: IPv4 Dynamic PAT at the Edge](../labs/network-services/ipv4-dynamic-pat-at-the-edge/README.md)**
+  *Topics:* Port Address Translation (NAT Overload), standard ACL matching, inside/outside boundaries, and dynamic translation verification.
+- **[PTL-0021: Static NAT and Inside Server Publishing](../labs/network-services/static-nat-and-inside-server-publishing/README.md)**
+  *Topics:* One-to-one inside static NAT, public IP publishing, translation table analysis, and host security isolation.
+- **[PTL-0022: DNS Records and HTTP Web Services](../labs/network-services/dns-records-and-http-web-services/README.md)**
+  *Topics:* Authoritative DNS resolution, A and CNAME record management, HTTP web hosting, and client name lookup.
+- **[PTL-0023: NTP and Syslog Network Monitoring](../labs/network-services/ntp-and-syslog-network-monitoring/README.md)**
+  *Topics:* Network Time Protocol clock synchronization, millisecond log timestamping, centralized remote Syslog forwarding, and real-time fault notification.
+- **[PTL-0025: TFTP Configuration Backup and Restore](../labs/network-services/tftp-configuration-backup-and-restore/README.md)**
+  *Topics:* TFTP configuration archiving over UDP port 69, disaster recovery configuration merge, volatile vs persistent storage, and transfer fault handling.
+- **[PTL-0033: Stateful DHCPv6 Address Assignment](../labs/network-services/stateful-dhcpv6-address-assignment/README.md)**
+  *Topics:* Stateful DHCPv6 configuration on Cisco IOS, ICMPv6 Router Advertisement M and A flag manipulation, client DUID bindings, and dual-router IPv6 packet transport.
+- **[PTL-0037: DNS Resolution Failure Troubleshooting](../labs/network-services/dns-resolution-failure-troubleshooting/README.md)**
+  *Topics:* Troubleshooting client DNS resolver settings, diagnosing disabled DNS server daemons, populating missing A and CNAME records, and validating resolution via nslookup and ping.
+- **[PTL-0043: NAT and PAT Troubleshooting Challenge](../labs/network-services/nat-and-pat-troubleshooting-challenge/README.md)**
+  *Topics:* Diagnosing NAT inside/outside interface role misconfigurations, correcting translation ACL subnet mismatches, dynamic PAT overload verification, and translation table inspection.
+- **[PTL-0052: DHCP Helper-Address Multi-Subnet Troubleshooting](../labs/network-services/dhcp-relay-troubleshooting-across-vlans/README.md)**
+  *Topics:* Multi-subnet DHCP helper-address forwarding troubleshooting, subinterface helper-address misdirection remediation, and central server scope mismatch resolution.
 
 ---
 
@@ -77,6 +133,22 @@ Device access hardening, port security, and packet filtering.
   *Topics:* Static and sticky MAC address learning, violation modes (`protect`, `restrict`, `shutdown`), and `errdisable recovery`.
 - **[PTL-0013: Configuring Standard and Extended IPv4 Access Control Lists](../labs/network-security/standard-and-extended-acls/README.md)**
   *Topics:* Standard ACL source filtering, extended ACL protocol/port filtering, directional placement (`in`/`out`), traffic sequence matching, implicit deny.
+- **[PTL-0038: DHCP Snooping and Rogue DHCP Detection](../labs/network-security/dhcp-snooping-and-rogue-dhcp-detection/README.md)**
+  *Topics:* Layer 2 DHCP snooping activation, trusted vs untrusted interface boundaries, Option 82 interoperability, DHCP rate limiting, and dynamic binding database inspection.
+- **[PTL-0039: Dynamic ARP Inspection and Spoofing Defense](../labs/network-security/dynamic-arp-inspection-and-spoofing-defense/README.md)**
+  *Topics:* Dynamic ARP Inspection (DAI) activation, trusted uplink boundaries, ARP rate limiting, multi-attribute validation checks (`src-mac`, `dst-mac`, `ip`), and ARP spoofing mitigation.
+- **[PTL-0040: Port Security Violation Troubleshooting](../labs/network-security/port-security-violation-troubleshooting/README.md)**
+  *Topics:* Diagnosing sticky MAC conflicts, resolving hardware upgrade outages, error-disabled port recovery sequence, and violation mode alignment.
+- **[PTL-0041: IPv4 ACL Troubleshooting with Traffic Matrix](../labs/network-security/ipv4-acl-troubleshooting-with-traffic-matrix/README.md)**
+  *Topics:* Diagnosing shadowed access control entries, resolving directional placement conflicts (`in` vs `out`), correcting inverted wildcard masks, and verifying traffic matrices.
+- **[PTL-0042: Named Extended IPv4 ACL for Server Access](../labs/network-security/named-extended-ipv4-acl-for-server-access/README.md)**
+  *Topics:* Named extended ACL creation, Layer 4 port-specific access control (DNS UDP 53, HTTP TCP 80, HTTPS TCP 443), DMZ perimeter defense, and least privilege enforcement.
+- **[PTL-0050: Guest Network Segmentation with ACLs](../labs/network-security/guest-network-segmentation-with-acls/README.md)**
+  *Topics:* Enterprise guest network isolation, named extended IPv4 ACLs, least privilege service access, and unauthorized internal subnet blocking.
+- **[PTL-0051: DMZ Services with Edge ACL Policy](../labs/network-security/dmz-services-with-edge-acl-policy/README.md)**
+  *Topics:* Three-legged perimeter DMZ architecture, edge router extended ACLs, outside inbound service filtering, and strict DMZ-to-corporate isolation.
+- **[PTL-0053: Secure Management Network Design](../labs/network-security/secure-management-network-design/README.md)**
+  *Topics:* Dedicated management VLAN segmentation, cryptographic SSHv2 access, VTY access-class filtering, and data-plane isolation.
 
 ---
 

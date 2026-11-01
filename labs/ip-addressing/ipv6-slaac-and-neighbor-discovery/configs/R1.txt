@@ -1,0 +1,95 @@
+Router(config)#hostname R1
+R1(config)#no ip domain-lookup
+R1(config)#banner motd # Authorized Access Only - R1 Gateway IPv6 Router #
+R1(config)#interface GigabitEthernet0/0/0
+R1(config-if)#description LAN Link to S1
+R1(config-if)#ipv6 address 2001:db8:acad:1::1/64
+R1(config-if)#ipv6 address fe80::1 link-local
+R1(config-if)#no shutdown
+
+R1(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up
+exit
+R1(config)#interface Loopback0
+
+R1(config-if)#
+%LINK-3-UPDOWN: Interface Loopback0, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+description Management Diagnostic Loopback
+R1(config-if)#ipv6 address 2001:db8:acad:99::1/64
+R1(config-if)#no shutdown
+R1(config-if)#exit
+R1(config)#end
+R1#
+%SYS-5-CONFIG_I: Configured from console by console
+copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+R1#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#ipv6 unicast-routing
+R1(config)#end
+R1#
+%SYS-5-CONFIG_I: Configured from console by console
+copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+R1#show ipv6 interface GigabitEthernet0/0/0
+GigabitEthernet0/0/0 is up, line protocol is up
+  IPv6 is enabled, link-local address is FE80::1
+  No Virtual link-local address(es):
+  Global unicast address(es):
+    2001:DB8:ACAD:1::1, subnet is 2001:DB8:ACAD:1::/64
+  Joined group address(es):
+    FF02::1
+    FF02::2
+    FF02::1:FF00:1
+  MTU is 1500 bytes
+  ICMP error messages limited to one every 100 milliseconds
+  ICMP redirects are enabled
+  ICMP unreachables are sent
+  ND DAD is enabled, number of DAD attempts: 1
+  ND reachable time is 30000 milliseconds
+  ND advertised reachable time is 0 (unspecified)
+  ND advertised retransmit interval is 0 (unspecified)
+  ND router advertisements are sent every 200 seconds
+  ND router advertisements live for 1800 seconds
+  ND advertised default router preference is Medium
+  Hosts use stateless autoconfig for addresses.
+R1#show ipv6 neighbors
+IPv6 Address                              Age Link-layer Addr State Interface
+2001:DB8:ACAD:1:200:CFF:FE6A:EA59           0 0000.0C6A.EA59  REACH Gig0/0/0
+2001:DB8:ACAD:1:250:FFF:FE10:97D2           0 0050.0F10.97D2  REACH Gig0/0/0
+R1#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#no ipv6 unicast-routing
+R1(config)#end
+R1#
+%SYS-5-CONFIG_I: Configured from console by console
+show ipv6 interface GigabitEthernet0/0/0 | include ND router advertisements
+                                            ^
+% Invalid input detected at '^' marker.
+	
+R1#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#ipv6 unicast-routing
+R1(config)#end
+R1#
+%SYS-5-CONFIG_I: Configured from console by console
+copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+R1#ping 2001:db8:acad:1::999
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2001:db8:acad:1::999, timeout is 2 seconds:
+.....
+Success rate is 0 percent (0/5)
+
+R1#

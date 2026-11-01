@@ -188,10 +188,11 @@ Confirm that:
 ---
 
 ## Key Takeaways
-- VLANs partition a single physical switch into multiple isolated broadcast domains.
-- A switch access port belongs to exactly one data VLAN at a time.
-- Communication between different VLANs requires a Layer 3 routing mechanism (such as Router-on-a-Stick or a Layer 3 switch SVI).
-- Isolating user departments into separate VLANs improves network scalability, reduces broadcast overhead, and prevents unauthorized peer-to-peer snooping.
+- **VLAN Broadcast Domain Isolation:** Virtual Local Area Networks (VLANs) partition a physical switch into multiple isolated Layer 2 broadcast domains, ensuring broadcast frames, ARP requests, and unknown unicast flooding remain confined to their originating VLAN.
+- **VLAN Access Port Membership:** A switch access port configured with switchport mode access belongs to exactly one data VLAN at a time, stamping untagged incoming Ethernet frames with the configured internal VLAN tag.
+- **Inter-VLAN Layer 3 Routing Requirement:** Communication between different VLANs strictly requires a Layer 3 routing mechanism (such as Router-on-a-Stick subinterfaces or a multilayer switch SVI) to route packets across subnet boundaries.
+- **VLAN Departmental Security and Scalability:** Segmenting campus departments into dedicated VLANs (such as Faculty VLAN 10 and Student VLAN 20) improves network scalability, reduces broadcast traffic overhead, and prevents unauthorized Layer 2 frame interception between disparate VLAN security zones.
+- **Default VLAN and Management Best Practices:** All switchports default to VLAN 1 (the default VLAN); standard security hardening requires moving user traffic to dedicated operational VLANs and assigning unused ports to an isolated blackhole VLAN.
 
 ---
 

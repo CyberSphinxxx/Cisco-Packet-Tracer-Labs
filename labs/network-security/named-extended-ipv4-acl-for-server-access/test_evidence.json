@@ -1,0 +1,39 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "output": "show ip interface brief\nInterface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0/0   192.168.10.1    YES manual up                    up \nGigabitEthernet0/0/1   192.168.20.1    YES manual up                    up \nGigabitEthernet0/0/2   192.168.100.1   YES manual up                    up\nR1#"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "output": "ping 192.168.20.1\n\nPinging 192.168.20.1 with 32 bytes of data:\n\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\nReply from 192.168.20.1: bytes=32 time=3ms TTL=255\nReply from 192.168.20.1: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.20.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 3ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "output": "telnet 192.168.100.10 80\nTrying 192.168.100.10 ...Open\n[Connection established]"
+  },
+  "POS-04": {
+    "status": "PASS",
+    "output": "ping 192.168.100.20\n\nPinging 192.168.100.20 with 32 bytes of data:\n\nReply from 192.168.20.1: Destination host unreachable.\nReply from 192.168.20.1: Destination host unreachable.\nReply from 192.168.20.1: Destination host unreachable.\nReply from 192.168.20.1: Destination host unreachable.\n\nPing statistics for 192.168.100.20:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "ping 192.168.10.10\n\nPinging 192.168.10.10 with 32 bytes of data:\n\nReply from 192.168.20.1: Destination host unreachable.\nReply from 192.168.20.1: Destination host unreachable.\nReply from 192.168.20.1: Destination host unreachable.\nReply from 192.168.20.1: Destination host unreachable.\n\nPing statistics for 192.168.10.10:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nC:\\>"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "ping 192.168.100.10\n\nReply from 192.168.100.10: bytes=32 time<1ms TTL=127\nReply from 192.168.100.10: bytes=32 time<1ms TTL=127\nReply from 192.168.100.10: bytes=32 time=4ms TTL=127\nReply from 192.168.100.10: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.100.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)\n\nping 192.168.100.20\n\nReply from 192.168.100.20: bytes=32 time<1ms TTL=127\nReply from 192.168.100.20: bytes=32 time<1ms TTL=127\nReply from 192.168.100.20: bytes=32 time<1ms TTL=127\n\nPing statistics for 192.168.100.20:\n    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss)"
+  },
+  "POS-07": {
+    "status": "PASS",
+    "output": "show access-lists\nExtended IP access list GUEST-FILTER\n    10 permit udp 192.168.20.0 0.0.0.255 host 192.168.100.10 eq domain\n    20 permit tcp 192.168.20.0 0.0.0.255 host 192.168.100.10 eq www (5 match(es))\n    30 permit tcp 192.168.20.0 0.0.0.255 host 192.168.100.10 eq 443\n    40 permit icmp 192.168.20.0 0.0.0.255 host 192.168.20.1 echo (4 match(es))\n    50 deny ip 192.168.20.0 0.0.0.255 192.168.100.0 0.0.0.255 (4 match(es))\n    60 deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255 (4 match(es))\n    70 permit ip 192.168.20.0 0.0.0.255 any\n\nR1#"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "output": "Starter state ping:\nping 192.168.100.20\n\nPinging 192.168.100.20 with 32 bytes of data:\nReply from 192.168.100.20: bytes=32 time<1ms TTL=127\nReply from 192.168.100.20: bytes=32 time<1ms TTL=127\nReply from 192.168.100.20: bytes=32 time=3ms TTL=127\n\nPing statistics for 192.168.100.20:\n    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss)\n[Vulnerability confirmed: Guest reaches internal DB server]"
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "output": "Starter Gi0/0/1 configuration:\nOutgoing access list is not set\nInbound  access list is not set\n[Missing perimeter security confirmed]"
+  }
+}
+

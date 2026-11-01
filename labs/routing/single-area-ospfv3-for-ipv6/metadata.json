@@ -1,0 +1,61 @@
+{
+  "id": "PTL-0034",
+  "title": "Single-Area OSPFv3 for IPv6",
+  "slug": "single-area-ospfv3-for-ipv6",
+  "category": "routing",
+  "summary": "Implement and verify single-area Open Shortest Path First version 3 (OSPFv3) for IPv6 across a three-router enterprise topology, establish router IDs, configure point-to-point transit adjacencies, apply passive interfaces, and verify route convergence.",
+  "difficulty": "advanced",
+  "topics": [
+    "ipv6",
+    "ospfv3",
+    "routing",
+    "dynamic-routing",
+    "router-id",
+    "point-to-point",
+    "link-local",
+    "passive-interface",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the key architectural differences between OSPFv2 (IPv4) and OSPFv3 (IPv6), including link-local next-hop addressing and interface-level activation",
+    "Configure 32-bit dotted-decimal OSPFv3 Router IDs on Cisco IOS routers",
+    "Activate OSPFv3 Area 0 directly on physical transit, LAN, and loopback interfaces",
+    "Configure point-to-point OSPFv3 network types on inter-router links to optimize adjacency formation and eliminate DR/BDR overhead",
+    "Apply passive-interface directives to customer-facing LAN segments to suppress unnecessary multicast traffic",
+    "Inspect OSPFv3 neighbor adjacencies, Link-State database (LSAs), and learned IPv6 routing tables using Cisco IOS verification commands",
+    "Verify bidirectional end-to-end IPv6 packet forwarding across multi-hop OSPFv3 routing domains"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco 4321 Integrated Services Router (3)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (1)",
+    "Server-PT End Device (1)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored enterprise IPv6 dynamic routing curriculum guide aligned with Cisco CCNA exam topic 3.2 (Configure and verify single area OSPFv2 / OSPFv3) and enterprise dual-stack standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0034-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/15-mt/iro-15-mt-book/ip6-route-ospfv3.html",
+    "https://tools.ietf.org/html/rfc5340",
+    "https://learningnetwork.cisco.com/s/ccna-exam-topics"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

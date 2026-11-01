@@ -1,0 +1,36 @@
+{
+  "POS-01": {
+    "status": "PASS",
+    "sw1_stp": "VLAN0001\n  Spanning tree enabled protocol ieee\n  Root ID    Priority    4097\n             Address     000C.85C0.B11A\n             This bridge is the root\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n\n  Bridge ID  Priority    4097  (priority 4096 sys-id-ext 1)\n             Address     000C.85C0.B11A\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n             Aging Time  20\n\nInterface        Role Sts Cost      Prio.Nbr Type\n---------------- ---- --- --------- -------- --------------------------------\nFa0/1            Desg FWD 19        128.1    P2p\nFa0/10           Desg FWD 19        128.10   P2p\nGi0/1            Desg FWD 4         128.25   P2p"
+  },
+  "POS-02": {
+    "status": "PASS",
+    "sw2_stp": "VLAN0001\n  Spanning tree enabled protocol ieee\n  Root ID    Priority    4097\n             Address     000C.85C0.B11A\n             Cost        4\n             Port        25(GigabitEthernet0/1)\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n\n  Bridge ID  Priority    8193  (priority 8192 sys-id-ext 1)\n             Address     0004.9A53.8E11\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n             Aging Time  20\n\nInterface        Role Sts Cost      Prio.Nbr Type\n---------------- ---- --- --------- -------- --------------------------------\nFa0/1            Desg FWD 19        128.1    P2p\nFa0/10           Desg FWD 19        128.10   P2p\nGi0/1            Root FWD 4         128.25   P2p"
+  },
+  "POS-03": {
+    "status": "PASS",
+    "sw1_gi01_fwd": true,
+    "sw2_gi01_fwd": true
+  },
+  "POS-04": {
+    "status": "PASS",
+    "sw3_stp": "VLAN0001\n  Spanning tree enabled protocol ieee\n  Root ID    Priority    4097\n             Address     000C.85C0.B11A\n             Cost        19\n             Port        1(FastEthernet0/1)\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n\n  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)\n             Address     0006.2A42.C817\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n             Aging Time  20\n\nInterface        Role Sts Cost      Prio.Nbr Type\n---------------- ---- --- --------- -------- --------------------------------\nFa0/2            Altn BLK 19        128.2    P2p\nFa0/1            Root FWD 19        128.1    P2p\nFa0/10           Desg FWD 19        128.10   P2p"
+  },
+  "POS-05": {
+    "status": "PASS",
+    "output": "ping 192.168.1.100\n\nPinging 192.168.1.100 with 32 bytes of data:\n\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\n\nPing statistics for 192.168.1.100:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "POS-06": {
+    "status": "PASS",
+    "output": "ping 192.168.1.100\n\nPinging 192.168.1.100 with 32 bytes of data:\n\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\nReply from 192.168.1.100: bytes=32 time<1ms TTL=128\n\nPing statistics for 192.168.1.100:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nC:\\>"
+  },
+  "NEG-01": {
+    "status": "PASS",
+    "sw3_stp": "VLAN0001\n  Spanning tree enabled protocol ieee\n  Root ID    Priority    4097\n             Address     0006.2A42.C817\n             This bridge is the root\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n\n  Bridge ID  Priority    4097  (priority 4096 sys-id-ext 1)\n             Address     0006.2A42.C817\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n             Aging Time  20\n\nInterface        Role Sts Cost      Prio.Nbr Type\n---------------- ---- --- --------- -------- --------------------------------\nFa0/2            Desg FWD 19        128.2    P2p\nFa0/1            Desg FWD 19        128.1    P2p\nFa0/10           Desg FWD 19        128.10   P2p"
+  },
+  "NEG-02": {
+    "status": "PASS",
+    "sw1_stp": "VLAN0001\n  Spanning tree enabled protocol ieee\n  Root ID    Priority    4097\n             Address     0006.2A42.C817\n             Cost        19\n             Port        1(FastEthernet0/1)\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n\n  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)\n             Address     000C.85C0.B11A\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n             Aging Time  20\n\nInterface        Role Sts Cost      Prio.Nbr Type\n---------------- ---- --- --------- -------- --------------------------------\nFa0/1            Root FWD 19        128.1    P2p\nFa0/10           Desg FWD 19        128.10   P2p\nGi0/1            Altn BLK 4         128.25   P2p",
+    "sw2_stp": "VLAN0001\n  Spanning tree enabled protocol ieee\n  Root ID    Priority    4097\n             Address     0006.2A42.C817\n             Cost        19\n             Port        1(FastEthernet0/1)\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n\n  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)\n             Address     0004.9A53.8E11\n             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec\n             Aging Time  20\n\nInterface        Role Sts Cost      Prio.Nbr Type\n---------------- ---- --- --------- -------- --------------------------------\nFa0/1            Root FWD 19        128.1    P2p\nFa0/10           Desg FWD 19        128.10   P2p\nGi0/1            Desg FWD 4         128.25   P2p"
+  }
+}

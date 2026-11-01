@@ -1,0 +1,83 @@
+Current configuration : 888 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Branch 1 Management Loopback
+ no ip address
+ ipv6 address 2001:DB8:ACAD:101::1/64
+!
+interface GigabitEthernet0/0/0
+ description WAN Link to R2 Hub
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:DB8:ACAD:12::1/64
+!
+interface GigabitEthernet0/0/1
+ description LAN Link to PC-1
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:DB8:ACAD:1::1/64
+!
+ip classless
+!
+ip flow-export version 9
+!
+ipv6 route ::/0 2001:DB8:ACAD:12::2
+!
+!
+banner motd ^C Authorized Access Only - R1 Branch Gateway ^C
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

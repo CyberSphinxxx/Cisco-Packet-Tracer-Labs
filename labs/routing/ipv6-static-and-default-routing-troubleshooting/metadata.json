@@ -1,0 +1,55 @@
+{
+  "id": "PTL-0027",
+  "title": "IPv6 Static and Default Route Troubleshooting",
+  "slug": "ipv6-static-and-default-routing-troubleshooting",
+  "category": "routing",
+  "summary": "Diagnose and resolve IPv6 static routing faults, next-hop errors, and missing default routes across a multi-router hub-and-spoke enterprise topology.",
+  "difficulty": "intermediate",
+  "topics": [
+    "routing",
+    "ipv6",
+    "static-routing",
+    "default-routes",
+    "troubleshooting",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Identify common IPv6 static routing configuration errors including incorrect next-hop addresses and missing return routes",
+    "Configure IPv6 default static routes (::/0) on branch edge routers directing traffic to the central hub",
+    "Configure recursive and directly connected IPv6 static routes across multi-hop router paths",
+    "Interpret and verify the Cisco IOS IPv6 routing table using 'show ipv6 route' across connected and static routes",
+    "Verify end-to-end multi-hop IPv6 reachability and path symmetry using ICMPv6 echo and traceroute",
+    "Systematically troubleshoot packet blackholing caused by asymmetric routing and missing return routes"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (3)",
+    "PC-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored IPv6 multi-hop static routing and troubleshooting curriculum guide based on CCNA enterprise routing standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0027-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc4291",
+    "https://datatracker.ietf.org/doc/html/rfc2460",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6_basic/configuration/15-mt/ip6-basics-15-mt-book.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

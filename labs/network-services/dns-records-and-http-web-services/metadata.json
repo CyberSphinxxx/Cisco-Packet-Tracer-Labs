@@ -1,0 +1,56 @@
+{
+  "id": "PTL-0022",
+  "title": "DNS Records and HTTP Web Services",
+  "slug": "dns-records-and-http-web-services",
+  "category": "network-services",
+  "summary": "Configure and verify an authoritative Domain Name System (DNS) server and an HTTP web server in Cisco Packet Tracer, managing Address (A) and Canonical Name (CNAME) resource records, validating endpoint name resolution via nslookup, and troubleshooting DNS record faults.",
+  "difficulty": "beginner",
+  "topics": [
+    "network-services",
+    "dns",
+    "http",
+    "name-resolution",
+    "cisco-packet-tracer"
+  ],
+  "learning_objectives": [
+    "Explain the role and architecture of the Domain Name System (DNS) in resolving Fully Qualified Domain Names (FQDNs) to IPv4 addresses",
+    "Differentiate between DNS Address (A) records and Canonical Name (CNAME) alias records",
+    "Configure, enable, and manage authoritative DNS services and HTTP web services on Cisco Packet Tracer server endpoints",
+    "Configure client workstations with primary DNS server addresses across routed IP subnets",
+    "Verify name resolution and HTTP page delivery using nslookup, ICMP ping by hostname, and client web browsers",
+    "Diagnose and remediate DNS service failures, mismatched record targets, and missing aliases"
+  ],
+  "estimated_minutes": 45,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (2)",
+    "PC-PT End Device (2)",
+    "Server-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored network services curriculum guide based on IETF RFC 1034, RFC 1035, and RFC 7230 standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0022-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc1034",
+    "https://datatracker.ietf.org/doc/html/rfc1035",
+    "https://datatracker.ietf.org/doc/html/rfc7230"
+  ],
+  "last_reviewed": "2026-10-31"
+}
+

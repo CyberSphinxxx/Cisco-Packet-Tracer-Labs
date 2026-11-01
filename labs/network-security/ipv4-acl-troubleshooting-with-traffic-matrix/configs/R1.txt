@@ -1,0 +1,93 @@
+Current configuration : 1321 bytes
+!
+version 16.6.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username admin privilege 15 secret 5 $1$mERr$WvpW0n5HghRrqnrwXCUUl.
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+no ip domain-lookup
+ip domain-name corp.local
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description Sales-LAN
+ ip address 192.168.10.1 255.255.255.0
+ ip access-group SALES-FILTER in
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description HR-LAN
+ ip address 192.168.20.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/2
+ description Server-DMZ
+ ip address 192.168.30.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+access-list 10 remark Authorized Admin VTY Access
+access-list 10 permit host 192.168.20.10
+ip access-list extended SALES-FILTER
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.30.10 eq www
+ permit icmp 192.168.10.0 0.0.0.255 host 192.168.10.1 echo
+ deny ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255
+ deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+ permit ip 192.168.10.0 0.0.0.255 any
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class 10 in
+ login local
+ transport input ssh
+!
+!
+!
+end

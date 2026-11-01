@@ -1,0 +1,55 @@
+{
+  "id": "PTL-0026",
+  "title": "IPv6 SLAAC and Neighbor Discovery",
+  "slug": "ipv6-slaac-and-neighbor-discovery",
+  "category": "ip-addressing",
+  "summary": "Configure IPv6 Stateless Address Autoconfiguration (SLAAC) on Cisco IOS, observe ICMPv6 Router Advertisements, verify host prefix autoconfiguration, and audit the IPv6 Neighbor Discovery cache.",
+  "difficulty": "intermediate",
+  "topics": [
+    "ip-addressing",
+    "ipv6",
+    "slaac",
+    "neighbor-discovery",
+    "icmpv6",
+    "cisco-ios"
+  ],
+  "learning_objectives": [
+    "Explain the mechanics of IPv6 Stateless Address Autoconfiguration (SLAAC) and ICMPv6 Router Advertisements (Type 134) per RFC 4862",
+    "Configure global IPv6 routing and interface addressing on a Cisco IOS gateway router using 'ipv6 unicast-routing'",
+    "Configure end-host clients to automatically obtain IPv6 Global Unicast Addresses (GUA) and default gateways via SLAAC",
+    "Verify end-to-end IPv6 reachability across local host interfaces and remote diagnostic subnets using ICMPv6 echo requests",
+    "Audit and interpret the Cisco IOS IPv6 Neighbor Discovery cache using 'show ipv6 neighbors' across reachability states",
+    "Diagnose IPv6 autoconfiguration failures caused by missing global unicast routing and suppressed router advertisements"
+  ],
+  "estimated_minutes": 60,
+  "activity_reference": null,
+  "packet_tracer_version": "8.2+",
+  "devices": [
+    "Cisco ISR 4321 Router (1)",
+    "Cisco Catalyst 2960-24TT Switch (1)",
+    "PC-PT End Device (2)"
+  ],
+  "source": {
+    "type": "original",
+    "origin": "Independently authored IPv6 address autoconfiguration and neighbor discovery curriculum guide based on IETF RFC 4861 and RFC 4862 standards",
+    "url": null,
+    "permission_evidence": null
+  },
+  "license_decision": "approved_dual_license",
+  "assets": {
+    "starter": "assets/starter.pkt",
+    "completed": "assets/completed.pkt",
+    "topology": "assets/topology.png"
+  },
+  "status": {
+    "documentation": "reviewed",
+    "simulator": "tested_pass",
+    "simulator_evidence": "AI_AGENT_GUIDE/state/PTL-0026-SIMULATOR-RESULTS.md"
+  },
+  "references": [
+    "https://datatracker.ietf.org/doc/html/rfc4861",
+    "https://datatracker.ietf.org/doc/html/rfc4862",
+    "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6_basic/configuration/15-mt/ip6-basics-15-mt-book.html"
+  ],
+  "last_reviewed": "2026-10-31"
+}

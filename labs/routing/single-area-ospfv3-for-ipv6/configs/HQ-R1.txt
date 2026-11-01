@@ -1,0 +1,93 @@
+Current configuration : 1116 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname HQ-R1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description HQ Management Loopback
+ no ip address
+ ipv6 address 2001:DB8:ACAD:101::1/64
+ ipv6 ospf 1 area 0
+!
+interface GigabitEthernet0/0/0
+ description WAN Link to Branch-R2
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2001:DB8:ACAD:12::1/64
+ ipv6 ospf network point-to-point
+ ipv6 ospf 1 area 0
+!
+interface GigabitEthernet0/0/1
+ description HQ LAN Gateway
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2001:DB8:ACAD:1::1/64
+ ipv6 ospf 1 area 0
+!
+ipv6 router ospf 1
+ router-id 1.1.1.1
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0/1
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C Authorized Access Only - HQ-R1 Border Gateway ^C
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

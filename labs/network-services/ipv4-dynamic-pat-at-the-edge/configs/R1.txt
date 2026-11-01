@@ -1,0 +1,39 @@
+! ==========================================
+! Router R1 (Branch Edge Router & Dynamic PAT)
+! Lab: IPv4 Dynamic PAT at the Edge (PTL-0020)
+! ==========================================
+enable
+configure terminal
+hostname R1
+
+! LAN Interface (Inside NAT Domain)
+interface GigabitEthernet0/0/0
+ description Inside Private Branch LAN
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! WAN Interface (Outside NAT Domain)
+interface GigabitEthernet0/0/1
+ description Outside Uplink to ISP
+ ip address 203.0.113.1 255.255.255.252
+ ip nat outside
+ duplex auto
+ speed auto
+ no shutdown
+ exit
+
+! Standard ACL matching internal private RFC 1918 branch subnet
+access-list 1 permit 192.168.10.0 0.0.0.255
+
+! Dynamic PAT (Overload) mapping inside hosts to outside public interface
+ip nat inside source list 1 interface GigabitEthernet0/0/1 overload
+
+! Default Route to simulated ISP Gateway
+ip route 0.0.0.0 0.0.0.0 203.0.113.2
+
+end
+copy running-config startup-config
