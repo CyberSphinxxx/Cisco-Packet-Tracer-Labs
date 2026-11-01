@@ -1,50 +1,83 @@
 ---
-import SearchForm from './SearchForm.astro';
+/**
+ * The header search dialog: the same terminal box, results list and preview
+ * as the homepage search, in a wide modal. Opens from the header search icon,
+ * "/" and Ctrl/Cmd+K. Before anything is typed it suggests where to start.
+ */
+import LabSearch from './LabSearch.astro';
 ---
-<dialog class="search-dialog" aria-labelledby="search-dialog-title" data-search-dialog>
-  <div class="search-dialog-head">
-    <h2 id="search-dialog-title">Search</h2>
-    <button type="button" class="close" data-search-close aria-label="Close search">Close <kbd>Esc</kbd></button>
-  </div>
-  <SearchForm idPrefix="dialog" />
+<dialog class="search-dialog" aria-label="Search" data-search-dialog>
+  <LabSearch variant="dialog" idPrefix="dialog" />
+  <p class="search-dialog-foot" aria-hidden="true">
+    <span><kbd>↑</kbd><kbd>↓</kbd> move</span>
+    <span><kbd>enter</kbd> open</span>
+    <span><kbd>esc</kbd> close</span>
+  </p>
 </dialog>
 <style>
   .search-dialog {
-    width: min(44rem, calc(100vw - 2rem));
-    max-height: min(80vh, 46rem);
-    margin: 8vh auto auto;
-    padding: var(--sp-5);
+    width: min(60rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - 4rem);
+    margin: 9vh auto auto;
+    padding: 0;
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-card);
-    background: var(--bg);
+    border-radius: var(--radius-term);
+    background: var(--surface);
     color: var(--ink);
     box-shadow: var(--shadow-pop);
-    overflow-y: auto;
+    overflow: hidden;
   }
-  .search-dialog::backdrop { background: rgb(15 17 20 / 0.5); }
-  .search-dialog-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-3); }
-  .search-dialog-head h2 { font-size: var(--fs-md); }
-  .close { font: inherit; font-size: var(--fs-sm); display: inline-flex; gap: var(--sp-2); align-items: center; min-height: 2.25rem; padding: var(--sp-1) var(--sp-3); border: 1px solid var(--line); border-radius: var(--radius-btn); background: var(--surface); color: var(--ink-2); cursor: pointer; }
-  .close kbd { font-size: var(--fs-xs); color: var(--muted); }
+  .search-dialog[open] { animation: sd-in 160ms var(--ease); }
+  @keyframes sd-in {
+    from { opacity: 0; transform: translateY(-6px) scale(0.99); }
+  }
+  .search-dialog::backdrop { background: rgb(10 12 14 / 0.6); backdrop-filter: blur(2px); }
+  .search-dialog-foot {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0.6rem 1.4rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.71875rem;
+    color: var(--muted);
+  }
+  .search-dialog-foot kbd {
+    display: inline-block;
+    min-width: 1.4em;
+    margin-right: 0.25rem;
+    padding: 0 0.3rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-size: inherit;
+    text-align: center;
+  }
+  @media (max-width: 40rem) {
+    .search-dialog { width: 100vw; max-width: 100vw; max-height: 100dvh; height: 100dvh; margin: 0; border: 0; border-radius: 0; }
+    .search-dialog-foot { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .search-dialog[open] { animation: none; }
+  }
 </style>
 <script>
-  import { bindSearch, loadPagefind } from '../scripts/search-core.ts';
+  import { loadIndex, mountLabSearch } from '../scripts/lab-search.ts';
+  import { loadPagefind } from '../scripts/search-core.ts';
   const dialog = document.querySelector<HTMLDialogElement>('[data-search-dialog]');
   const triggers = document.querySelectorAll<HTMLAnchorElement>('[data-search-trigger]');
-  if (dialog && typeof dialog.showModal === 'function') {
-    const input = dialog.querySelector<HTMLInputElement>('[data-search-input]')!;
-    const form = dialog.querySelector<HTMLFormElement>('[data-search-form]')!;
-    const search = bindSearch({ input, status: dialog.querySelector('[data-search-status]')!, list: dialog.querySelector('[data-search-results]')! });
+  const root = dialog?.querySelector<HTMLElement>('[data-lab-search]');
+  if (dialog && root && typeof dialog.showModal === 'function') {
+    const search = mountLabSearch(root, { limit: 10, suggestWhenEmpty: true });
+    const { input } = search;
     let returnFocus: HTMLElement | null = null;
     const open = (from?: HTMLElement | null) => {
       returnFocus = from ?? (document.activeElement as HTMLElement | null);
       dialog.showModal();
       input.focus();
       input.select();
-      void loadPagefind();
+      search.refresh();
     };
     dialog.addEventListener('close', () => returnFocus?.focus());
-    // A search input consumes the first Escape to clear itself; close the dialog anyway.
     dialog.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         e.preventDefault();
@@ -55,18 +88,16 @@ import SearchForm from './SearchForm.astro';
     dialog.addEventListener('click', (e) => {
       if (e.target === dialog) dialog.close(); // backdrop click
     });
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      search.run(input.value);
-    });
-    // Warm the search index as soon as the reader shows intent, so the first
-    // results appear without waiting for Pagefind to download.
-    const warm = () => void loadPagefind().then((p) => p?.init?.());
+    // Warm the index as soon as the reader shows intent, so the first
+    // results appear without waiting for a download.
+    const warm = () => {
+      void loadIndex();
+      void loadPagefind().then((p) => p?.init?.());
+    };
     for (const t of triggers) {
       t.addEventListener('pointerenter', warm, { once: true });
       t.addEventListener('focus', warm, { once: true });
       t.addEventListener('touchstart', warm, { once: true, passive: true });
-      t.querySelector('kbd')?.removeAttribute('hidden');
       t.setAttribute('aria-haspopup', 'dialog');
       t.addEventListener('click', (e) => {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
@@ -90,7 +121,7 @@ import SearchForm from './SearchForm.astro';
         hero!.select();
       } else if ((e.key === '/' && !typing && !dialog.open) || ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey))) {
         e.preventDefault();
-        open(triggers[0] ?? null);
+        if (!dialog.open) open(triggers[0] ?? null);
       }
     });
   }

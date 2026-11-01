@@ -1,0 +1,542 @@
+[
+  {
+    "id": "PTL-0020",
+    "title": "IPv4 Dynamic PAT at the Edge",
+    "category": "network-services",
+    "difficulty": "intermediate",
+    "scope": "NAT overload with internal LAN, edge router, and simulated public server",
+    "acceptance": "NAT table changes with at least two internal hosts; return connectivity works; translation entries observed",
+    "prerequisites": [
+      "PTL-0013"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0021",
+    "title": "Static NAT and Inside Server Publishing",
+    "category": "network-services",
+    "difficulty": "intermediate",
+    "scope": "Static one-to-one inside local/global address mapping and external-to-internal service validation",
+    "acceptance": "Static translation visible; correct service reachable; no unrelated host exposed",
+    "prerequisites": [
+      "PTL-0020"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0022",
+    "title": "DNS Records and HTTP Web Services",
+    "category": "network-services",
+    "difficulty": "beginner",
+    "scope": "Packet Tracer DNS server resolving multiple hostnames to HTTP services",
+    "acceptance": "Correct names resolve; web clients load hosted pages; broken record fails then is fixed",
+    "prerequisites": [
+      "PTL-0014"
+    ],
+    "risk": "low",
+    "estimated_minutes": 45,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0023",
+    "title": "NTP and Syslog Network Monitoring",
+    "category": "network-services",
+    "difficulty": "intermediate",
+    "scope": "Router clock synchronization and centralized logging to a server",
+    "acceptance": "Timestamp and remote logs observed; change or fault generates distinguishable event",
+    "prerequisites": [
+      "PTL-0008"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0024",
+    "title": "CDP Neighbor Discovery and Topology Audit",
+    "category": "network-fundamentals",
+    "difficulty": "beginner",
+    "scope": "Discover Cisco neighbors and map interfaces using show commands",
+    "acceptance": "Observed neighbor IDs/ports match topology; disabling CDP changes neighbor discovery",
+    "prerequisites": [
+      "PTL-0008"
+    ],
+    "risk": "low",
+    "estimated_minutes": 45,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0025",
+    "title": "TFTP Configuration Backup and Restore",
+    "category": "network-services",
+    "difficulty": "intermediate",
+    "scope": "Back up router configuration to an internal TFTP server, then recover in controlled scratch environment",
+    "acceptance": "Genuine saved file and successful configuration recovery; no passwords or secrets copied into public evidence",
+    "prerequisites": [
+      "PTL-0008"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0026",
+    "title": "IPv6 SLAAC and Neighbor Discovery",
+    "category": "ip-addressing",
+    "difficulty": "intermediate",
+    "scope": "Router advertisements, autoconfiguration, and IPv6 neighbor cache",
+    "acceptance": "Hosts obtain valid IPv6 addresses; neighbor observations and bidirectional reachability verified",
+    "prerequisites": [
+      "PTL-0002"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0027",
+    "title": "IPv6 Static and Default Route Troubleshooting",
+    "category": "routing",
+    "difficulty": "intermediate",
+    "scope": "IPv6 next-hop and default routes across three routers",
+    "acceptance": "Global unicast connectivity and route table correct; deliberate missing route breaks expected traffic",
+    "prerequisites": [
+      "PTL-0001"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0028",
+    "title": "Floating Static Routes and Administrative Distance",
+    "category": "routing",
+    "difficulty": "intermediate",
+    "scope": "Primary and backup routes with deliberate administrative distance separation",
+    "acceptance": "Primary chosen normally; backup becomes active after real link failure; restoration verified",
+    "prerequisites": [
+      "PTL-0001"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0029",
+    "title": "OSPFv2 DR and BDR Elections",
+    "category": "routing",
+    "difficulty": "intermediate",
+    "scope": "Multi-access Ethernet segment with router priorities and neighbor states",
+    "acceptance": "Actual DR/BDR election observed and priorities tested; adjacencies stable",
+    "prerequisites": [
+      "PTL-0011"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0030",
+    "title": "OSPFv2 Passive Interfaces and Neighbor Control",
+    "category": "routing",
+    "difficulty": "intermediate",
+    "scope": "Reduce unwanted OSPF neighbor formation while advertising local LANs",
+    "acceptance": "Passive interface shown; LAN stays advertised; desired router neighbor remains",
+    "prerequisites": [
+      "PTL-0011"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0031",
+    "title": "OSPFv2 Neighbor Adjacency Troubleshooting",
+    "category": "routing",
+    "difficulty": "intermediate",
+    "scope": "Diagnose and repair a deliberate mismatch in OSPF adjacency parameters",
+    "acceptance": "Broken neighbor state demonstrated; root cause isolated; full adjacency and routes restored",
+    "prerequisites": [
+      "PTL-0011"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0032",
+    "title": "HSRP First-Hop Gateway Failover",
+    "category": "routing",
+    "difficulty": "advanced",
+    "scope": "Two gateway routers sharing a virtual IPv4 gateway and deliberate failover",
+    "acceptance": "Virtual gateway remains reachable after active router failure; state transitions observed if supported",
+    "prerequisites": [
+      "PTL-0019"
+    ],
+    "risk": "high",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0033",
+    "title": "Stateful DHCPv6 Address Assignment",
+    "category": "network-services",
+    "difficulty": "advanced",
+    "scope": "DHCPv6 addressing and route advertisements with IPv6 clients",
+    "acceptance": "Client addressing or DNS info obtained and verified using supported PT simulator features",
+    "prerequisites": [
+      "PTL-0026"
+    ],
+    "risk": "high",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0034",
+    "title": "Single-Area OSPFv3 for IPv6",
+    "category": "routing",
+    "difficulty": "advanced",
+    "scope": "IPv6 neighbor adjacency and advertised subnets across connected routers",
+    "acceptance": "OSPFv3 neighbors and learned IPv6 routes observed; invalid settings break expected adjacency",
+    "prerequisites": [
+      "PTL-0026"
+    ],
+    "risk": "high",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0035",
+    "title": "WPA2 Wireless LAN Fundamentals",
+    "category": "wireless-wan",
+    "difficulty": "beginner",
+    "scope": "Small wireless LAN with access point, clients, WPA2 PSK and wired destination",
+    "acceptance": "Correct credentials connect, wrong credentials fail, authorized client reaches wired server",
+    "prerequisites": [
+      "PTL-0022"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 45,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0036",
+    "title": "Wireless VLAN Separation and Guest Access",
+    "category": "wireless-wan",
+    "difficulty": "intermediate",
+    "scope": "Guest versus staff wireless separation using supported AP/router features",
+    "acceptance": "Guest cannot reach staff target but reaches designated service, if actual device supports design",
+    "prerequisites": [
+      "PTL-0035"
+    ],
+    "risk": "high",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0037",
+    "title": "DNS Resolution Failure Troubleshooting",
+    "category": "network-services",
+    "difficulty": "beginner",
+    "scope": "Diagnose wrong DNS settings, missing A records, and client name-resolution errors",
+    "acceptance": "IP connectivity works while name fails; correct DNS fix restores name access",
+    "prerequisites": [
+      "PTL-0022"
+    ],
+    "risk": "low",
+    "estimated_minutes": 45,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0038",
+    "title": "DHCP Snooping and Rogue DHCP Detection",
+    "category": "network-security",
+    "difficulty": "advanced",
+    "scope": "Trusted/untrusted switch ports and unauthorized DHCP server containment",
+    "acceptance": "Unauthorized offers denied, legitimate lease succeeds, actual switch counters verified",
+    "prerequisites": [
+      "PTL-0012"
+    ],
+    "risk": "high",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0039",
+    "title": "Dynamic ARP Inspection and Spoofing Defense",
+    "category": "network-security",
+    "difficulty": "advanced",
+    "scope": "Switch DAI supported behavior with DHCP snooping bindings",
+    "acceptance": "Unsupported forged ARP dropped while legitimate ARP works; counters observed if supported",
+    "prerequisites": [
+      "PTL-0038"
+    ],
+    "risk": "high",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0040",
+    "title": "Port Security Violation Troubleshooting",
+    "category": "network-security",
+    "difficulty": "intermediate",
+    "scope": "Diagnose sticky MAC limits and port err-disable/recovery states",
+    "acceptance": "Violation counters/status observed; correct recovery restores link without disabling security",
+    "prerequisites": [
+      "PTL-0004"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0041",
+    "title": "IPv4 ACL Troubleshooting with Traffic Matrix",
+    "category": "network-security",
+    "difficulty": "intermediate",
+    "scope": "Find ordering/placement mistakes in standard and extended ACLs",
+    "acceptance": "Defined allowed/blocked matrix verified with traffic probes and corrected ACL",
+    "prerequisites": [
+      "PTL-0013"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0042",
+    "title": "Named Extended IPv4 ACL for Server Access",
+    "category": "network-security",
+    "difficulty": "intermediate",
+    "scope": "Create specific named ACLs that permit DNS/HTTP and deny forbidden destinations",
+    "acceptance": "Traffic matrix validates per-service permissions; show access-lists counts meaningful",
+    "prerequisites": [
+      "PTL-0013"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0043",
+    "title": "NAT and PAT Troubleshooting Challenge",
+    "category": "network-services",
+    "difficulty": "intermediate",
+    "scope": "Diagnose NAT inside/outside misconfiguration and translation ACL errors",
+    "acceptance": "Failed translation reproduced; root issue fixed and translations demonstrated",
+    "prerequisites": [
+      "PTL-0020"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0044",
+    "title": "VLAN Trunk Allowed-List Troubleshooting",
+    "category": "switching",
+    "difficulty": "intermediate",
+    "scope": "Find pruning and native-VLAN mistakes without changing unrelated ports",
+    "acceptance": "Selected VLAN fails while other works; corrected allowed list restores intended connectivity",
+    "prerequisites": [
+      "PTL-0018"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0045",
+    "title": "Spanning Tree Root and Blocked-Port Investigation",
+    "category": "switching",
+    "difficulty": "intermediate",
+    "scope": "Investigate unexpected root bridge and alternate port behavior",
+    "acceptance": "Before/after root IDs, roles and topology recorded and corrected",
+    "prerequisites": [
+      "PTL-0017"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0046",
+    "title": "LACP EtherChannel Member Mismatch Diagnosis",
+    "category": "switching",
+    "difficulty": "intermediate",
+    "scope": "Troubleshoot channel members with incompatible port mode or VLAN settings",
+    "acceptance": "Channel state shows mismatch; corrected bundle passes both reachability and show etherchannel",
+    "prerequisites": [
+      "PTL-0006"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0047",
+    "title": "VLSM Address Plan Fault Investigation",
+    "category": "ip-addressing",
+    "difficulty": "intermediate",
+    "scope": "Repair overlapping and wrong-prefix errors in a multi-subnet topology",
+    "acceptance": "Addressing plan validated; planned broken reachability repaired with minimum config changes",
+    "prerequisites": [
+      "PTL-0015"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0048",
+    "title": "Multi-Site Routing with Branch Networks",
+    "category": "routing",
+    "difficulty": "intermediate",
+    "scope": "Connect three offices with explicit WAN addressing and route design",
+    "acceptance": "All intended paths reachable, missing branch route yields demonstrable failure",
+    "prerequisites": [
+      "PTL-0028"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0049",
+    "title": "Campus Distribution and Access VLAN Design",
+    "category": "switching",
+    "difficulty": "advanced",
+    "scope": "Two access switches with multilayer distribution for multiple groups",
+    "acceptance": "Inter-VLAN reaches permitted services; trunks, SVIs, and routing shown accurately",
+    "prerequisites": [
+      "PTL-0019"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0050",
+    "title": "Guest Network Segmentation with ACLs",
+    "category": "network-security",
+    "difficulty": "intermediate",
+    "scope": "Isolate guest subnet from internal resources while allowing designated services",
+    "acceptance": "Positive and negative guest traffic matrix recorded, including blocked internal reachability",
+    "prerequisites": [
+      "PTL-0042"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0051",
+    "title": "DMZ Services with Edge ACL Policy",
+    "category": "network-security",
+    "difficulty": "advanced",
+    "scope": "Public-facing test server in a DMZ with restricted internal reachability",
+    "acceptance": "Simulated outside clients reach DMZ target, internal protection enforced by observed ACL",
+    "prerequisites": [
+      "PTL-0021"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0052",
+    "title": "DHCP Relay Troubleshooting Across VLANs",
+    "category": "network-services",
+    "difficulty": "intermediate",
+    "scope": "Diagnose helper-address and DHCP scope errors with remote VLAN clients",
+    "acceptance": "Real lease obtained after correction; wrong helper failure reproduced",
+    "prerequisites": [
+      "PTL-0012"
+    ],
+    "risk": "low",
+    "estimated_minutes": 60,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0053",
+    "title": "Secure Management Network Design",
+    "category": "network-security",
+    "difficulty": "advanced",
+    "scope": "Separate management VLAN, SSH-only access, and basic ACL limits",
+    "acceptance": "Management PC reaches authorized devices over SSH; guest PC denied; Telnet disabled",
+    "prerequisites": [
+      "PTL-0003"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0054",
+    "title": "Dual-Stack IPv4 and IPv6 Branch Network",
+    "category": "routing",
+    "difficulty": "advanced",
+    "scope": "Combined IPv4+IPv6 reachability with static routes across two branches",
+    "acceptance": "Both address families pass complete matrix; intentional IPv6 route fault isolated",
+    "prerequisites": [
+      "PTL-0027"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  },
+  {
+    "id": "PTL-0055",
+    "title": "Integrated Branch Network Troubleshooting Challenge",
+    "category": "routing",
+    "difficulty": "advanced",
+    "scope": "Multiple isolated misconfigurations involving VLAN, route, ACL, and DHCP",
+    "acceptance": "Students diagnose several separate faults; golden solution passes complete traffic matrix",
+    "prerequisites": [
+      "PTL-0052"
+    ],
+    "risk": "medium",
+    "estimated_minutes": 75,
+    "slug": "-",
+    "status": "candidate"
+  }
+]

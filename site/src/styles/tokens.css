@@ -48,7 +48,10 @@
   --mark: #fbe9a6;
   --shadow-search: 0 1px 0 #ece8df, 0 18px 40px -24px rgb(22 24 29 / 0.35);
   --shadow-pop: 0 18px 48px -18px rgb(22 24 29 / 0.28);
-  --backdrop-opacity: 0.65;  /* hero background animation */
+  --backdrop-opacity: 0.65;  /* hero background layer */
+  --shadow-term: 0 1px 0 #ece8df, 0 14px 32px -22px rgb(22 24 29 / 0.3);
+  --ls-preview-bg: #fcfbf8;  /* search preview pane */
+  --brand-mark: #1a9a55;     /* the square in the logo */
 
   /* --- type ------------------------------------------------------------------ */
   --font-sans: 'Instrument Sans Variable', 'Instrument Sans Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -82,10 +85,11 @@
   --radius-chip: 11px;
   --radius-code: 12px;
   --radius-search: 16px;
+  --radius-term: 6px;       /* terminal-style search box and its panels */
   --radius-card: 18px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur: 160ms;
-  --header-h: 4.25rem;
+  --header-h: 3.75rem;
   --page-max: 77.5rem;  /* 1240px */
   --gutter: clamp(1rem, 0.6rem + 1.6vw, 1.5rem);
 }
@@ -124,6 +128,9 @@
     --shadow-search: 0 1px 0 #1d2026, 0 18px 40px -24px rgb(0 0 0 / 0.7);
     --shadow-pop: 0 18px 48px -18px rgb(0 0 0 / 0.7);
     --backdrop-opacity: 0.5;
+    --shadow-term: 0 1px 0 #1d2026, 0 14px 32px -22px rgb(0 0 0 / 0.75);
+    --ls-preview-bg: #14171b;
+    --brand-mark: #3ccf7a;
   }
 }
 
@@ -159,6 +166,9 @@
   --shadow-search: 0 1px 0 #1d2026, 0 18px 40px -24px rgb(0 0 0 / 0.7);
   --shadow-pop: 0 18px 48px -18px rgb(0 0 0 / 0.7);
   --backdrop-opacity: 0.5;
+  --shadow-term: 0 1px 0 #1d2026, 0 14px 32px -22px rgb(0 0 0 / 0.75);
+  --ls-preview-bg: #14171b;
+  --brand-mark: #3ccf7a;
   color-scheme: dark;
 }
 

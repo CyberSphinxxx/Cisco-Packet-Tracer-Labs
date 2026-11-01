@@ -21,15 +21,16 @@ export interface NavItem {
   match: string;
 }
 
-export function navItems(repo: Repository = getRepository()): NavItem[] {
-  const items: NavItem[] = [
+/**
+ * The header's three sections. The capstone project stays reachable from the
+ * footer, the labs catalogue and the learning paths.
+ */
+export function navItems(): NavItem[] {
+  return [
     { label: 'Labs', href: url('/labs/'), match: url('/labs/') },
-    { label: 'Paths', href: url('/learning-paths/'), match: url('/learning-paths/') },
-    { label: 'Reference guides', href: url('/docs/'), match: url('/docs/') },
+    { label: 'Learning paths', href: url('/learning-paths/'), match: url('/learning-paths/') },
+    { label: 'Guides', href: url('/docs/'), match: url('/docs/') },
   ];
-  const capstone = repo.projects[0];
-  if (capstone) items.push({ label: 'Capstone', href: capstone.route, match: url('/projects/') });
-  return items;
 }
 
 /** The beginner learning path (by slug), else the first path the README lists. */
@@ -140,6 +141,100 @@ export function relatedLabs(lab: Lab, repo: Repository = getRepository(), limit 
     .sort((a, b) => b.score - a.score || a.l.learningOrder - b.l.learningOrder)
     .slice(0, limit)
     .map((x) => x.l);
+}
+
+/**
+ * A short name for a lab where space is tight (the homepage path track),
+ * derived from its title: the first clause, without a leading verb such as
+ * "Configuring" or the vendor name. "Configuring Cisco Router Interfaces"
+ * becomes "Router Interfaces"; "MAC Address Learning and ARP Operation"
+ * becomes "MAC Address Learning". The full title stays available as a tooltip.
+ */
+const FRIENDLY_LAB_TITLES: Record<string, string> = {
+  'PTL-0008': 'Your first commands',
+  'PTL-0002': 'Router interfaces',
+  'PTL-0005': 'Check connected networks',
+  'PTL-0015': 'Subnetting',
+  'PTL-0016': 'MAC addresses and ARP',
+  'PTL-0009': 'VLANs',
+  'PTL-0014': 'Default gateways',
+};
+
+export function shortLabTitle(title: string, id?: string): string {
+  if (id && FRIENDLY_LAB_TITLES[id]) return FRIENDLY_LAB_TITLES[id];
+  let t = title.split(/:\s| - | and | with /)[0].trim();
+  t = t.replace(/^(Configuring|Configure|Verifying|Verify|Implementing|Implement|Understanding|Introduction to)\s+/i, '');
+  t = t.replace(/^Cisco\s+(?=\S)/, '');
+  return t || title;
+}
+
+/** "about 4 hours" / "45 min" for a list of labs (labs without an estimate count as zero). */
+export function totalTimeLabel(labs: Lab[]): string {
+  const total = labs.reduce((n, l) => n + (l.minutes ?? 0), 0);
+  if (total < 60) return `${total} min`;
+  const hours = Math.round(total / 60);
+  return `about ${hours} ${hours === 1 ? 'hour' : 'hours'}`;
+}
+
+/** One entry in the instant search index (search-index.json). */
+export interface SearchEntry {
+  kind: 'lab' | 'project' | 'path' | 'guide';
+  url: string;
+  title: string;
+  /** Lab ID, e.g. PTL-0009 (labs only). */
+  id?: string;
+  /** One line under the title, e.g. "Switching · Beginner · 35 min". */
+  meta: string;
+  summary: string;
+  /** Specific topics, as plain words, for the "Covers" line. */
+  covers: string[];
+  starter?: { url: string; fileName: string };
+  /** Lower-case text the client matches against (title, ID, topics, objectives...). */
+  terms: string;
+}
+
+export interface SearchIndex {
+  entries: SearchEntry[];
+  /** URLs suggested before anything is typed (the first lab, then popular ones). */
+  featured: string[];
+}
+
+/** The instant search index, built from the same view models as the pages. */
+export function searchIndex(repo: Repository = getRepository()): SearchIndex {
+  const generic = genericTopics(repo);
+  const topicLabel = (slug: string) => repo.topics.find((t) => t.slug === slug)?.label ?? slug;
+  const join = (...parts: (string | null | undefined)[]) => parts.filter(Boolean).join(' ').toLowerCase();
+  const labs: SearchEntry[] = repo.labs.map((lab) => {
+    const category = categoryLabel(lab.category, repo);
+    const specific = lab.topics.filter((t) => !generic.has(t));
+    return {
+      kind: 'lab',
+      url: lab.route,
+      title: lab.title,
+      id: lab.id,
+      meta: [category, difficultyLabel(lab.difficulty), lab.minutes != null ? `${lab.minutes} min` : null].filter(Boolean).join(' · '),
+      summary: lab.summary,
+      covers: specific.slice(0, 3).map((t) => t.replace(/-/g, ' ')),
+      ...(lab.starter ? { starter: { url: lab.starter.url, fileName: lab.starter.fileName } } : {}),
+      terms: join(lab.id, lab.id.replace(/^PTL-0*/, ''), lab.title, category, lab.difficulty, ...lab.topics.map((t) => `${t.replace(/-/g, ' ')} ${topicLabel(t)}`), ...lab.objectives, ...lab.devices),
+    };
+  });
+  const projects: SearchEntry[] = repo.projects.map((p) => ({
+    kind: 'project', url: p.route, title: p.title, meta: 'Capstone project', summary: p.summary ?? '', covers: [],
+    ...(p.starter ? { starter: { url: p.starter.url, fileName: p.starter.fileName } } : {}),
+    terms: join(p.title, 'capstone project'),
+  }));
+  const paths: SearchEntry[] = repo.paths.map((p) => ({
+    kind: 'path', url: p.route, title: p.title, meta: `Learning path · ${pathLabs(p, repo).length} labs`, summary: p.summary ?? '', covers: [],
+    terms: join(p.title, 'learning path'),
+  }));
+  const guides: SearchEntry[] = repo.docs.map((d) => ({
+    kind: 'guide', url: d.route, title: d.title, meta: 'Guide', summary: d.summary ?? '', covers: [],
+    terms: join(d.title, d.slug.replace(/-/g, ' '), 'guide'),
+  }));
+  const start = startLab(repo);
+  const featured = [...new Set([start?.route, ...popularLabs(repo).map((p) => p.lab.route)].filter((u): u is string => Boolean(u)))].slice(0, 6);
+  return { entries: [...labs, ...projects, ...paths, ...guides], featured };
 }
 
 /** Learning paths that include a lab, with the step number. */

@@ -52,25 +52,18 @@ test.describe('header', () => {
 });
 
 test.describe('homepage', () => {
-  test('badge, doors and beginner path come from the content', async ({ page }) => {
+  test('headline and beginner path come from the content', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText(/Learn networking by\s+configuring real topologies\./);
-    await expect(page.locator('.badge')).toContainText(`${labs.length} labs, no account needed`);
-    await expect(page.locator('.door').first()).toContainText(`${labs.length} labs`);
-    const pathCount = fs.readdirSync(path.join(REPO_ROOT, 'learning-paths')).filter((f) => f.endsWith('.md')).length;
-    await expect(page.locator('.door', { hasText: 'PATHS' })).toContainText(`${pathCount} paths`);
-    const ids = await page.locator('[data-beginner-path] .path-list .lab-id').allTextContents();
+    const ids = await page.locator('[data-beginner-path] [data-lab-id]').evaluateAll((els) => els.map((e) => e.getAttribute('data-lab-id')));
     expect(ids).toEqual(beginnerIds);
-    for (const href of await page.locator('[data-beginner-path] .path-list a').evaluateAll((as) => as.map((a) => a.getAttribute('href')))) {
+    for (const href of await page.locator('[data-beginner-path] .bp-steps a').evaluateAll((as) => as.map((a) => a.getAttribute('href')))) {
       expect(beginnerRoutes).toContain(href);
     }
   });
 
-  test('popular links and topic chips point at real labs, with acronyms in capitals', async ({ page }) => {
+  test('topic chips point at real labs, with acronyms in capitals', async ({ page }) => {
     await page.goto('/');
-    const popular = await page.locator('.popular a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
-    expect(popular.length).toBeGreaterThan(0);
-    for (const href of popular) expect(labs.map((l) => l.route)).toContain(href);
     const chips = await page.locator('.topics .chip').allTextContents();
     expect(chips.length).toBeGreaterThan(5);
     for (const bad of ['Vlsm', 'Arp', 'Mac Address', 'Ios Navigation']) expect(chips).not.toContain(bad);

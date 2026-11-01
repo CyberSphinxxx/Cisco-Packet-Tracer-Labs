@@ -1,114 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AdSlot from '../components/AdSlot.astro';
 import HeroBackdrop from '../components/HeroBackdrop.astro';
 import HeroSearch from '../components/HeroSearch.astro';
+import BeginnerPath from '../components/BeginnerPath.astro';
 import { getRepository, labelFromSlug } from '../lib/content/repository';
-import { SITE_NAME, TAGLINE, beginnerPath, labTopics, pathLabs, popularLabs, url } from '../lib/site';
+import { SITE_NAME, TAGLINE, beginnerPath, labTopics, pathLabs, url } from '../lib/site';
 
 const repo = getRepository();
 const labCount = repo.labs.length;
 const capstone = repo.projects[0];
 const beginner = beginnerPath(repo);
 const beginnerLabs = pathLabs(beginner, repo);
-const popular = popularLabs(repo);
 const topics = labTopics(repo).slice(0, 18);
-const installGuide = repo.docs.find((d) => d.slug === 'installation');
 const description = `${labCount} original Cisco Packet Tracer labs${capstone ? ' and a capstone project' : ''} with starter topologies, step-by-step guides, verification checks and solution files.`;
-const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
-
-// The three doors. Tools and Practice replace Paths and Guides when they ship.
-const doors = [
-  {
-    key: 'LABS', tone: 'green', href: url('/labs/'), count: plural(labCount, 'lab'),
-    title: 'Guided Packet Tracer labs',
-    text: 'Starter file, every IOS command, show-command checks and a solution file.',
-    example: 'S1(config-if)# no shutdown',
-  },
-  {
-    key: 'PATHS', tone: 'blue', href: url('/learning-paths/'), count: plural(repo.paths.length, 'path'),
-    title: 'Learning paths',
-    text: 'Curated orders through the labs, from your first commands to CCNA-aligned topics.',
-    example: beginnerLabs.slice(0, 3).map((l) => l.id).join(' → '),
-  },
-  {
-    key: 'GUIDES', tone: 'orange', href: url('/docs/'), count: plural(repo.docs.length, 'guide'),
-    title: 'Reference guides',
-    text: 'Setup help, command references and troubleshooting, written for the labs.',
-    example: 'show ip interface brief',
-  },
-];
-const steps = [
-  ['Download the starter file', 'A Packet Tracer topology with the devices placed and cabled, but not configured.'],
-  ['Follow the IOS steps', 'Every command, with the prompt you should see before you type it.'],
-  ['Verify with show commands', 'Run the listed show commands and pings and compare the output.'],
-  ['Check the solution', 'Open the finished file when you are done, or when you are stuck.'],
-];
 ---
 <BaseLayout title={`${SITE_NAME}: ${TAGLINE}`} description={description} noSearchIndex>
   <section class="hero" aria-labelledby="hero-title">
     <HeroBackdrop />
     <div class="wrap hero-inner">
-      <p class="badge"><span class="badge-free">Free</span> {plural(labCount, 'lab')}, no account needed</p>
-      <h1 id="hero-title"><span class="h1-line">Learn networking by</span> <span class="h1-line">configuring real topologies.</span></h1>
-      <p class="lead">Guided Packet Tracer labs, learning paths and reference guides. Everything you need for the CCNA exam topics, in one place.</p>
+      <h1 id="hero-title">
+        <span class="h1-line">Learn networking by</span>
+        <span class="h1-line">configuring real topologies.</span>
+      </h1>
       <HeroSearch />
-      {popular.length > 0 && (
-        <p class="popular">
-          <span>Popular:</span>
-          {popular.map(({ lab, label }) => <a href={lab.route} title={`${lab.id}: ${lab.title}`}>{label}</a>)}
-        </p>
+      {beginner && beginnerLabs.length > 0 && (
+        <BeginnerPath path={beginner} labs={beginnerLabs} />
       )}
-    </div>
-  </section>
-
-  <section class="wrap doors" aria-label="Start here">
-    {doors.map((d) => (
-      <a class="door" href={d.href}>
-        <span class="door-top">
-          <span class={`tag tag-${d.tone}`}>{d.key}</span>
-          <span class="door-count">{d.count}</span>
-        </span>
-        <span class="door-title">{d.title}</span>
-        <span class="door-text">{d.text}</span>
-        <span class="door-example">{d.example}</span>
-      </a>
-    ))}
-  </section>
-
-  <div class="wrap ad-row"><AdSlot id="home-leaderboard" size="leaderboard" /></div>
-
-  <section class="wrap columns">
-    {beginner && beginnerLabs.length > 0 && (
-      <div class="card path-card" data-beginner-path>
-        <div class="card-head">
-          <h2>Beginner path</h2>
-          <a href={url('/labs/')}>All {plural(labCount, 'lab')}</a>
-        </div>
-        <ol class="path-list">
-          {beginnerLabs.map((lab) => (
-            <li>
-              <span class="lab-id">{lab.id}</span>
-              <a href={lab.route}>{lab.title}</a>
-              <span class="mins">{lab.minutes != null ? `${lab.minutes} min` : ''}</span>
-            </li>
-          ))}
-        </ol>
-        <p class="path-more"><a href={beginner.route}>View the {beginner.title}</a></p>
-      </div>
-    )}
-    <div class="panel-card how-card on-panel">
-      <h2>How each lab works</h2>
-      <p class="how-lead">Four steps, the same in every lab.</p>
-      <ol class="how-steps">
-        {steps.map(([title, text]) => (
-          <li>
-            <h3>{title}</h3>
-            <p>{text}</p>
-          </li>
-        ))}
-      </ol>
-      {installGuide && <p class="how-note">Packet Tracer is free with a Cisco Networking Academy account. <a href={installGuide.route}>How to install it</a>.</p>}
     </div>
   </section>
 
@@ -124,79 +41,49 @@ const steps = [
 </BaseLayout>
 
 <style>
-  .hero { position: relative; isolation: isolate; }
-  .hero-inner { padding-block: 5rem 3.5rem; text-align: center; }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0 0 1.5rem;
-    padding: 0.3rem 0.85rem 0.3rem 0.4rem;
-    border-radius: 999px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    font-size: 0.875rem;
-    color: var(--ink-2);
+  .hero {
+    position: relative;
+    isolation: isolate;
+    padding-top: 5rem;
+    padding-bottom: 3.5rem;
   }
-  .badge-free { padding: 0.1rem 0.55rem; border-radius: 999px; background: var(--tag-green-bg); color: var(--tag-green); font-weight: 600; font-size: 0.78125rem; }
-  .hero h1 { margin: 0 auto; max-width: 900px; font-size: var(--fs-hero); line-height: 1.02; letter-spacing: -0.045em; }
-  @media (min-width: 48rem) { .h1-line { display: block; } }
-  .lead { margin: 1.4rem auto 0; max-width: 640px; font-size: var(--fs-md); line-height: 1.55; color: var(--ink-2); }
-  .popular { margin: 1.1rem 0 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.35rem 0.85rem; font-size: 0.875rem; color: var(--muted); }
-  .popular a { color: var(--ink); text-underline-offset: 3px; }
-
-  .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.25rem; padding-bottom: 3rem; }
-  .door {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    padding: 1.6rem;
-    border-radius: var(--radius-card);
-    background: var(--surface);
-    border: 1px solid var(--line);
+  .hero-inner {
+    text-align: left;
+  }
+  .hero h1 {
+    margin: 0;
+    max-width: 960px;
+    font-size: var(--fs-hero);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
     color: var(--ink);
-    text-decoration: none;
-    transition: border-color var(--dur) var(--ease);
   }
-  .door:hover { border-color: var(--line-strong); }
-  .door:hover .door-title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.18em; }
-  .door-top { display: flex; align-items: center; justify-content: space-between; }
-  .door-count { font-size: 0.875rem; color: var(--muted); }
-  .door-title { font-size: var(--fs-xl); font-weight: 650; letter-spacing: -0.025em; line-height: 1.15; }
-  .door-text { font-size: 0.96875rem; color: var(--ink-2); }
-  .door-example { margin-top: auto; padding-top: 0.6rem; border-top: 1px dashed var(--line); font-family: var(--font-mono); font-size: 0.84375rem; color: var(--ink-2); }
-
-  .ad-row:not(:empty) { padding-bottom: 3rem; }
-
-  .columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; padding-bottom: 3.5rem; }
-  @media (min-width: 60rem) { .columns { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } }
-  .columns .card, .columns .panel-card { padding: 1.6rem; }
-  .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3); margin-bottom: 0.6rem; }
-  .columns h2, .topics h2 { font-size: var(--fs-lg); font-weight: 650; letter-spacing: -0.02em; }
-  .card-head a { font-size: var(--fs-sm); color: var(--ink-2); }
-  .path-list { list-style: none; margin: 0; padding: 0; }
-  .path-list li { display: grid; grid-template-columns: 5.75rem minmax(0, 1fr) auto; align-items: baseline; gap: 1rem; padding: 0.8rem 0; border-top: 1px solid var(--line-subtle); }
-  .path-list .lab-id { font-size: 0.8125rem; }
-  .path-list a { font-weight: 550; text-decoration: none; }
-  .path-list a:hover { text-decoration: underline; }
-  .mins { font-size: 0.84375rem; color: var(--muted); white-space: nowrap; }
-  @media (max-width: 30rem) {
-    .path-list li { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.1rem; }
-    .path-list .lab-id { grid-column: 1 / -1; }
+  .h1-line {
+    display: block;
   }
-  .path-more { margin: 0; padding-top: 0.8rem; border-top: 1px solid var(--line-subtle); font-size: var(--fs-sm); }
-  .path-more a { color: var(--link); }
 
-  .how-card h2 { margin: 0 0 0.3rem; }
-  .how-lead { margin: 0 0 1.25rem; font-size: 0.9375rem; }
-  .how-steps { list-style: none; counter-reset: step; margin: 0; padding: 1rem 1.2rem; border-radius: var(--radius-code); background: var(--panel-2); display: grid; gap: 0.85rem; }
-  .how-steps li { counter-increment: step; display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); column-gap: 0.5rem; }
-  .how-steps li::before { content: counter(step, decimal-leading-zero); grid-row: span 2; font-family: var(--font-mono); font-size: 0.875rem; line-height: 1.55; color: var(--accent); }
-  .how-steps h3 { font-size: 0.9375rem; font-weight: 600; line-height: 1.45; color: var(--panel-ink); }
-  .how-steps p { margin: 0.1rem 0 0; font-size: 0.875rem; line-height: 1.5; }
-  .how-note { margin: 1rem 0 0; font-size: 0.875rem; }
+  .topics {
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+  .topics h2 {
+    font-size: var(--fs-lg);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .chip-more {
+    border-style: dashed;
+  }
 
-  .topics { padding-bottom: 2rem; }
-  .topics h2 { margin-bottom: 1rem; }
-  .chip-more { border-style: dashed; }
+  @media (max-width: 48rem) {
+    .hero {
+      padding-top: 2.75rem;
+      padding-bottom: 2rem;
+    }
+    .topics {
+      padding-top: 2.5rem;
+    }
+  }
 </style>

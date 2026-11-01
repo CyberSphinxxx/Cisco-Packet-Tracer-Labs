@@ -4,7 +4,7 @@ import { navItems, SHORT_NAME, startLab, url } from '../lib/site';
 
 const current = Astro.url.pathname;
 const repo = getRepository();
-const items = navItems(repo);
+const items = navItems();
 const githubUrl = repo.config.repoUrl;
 const start = startLab(repo);
 ---
@@ -30,16 +30,14 @@ const start = startLab(repo);
 
     <div class="header-tools">
       <a class="search-trigger" href={url('/search/')} data-search-trigger aria-label="Search">
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" /><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-        <span class="search-label">Search</span>
-        <kbd class="search-kbd js-only">/</kbd>
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+        <kbd class="search-kbd js-only" aria-hidden="true">/</kbd>
       </a>
       <button class="theme-toggle icon-btn js-only" type="button" aria-label="Switch to dark theme" data-theme-toggle>
         <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.5A6.5 6.5 0 0 1 7.5 4.5a6.5 6.5 0 1 0 8 8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
         <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M10 1.5v2.2M10 16.3v2.2M1.5 10h2.2M16.3 10h2.2M4 4l1.5 1.5M14.5 14.5 16 16M4 16l1.5-1.5M14.5 5.5 16 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
       </button>
       <a class="gh-link bar-only" href={githubUrl} rel="noopener noreferrer">GitHub</a>
-      {start && <a class="btn btn-primary start bar-only" href={start.route}>Start with lab 1</a>}
       <button class="menu-toggle icon-btn js-only" type="button" aria-expanded="false" aria-controls="site-nav">
         <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
         <span class="menu-label">Menu</span>
@@ -74,23 +72,20 @@ const start = startLab(repo);
     letter-spacing: -0.03em;
     line-height: 1;
   }
-  /* Logo: a link light on a dark port. */
+  /* Logo: clean green square matching the design. */
   .logo {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    background: var(--logo-bg);
+    width: 10px;
+    height: 10px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex: none;
   }
   .logo-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 3px rgb(60 207 122 / 0.25);
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--brand-mark, var(--accent));
   }
   .site-nav { flex: 1; min-width: 0; }
   .site-nav ul {
@@ -120,9 +115,9 @@ const start = startLab(repo);
     align-items: center;
     justify-content: center;
     gap: var(--sp-2);
-    min-height: 2.5rem;
-    min-width: 2.5rem;
-    padding: 0 0.7rem;
+    min-height: 2.375rem;
+    min-width: 2.375rem;
+    padding: 0 0.65rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-btn);
     background: var(--surface);
@@ -132,13 +127,14 @@ const start = startLab(repo);
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
   }
   .search-trigger:hover, .icon-btn:hover { color: var(--ink); border-color: var(--line-strong); }
   .search-kbd {
     font-family: var(--font-mono);
     font-size: var(--fs-xs);
     line-height: 1.4;
-    padding: 0 0.4rem;
+    padding: 0 0.35rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-tag);
     color: var(--ink-2);
@@ -151,15 +147,13 @@ const start = startLab(repo);
     text-decoration: none;
   }
   .gh-link:hover { color: var(--ink); text-decoration: underline; }
-  .start { min-height: 2.5rem; height: 2.5rem; }
   .theme-toggle .icon-sun { display: none; }
   :global([data-resolved-theme='dark']) .theme-toggle .icon-sun { display: block; }
   :global([data-resolved-theme='dark']) .theme-toggle .icon-moon { display: none; }
 
-  /* Mid widths: tighter spacing, the search trigger shows only its icon and shortcut. */
+  /* Mid widths: tighter spacing */
   @media (max-width: 80rem) {
     .header-inner { gap: 1.25rem; }
-    .search-label { display: none; }
   }
 
   /* Small screens: with JS the nav becomes a sheet behind the Menu button.
@@ -204,7 +198,6 @@ const start = startLab(repo);
     .menu-toggle { display: none !important; }
   }
   @media (forced-colors: active) {
-    .logo { border: 1px solid CanvasText; }
-    .logo-dot { forced-color-adjust: none; }
+    .logo-dot { forced-color-adjust: none; background: CanvasText; }
   }
 </style>
